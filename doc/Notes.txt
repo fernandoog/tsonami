@@ -1,0 +1,24 @@
+https://github.com/pschatzmann/arduino-audio-tools.git
+https://docs.heltec.org/en/node/esp32/wifi_kit_8/quick_start.html#via-arduino-board-manager
+https://docs.m5stack.com/en/core/stamp_c3u
+https://www.electro-smith.com/daisy/daisy
+
+
+DAC  |	ESP32
+-----|----------------
+VCC  |	5V
+GND  |	GND
+BCK  |	BCK (GPIO14)
+DIN  |	OUT (GPIO22)
+LCK  |	BCK (GPIO15)
+FMT  |	GND
+XMT  |	3V (or another GPIO PIN which is set to high)
+
+i2s-device |  ESP32
+-----------| ---------------
+BCK        |  BCK (GPIO14)
+WS         |  WS (GPIO15)
+DATA       |  IN (GPIO32)
+GND        |  GND
+VCC        |  VIN 5V
+
