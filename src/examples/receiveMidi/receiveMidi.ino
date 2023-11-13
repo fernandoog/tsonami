@@ -20,6 +20,11 @@ byte note = 43;
 byte velocity = 55;
 byte channel = 1;
 
+WiFiServer server(5004);  // Puerto para la conexión MIDI
+
+// Declarar la instancia de WiFiUDP globalmente
+WiFiUDP udp;
+
 APPLEMIDI_CREATE_DEFAULTSESSION_INSTANCE();
 
 // -----------------------------------------------------------------------------
@@ -39,36 +44,30 @@ void setup() {
   Serial.println(WiFi.localIP());
   Serial.println(AppleMIDI.getPort());
   Serial.println(AppleMIDI.getName());
-  
+
   // MIDI
   MIDI.begin();
   AppleMIDI.setHandleConnected([](const APPLEMIDI_NAMESPACE::ssrc_t& ssrc, const char* name) {
     isConnected++;
-    DBG(F("Connected to session"), ssrc, name);
+    Serial.println(ssrc);
+    Serial.println(name);
   });
   AppleMIDI.setHandleDisconnected([](const APPLEMIDI_NAMESPACE::ssrc_t& ssrc) {
     isConnected--;
-    DBG(F("Disconnected"), ssrc);
+    Serial.println("Disconnected");
   });
   MIDI.setHandleNoteOn([](byte channel, byte note, byte velocity) {
-    DBG(F("NoteOn"), note);
+    Serial.println(note);
   });
   MIDI.setHandleNoteOff([](byte channel, byte note, byte velocity) {
-    DBG(F("NoteOff"), note);
+    Serial.println(note);
   });
-  DBG(F("Sending NoteOn/Off of note 45, every second"));
 }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 void loop() {
-
+  // Esperar una conexión MIDI
   MIDI.read();
-
-  if ((isConnected > 0) && (millis() - t0) > 1000) {
-    t0 = millis();
-    MIDI.sendNoteOn(note, velocity, channel);
-    MIDI.sendNoteOff(note, velocity, channel);
-  }
 }
