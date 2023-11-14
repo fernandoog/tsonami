@@ -3,6 +3,7 @@
 #include <WiFiUdp.h>
 #include <AppleMIDI.h>
 #include <MIDI.h>
+#define USE_EXT_CALLBACKS
 
 
 // Wifi
