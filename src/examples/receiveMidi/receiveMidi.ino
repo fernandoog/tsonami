@@ -2,6 +2,7 @@
 #include <WiFiClient.h>
 #include <WiFiUdp.h>
 #include <AppleMIDI.h>
+#include <MIDI.h>
 
 
 // Wifi
@@ -12,9 +13,6 @@ WiFiServer server(5004);           // Puerto para la conexión MIDI
 WiFiUDP udp;
 
 APPLEMIDI_CREATE_DEFAULTSESSION_INSTANCE();
-void OnAppleMidiStartReceived(const APPLEMIDI_NAMESPACE::ssrc_t&);
-void OnAppleMidiReceivedByte(const APPLEMIDI_NAMESPACE::ssrc_t&, byte);
-void OnAppleMidiEndReceive(const APPLEMIDI_NAMESPACE::ssrc_t&);
 
 // -----------------------------------------------------------------------------
 //
@@ -44,12 +42,7 @@ void setup() {
   AppleMIDI.setHandleDisconnected([](const APPLEMIDI_NAMESPACE::ssrc_t& ssrc) {
     Serial.println("Disconnected");
   });
-  MIDI.setHandleNoteOn([](byte channel, byte note, byte velocity) {
-    Serial.println(note);
-  });
-  MIDI.setHandleNoteOff([](byte channel, byte note, byte velocity) {
-    Serial.println(note);
-  });
+
 }
 
 // -----------------------------------------------------------------------------
