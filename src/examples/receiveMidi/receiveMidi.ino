@@ -1,31 +1,20 @@
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <WiFiUdp.h>
-#include <AppleMIDI_Debug.h>
 #include <AppleMIDI.h>
-
-#define LEDS_COUNT 1
-#define LEDS_PIN 2
-#define CHANNEL 0
 
 
 // Wifi
 char ssid[] = "HOUSE";             //  your network SSID (name)
 char pass[] = "wifiwifiwifi1992";  // your network password (use for WPA, or use as key for WEP)
-
-// Midi
-unsigned long t0 = millis();
-int8_t isConnected = 0;
-byte note = 43;
-byte velocity = 55;
-byte channel = 1;
-
-WiFiServer server(5004);  // Puerto para la conexión MIDI
-
+WiFiServer server(5004);           // Puerto para la conexión MIDI
 // Declarar la instancia de WiFiUDP globalmente
 WiFiUDP udp;
 
 APPLEMIDI_CREATE_DEFAULTSESSION_INSTANCE();
+void OnAppleMidiStartReceived(const APPLEMIDI_NAMESPACE::ssrc_t&);
+void OnAppleMidiReceivedByte(const APPLEMIDI_NAMESPACE::ssrc_t&, byte);
+void OnAppleMidiEndReceive(const APPLEMIDI_NAMESPACE::ssrc_t&);
 
 // -----------------------------------------------------------------------------
 //
@@ -48,12 +37,11 @@ void setup() {
   // MIDI
   MIDI.begin();
   AppleMIDI.setHandleConnected([](const APPLEMIDI_NAMESPACE::ssrc_t& ssrc, const char* name) {
-    isConnected++;
+    Serial.println("Connected");
     Serial.println(ssrc);
     Serial.println(name);
   });
   AppleMIDI.setHandleDisconnected([](const APPLEMIDI_NAMESPACE::ssrc_t& ssrc) {
-    isConnected--;
     Serial.println("Disconnected");
   });
   MIDI.setHandleNoteOn([](byte channel, byte note, byte velocity) {
