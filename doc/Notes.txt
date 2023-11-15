@@ -2,6 +2,8 @@ https://github.com/pschatzmann/arduino-audio-tools.git
 https://docs.heltec.org/en/node/esp32/wifi_kit_8/quick_start.html#via-arduino-board-manager
 https://docs.m5stack.com/en/core/stamp_c3u
 https://www.electro-smith.com/daisy/daisy
+https://github.com/lathoub/Arduino-AppleMIDI-Library/tree/master/examples
+https://es.aliexpress.com/item/1005006000268135.html?spm=a2g0o.order_list.order_list_main.77.3d9b194dbT8mPy&gatewayAdapt=glo2esp
 
 
 DAC  |	ESP32

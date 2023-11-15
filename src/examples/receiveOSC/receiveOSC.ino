@@ -1,54 +1,59 @@
 #include <WiFi.h>
+#include <WiFiUdp.h>
 #include <OSCMessage.h>
+#include <OSCBundle.h>
 #include <OSCData.h>
 
-const char *ssid = "HOUSE";
-const char *password = "wifiwifiwifi1992";
+const char* ssid     = "HOUSE"; // Change this to your WiFi SSID
+const char* password = "wifiwifiwifi1992"; // Change this to your WiFi password
 
-const int puertoWiFi = 12345;  // Puerto para la conexión Wi-Fi
-const int puertoOSC = 8000;    // Puerto OSC
+// A UDP instance to let us send and receive packets over UDP
+WiFiUDP Udp;
+const IPAddress outIp(192, 168, 43, 207);  // remote IP (not needed for receive)
+const unsigned int outPort = 8001;         // remote port (not needed for receive)
+const unsigned int localPort = 8000;       // local port to listen for UDP packets (here's where we send the packets)
 
-WiFiServer server(puertoWiFi);
+OSCErrorCode error;
 
 void setup() {
+
   Serial.begin(115200);
+  while (!Serial) { delay(100); }
 
-  // Conectar a Wi-Fi
+  // We start by connecting to a WiFi network
+
+  Serial.println();
+  Serial.println("******************************************************");
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
   WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.println("Conectando a WiFi...");
-  }
-  Serial.println("Conectado a WiFi");
 
-  // Inicializar el servidor Wi-Fi
-  server.begin();
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
 }
 
 void loop() {
-  WiFiClient client = server.available();
-  if (client) {
-    while (client.connected()) {
-      if (client.available()) {
-        // Recibir y procesar el mensaje OSC
-        OSCMessage mensaje;
-        while (client.available()) {
-          mensaje.fill(client.read());
-        }
-
-        // Imprimir el contenido del mensaje en la consola
-        Serial.print("Mensaje OSC recibido: ");
-        for (int i = 0; i < mensaje.size(); ++i) {
-          Serial.print(mensaje.getFloat(i));
-          Serial.print(" ");
-        }
-        Serial.println();
-
-        // Puedes agregar lógica para manejar el mensaje según tus necesidades
-
-        mensaje.empty();  // Limpiar el mensaje para la siguiente iteración
-      }
+  OSCMessage msg;
+  int size = Udp.parsePacket();
+  Serial.println(size);
+  if (size > 0) {
+    while (size--) {
+      msg.fill(Udp.read());
     }
-    client.stop();
+    if (!msg.hasError()) {
+      Serial.println(msg.getInt(0));
+    } else {
+      error = msg.getError();
+      Serial.print("error: ");
+      Serial.println(error);
+    }
   }
 }
