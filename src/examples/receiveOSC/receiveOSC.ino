@@ -4,8 +4,8 @@
 #include <OSCBundle.h>
 #include <OSCData.h>
 
-const char* ssid     = "HOUSE"; // Change this to your WiFi SSID
-const char* password = "wifiwifiwifi1992"; // Change this to your WiFi password
+const char* ssid = "HOUSE";                 // Change this to your WiFi SSID
+const char* password = "wifiwifiwifi1992";  // Change this to your WiFi password
 
 // A UDP instance to let us send and receive packets over UDP
 WiFiUDP Udp;
@@ -43,7 +43,6 @@ void setup() {
 void loop() {
   OSCMessage msg;
   int size = Udp.parsePacket();
-  Serial.println(size);
   if (size > 0) {
     while (size--) {
       msg.fill(Udp.read());
