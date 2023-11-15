@@ -1,58 +1,73 @@
 #include <WiFi.h>
 #include <WiFiUdp.h>
 #include <OSCMessage.h>
-#include <OSCBundle.h>
 #include <OSCData.h>
 
-const char* ssid = "HOUSE";                 // Change this to your WiFi SSID
-const char* password = "wifiwifiwifi1992";  // Change this to your WiFi password
+// Define tus credenciales de red
+const char *ssid = "HOUSE";
+const char *password = "wifiwifiwifi1992";
 
-// A UDP instance to let us send and receive packets over UDP
+// Define el puerto local para la comunicación UDP
+const int localUdpPort = 8000;
+
+// Crea el objeto para la comunicación UDP
 WiFiUDP Udp;
-const IPAddress outIp(192, 168, 43, 207);  // remote IP (not needed for receive)
-const unsigned int outPort = 8001;         // remote port (not needed for receive)
-const unsigned int localPort = 8000;       // local port to listen for UDP packets (here's where we send the packets)
-
-OSCErrorCode error;
 
 void setup() {
-
   Serial.begin(115200);
-  while (!Serial) { delay(100); }
 
-  // We start by connecting to a WiFi network
+  // Inicializa la conexión WiFi
+  connectToWiFi();
 
-  Serial.println();
-  Serial.println("******************************************************");
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
-
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
+  // Inicializa la conexión UDP
+  Udp.begin(localUdpPort);
+  Serial.println("Servidor OSC iniciado");
 }
 
 void loop() {
-  OSCMessage msg;
-  int size = Udp.parsePacket();
-  if (size > 0) {
-    while (size--) {
-      msg.fill(Udp.read());
+  // Si hay datos disponibles para leer
+  int packetSize = Udp.parsePacket();
+  if (packetSize > 0) {
+    // Lee el paquete en un buffer de tipo uint8_t*
+    uint8_t buffer[packetSize];
+    Udp.read(buffer, packetSize);
+
+    // Crea un objeto OSCMessage y llena con el buffer
+    OSCMessage msg;
+    msg.fill(buffer, packetSize);
+
+    // Imprime la dirección OSC y los argumentos (si los hay)
+    Serial.print("Dirección OSC: ");
+    Serial.println(msg.getAddress());
+    Serial.print("Argumentos: ");
+    for (int i = 0; i < msg.size(); i++) {
+      if (msg.isInt(i)) {
+        Serial.print(msg.getInt(i));
+      } else if (msg.isFloat(i)) {
+        Serial.print(msg.getFloat(i), 4);
+      } else if (msg.isString(i)) {
+        char strBuffer[100];
+        msg.getString(i, strBuffer);
+        Serial.print(strBuffer);
+      }
+      Serial.print(" ");
     }
-    if (!msg.hasError()) {
-      Serial.println(msg.getInt(0));
-    } else {
-      error = msg.getError();
-      Serial.print("error: ");
-      Serial.println(error);
-    }
+    Serial.println();
+
+    // Libera los recursos del mensaje OSC
+    msg.empty();
   }
+}
+
+void connectToWiFi() {
+  Serial.println("Conectando a WiFi");
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Conectando...");
+  }
+
+  Serial.println("Conectado a la red WiFi");
+  Serial.println("Dirección IP: " + WiFi.localIP().toString());
 }

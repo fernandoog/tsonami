@@ -64,12 +64,13 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-35",
+					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 484.0, 218.5, 50.0, 22.0 ],
-					"text" : "/on 480"
+					"patching_rect" : [ 484.0, 218.5, 50.0, 35.0 ],
+					"text" : "/on -593"
 				}
 
 			}
@@ -576,8 +577,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 25.0, 145.0, 90.0, 23.0 ],
-					"text" : "host localhost"
+					"patching_rect" : [ 25.0, 145.0, 123.0, 23.0 ],
+					"text" : "host esp32-244A5C"
 				}
 
 			}
@@ -604,8 +605,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 50.0, 170.0, 93.0, 23.0 ],
-					"text" : "host 127.0.0.1"
+					"patching_rect" : [ 50.0, 170.0, 120.0, 23.0 ],
+					"text" : "host 192.168.43.95"
 				}
 
 			}
