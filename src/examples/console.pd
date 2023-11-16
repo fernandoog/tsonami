@@ -1,0 +1,10 @@
+#N canvas 717 160 450 300 10;
+#X obj 186 248 print;
+#X obj 56 100 unpack A;
+#X obj 55 149 route text number;
+#X obj 51 25 comport /dev/cu.usbserial-0001 9600;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 2 1 0 0;
+#X connect 2 2 0 0;
+#X connect 3 0 1 0;

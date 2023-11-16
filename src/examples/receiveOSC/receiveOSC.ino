@@ -6,6 +6,7 @@
 // Define tus credenciales de red
 const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
+const char *device = "/esp32";
 
 // Define el puerto local para la comunicación UDP
 const int localUdpPort = 8000;
@@ -14,7 +15,7 @@ const int localUdpPort = 8000;
 WiFiUDP Udp;
 
 void setup() {
-  Serial.begin(9800);
+  Serial.begin(9600);
 
   // Inicializa la conexión WiFi
   connectToWiFi();
@@ -33,11 +34,11 @@ void loop() {
     Udp.read(buffer, packetSize);
 
     // Crea un objeto OSCMessage y llena con el buffer
-    OSCMessage msg;
+    OSCMessage msg(device);
     msg.fill(buffer, packetSize);
 
-    toSerial(msg);
-    //toSerialDebug(msg);
+    //msg.send(Serial);
+    toSerialDebug(msg);
 
     // Libera los recursos del mensaje OSC
     msg.empty();
@@ -77,19 +78,3 @@ void toSerialDebug(OSCMessage &msg) {
   }
 }
 
-void toSerial(OSCMessage &msg) {
-
-  OSCMessage serialMsg(msg.getAddress());
-  for (int i = 0; i < msg.size(); i++) {
-    if (msg.isInt(i)) {
-      serialMsg.add(msg.getInt(i));
-    } else if (msg.isFloat(i)) {
-      serialMsg.add(msg.getFloat(i));
-    } else if (msg.isString(i)) {
-      char strBuffer[100];
-      msg.getString(i, strBuffer);
-      serialMsg.add(strBuffer);
-    }
-  }
-  serialMsg.send(Serial);
-}
