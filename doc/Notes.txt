@@ -36,7 +36,7 @@ python pd2dsy.py --board <BOARD> <FILE>.pd
 
 ls /dev/cu.*
 
-[comport /dev/cu.usbmodemXXXXX 9600] ;# Reemplaza "XXXXX" con el nombre específico de tu puerto serie
+[comport /dev/cu.usbserial-0001 115200] ;# Reemplaza "XXXXX" con el nombre específico de tu puerto serie
 |
 [print]
 |

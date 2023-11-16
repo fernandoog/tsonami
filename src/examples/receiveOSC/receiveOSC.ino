@@ -14,7 +14,7 @@ const int localUdpPort = 8000;
 WiFiUDP Udp;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9800);
 
   // Inicializa la conexión WiFi
   connectToWiFi();
@@ -35,25 +35,11 @@ void loop() {
     // Crea un objeto OSCMessage y llena con el buffer
     OSCMessage msg;
     msg.fill(buffer, packetSize);
+    //debugOSC(msg);
 
-    // Imprime la dirección OSC y los argumentos (si los hay)
-    Serial.print("Dirección OSC: ");
-    Serial.println(msg.getAddress());
-    Serial.print("Argumentos: ");
-    for (int i = 0; i < msg.size(); i++) {
-      if (msg.isInt(i)) {
-        Serial.print(msg.getInt(i));
-      } else if (msg.isFloat(i)) {
-        Serial.print(msg.getFloat(i), 4);
-      } else if (msg.isString(i)) {
-        char strBuffer[100];
-        msg.getString(i, strBuffer);
-        Serial.print(strBuffer);
-      }
-      Serial.print(" ");
-    }
-    Serial.println();
-
+    //Envia a serial
+    msg.send(Serial);
+    
     // Libera los recursos del mensaje OSC
     msg.empty();
   }
@@ -70,4 +56,24 @@ void connectToWiFi() {
 
   Serial.println("Conectado a la red WiFi");
   Serial.println("Dirección IP: " + WiFi.localIP().toString());
+}
+
+void debugOSC(OSCMessage &msg) {
+
+  // Imprime la dirección OSC
+
+  Serial.println();
+  Serial.print(msg.getAddress());
+  Serial.print(" ");
+  for (int i = 0; i < msg.size(); i++) {
+    if (msg.isInt(i)) {
+      Serial.print(msg.getInt(i));
+    } else if (msg.isFloat(i)) {
+      Serial.print(msg.getFloat(i), 4);
+    } else if (msg.isString(i)) {
+      char strBuffer[100];
+      msg.getString(i, strBuffer);
+      Serial.print(strBuffer);
+    }
+  }
 }
