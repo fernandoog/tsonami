@@ -1,0 +1,8 @@
+#N canvas 358 143 1440 872 10;
+#X obj 9 135 unpackOSC;
+#X obj 9 71 mrpeach/slipdec 65536;
+#X obj 9 23 comport /dev/cu.usbserial-0001 115200;
+#X obj 9 192 print;
+#X connect 0 0 3 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;

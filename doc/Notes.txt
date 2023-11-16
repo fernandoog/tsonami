@@ -24,3 +24,20 @@ DATA       |  IN (GPIO32)
 GND        |  GND
 VCC        |  VIN 5V
 
+
+VID: 0x10c4
+PID: 0xEA60
+SN: 0001
+
+https://www.espressif.com/en/support/documents/technical-documents
+
+source ./pd_env/bin/activate
+python pd2dsy.py --board <BOARD> <FILE>.pd
+
+ls /dev/cu.*
+
+[comport /dev/cu.usbmodemXXXXX 9600] ;# Reemplaza "XXXXX" con el nombre específico de tu puerto serie
+|
+[print]
+|
+[bang( ;# Este bang podría activar algún proceso en tu parche cuando se reciban datos.

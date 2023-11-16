@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 74.0, 862.0, 768.0 ],
+		"rect" : [ 720.0, 91.0, 862.0, 768.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -45,7 +45,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 586.0, 289.0, 50.0, 22.0 ]
+					"patching_rect" : [ 586.0, 289.0, 50.0, 22.0 ],
+					"text" : "/on 58."
 				}
 
 			}
@@ -64,13 +65,12 @@
 , 			{
 				"box" : 				{
 					"id" : "obj-35",
-					"linecount" : 2,
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 484.0, 218.5, 50.0, 35.0 ],
-					"text" : "/on -593"
+					"patching_rect" : [ 484.0, 218.5, 50.0, 22.0 ],
+					"text" : "/on 306"
 				}
 
 			}
@@ -577,8 +577,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 25.0, 145.0, 123.0, 23.0 ],
-					"text" : "host esp32-244A5C"
+					"patching_rect" : [ 25.0, 145.0, 115.0, 23.0 ],
+					"text" : "host ESP-AB8B76"
 				}
 
 			}
