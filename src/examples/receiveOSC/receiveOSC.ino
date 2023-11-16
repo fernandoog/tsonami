@@ -35,11 +35,10 @@ void loop() {
     // Crea un objeto OSCMessage y llena con el buffer
     OSCMessage msg;
     msg.fill(buffer, packetSize);
-    //debugOSC(msg);
 
-    //Envia a serial
-    msg.send(Serial);
-    
+    toSerial(msg);
+    //toSerialDebug(msg);
+
     // Libera los recursos del mensaje OSC
     msg.empty();
   }
@@ -58,7 +57,7 @@ void connectToWiFi() {
   Serial.println("Dirección IP: " + WiFi.localIP().toString());
 }
 
-void debugOSC(OSCMessage &msg) {
+void toSerialDebug(OSCMessage &msg) {
 
   // Imprime la dirección OSC
 
@@ -76,4 +75,21 @@ void debugOSC(OSCMessage &msg) {
       Serial.print(strBuffer);
     }
   }
+}
+
+void toSerial(OSCMessage &msg) {
+
+  OSCMessage serialMsg(msg.getAddress());
+  for (int i = 0; i < msg.size(); i++) {
+    if (msg.isInt(i)) {
+      serialMsg.add(msg.getInt(i));
+    } else if (msg.isFloat(i)) {
+      serialMsg.add(msg.getFloat(i));
+    } else if (msg.isString(i)) {
+      char strBuffer[100];
+      msg.getString(i, strBuffer);
+      serialMsg.add(strBuffer);
+    }
+  }
+  serialMsg.send(Serial);
 }
