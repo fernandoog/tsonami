@@ -35,9 +35,20 @@ source ./pd_env/bin/activate
 python pd2dsy.py --board <BOARD> <FILE>.pd
 
 ls /dev/cu.*
+/dev/cu.usbserial-0001
 
-[comport /dev/cu.usbserial-0001 115200] ;# Reemplaza "XXXXX" con el nombre específico de tu puerto serie
-|
-[print]
-|
-[bang( ;# Este bang podría activar algún proceso en tu parche cuando se reciban datos.
+types: Especifica el tipo de cada argumento. Los tipos pueden incluir:
+
+    i: entero (32 bits)
+    f: número de punto flotante (32 bits)
+    s: cadena de texto
+    b: blob (secuencia de bytes)
+    T: marcador de verdadero (booleano verdadero)
+    F: marcador de falso (booleano falso)
+    N: marcador de nulo (null)
+    I: marcador de infinito positivo
+    M: marcador de infinito negativo
+    ,: marcador de final de tipos
+
+/sensor/temperatura,ff 23.5 42.0
+
