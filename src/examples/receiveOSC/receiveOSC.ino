@@ -7,7 +7,6 @@
 // Define tus credenciales de red
 const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
-const char *device = "/esp"; //Coment for PureData
 
 // Define el puerto local para la comunicación UDP
 const int localUdpPort = 8000;
@@ -16,7 +15,7 @@ const int localUdpPort = 8000;
 WiFiUDP Udp;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   // Inicializa la conexión WiFi
   connectToWiFi();
@@ -35,9 +34,9 @@ void loop() {
     Udp.read(buffer, packetSize);
 
     // Crea un objeto OSCMessage y llena con el buffer
-    OSCMessage msg(device);
+    OSCMessage msg;
     msg.fill(buffer, packetSize);
-
+    // Pasa el mensaje al puerto serie
     toSerial(msg);
     // Libera los recursos del mensaje OSC
     msg.empty();
@@ -60,20 +59,16 @@ void connectToWiFi() {
 void toSerial(OSCMessage &msg) {
 
   // Imprime la dirección OSC 
-  Serial.print(device);
   Serial.print(msg.getAddress()); 
-  Serial.print(",");
+  Serial.print(" ");
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
-      Serial.print("i "); 
       Serial.print(msg.getInt(i));
     } else if (msg.isFloat(i)) {
-      Serial.print("f "); 
       Serial.print(msg.getFloat(i), 4);
     } else if (msg.isString(i)) {
       char strBuffer[100]; 
       msg.getString(i, strBuffer); 
-      Serial.print("s "); 
       Serial.print(strBuffer); 
     }
   }
