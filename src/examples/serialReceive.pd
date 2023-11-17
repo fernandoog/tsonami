@@ -1,6 +1,4 @@
-#N canvas 471 113 450 300 12;
-#X obj 132 251 print;
+#N canvas 867 57 450 599 12;
 #X obj 86 61 comport /dev/cu.usbserial-0001 9600;
-#X obj 107 133 oscparse;
-#X connect 1 0 2 0;
-#X connect 2 0 0 0;
+#X obj 95 245 print;
+#X connect 0 0 1 0;

@@ -1,4 +1,5 @@
-#include <WiFi.h>
+//#include <WiFi.h>
+#include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
 #include <OSCMessage.h>
 #include <OSCData.h>
