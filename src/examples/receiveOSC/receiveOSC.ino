@@ -6,7 +6,7 @@
 // Define tus credenciales de red
 const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
-const char *device = "/esp,";
+const char *device = "/esp";
 
 // Define el puerto local para la comunicación UDP
 const int localUdpPort = 8000;
@@ -62,6 +62,7 @@ void toSerial(OSCMessage &msg) {
   // Imprime la dirección OSC
   Serial.print(device);
   Serial.print(msg.getAddress());
+  Serial.print(", ");
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
       Serial.print("i ");
