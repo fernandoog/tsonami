@@ -3,19 +3,23 @@
 #include <WiFiUdp.h>
 #include <OSCMessage.h>
 #include <OSCData.h>
+#include <driver/ledc.h>
 
 // Define tus credenciales de red
 const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
+
+//GPIO
+const int canalPWM = 0;                       // Número de canal PWM
+const int gpioNum = 13;                       // Número GPIO válido para PWM en ESP32
+const int frecuenciaPWM = 1000;               // Frecuencia en Hz
+const int resolucionPWM = LEDC_TIMER_10_BIT;  // Resolución PWM (10 bits)
 
 // Define el puerto local para la comunicación UDP
 const int localUdpPort = 8000;
 
 // Crea el objeto para la comunicación UDP
 WiFiUDP Udp;
-
-// Salida Analogica
-const int pinSalidaAnalogica = A0;
 
 void setup() {
   Serial.begin(115200);
@@ -26,6 +30,12 @@ void setup() {
   // Inicializa la conexión UDP
   Udp.begin(localUdpPort);
   Serial.println("Servidor OSC iniciado");
+
+  // Configurar el canal PWM
+  ledcSetup(canalPWM, frecuenciaPWM, resolucionPWM);
+
+  // Asociar el canal PWM con el pin GPIO
+  ledcAttachPin(gpioNum, canalPWM);
 }
 
 void loop() {
@@ -67,14 +77,12 @@ void toSerial(OSCMessage &msg) {
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
       Serial.print(msg.getInt(i));
-      int valorRecibido = msg.getInt(i);
-      valorRecibido = constrain(valorRecibido, 0, 255);
-      analogWrite(pinSalidaAnalogica, valorRecibido);
+      int valorRecibido = constrain(msg.getInt(i), 0, 1000);
+      analogWrite(gpioNum, valorRecibido);
+      Serial.print(" ");
+      Serial.print(valorRecibido);
     } else if (msg.isFloat(i)) {
       Serial.print(msg.getFloat(i), 1);
-      float valorRecibido = msg.getFloat(i);
-      valorRecibido = constrain(valorRecibido, 0, 255);
-      analogWrite(pinSalidaAnalogica, valorRecibido);
     } else if (msg.isString(i)) {
       char strBuffer[100];
       msg.getString(i, strBuffer);
