@@ -14,6 +14,9 @@ const int localUdpPort = 8000;
 // Crea el objeto para la comunicación UDP
 WiFiUDP Udp;
 
+// Salida Analogica
+const int pinSalidaAnalogica = A0;
+
 void setup() {
   Serial.begin(115200);
 
@@ -58,20 +61,25 @@ void connectToWiFi() {
 
 void toSerial(OSCMessage &msg) {
 
-  // Imprime la dirección OSC 
-  Serial.print(msg.getAddress()); 
+  // Imprime la dirección OSC
+  Serial.print(msg.getAddress());
   Serial.print(" ");
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
       Serial.print(msg.getInt(i));
+      int valorRecibido = msg.getInt(i);
+      valorRecibido = constrain(valorRecibido, 0, 255);
+      analogWrite(pinSalidaAnalogica, valorRecibido);
     } else if (msg.isFloat(i)) {
-      Serial.print(msg.getFloat(i), 4);
+      Serial.print(msg.getFloat(i), 1);
+      float valorRecibido = msg.getFloat(i);
+      valorRecibido = constrain(valorRecibido, 0, 255);
+      analogWrite(pinSalidaAnalogica, valorRecibido);
     } else if (msg.isString(i)) {
-      char strBuffer[100]; 
-      msg.getString(i, strBuffer); 
-      Serial.print(strBuffer); 
+      char strBuffer[100];
+      msg.getString(i, strBuffer);
+      Serial.print(strBuffer);
     }
   }
   Serial.println();
 }
-
