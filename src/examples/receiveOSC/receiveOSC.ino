@@ -1,5 +1,5 @@
-//#include <WiFi.h>
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
+//#include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
 #include <OSCMessage.h>
 #include <OSCData.h>
@@ -7,7 +7,7 @@
 // Define tus credenciales de red
 const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
-const char *device = "/esp";
+const char *device = "/esp"; //Coment for PureData
 
 // Define el puerto local para la comunicación UDP
 const int localUdpPort = 8000;
@@ -38,7 +38,6 @@ void loop() {
     OSCMessage msg(device);
     msg.fill(buffer, packetSize);
 
-    //msg.send(Serial);
     toSerial(msg);
     // Libera los recursos del mensaje OSC
     msg.empty();
@@ -60,22 +59,22 @@ void connectToWiFi() {
 
 void toSerial(OSCMessage &msg) {
 
-  // Imprime la dirección OSC
+  // Imprime la dirección OSC 
   Serial.print(device);
-  Serial.print(msg.getAddress());
+  Serial.print(msg.getAddress()); 
   Serial.print(",");
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
-      Serial.print("i ");
+      Serial.print("i "); 
       Serial.print(msg.getInt(i));
     } else if (msg.isFloat(i)) {
-      Serial.print("f ");
+      Serial.print("f "); 
       Serial.print(msg.getFloat(i), 4);
     } else if (msg.isString(i)) {
-      char strBuffer[100];
-      msg.getString(i, strBuffer);
-      Serial.print("s ");
-      Serial.print(strBuffer);
+      char strBuffer[100]; 
+      msg.getString(i, strBuffer); 
+      Serial.print("s "); 
+      Serial.print(strBuffer); 
     }
   }
   Serial.println();

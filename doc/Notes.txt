@@ -52,3 +52,9 @@ types: Especifica el tipo de cada argumento. Los tipos pueden incluir:
 
 /sensor/temperatura,ff 23.5 42.0
 
+ else if (argv[0].a_w.w_float != '/')
+    {
+        pd_error(x, "oscparse: not an OSC message (no leading slash)");
+        return;
+    }
+
