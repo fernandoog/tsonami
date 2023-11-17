@@ -62,7 +62,7 @@ void toSerial(OSCMessage &msg) {
   // Imprime la dirección OSC
   Serial.print(device);
   Serial.print(msg.getAddress());
-  Serial.print(", ");
+  Serial.print(",");
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
       Serial.print("i ");
