@@ -1,0 +1,1698 @@
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"HvControlBinop.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.cBinop_perform_op,"ax",%progbits
+  19              		.align	1
+  20              		.p2align 2,,3
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	cBinop_perform_op:
+  26              	.LVL0:
+  27              	.LFB400:
+  28              		.file 1 "source/HvControlBinop.c"
+   1:source/HvControlBinop.c **** /**
+   2:source/HvControlBinop.c ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvControlBinop.c ****  *
+   4:source/HvControlBinop.c ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvControlBinop.c ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvControlBinop.c ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvControlBinop.c ****  *
+   8:source/HvControlBinop.c ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvControlBinop.c ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvControlBinop.c ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvControlBinop.c ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvControlBinop.c ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvControlBinop.c ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvControlBinop.c ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvControlBinop.c ****  */
+  16:source/HvControlBinop.c **** 
+  17:source/HvControlBinop.c **** #include "HvControlBinop.h"
+  18:source/HvControlBinop.c **** 
+  19:source/HvControlBinop.c **** hv_size_t cBinop_init(ControlBinop *o, float k) {
+  20:source/HvControlBinop.c ****   o->k = k;
+  21:source/HvControlBinop.c ****   return 0;
+  22:source/HvControlBinop.c **** }
+  23:source/HvControlBinop.c **** 
+  24:source/HvControlBinop.c **** static float cBinop_perform_op(BinopType op, float f, float k) {
+  29              		.loc 1 24 64 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  25:source/HvControlBinop.c ****   switch (op) {
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 2
+
+
+  34              		.loc 1 25 3 view .LVU1
+  24:source/HvControlBinop.c ****   switch (op) {
+  35              		.loc 1 24 64 is_stmt 0 view .LVU2
+  36 0000 F0EE407A 		vmov.f32	s15, s0
+  37              		.loc 1 25 3 view .LVU3
+  38 0004 1728     		cmp	r0, #23
+  39 0006 1ED8     		bhi	.L50
+  40 0008 DFE810F0 		tbh	[pc, r0, lsl #1]
+  41              	.L4:
+  42 000c 2801     		.2byte	(.L27-.L4)/2
+  43 000e 2501     		.2byte	(.L26-.L4)/2
+  44 0010 2201     		.2byte	(.L25-.L4)/2
+  45 0012 1901     		.2byte	(.L24-.L4)/2
+  46 0014 0701     		.2byte	(.L23-.L4)/2
+  47 0016 F300     		.2byte	(.L22-.L4)/2
+  48 0018 D200     		.2byte	(.L21-.L4)/2
+  49 001a C400     		.2byte	(.L20-.L4)/2
+  50 001c B600     		.2byte	(.L19-.L4)/2
+  51 001e A800     		.2byte	(.L18-.L4)/2
+  52 0020 9A00     		.2byte	(.L17-.L4)/2
+  53 0022 8C00     		.2byte	(.L16-.L4)/2
+  54 0024 8100     		.2byte	(.L15-.L4)/2
+  55 0026 7600     		.2byte	(.L14-.L4)/2
+  56 0028 1800     		.2byte	(.L13-.L4)/2
+  57 002a 6900     		.2byte	(.L12-.L4)/2
+  58 002c 5D00     		.2byte	(.L11-.L4)/2
+  59 002e 5100     		.2byte	(.L10-.L4)/2
+  60 0030 4600     		.2byte	(.L9-.L4)/2
+  61 0032 3B00     		.2byte	(.L8-.L4)/2
+  62 0034 3800     		.2byte	(.L7-.L4)/2
+  63 0036 3500     		.2byte	(.L6-.L4)/2
+  64 0038 2E00     		.2byte	(.L5-.L4)/2
+  65 003a 2000     		.2byte	(.L3-.L4)/2
+  66              		.p2align 1
+  67              	.L13:
+  26:source/HvControlBinop.c ****     case HV_BINOP_ADD: return f + k;
+  27:source/HvControlBinop.c ****     case HV_BINOP_SUBTRACT: return f - k;
+  28:source/HvControlBinop.c ****     case HV_BINOP_MULTIPLY: return f * k;
+  29:source/HvControlBinop.c ****     case HV_BINOP_DIVIDE: return (k != 0.0f) ? (f/k) : 0.0f;
+  30:source/HvControlBinop.c ****     case HV_BINOP_INT_DIV: {
+  31:source/HvControlBinop.c ****       const int ik = (int) k;
+  32:source/HvControlBinop.c ****       return (ik != 0) ? (float) (((int) f) / ik) : 0.0f;
+  33:source/HvControlBinop.c ****     }
+  34:source/HvControlBinop.c ****     case HV_BINOP_MOD_BIPOLAR: {
+  35:source/HvControlBinop.c ****       const int ik = (int) k;
+  36:source/HvControlBinop.c ****       return (ik != 0) ? (float) (((int) f) % ik) : 0.0f;
+  37:source/HvControlBinop.c ****     }
+  38:source/HvControlBinop.c ****     case HV_BINOP_MOD_UNIPOLAR: {
+  39:source/HvControlBinop.c ****       f = (k == 0.0f) ? 0.0f : (float) ((int) f % (int) k);
+  40:source/HvControlBinop.c ****       return (f < 0.0f) ? f + hv_abs_f(k) : f;
+  41:source/HvControlBinop.c ****     }
+  42:source/HvControlBinop.c ****     case HV_BINOP_BIT_LEFTSHIFT: return (float) (((int) f) << ((int) k));
+  43:source/HvControlBinop.c ****     case HV_BINOP_BIT_RIGHTSHIFT: return (float) (((int) f) >> ((int) k));
+  44:source/HvControlBinop.c ****     case HV_BINOP_BIT_AND: return (float) ((int) f & (int) k);
+  45:source/HvControlBinop.c ****     case HV_BINOP_BIT_XOR: return (float) ((int) f ^ (int) k);
+  46:source/HvControlBinop.c ****     case HV_BINOP_BIT_OR: return (float) ((int) f | (int) k);
+  47:source/HvControlBinop.c ****     case HV_BINOP_EQ: return (f == k) ? 1.0f : 0.0f;
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 3
+
+
+  48:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+  49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_AND: return ((f == 0.0f) || (k == 0.0f)) ? 0.0f : 1.0f;
+  68              		.loc 1 49 32 is_stmt 1 view .LVU4
+  69              		.loc 1 49 75 is_stmt 0 view .LVU5
+  70 003c B5EE400A 		vcmp.f32	s0, #0
+  71 0040 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  72 0044 50D1     		bne	.L66
+  73              	.L50:
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+  74              		.loc 1 47 46 view .LVU6
+  75 0046 9FED870A 		vldr.32	s0, .L68
+  76              	.LVL1:
+  77              	.L1:
+  50:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
+  51:source/HvControlBinop.c ****     case HV_BINOP_LESS_THAN: return (f < k) ? 1.0f : 0.0f;
+  52:source/HvControlBinop.c ****     case HV_BINOP_LESS_THAN_EQL: return (f <= k) ? 1.0f : 0.0f;
+  53:source/HvControlBinop.c ****     case HV_BINOP_GREATER_THAN: return (f > k) ? 1.0f : 0.0f;
+  54:source/HvControlBinop.c ****     case HV_BINOP_GREATER_THAN_EQL: return (f >= k) ? 1.0f : 0.0f;
+  55:source/HvControlBinop.c ****     case HV_BINOP_MAX: return hv_max_f(f, k);
+  56:source/HvControlBinop.c ****     case HV_BINOP_MIN: return hv_min_f(f, k);
+  57:source/HvControlBinop.c ****     case HV_BINOP_POW: return (f > 0.0f) ? hv_pow_f(f, k) : 0.0f;
+  58:source/HvControlBinop.c ****     case HV_BINOP_ATAN2: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : hv_atan2_f(f, k);
+  59:source/HvControlBinop.c ****     default: return 0.0f;
+  60:source/HvControlBinop.c ****   }
+  61:source/HvControlBinop.c **** }
+  78              		.loc 1 61 1 view .LVU7
+  79 004a 7047     		bx	lr
+  80              	.LVL2:
+  81              	.L3:
+  58:source/HvControlBinop.c ****     default: return 0.0f;
+  82              		.loc 1 58 26 is_stmt 1 view .LVU8
+  58:source/HvControlBinop.c ****     default: return 0.0f;
+  83              		.loc 1 58 69 is_stmt 0 view .LVU9
+  84 004c B5EE400A 		vcmp.f32	s0, #0
+  85 0050 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  86 0054 04D1     		bne	.L58
+  87 0056 F5EE400A 		vcmp.f32	s1, #0
+  88 005a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  89 005e F2D0     		beq	.L50
+  90              	.L58:
+  58:source/HvControlBinop.c ****     default: return 0.0f;
+  91              		.loc 1 58 71 discriminator 1 view .LVU10
+  92 0060 B0EE670A 		vmov.f32	s0, s15
+  93              	.LVL3:
+  58:source/HvControlBinop.c ****     default: return 0.0f;
+  94              		.loc 1 58 71 discriminator 1 view .LVU11
+  95 0064 FFF7FEBF 		b	atan2f
+  96              	.LVL4:
+  97              	.L5:
+  57:source/HvControlBinop.c ****     case HV_BINOP_ATAN2: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : hv_atan2_f(f, k);
+  98              		.loc 1 57 24 is_stmt 1 view .LVU12
+  57:source/HvControlBinop.c ****     case HV_BINOP_ATAN2: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : hv_atan2_f(f, k);
+  99              		.loc 1 57 59 is_stmt 0 view .LVU13
+ 100 0068 B5EEC00A 		vcmpe.f32	s0, #0
+ 101 006c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 102 0070 E9DD     		ble	.L50
+  57:source/HvControlBinop.c ****     case HV_BINOP_ATAN2: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : hv_atan2_f(f, k);
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 4
+
+
+ 103              		.loc 1 57 44 discriminator 1 view .LVU14
+ 104 0072 FFF7FEBF 		b	powf
+ 105              	.LVL5:
+ 106              	.L6:
+  56:source/HvControlBinop.c ****     case HV_BINOP_POW: return (f > 0.0f) ? hv_pow_f(f, k) : 0.0f;
+ 107              		.loc 1 56 24 is_stmt 1 view .LVU15
+  56:source/HvControlBinop.c ****     case HV_BINOP_POW: return (f > 0.0f) ? hv_pow_f(f, k) : 0.0f;
+ 108              		.loc 1 56 31 is_stmt 0 view .LVU16
+ 109 0076 80FE600A 		vminnm.f32	s0, s0, s1
+ 110              	.LVL6:
+  56:source/HvControlBinop.c ****     case HV_BINOP_POW: return (f > 0.0f) ? hv_pow_f(f, k) : 0.0f;
+ 111              		.loc 1 56 31 view .LVU17
+ 112 007a 7047     		bx	lr
+ 113              	.LVL7:
+ 114              	.L7:
+  55:source/HvControlBinop.c ****     case HV_BINOP_MIN: return hv_min_f(f, k);
+ 115              		.loc 1 55 24 is_stmt 1 view .LVU18
+  55:source/HvControlBinop.c ****     case HV_BINOP_MIN: return hv_min_f(f, k);
+ 116              		.loc 1 55 31 is_stmt 0 view .LVU19
+ 117 007c 80FE200A 		vmaxnm.f32	s0, s0, s1
+ 118              	.LVL8:
+  55:source/HvControlBinop.c ****     case HV_BINOP_MIN: return hv_min_f(f, k);
+ 119              		.loc 1 55 31 view .LVU20
+ 120 0080 7047     		bx	lr
+ 121              	.LVL9:
+ 122              	.L8:
+  54:source/HvControlBinop.c ****     case HV_BINOP_MAX: return hv_max_f(f, k);
+ 123              		.loc 1 54 37 is_stmt 1 view .LVU21
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+ 124              		.loc 1 47 46 is_stmt 0 view .LVU22
+ 125 0082 B4EEE00A 		vcmpe.f32	s0, s1
+ 126 0086 DFED777A 		vldr.32	s15, .L68
+ 127 008a B7EE000A 		vmov.f32	s0, #1.0e+0
+ 128              	.LVL10:
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+ 129              		.loc 1 47 46 view .LVU23
+ 130 008e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 131 0092 20FE270A 		vselge.f32	s0, s0, s15
+ 132 0096 7047     		bx	lr
+ 133              	.LVL11:
+ 134              	.L9:
+  53:source/HvControlBinop.c ****     case HV_BINOP_GREATER_THAN_EQL: return (f >= k) ? 1.0f : 0.0f;
+ 135              		.loc 1 53 33 is_stmt 1 view .LVU24
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+ 136              		.loc 1 47 46 is_stmt 0 view .LVU25
+ 137 0098 B4EEE00A 		vcmpe.f32	s0, s1
+ 138 009c DFED717A 		vldr.32	s15, .L68
+ 139 00a0 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 140              	.LVL12:
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+ 141              		.loc 1 47 46 view .LVU26
+ 142 00a4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 143 00a8 30FE270A 		vselgt.f32	s0, s0, s15
+ 144 00ac 7047     		bx	lr
+ 145              	.LVL13:
+ 146              	.L10:
+  52:source/HvControlBinop.c ****     case HV_BINOP_GREATER_THAN: return (f > k) ? 1.0f : 0.0f;
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 5
+
+
+ 147              		.loc 1 52 34 is_stmt 1 view .LVU27
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+ 148              		.loc 1 47 46 is_stmt 0 view .LVU28
+ 149 00ae B4EEE00A 		vcmpe.f32	s0, s1
+ 150 00b2 DFED6C7A 		vldr.32	s15, .L68
+ 151 00b6 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 152              	.LVL14:
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+ 153              		.loc 1 47 46 view .LVU29
+ 154 00ba F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 155 00be 88BF     		it	hi
+ 156 00c0 B0EE670A 		vmovhi.f32	s0, s15
+ 157 00c4 7047     		bx	lr
+ 158              	.LVL15:
+ 159              	.L11:
+  51:source/HvControlBinop.c ****     case HV_BINOP_LESS_THAN_EQL: return (f <= k) ? 1.0f : 0.0f;
+ 160              		.loc 1 51 30 is_stmt 1 view .LVU30
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+ 161              		.loc 1 47 46 is_stmt 0 view .LVU31
+ 162 00c6 B4EEE00A 		vcmpe.f32	s0, s1
+ 163 00ca DFED667A 		vldr.32	s15, .L68
+ 164 00ce B7EE000A 		vmov.f32	s0, #1.0e+0
+ 165              	.LVL16:
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+ 166              		.loc 1 47 46 view .LVU32
+ 167 00d2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 168 00d6 58BF     		it	pl
+ 169 00d8 B0EE670A 		vmovpl.f32	s0, s15
+ 170 00dc 7047     		bx	lr
+ 171              	.LVL17:
+ 172              	.L12:
+  50:source/HvControlBinop.c ****     case HV_BINOP_LESS_THAN: return (f < k) ? 1.0f : 0.0f;
+ 173              		.loc 1 50 31 is_stmt 1 view .LVU33
+  50:source/HvControlBinop.c ****     case HV_BINOP_LESS_THAN: return (f < k) ? 1.0f : 0.0f;
+ 174              		.loc 1 50 74 is_stmt 0 view .LVU34
+ 175 00de B5EE400A 		vcmp.f32	s0, #0
+ 176 00e2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 177 00e6 04D1     		bne	.L44
+ 178              	.L66:
+  50:source/HvControlBinop.c ****     case HV_BINOP_LESS_THAN: return (f < k) ? 1.0f : 0.0f;
+ 179              		.loc 1 50 74 view .LVU35
+ 180 00e8 F5EE400A 		vcmp.f32	s1, #0
+ 181 00ec F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 182 00f0 A9D0     		beq	.L50
+ 183              	.L44:
+  49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
+ 184              		.loc 1 49 75 view .LVU36
+ 185 00f2 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 186              	.LVL18:
+  49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
+ 187              		.loc 1 49 75 view .LVU37
+ 188 00f6 7047     		bx	lr
+ 189              	.LVL19:
+ 190              	.L14:
+  48:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_AND: return ((f == 0.0f) || (k == 0.0f)) ? 0.0f : 1.0f;
+ 191              		.loc 1 48 24 is_stmt 1 view .LVU38
+  49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 6
+
+
+ 192              		.loc 1 49 75 is_stmt 0 view .LVU39
+ 193 00f8 B4EE600A 		vcmp.f32	s0, s1
+ 194 00fc 9FED590A 		vldr.32	s0, .L68
+ 195              	.LVL20:
+  49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
+ 196              		.loc 1 49 75 view .LVU40
+ 197 0100 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 198              	.LVL21:
+  49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
+ 199              		.loc 1 49 75 view .LVU41
+ 200 0104 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 201 0108 00FE270A 		vseleq.f32	s0, s0, s15
+ 202 010c 7047     		bx	lr
+ 203              	.LVL22:
+ 204              	.L15:
+  47:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
+ 205              		.loc 1 47 23 is_stmt 1 view .LVU42
+  49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
+ 206              		.loc 1 49 75 is_stmt 0 view .LVU43
+ 207 010e B4EE600A 		vcmp.f32	s0, s1
+ 208 0112 9FED540A 		vldr.32	s0, .L68
+ 209              	.LVL23:
+  49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
+ 210              		.loc 1 49 75 view .LVU44
+ 211 0116 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 212              	.LVL24:
+  49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
+ 213              		.loc 1 49 75 view .LVU45
+ 214 011a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 215 011e 07FE800A 		vseleq.f32	s0, s15, s0
+ 216 0122 7047     		bx	lr
+ 217              	.LVL25:
+ 218              	.L16:
+  46:source/HvControlBinop.c ****     case HV_BINOP_EQ: return (f == k) ? 1.0f : 0.0f;
+ 219              		.loc 1 46 27 is_stmt 1 view .LVU46
+  46:source/HvControlBinop.c ****     case HV_BINOP_EQ: return (f == k) ? 1.0f : 0.0f;
+ 220              		.loc 1 46 43 is_stmt 0 view .LVU47
+ 221 0124 BDEEC00A 		vcvt.s32.f32	s0, s0
+ 222              	.LVL26:
+  46:source/HvControlBinop.c ****     case HV_BINOP_EQ: return (f == k) ? 1.0f : 0.0f;
+ 223              		.loc 1 46 53 view .LVU48
+ 224 0128 FDEEE00A 		vcvt.s32.f32	s1, s1
+ 225              	.LVL27:
+  46:source/HvControlBinop.c ****     case HV_BINOP_EQ: return (f == k) ? 1.0f : 0.0f;
+ 226              		.loc 1 46 51 view .LVU49
+ 227 012c 10EE103A 		vmov	r3, s0	@ int
+ 228 0130 10EE902A 		vmov	r2, s1	@ int
+ 229 0134 1343     		orrs	r3, r3, r2
+ 230 0136 00EE103A 		vmov	s0, r3	@ int
+  46:source/HvControlBinop.c ****     case HV_BINOP_EQ: return (f == k) ? 1.0f : 0.0f;
+ 231              		.loc 1 46 34 view .LVU50
+ 232 013a B8EEC00A 		vcvt.f32.s32	s0, s0
+ 233 013e 7047     		bx	lr
+ 234              	.LVL28:
+ 235              	.L17:
+  45:source/HvControlBinop.c ****     case HV_BINOP_BIT_OR: return (float) ((int) f | (int) k);
+ 236              		.loc 1 45 28 is_stmt 1 view .LVU51
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 7
+
+
+  45:source/HvControlBinop.c ****     case HV_BINOP_BIT_OR: return (float) ((int) f | (int) k);
+ 237              		.loc 1 45 44 is_stmt 0 view .LVU52
+ 238 0140 BDEEC00A 		vcvt.s32.f32	s0, s0
+ 239              	.LVL29:
+  45:source/HvControlBinop.c ****     case HV_BINOP_BIT_OR: return (float) ((int) f | (int) k);
+ 240              		.loc 1 45 54 view .LVU53
+ 241 0144 FDEEE00A 		vcvt.s32.f32	s1, s1
+ 242              	.LVL30:
+  45:source/HvControlBinop.c ****     case HV_BINOP_BIT_OR: return (float) ((int) f | (int) k);
+ 243              		.loc 1 45 52 view .LVU54
+ 244 0148 10EE103A 		vmov	r3, s0	@ int
+ 245 014c 10EE902A 		vmov	r2, s1	@ int
+ 246 0150 5340     		eors	r3, r3, r2
+ 247 0152 00EE103A 		vmov	s0, r3	@ int
+  45:source/HvControlBinop.c ****     case HV_BINOP_BIT_OR: return (float) ((int) f | (int) k);
+ 248              		.loc 1 45 35 view .LVU55
+ 249 0156 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 250 015a 7047     		bx	lr
+ 251              	.LVL31:
+ 252              	.L18:
+  44:source/HvControlBinop.c ****     case HV_BINOP_BIT_XOR: return (float) ((int) f ^ (int) k);
+ 253              		.loc 1 44 28 is_stmt 1 view .LVU56
+  44:source/HvControlBinop.c ****     case HV_BINOP_BIT_XOR: return (float) ((int) f ^ (int) k);
+ 254              		.loc 1 44 44 is_stmt 0 view .LVU57
+ 255 015c BDEEC00A 		vcvt.s32.f32	s0, s0
+ 256              	.LVL32:
+  44:source/HvControlBinop.c ****     case HV_BINOP_BIT_XOR: return (float) ((int) f ^ (int) k);
+ 257              		.loc 1 44 54 view .LVU58
+ 258 0160 FDEEE00A 		vcvt.s32.f32	s1, s1
+ 259              	.LVL33:
+  44:source/HvControlBinop.c ****     case HV_BINOP_BIT_XOR: return (float) ((int) f ^ (int) k);
+ 260              		.loc 1 44 52 view .LVU59
+ 261 0164 10EE103A 		vmov	r3, s0	@ int
+ 262 0168 10EE902A 		vmov	r2, s1	@ int
+ 263 016c 1340     		ands	r3, r3, r2
+ 264 016e 00EE103A 		vmov	s0, r3	@ int
+  44:source/HvControlBinop.c ****     case HV_BINOP_BIT_XOR: return (float) ((int) f ^ (int) k);
+ 265              		.loc 1 44 35 view .LVU60
+ 266 0172 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 267 0176 7047     		bx	lr
+ 268              	.LVL34:
+ 269              	.L19:
+  43:source/HvControlBinop.c ****     case HV_BINOP_BIT_AND: return (float) ((int) f & (int) k);
+ 270              		.loc 1 43 35 is_stmt 1 view .LVU61
+  43:source/HvControlBinop.c ****     case HV_BINOP_BIT_AND: return (float) ((int) f & (int) k);
+ 271              		.loc 1 43 52 is_stmt 0 view .LVU62
+ 272 0178 BDEEC00A 		vcvt.s32.f32	s0, s0
+ 273              	.LVL35:
+  43:source/HvControlBinop.c ****     case HV_BINOP_BIT_AND: return (float) ((int) f & (int) k);
+ 274              		.loc 1 43 65 view .LVU63
+ 275 017c FDEEE00A 		vcvt.s32.f32	s1, s1
+ 276              	.LVL36:
+  43:source/HvControlBinop.c ****     case HV_BINOP_BIT_AND: return (float) ((int) f & (int) k);
+ 277              		.loc 1 43 61 view .LVU64
+ 278 0180 10EE103A 		vmov	r3, s0	@ int
+ 279 0184 10EE902A 		vmov	r2, s1	@ int
+ 280 0188 1341     		asrs	r3, r3, r2
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 8
+
+
+ 281 018a 00EE103A 		vmov	s0, r3	@ int
+  43:source/HvControlBinop.c ****     case HV_BINOP_BIT_AND: return (float) ((int) f & (int) k);
+ 282              		.loc 1 43 42 view .LVU65
+ 283 018e B8EEC00A 		vcvt.f32.s32	s0, s0
+ 284 0192 7047     		bx	lr
+ 285              	.LVL37:
+ 286              	.L20:
+  42:source/HvControlBinop.c ****     case HV_BINOP_BIT_RIGHTSHIFT: return (float) (((int) f) >> ((int) k));
+ 287              		.loc 1 42 34 is_stmt 1 view .LVU66
+  42:source/HvControlBinop.c ****     case HV_BINOP_BIT_RIGHTSHIFT: return (float) (((int) f) >> ((int) k));
+ 288              		.loc 1 42 51 is_stmt 0 view .LVU67
+ 289 0194 BDEEC00A 		vcvt.s32.f32	s0, s0
+ 290              	.LVL38:
+  42:source/HvControlBinop.c ****     case HV_BINOP_BIT_RIGHTSHIFT: return (float) (((int) f) >> ((int) k));
+ 291              		.loc 1 42 64 view .LVU68
+ 292 0198 FDEEE00A 		vcvt.s32.f32	s1, s1
+ 293              	.LVL39:
+  42:source/HvControlBinop.c ****     case HV_BINOP_BIT_RIGHTSHIFT: return (float) (((int) f) >> ((int) k));
+ 294              		.loc 1 42 60 view .LVU69
+ 295 019c 10EE103A 		vmov	r3, s0	@ int
+ 296 01a0 10EE902A 		vmov	r2, s1	@ int
+ 297 01a4 9340     		lsls	r3, r3, r2
+ 298 01a6 00EE103A 		vmov	s0, r3	@ int
+  42:source/HvControlBinop.c ****     case HV_BINOP_BIT_RIGHTSHIFT: return (float) (((int) f) >> ((int) k));
+ 299              		.loc 1 42 41 view .LVU70
+ 300 01aa B8EEC00A 		vcvt.f32.s32	s0, s0
+ 301 01ae 7047     		bx	lr
+ 302              	.LVL40:
+ 303              	.L21:
+  39:source/HvControlBinop.c ****       return (f < 0.0f) ? f + hv_abs_f(k) : f;
+ 304              		.loc 1 39 7 is_stmt 1 view .LVU71
+  39:source/HvControlBinop.c ****       return (f < 0.0f) ? f + hv_abs_f(k) : f;
+ 305              		.loc 1 39 30 is_stmt 0 view .LVU72
+ 306 01b0 F5EE400A 		vcmp.f32	s1, #0
+ 307 01b4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 308 01b8 3FF445AF 		beq	.L50
+  39:source/HvControlBinop.c ****       return (f < 0.0f) ? f + hv_abs_f(k) : f;
+ 309              		.loc 1 39 41 discriminator 1 view .LVU73
+ 310 01bc FDEEC07A 		vcvt.s32.f32	s15, s0
+ 311 01c0 17EE903A 		vmov	r3, s15	@ int
+  39:source/HvControlBinop.c ****       return (f < 0.0f) ? f + hv_abs_f(k) : f;
+ 312              		.loc 1 39 51 discriminator 1 view .LVU74
+ 313 01c4 FDEEE07A 		vcvt.s32.f32	s15, s1
+ 314 01c8 17EE902A 		vmov	r2, s15	@ int
+  39:source/HvControlBinop.c ****       return (f < 0.0f) ? f + hv_abs_f(k) : f;
+ 315              		.loc 1 39 49 discriminator 1 view .LVU75
+ 316 01cc 93FBF2F1 		sdiv	r1, r3, r2
+ 317 01d0 02FB1133 		mls	r3, r2, r1, r3
+ 318 01d4 07EE903A 		vmov	s15, r3	@ int
+  39:source/HvControlBinop.c ****       return (f < 0.0f) ? f + hv_abs_f(k) : f;
+ 319              		.loc 1 39 30 discriminator 1 view .LVU76
+ 320 01d8 B8EEE70A 		vcvt.f32.s32	s0, s15
+ 321              	.LVL41:
+  40:source/HvControlBinop.c ****     }
+ 322              		.loc 1 40 7 is_stmt 1 discriminator 1 view .LVU77
+  40:source/HvControlBinop.c ****     }
+ 323              		.loc 1 40 43 is_stmt 0 discriminator 1 view .LVU78
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 9
+
+
+ 324 01dc B5EEC00A 		vcmpe.f32	s0, #0
+ 325 01e0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 326 01e4 7FF531AF 		bpl	.L1
+  40:source/HvControlBinop.c ****     }
+ 327              		.loc 1 40 31 discriminator 1 view .LVU79
+ 328 01e8 F0EEE00A 		vabs.f32	s1, s1
+ 329              	.LVL42:
+  40:source/HvControlBinop.c ****     }
+ 330              		.loc 1 40 43 discriminator 1 view .LVU80
+ 331 01ec 30EE200A 		vadd.f32	s0, s0, s1
+ 332              	.LVL43:
+  40:source/HvControlBinop.c ****     }
+ 333              		.loc 1 40 43 discriminator 1 view .LVU81
+ 334 01f0 7047     		bx	lr
+ 335              	.LVL44:
+ 336              	.L22:
+ 337              	.LBB40:
+  35:source/HvControlBinop.c ****       return (ik != 0) ? (float) (((int) f) % ik) : 0.0f;
+ 338              		.loc 1 35 7 is_stmt 1 view .LVU82
+  35:source/HvControlBinop.c ****       return (ik != 0) ? (float) (((int) f) % ik) : 0.0f;
+ 339              		.loc 1 35 17 is_stmt 0 view .LVU83
+ 340 01f2 BDEEE07A 		vcvt.s32.f32	s14, s1
+ 341 01f6 17EE102A 		vmov	r2, s14	@ int
+ 342              	.LVL45:
+  36:source/HvControlBinop.c ****     }
+ 343              		.loc 1 36 7 is_stmt 1 view .LVU84
+  36:source/HvControlBinop.c ****     }
+ 344              		.loc 1 36 51 is_stmt 0 view .LVU85
+ 345 01fa 002A     		cmp	r2, #0
+ 346 01fc 3FF423AF 		beq	.L50
+  36:source/HvControlBinop.c ****     }
+ 347              		.loc 1 36 36 discriminator 1 view .LVU86
+ 348 0200 FDEEC07A 		vcvt.s32.f32	s15, s0
+ 349 0204 17EE903A 		vmov	r3, s15	@ int
+  36:source/HvControlBinop.c ****     }
+ 350              		.loc 1 36 45 discriminator 1 view .LVU87
+ 351 0208 93FBF2F1 		sdiv	r1, r3, r2
+ 352 020c 02FB1133 		mls	r3, r2, r1, r3
+ 353 0210 00EE103A 		vmov	s0, r3	@ int
+ 354              	.LVL46:
+  36:source/HvControlBinop.c ****     }
+ 355              		.loc 1 36 51 discriminator 1 view .LVU88
+ 356 0214 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 357 0218 7047     		bx	lr
+ 358              	.LVL47:
+ 359              	.L23:
+  36:source/HvControlBinop.c ****     }
+ 360              		.loc 1 36 51 discriminator 1 view .LVU89
+ 361              	.LBE40:
+ 362              	.LBB41:
+  31:source/HvControlBinop.c ****       return (ik != 0) ? (float) (((int) f) / ik) : 0.0f;
+ 363              		.loc 1 31 7 is_stmt 1 view .LVU90
+  31:source/HvControlBinop.c ****       return (ik != 0) ? (float) (((int) f) / ik) : 0.0f;
+ 364              		.loc 1 31 17 is_stmt 0 view .LVU91
+ 365 021a BDEEE07A 		vcvt.s32.f32	s14, s1
+ 366 021e 17EE103A 		vmov	r3, s14	@ int
+ 367              	.LVL48:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 10
+
+
+  32:source/HvControlBinop.c ****     }
+ 368              		.loc 1 32 7 is_stmt 1 view .LVU92
+  32:source/HvControlBinop.c ****     }
+ 369              		.loc 1 32 51 is_stmt 0 view .LVU93
+ 370 0222 002B     		cmp	r3, #0
+ 371 0224 3FF40FAF 		beq	.L50
+  32:source/HvControlBinop.c ****     }
+ 372              		.loc 1 32 36 discriminator 1 view .LVU94
+ 373 0228 BDEEC00A 		vcvt.s32.f32	s0, s0
+ 374              	.LVL49:
+  32:source/HvControlBinop.c ****     }
+ 375              		.loc 1 32 45 discriminator 1 view .LVU95
+ 376 022c 10EE102A 		vmov	r2, s0	@ int
+ 377 0230 92FBF3F3 		sdiv	r3, r2, r3
+ 378              	.LVL50:
+  32:source/HvControlBinop.c ****     }
+ 379              		.loc 1 32 45 discriminator 1 view .LVU96
+ 380 0234 00EE103A 		vmov	s0, r3	@ int
+  32:source/HvControlBinop.c ****     }
+ 381              		.loc 1 32 51 discriminator 1 view .LVU97
+ 382 0238 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 383 023c 7047     		bx	lr
+ 384              	.LVL51:
+ 385              	.L24:
+  32:source/HvControlBinop.c ****     }
+ 386              		.loc 1 32 51 discriminator 1 view .LVU98
+ 387              	.LBE41:
+  29:source/HvControlBinop.c ****     case HV_BINOP_INT_DIV: {
+ 388              		.loc 1 29 27 is_stmt 1 view .LVU99
+  29:source/HvControlBinop.c ****     case HV_BINOP_INT_DIV: {
+ 389              		.loc 1 29 54 is_stmt 0 view .LVU100
+ 390 023e F5EE400A 		vcmp.f32	s1, #0
+ 391 0242 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 392 0246 3FF4FEAE 		beq	.L50
+  29:source/HvControlBinop.c ****     case HV_BINOP_INT_DIV: {
+ 393              		.loc 1 29 54 discriminator 1 view .LVU101
+ 394 024a 87EEA00A 		vdiv.f32	s0, s15, s1
+ 395              	.LVL52:
+  29:source/HvControlBinop.c ****     case HV_BINOP_INT_DIV: {
+ 396              		.loc 1 29 54 discriminator 1 view .LVU102
+ 397 024e 7047     		bx	lr
+ 398              	.LVL53:
+ 399              	.L25:
+  28:source/HvControlBinop.c ****     case HV_BINOP_DIVIDE: return (k != 0.0f) ? (f/k) : 0.0f;
+ 400              		.loc 1 28 29 is_stmt 1 view .LVU103
+  28:source/HvControlBinop.c ****     case HV_BINOP_DIVIDE: return (k != 0.0f) ? (f/k) : 0.0f;
+ 401              		.loc 1 28 38 is_stmt 0 view .LVU104
+ 402 0250 20EE200A 		vmul.f32	s0, s0, s1
+ 403              	.LVL54:
+  28:source/HvControlBinop.c ****     case HV_BINOP_DIVIDE: return (k != 0.0f) ? (f/k) : 0.0f;
+ 404              		.loc 1 28 38 view .LVU105
+ 405 0254 7047     		bx	lr
+ 406              	.LVL55:
+ 407              	.L26:
+  27:source/HvControlBinop.c ****     case HV_BINOP_MULTIPLY: return f * k;
+ 408              		.loc 1 27 29 is_stmt 1 view .LVU106
+  27:source/HvControlBinop.c ****     case HV_BINOP_MULTIPLY: return f * k;
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 11
+
+
+ 409              		.loc 1 27 38 is_stmt 0 view .LVU107
+ 410 0256 30EE600A 		vsub.f32	s0, s0, s1
+ 411              	.LVL56:
+  27:source/HvControlBinop.c ****     case HV_BINOP_MULTIPLY: return f * k;
+ 412              		.loc 1 27 38 view .LVU108
+ 413 025a 7047     		bx	lr
+ 414              	.LVL57:
+ 415              	.L27:
+  26:source/HvControlBinop.c ****     case HV_BINOP_SUBTRACT: return f - k;
+ 416              		.loc 1 26 24 is_stmt 1 view .LVU109
+  26:source/HvControlBinop.c ****     case HV_BINOP_SUBTRACT: return f - k;
+ 417              		.loc 1 26 33 is_stmt 0 view .LVU110
+ 418 025c 30EE200A 		vadd.f32	s0, s0, s1
+ 419              	.LVL58:
+  26:source/HvControlBinop.c ****     case HV_BINOP_SUBTRACT: return f - k;
+ 420              		.loc 1 26 33 view .LVU111
+ 421 0260 7047     		bx	lr
+ 422              	.L69:
+ 423 0262 00BF     		.align	2
+ 424              	.L68:
+ 425 0264 00000000 		.word	0
+ 426              		.cfi_endproc
+ 427              	.LFE400:
+ 429              		.section	.rodata.msg_getFloat.part.0.str1.4,"aMS",%progbits,1
+ 430              		.align	2
+ 431              	.LC0:
+ 432 0000 696E6465 		.ascii	"index < msg_getNumElements(m)\000"
+ 432      78203C20 
+ 432      6D73675F 
+ 432      6765744E 
+ 432      756D456C 
+ 433 001e 0000     		.align	2
+ 434              	.LC1:
+ 435 0020 736F7572 		.ascii	"source/HvMessage.h\000"
+ 435      63652F48 
+ 435      764D6573 
+ 435      73616765 
+ 435      2E6800
+ 436              		.section	.text.msg_getFloat.part.0,"ax",%progbits
+ 437              		.align	1
+ 438              		.p2align 2,,3
+ 439              		.syntax unified
+ 440              		.thumb
+ 441              		.thumb_func
+ 443              	msg_getFloat.part.0:
+ 444              	.LFB404:
+ 445              		.file 2 "source/HvMessage.h"
+   1:source/HvMessage.h **** /**
+   2:source/HvMessage.h ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvMessage.h ****  *
+   4:source/HvMessage.h ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvMessage.h ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvMessage.h ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvMessage.h ****  *
+   8:source/HvMessage.h ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvMessage.h ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvMessage.h ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 12
+
+
+  11:source/HvMessage.h ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvMessage.h ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvMessage.h ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvMessage.h ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvMessage.h ****  */
+  16:source/HvMessage.h **** 
+  17:source/HvMessage.h **** #ifndef _HEAVY_MESSAGE_H_
+  18:source/HvMessage.h **** #define _HEAVY_MESSAGE_H_
+  19:source/HvMessage.h **** 
+  20:source/HvMessage.h **** #include "HvUtils.h"
+  21:source/HvMessage.h **** 
+  22:source/HvMessage.h **** #ifdef __cplusplus
+  23:source/HvMessage.h **** extern "C" {
+  24:source/HvMessage.h **** #endif
+  25:source/HvMessage.h **** 
+  26:source/HvMessage.h **** typedef enum ElementType {
+  27:source/HvMessage.h ****   HV_MSG_BANG = 0,
+  28:source/HvMessage.h ****   HV_MSG_FLOAT = 1,
+  29:source/HvMessage.h ****   HV_MSG_SYMBOL = 2,
+  30:source/HvMessage.h ****   HV_MSG_HASH = 3
+  31:source/HvMessage.h **** } ElementType;
+  32:source/HvMessage.h **** 
+  33:source/HvMessage.h **** typedef struct Element {
+  34:source/HvMessage.h ****   ElementType type;
+  35:source/HvMessage.h ****   union {
+  36:source/HvMessage.h ****     float f; // float
+  37:source/HvMessage.h ****     const char *s; // symbol
+  38:source/HvMessage.h ****     hv_uint32_t h; // hash
+  39:source/HvMessage.h ****   } data;
+  40:source/HvMessage.h **** } Element;
+  41:source/HvMessage.h **** 
+  42:source/HvMessage.h **** typedef struct HvMessage {
+  43:source/HvMessage.h ****   hv_uint32_t timestamp; // the sample at which this message should be processed
+  44:source/HvMessage.h ****   hv_uint16_t numElements;
+  45:source/HvMessage.h ****   hv_uint16_t numBytes; // the total number of bytes that this message occupies in memory, includin
+  46:source/HvMessage.h ****   Element elem;
+  47:source/HvMessage.h **** } HvMessage;
+  48:source/HvMessage.h **** 
+  49:source/HvMessage.h **** typedef struct ReceiverMessagePair {
+  50:source/HvMessage.h ****   hv_uint32_t receiverHash;
+  51:source/HvMessage.h ****   HvMessage msg;
+  52:source/HvMessage.h **** } ReceiverMessagePair;
+  53:source/HvMessage.h **** 
+  54:source/HvMessage.h **** #define HV_MESSAGE_ON_STACK(_x) (HvMessage *) hv_alloca(msg_getCoreSize(_x))
+  55:source/HvMessage.h **** 
+  56:source/HvMessage.h **** /** Returns the number of bytes that this message consumes in memory, not including strings. */
+  57:source/HvMessage.h **** static inline hv_size_t msg_getCoreSize(hv_size_t numElements) {
+  58:source/HvMessage.h ****   hv_assert(numElements > 0);
+  59:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+  60:source/HvMessage.h **** }
+  61:source/HvMessage.h **** 
+  62:source/HvMessage.h **** HvMessage *msg_copy(const HvMessage *m);
+  63:source/HvMessage.h **** 
+  64:source/HvMessage.h **** /** Copies the message into the given buffer. The buffer must be at least as large as msg_getNumHea
+  65:source/HvMessage.h **** void msg_copyToBuffer(const HvMessage *m, char *buffer, hv_size_t len);
+  66:source/HvMessage.h **** 
+  67:source/HvMessage.h **** void msg_setElementToFrom(HvMessage *n, int indexN, const HvMessage *const m, int indexM);
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 13
+
+
+  68:source/HvMessage.h **** 
+  69:source/HvMessage.h **** /** Frees a message on the heap. Does nothing if argument is NULL. */
+  70:source/HvMessage.h **** void msg_free(HvMessage *m);
+  71:source/HvMessage.h **** 
+  72:source/HvMessage.h **** HvMessage *msg_init(HvMessage *m, hv_size_t numElements, hv_uint32_t timestamp);
+  73:source/HvMessage.h **** 
+  74:source/HvMessage.h **** HvMessage *msg_initWithFloat(HvMessage *m, hv_uint32_t timestamp, float f);
+  75:source/HvMessage.h **** 
+  76:source/HvMessage.h **** HvMessage *msg_initWithBang(HvMessage *m, hv_uint32_t timestamp);
+  77:source/HvMessage.h **** 
+  78:source/HvMessage.h **** HvMessage *msg_initWithSymbol(HvMessage *m, hv_uint32_t timestamp, const char *s);
+  79:source/HvMessage.h **** 
+  80:source/HvMessage.h **** HvMessage *msg_initWithHash(HvMessage *m, hv_uint32_t timestamp, hv_uint32_t h);
+  81:source/HvMessage.h **** 
+  82:source/HvMessage.h **** static inline hv_uint32_t msg_getTimestamp(const HvMessage *m) {
+  83:source/HvMessage.h ****   return m->timestamp;
+  84:source/HvMessage.h **** }
+  85:source/HvMessage.h **** 
+  86:source/HvMessage.h **** static inline void msg_setTimestamp(HvMessage *m, hv_uint32_t timestamp) {
+  87:source/HvMessage.h ****   m->timestamp = timestamp;
+  88:source/HvMessage.h **** }
+  89:source/HvMessage.h **** 
+  90:source/HvMessage.h **** static inline int msg_getNumElements(const HvMessage *m) {
+  91:source/HvMessage.h ****   return (int) m->numElements;
+  92:source/HvMessage.h **** }
+  93:source/HvMessage.h **** 
+  94:source/HvMessage.h **** /** Returns the total number of bytes this message consumes in memory. */
+  95:source/HvMessage.h **** static inline hv_uint32_t msg_getSize(const HvMessage *m) {
+  96:source/HvMessage.h ****   return m->numBytes;
+  97:source/HvMessage.h **** }
+  98:source/HvMessage.h **** 
+  99:source/HvMessage.h **** static inline ElementType msg_getType(const HvMessage *m, int index) {
+ 100:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 101:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 102:source/HvMessage.h **** }
+ 103:source/HvMessage.h **** 
+ 104:source/HvMessage.h **** static inline void msg_setBang(HvMessage *m, int index) {
+ 105:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 106:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_BANG;
+ 107:source/HvMessage.h ****   (&(m->elem)+index)->data.s = NULL;
+ 108:source/HvMessage.h **** }
+ 109:source/HvMessage.h **** 
+ 110:source/HvMessage.h **** static inline bool msg_isBang(const HvMessage *m, int index) {
+ 111:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_BANG) : false;
+ 112:source/HvMessage.h **** }
+ 113:source/HvMessage.h **** 
+ 114:source/HvMessage.h **** static inline void msg_setFloat(HvMessage *m, int index, float f) {
+ 115:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 116:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_FLOAT;
+ 117:source/HvMessage.h ****   (&(m->elem)+index)->data.f = f;
+ 118:source/HvMessage.h **** }
+ 119:source/HvMessage.h **** 
+ 120:source/HvMessage.h **** static inline float msg_getFloat(const HvMessage *const m, int index) {
+ 446              		.loc 2 120 21 is_stmt 1 view -0
+ 447              		.cfi_startproc
+ 448              		@ Volatile: function does not return.
+ 449              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 14
+
+
+ 450              		@ frame_needed = 0, uses_anonymous_args = 0
+ 451              	.LVL59:
+ 452              		.loc 2 120 21 is_stmt 0 view .LVU113
+ 453 0000 08B5     		push	{r3, lr}
+ 454              		.cfi_def_cfa_offset 8
+ 455              		.cfi_offset 3, -8
+ 456              		.cfi_offset 14, -4
+ 121:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 457              		.loc 2 121 3 view .LVU114
+ 458 0002 034A     		ldr	r2, .L72
+ 459 0004 7921     		movs	r1, #121
+ 460 0006 034B     		ldr	r3, .L72+4
+ 461 0008 0348     		ldr	r0, .L72+8
+ 462 000a FFF7FEFF 		bl	__assert_func
+ 463              	.LVL60:
+ 464              	.L73:
+ 465 000e 00BF     		.align	2
+ 466              	.L72:
+ 467 0010 00000000 		.word	.LANCHOR0
+ 468 0014 00000000 		.word	.LC0
+ 469 0018 20000000 		.word	.LC1
+ 470              		.cfi_endproc
+ 471              	.LFE404:
+ 473              		.section	.text.cBinop_init,"ax",%progbits
+ 474              		.align	1
+ 475              		.p2align 2,,3
+ 476              		.global	cBinop_init
+ 477              		.syntax unified
+ 478              		.thumb
+ 479              		.thumb_func
+ 481              	cBinop_init:
+ 482              	.LVL61:
+ 483              	.LFB399:
+  19:source/HvControlBinop.c ****   o->k = k;
+ 484              		.loc 1 19 49 is_stmt 1 view -0
+ 485              		.cfi_startproc
+ 486              		@ args = 0, pretend = 0, frame = 0
+ 487              		@ frame_needed = 0, uses_anonymous_args = 0
+ 488              		@ link register save eliminated.
+  20:source/HvControlBinop.c ****   return 0;
+ 489              		.loc 1 20 3 view .LVU116
+  19:source/HvControlBinop.c ****   o->k = k;
+ 490              		.loc 1 19 49 is_stmt 0 view .LVU117
+ 491 0000 0346     		mov	r3, r0
+  22:source/HvControlBinop.c **** 
+ 492              		.loc 1 22 1 view .LVU118
+ 493 0002 0020     		movs	r0, #0
+ 494              	.LVL62:
+  20:source/HvControlBinop.c ****   return 0;
+ 495              		.loc 1 20 8 view .LVU119
+ 496 0004 83ED000A 		vstr.32	s0, [r3]
+  21:source/HvControlBinop.c **** }
+ 497              		.loc 1 21 3 is_stmt 1 view .LVU120
+  22:source/HvControlBinop.c **** 
+ 498              		.loc 1 22 1 is_stmt 0 view .LVU121
+ 499 0008 7047     		bx	lr
+ 500              		.cfi_endproc
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 15
+
+
+ 501              	.LFE399:
+ 503 000a 00BF     		.section	.text.cBinop_onMessage,"ax",%progbits
+ 504              		.align	1
+ 505              		.p2align 2,,3
+ 506              		.global	cBinop_onMessage
+ 507              		.syntax unified
+ 508              		.thumb
+ 509              		.thumb_func
+ 511              	cBinop_onMessage:
+ 512              	.LVL63:
+ 513              	.LFB401:
+  62:source/HvControlBinop.c **** 
+  63:source/HvControlBinop.c **** void cBinop_onMessage(HeavyContextInterface *_c, ControlBinop *o, BinopType op, int letIn,
+  64:source/HvControlBinop.c ****     const HvMessage *m,
+  65:source/HvControlBinop.c ****     void (*sendMessage)(HeavyContextInterface *, int, const HvMessage *)) {
+ 514              		.loc 1 65 75 is_stmt 1 view -0
+ 515              		.cfi_startproc
+ 516              		@ args = 8, pretend = 0, frame = 0
+ 517              		@ frame_needed = 1, uses_anonymous_args = 0
+  66:source/HvControlBinop.c ****   switch (letIn) {
+ 518              		.loc 1 66 3 view .LVU123
+  65:source/HvControlBinop.c ****   switch (letIn) {
+ 519              		.loc 1 65 75 is_stmt 0 view .LVU124
+ 520 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 521              		.cfi_def_cfa_offset 24
+ 522              		.cfi_offset 3, -24
+ 523              		.cfi_offset 4, -20
+ 524              		.cfi_offset 5, -16
+ 525              		.cfi_offset 6, -12
+ 526              		.cfi_offset 7, -8
+ 527              		.cfi_offset 14, -4
+ 528 0002 00AF     		add	r7, sp, #0
+ 529              		.cfi_def_cfa_register 7
+  65:source/HvControlBinop.c ****   switch (letIn) {
+ 530              		.loc 1 65 75 view .LVU125
+ 531 0004 BC69     		ldr	r4, [r7, #24]
+ 532              		.loc 1 66 3 view .LVU126
+ 533 0006 2BB1     		cbz	r3, .L76
+ 534 0008 012B     		cmp	r3, #1
+ 535 000a 01D1     		bne	.L75
+  67:source/HvControlBinop.c ****     case 0: {
+  68:source/HvControlBinop.c ****       if (msg_isFloat(m, 0)) {
+  69:source/HvControlBinop.c ****         // Note(joe): supporting Pd's ability to perform operations of packs
+  70:source/HvControlBinop.c ****         // of floats is likely to not be supported in the future.
+  71:source/HvControlBinop.c ****         if (msg_isFloat(m, 1)) o->k = msg_getFloat(m, 1);
+  72:source/HvControlBinop.c ****         HvMessage *n = HV_MESSAGE_ON_STACK(1);
+  73:source/HvControlBinop.c ****         float f = cBinop_perform_op(op, msg_getFloat(m, 0), o->k);
+  74:source/HvControlBinop.c ****         msg_initWithFloat(n, msg_getTimestamp(m), f);
+  75:source/HvControlBinop.c ****         sendMessage(_c, 0, n);
+  76:source/HvControlBinop.c ****       }
+  77:source/HvControlBinop.c ****       break;
+  78:source/HvControlBinop.c ****     }
+  79:source/HvControlBinop.c ****     case 1: {
+  80:source/HvControlBinop.c ****       if (msg_isFloat(m, 0)) {
+ 536              		.loc 1 80 7 is_stmt 1 view .LVU127
+ 537              	.LVL64:
+ 538              	.LBB81:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 16
+
+
+ 539              	.LBI81:
+ 122:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 123:source/HvMessage.h **** }
+ 124:source/HvMessage.h **** 
+ 125:source/HvMessage.h **** static inline bool msg_isFloat(const HvMessage *const m, int index) {
+ 540              		.loc 2 125 20 view .LVU128
+ 541              	.LBB82:
+ 126:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+ 542              		.loc 2 126 3 view .LVU129
+ 543              	.LBB83:
+ 544              	.LBI83:
+  90:source/HvMessage.h ****   return (int) m->numElements;
+ 545              		.loc 2 90 19 view .LVU130
+ 546              	.LBB84:
+  91:source/HvMessage.h **** }
+ 547              		.loc 2 91 3 view .LVU131
+  91:source/HvMessage.h **** }
+ 548              		.loc 2 91 3 is_stmt 0 view .LVU132
+ 549              	.LBE84:
+ 550              	.LBE83:
+ 551              		.loc 2 126 83 view .LVU133
+ 552 000c A388     		ldrh	r3, [r4, #4]
+ 553              	.LVL65:
+ 554              		.loc 2 126 83 view .LVU134
+ 555 000e F3B9     		cbnz	r3, .L92
+ 556              	.LVL66:
+ 557              	.L75:
+ 558              		.loc 2 126 83 view .LVU135
+ 559              	.LBE82:
+ 560              	.LBE81:
+  81:source/HvControlBinop.c ****         o->k = msg_getFloat(m, 0);
+  82:source/HvControlBinop.c ****       }
+  83:source/HvControlBinop.c ****       break;
+  84:source/HvControlBinop.c ****     }
+  85:source/HvControlBinop.c ****     default: break;
+  86:source/HvControlBinop.c ****   }
+  87:source/HvControlBinop.c **** }
+ 561              		.loc 1 87 1 view .LVU136
+ 562 0010 BD46     		mov	sp, r7
+ 563              		.cfi_remember_state
+ 564              		.cfi_def_cfa_register 13
+ 565              		@ sp needed
+ 566 0012 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 567              	.LVL67:
+ 568              	.L76:
+ 569              		.cfi_restore_state
+  68:source/HvControlBinop.c ****         // Note(joe): supporting Pd's ability to perform operations of packs
+ 570              		.loc 1 68 7 is_stmt 1 view .LVU137
+ 571              	.LBB91:
+ 572              	.LBI91:
+ 125:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+ 573              		.loc 2 125 20 view .LVU138
+ 574              	.LBB92:
+ 575              		.loc 2 126 3 view .LVU139
+ 576              	.LBB93:
+ 577              	.LBI93:
+  90:source/HvMessage.h ****   return (int) m->numElements;
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 17
+
+
+ 578              		.loc 2 90 19 view .LVU140
+ 579              	.LBB94:
+  91:source/HvMessage.h **** }
+ 580              		.loc 2 91 3 view .LVU141
+  91:source/HvMessage.h **** }
+ 581              		.loc 2 91 17 is_stmt 0 view .LVU142
+ 582 0014 A388     		ldrh	r3, [r4, #4]
+ 583              	.LVL68:
+  91:source/HvMessage.h **** }
+ 584              		.loc 2 91 17 view .LVU143
+ 585              	.LBE94:
+ 586              	.LBE93:
+ 587              		.loc 2 126 83 view .LVU144
+ 588 0016 002B     		cmp	r3, #0
+ 589 0018 FAD0     		beq	.L75
+ 590 001a 0546     		mov	r5, r0
+ 591 001c 1046     		mov	r0, r2
+ 592              	.LVL69:
+ 593              	.LBB95:
+ 594              	.LBI95:
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 595              		.loc 2 99 27 is_stmt 1 view .LVU145
+ 596              	.LBB96:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 597              		.loc 2 100 3 view .LVU146
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 598              		.loc 2 100 3 is_stmt 0 view .LVU147
+ 599              	.LBE96:
+ 600              	.LBE95:
+ 601              	.LBE92:
+ 602              	.LBE91:
+  91:source/HvMessage.h **** }
+ 603              		.loc 2 91 3 is_stmt 1 view .LVU148
+ 604              	.LBB100:
+ 605              	.LBB99:
+ 606              	.LBB98:
+ 607              	.LBB97:
+ 101:source/HvMessage.h **** }
+ 608              		.loc 2 101 3 view .LVU149
+ 101:source/HvMessage.h **** }
+ 609              		.loc 2 101 3 is_stmt 0 view .LVU150
+ 610              	.LBE97:
+ 611              	.LBE98:
+ 612              		.loc 2 126 83 view .LVU151
+ 613 001e 227A     		ldrb	r2, [r4, #8]	@ zero_extendqisi2
+ 614              	.LVL70:
+ 615              		.loc 2 126 83 view .LVU152
+ 616 0020 012A     		cmp	r2, #1
+ 617 0022 F5D1     		bne	.L75
+ 618              	.LVL71:
+ 619              		.loc 2 126 83 view .LVU153
+ 620              	.LBE99:
+ 621              	.LBE100:
+ 622              	.LBB101:
+  71:source/HvControlBinop.c ****         HvMessage *n = HV_MESSAGE_ON_STACK(1);
+ 623              		.loc 1 71 9 is_stmt 1 view .LVU154
+ 624              	.LBB102:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 18
+
+
+ 625              	.LBI102:
+ 125:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+ 626              		.loc 2 125 20 view .LVU155
+ 627              	.LBB103:
+ 628              		.loc 2 126 3 view .LVU156
+ 629              		.loc 2 126 3 is_stmt 0 view .LVU157
+ 630              	.LBE103:
+ 631              	.LBE102:
+ 632              	.LBE101:
+  91:source/HvMessage.h **** }
+ 633              		.loc 2 91 3 is_stmt 1 view .LVU158
+ 634              	.LBB126:
+ 635              	.LBB111:
+ 636              	.LBB108:
+ 637              		.loc 2 126 83 is_stmt 0 view .LVU159
+ 638 0024 012B     		cmp	r3, #1
+ 639 0026 19D1     		bne	.L93
+ 640              	.L81:
+ 641              	.LVL72:
+ 642              		.loc 2 126 83 view .LVU160
+ 643              	.LBE108:
+ 644              	.LBE111:
+  72:source/HvControlBinop.c ****         float f = cBinop_perform_op(op, msg_getFloat(m, 0), o->k);
+ 645              		.loc 1 72 9 is_stmt 1 view .LVU161
+  72:source/HvControlBinop.c ****         float f = cBinop_perform_op(op, msg_getFloat(m, 0), o->k);
+ 646              		.loc 1 72 9 is_stmt 0 view .LVU162
+ 647              	.LBE126:
+  58:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+ 648              		.loc 2 58 3 is_stmt 1 view .LVU163
+  59:source/HvMessage.h **** }
+ 649              		.loc 2 59 3 view .LVU164
+ 650              	.LBB127:
+  72:source/HvControlBinop.c ****         float f = cBinop_perform_op(op, msg_getFloat(m, 0), o->k);
+ 651              		.loc 1 72 24 is_stmt 0 view .LVU165
+ 652 0028 84B0     		sub	sp, sp, #16
+  73:source/HvControlBinop.c ****         msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 653              		.loc 1 73 19 view .LVU166
+ 654 002a D1ED000A 		vldr.32	s1, [r1]
+  72:source/HvControlBinop.c ****         float f = cBinop_perform_op(op, msg_getFloat(m, 0), o->k);
+ 655              		.loc 1 72 24 view .LVU167
+ 656 002e 6E46     		mov	r6, sp
+ 657              	.LVL73:
+  73:source/HvControlBinop.c ****         msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 658              		.loc 1 73 9 is_stmt 1 view .LVU168
+ 659              	.LBB112:
+ 660              	.LBI112:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 661              		.loc 2 120 21 view .LVU169
+ 662              	.LBB113:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 663              		.loc 2 121 3 view .LVU170
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 664              		.loc 2 121 3 is_stmt 0 view .LVU171
+ 665              	.LBE113:
+ 666              	.LBE112:
+ 667              	.LBE127:
+  91:source/HvMessage.h **** }
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 19
+
+
+ 668              		.loc 2 91 3 is_stmt 1 view .LVU172
+ 669              	.L83:
+ 670              	.LBB128:
+ 671              	.LBB116:
+ 672              	.LBB114:
+ 122:source/HvMessage.h **** }
+ 673              		.loc 2 122 3 view .LVU173
+ 122:source/HvMessage.h **** }
+ 674              		.loc 2 122 3 is_stmt 0 view .LVU174
+ 675              	.LBE114:
+ 676              	.LBE116:
+  73:source/HvControlBinop.c ****         msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 677              		.loc 1 73 19 view .LVU175
+ 678 0030 94ED030A 		vldr.32	s0, [r4, #12]
+ 679 0034 FFF7FEFF 		bl	cBinop_perform_op
+ 680              	.LVL74:
+  74:source/HvControlBinop.c ****         sendMessage(_c, 0, n);
+ 681              		.loc 1 74 9 is_stmt 1 view .LVU176
+ 682              	.LBB117:
+ 683              	.LBI117:
+  82:source/HvMessage.h ****   return m->timestamp;
+ 684              		.loc 2 82 27 view .LVU177
+ 685              	.LBB118:
+  83:source/HvMessage.h **** }
+ 686              		.loc 2 83 3 view .LVU178
+  83:source/HvMessage.h **** }
+ 687              		.loc 2 83 3 is_stmt 0 view .LVU179
+ 688              	.LBE118:
+ 689              	.LBE117:
+  74:source/HvControlBinop.c ****         sendMessage(_c, 0, n);
+ 690              		.loc 1 74 9 view .LVU180
+ 691 0038 2168     		ldr	r1, [r4]
+ 692 003a 3046     		mov	r0, r6
+ 693 003c FFF7FEFF 		bl	msg_initWithFloat
+ 694              	.LVL75:
+  75:source/HvControlBinop.c ****       }
+ 695              		.loc 1 75 9 is_stmt 1 view .LVU181
+ 696 0040 3246     		mov	r2, r6
+ 697 0042 0021     		movs	r1, #0
+ 698 0044 2846     		mov	r0, r5
+ 699 0046 FB69     		ldr	r3, [r7, #28]
+ 700 0048 9847     		blx	r3
+ 701              	.LVL76:
+ 702              	.LBE128:
+ 703              		.loc 1 87 1 is_stmt 0 view .LVU182
+ 704 004a BD46     		mov	sp, r7
+ 705              		.cfi_remember_state
+ 706              		.cfi_def_cfa_register 13
+ 707              		@ sp needed
+ 708 004c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 709              	.LVL77:
+ 710              	.L92:
+ 711              		.cfi_restore_state
+ 712              	.LBB129:
+ 713              	.LBB89:
+ 714              	.LBB85:
+ 715              	.LBI85:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 20
+
+
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 716              		.loc 2 99 27 is_stmt 1 view .LVU183
+ 717              	.LBB86:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 718              		.loc 2 100 3 view .LVU184
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 719              		.loc 2 100 3 is_stmt 0 view .LVU185
+ 720              	.LBE86:
+ 721              	.LBE85:
+ 722              	.LBE89:
+ 723              	.LBE129:
+  91:source/HvMessage.h **** }
+ 724              		.loc 2 91 3 is_stmt 1 view .LVU186
+ 725              	.LBB130:
+ 726              	.LBB90:
+ 727              	.LBB88:
+ 728              	.LBB87:
+ 101:source/HvMessage.h **** }
+ 729              		.loc 2 101 3 view .LVU187
+ 101:source/HvMessage.h **** }
+ 730              		.loc 2 101 3 is_stmt 0 view .LVU188
+ 731              	.LBE87:
+ 732              	.LBE88:
+ 733              		.loc 2 126 83 view .LVU189
+ 734 004e 237A     		ldrb	r3, [r4, #8]	@ zero_extendqisi2
+ 735 0050 012B     		cmp	r3, #1
+ 736 0052 DDD1     		bne	.L75
+ 737              	.LVL78:
+ 738              		.loc 2 126 83 view .LVU190
+ 739              	.LBE90:
+ 740              	.LBE130:
+ 741              	.LBB131:
+ 742              	.LBB132:
+ 122:source/HvMessage.h **** }
+ 743              		.loc 2 122 3 is_stmt 1 view .LVU191
+ 122:source/HvMessage.h **** }
+ 744              		.loc 2 122 3 is_stmt 0 view .LVU192
+ 745              	.LBE132:
+ 746              	.LBE131:
+  81:source/HvControlBinop.c ****       }
+ 747              		.loc 1 81 14 view .LVU193
+ 748 0054 E368     		ldr	r3, [r4, #12]	@ float
+ 749 0056 0B60     		str	r3, [r1]	@ float
+ 750              		.loc 1 87 1 view .LVU194
+ 751 0058 BD46     		mov	sp, r7
+ 752              		.cfi_remember_state
+ 753              		.cfi_def_cfa_register 13
+ 754              		@ sp needed
+ 755 005a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 756              	.LVL79:
+ 757              	.L93:
+ 758              		.cfi_restore_state
+ 759              	.LBB133:
+ 760              	.LBB119:
+ 761              	.LBB109:
+ 762              	.LBB104:
+ 763              	.LBI104:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 21
+
+
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 764              		.loc 2 99 27 is_stmt 1 view .LVU195
+ 765              	.LBB105:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 766              		.loc 2 100 3 view .LVU196
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 767              		.loc 2 100 3 is_stmt 0 view .LVU197
+ 768              	.LBE105:
+ 769              	.LBE104:
+ 770              	.LBE109:
+ 771              	.LBE119:
+ 772              	.LBE133:
+  91:source/HvMessage.h **** }
+ 773              		.loc 2 91 3 is_stmt 1 view .LVU198
+ 774              	.LBB134:
+ 775              	.LBB120:
+ 776              	.LBB110:
+ 777              	.LBB107:
+ 778              	.LBB106:
+ 101:source/HvMessage.h **** }
+ 779              		.loc 2 101 3 view .LVU199
+ 101:source/HvMessage.h **** }
+ 780              		.loc 2 101 3 is_stmt 0 view .LVU200
+ 781              	.LBE106:
+ 782              	.LBE107:
+ 783              		.loc 2 126 83 view .LVU201
+ 784 005c 237C     		ldrb	r3, [r4, #16]	@ zero_extendqisi2
+ 785 005e 012B     		cmp	r3, #1
+ 786 0060 E2D1     		bne	.L81
+ 787              	.LVL80:
+ 788              		.loc 2 126 83 view .LVU202
+ 789              	.LBE110:
+ 790              	.LBE120:
+  71:source/HvControlBinop.c ****         HvMessage *n = HV_MESSAGE_ON_STACK(1);
+ 791              		.loc 1 71 32 is_stmt 1 view .LVU203
+ 792              	.LBB121:
+ 793              	.LBI121:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 794              		.loc 2 120 21 view .LVU204
+ 795              	.LBB122:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 796              		.loc 2 121 3 view .LVU205
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 797              		.loc 2 121 3 is_stmt 0 view .LVU206
+ 798              	.LBE122:
+ 799              	.LBE121:
+ 800              	.LBE134:
+  91:source/HvMessage.h **** }
+ 801              		.loc 2 91 3 is_stmt 1 view .LVU207
+ 802              	.LBB135:
+ 803              	.LBB124:
+ 804              	.LBB123:
+ 122:source/HvMessage.h **** }
+ 805              		.loc 2 122 3 view .LVU208
+ 122:source/HvMessage.h **** }
+ 806              		.loc 2 122 34 is_stmt 0 view .LVU209
+ 807 0062 D4ED050A 		vldr.32	s1, [r4, #20]
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 22
+
+
+ 808              	.LVL81:
+ 122:source/HvMessage.h **** }
+ 809              		.loc 2 122 34 view .LVU210
+ 810              	.LBE123:
+ 811              	.LBE124:
+  72:source/HvControlBinop.c ****         float f = cBinop_perform_op(op, msg_getFloat(m, 0), o->k);
+ 812              		.loc 1 72 24 view .LVU211
+ 813 0066 84B0     		sub	sp, sp, #16
+  71:source/HvControlBinop.c ****         HvMessage *n = HV_MESSAGE_ON_STACK(1);
+ 814              		.loc 1 71 37 view .LVU212
+ 815 0068 C1ED000A 		vstr.32	s1, [r1]
+  72:source/HvControlBinop.c ****         float f = cBinop_perform_op(op, msg_getFloat(m, 0), o->k);
+ 816              		.loc 1 72 9 is_stmt 1 view .LVU213
+ 817              	.LVL82:
+  72:source/HvControlBinop.c ****         float f = cBinop_perform_op(op, msg_getFloat(m, 0), o->k);
+ 818              		.loc 1 72 9 is_stmt 0 view .LVU214
+ 819              	.LBE135:
+  58:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+ 820              		.loc 2 58 3 is_stmt 1 view .LVU215
+  59:source/HvMessage.h **** }
+ 821              		.loc 2 59 3 view .LVU216
+ 822              	.LBB136:
+  72:source/HvControlBinop.c ****         float f = cBinop_perform_op(op, msg_getFloat(m, 0), o->k);
+ 823              		.loc 1 72 24 is_stmt 0 view .LVU217
+ 824 006c 6E46     		mov	r6, sp
+ 825              	.LVL83:
+  73:source/HvControlBinop.c ****         msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 826              		.loc 1 73 9 is_stmt 1 view .LVU218
+ 827              	.LBB125:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 828              		.loc 2 120 21 view .LVU219
+ 829              	.LBB115:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 830              		.loc 2 121 3 view .LVU220
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 831              		.loc 2 121 3 is_stmt 0 view .LVU221
+ 832              	.LBE115:
+ 833              	.LBE125:
+ 834              	.LBE136:
+  91:source/HvMessage.h **** }
+ 835              		.loc 2 91 3 is_stmt 1 view .LVU222
+  91:source/HvMessage.h **** }
+ 836              		.loc 2 91 3 is_stmt 0 view .LVU223
+ 837 006e DFE7     		b	.L83
+ 838              		.cfi_endproc
+ 839              	.LFE401:
+ 841              		.section	.text.cBinop_k_onMessage,"ax",%progbits
+ 842              		.align	1
+ 843              		.p2align 2,,3
+ 844              		.global	cBinop_k_onMessage
+ 845              		.syntax unified
+ 846              		.thumb
+ 847              		.thumb_func
+ 849              	cBinop_k_onMessage:
+ 850              	.LVL84:
+ 851              	.LFB402:
+  88:source/HvControlBinop.c **** 
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 23
+
+
+  89:source/HvControlBinop.c **** void cBinop_k_onMessage(HeavyContextInterface *_c, void *o, BinopType op, float k,
+  90:source/HvControlBinop.c ****     int letIn, const HvMessage *m,
+  91:source/HvControlBinop.c ****     void (*sendMessage)(HeavyContextInterface *, int, const HvMessage *)) {
+ 852              		.loc 1 91 75 is_stmt 1 view -0
+ 853              		.cfi_startproc
+ 854              		@ args = 8, pretend = 0, frame = 0
+ 855              		@ frame_needed = 1, uses_anonymous_args = 0
+  92:source/HvControlBinop.c ****   if (msg_isFloat(m, 0)) {
+ 856              		.loc 1 92 3 view .LVU225
+  91:source/HvControlBinop.c ****   if (msg_isFloat(m, 0)) {
+ 857              		.loc 1 91 75 is_stmt 0 view .LVU226
+ 858 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 859              		.cfi_def_cfa_offset 24
+ 860              		.cfi_offset 3, -24
+ 861              		.cfi_offset 4, -20
+ 862              		.cfi_offset 5, -16
+ 863              		.cfi_offset 6, -12
+ 864              		.cfi_offset 7, -8
+ 865              		.cfi_offset 14, -4
+ 866 0002 00AF     		add	r7, sp, #0
+ 867              		.cfi_def_cfa_register 7
+  91:source/HvControlBinop.c ****   if (msg_isFloat(m, 0)) {
+ 868              		.loc 1 91 75 view .LVU227
+ 869 0004 BD69     		ldr	r5, [r7, #24]
+ 870              	.LVL85:
+ 871              	.LBB164:
+ 872              	.LBI164:
+ 125:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+ 873              		.loc 2 125 20 is_stmt 1 view .LVU228
+ 874              	.LBB165:
+ 875              		.loc 2 126 3 view .LVU229
+ 876              	.LBB166:
+ 877              	.LBI166:
+  90:source/HvMessage.h ****   return (int) m->numElements;
+ 878              		.loc 2 90 19 view .LVU230
+ 879              	.LBB167:
+  91:source/HvMessage.h **** }
+ 880              		.loc 2 91 3 view .LVU231
+  91:source/HvMessage.h **** }
+ 881              		.loc 2 91 17 is_stmt 0 view .LVU232
+ 882 0006 AB88     		ldrh	r3, [r5, #4]
+ 883              	.LVL86:
+  91:source/HvMessage.h **** }
+ 884              		.loc 2 91 17 view .LVU233
+ 885              	.LBE167:
+ 886              	.LBE166:
+ 887              		.loc 2 126 83 view .LVU234
+ 888 0008 0BB9     		cbnz	r3, .L105
+ 889              	.LVL87:
+ 890              	.L94:
+ 891              		.loc 2 126 83 view .LVU235
+ 892              	.LBE165:
+ 893              	.LBE164:
+  93:source/HvControlBinop.c ****     // NOTE(mhroth): Heavy does not support sending bangs to binop objects to return the previous o
+  94:source/HvControlBinop.c ****     float f = (msg_isFloat(m, 1)) ? msg_getFloat(m, 1) : k;
+  95:source/HvControlBinop.c ****     HvMessage *n = HV_MESSAGE_ON_STACK(1);
+  96:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 24
+
+
+  97:source/HvControlBinop.c ****     msg_initWithFloat(n, msg_getTimestamp(m), f);
+  98:source/HvControlBinop.c ****     sendMessage(_c, 0, n);
+  99:source/HvControlBinop.c ****   }
+ 100:source/HvControlBinop.c **** }
+ 894              		.loc 1 100 1 view .LVU236
+ 895 000a BD46     		mov	sp, r7
+ 896              		.cfi_remember_state
+ 897              		.cfi_def_cfa_register 13
+ 898              		@ sp needed
+ 899 000c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 900              	.LVL88:
+ 901              	.L105:
+ 902              		.cfi_restore_state
+ 903              		.loc 1 100 1 view .LVU237
+ 904 000e 0446     		mov	r4, r0
+ 905 0010 1046     		mov	r0, r2
+ 906              	.LVL89:
+ 907              	.LBB174:
+ 908              	.LBB172:
+ 909              	.LBB168:
+ 910              	.LBI168:
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 911              		.loc 2 99 27 is_stmt 1 view .LVU238
+ 912              	.LBB169:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 913              		.loc 2 100 3 view .LVU239
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 914              		.loc 2 100 3 is_stmt 0 view .LVU240
+ 915              	.LBE169:
+ 916              	.LBE168:
+ 917              	.LBE172:
+ 918              	.LBE174:
+  91:source/HvMessage.h **** }
+ 919              		.loc 2 91 3 is_stmt 1 view .LVU241
+ 920              	.LBB175:
+ 921              	.LBB173:
+ 922              	.LBB171:
+ 923              	.LBB170:
+ 101:source/HvMessage.h **** }
+ 924              		.loc 2 101 3 view .LVU242
+ 101:source/HvMessage.h **** }
+ 925              		.loc 2 101 3 is_stmt 0 view .LVU243
+ 926              	.LBE170:
+ 927              	.LBE171:
+ 928              		.loc 2 126 83 view .LVU244
+ 929 0012 2A7A     		ldrb	r2, [r5, #8]	@ zero_extendqisi2
+ 930              	.LVL90:
+ 931              		.loc 2 126 83 view .LVU245
+ 932 0014 012A     		cmp	r2, #1
+ 933 0016 F8D1     		bne	.L94
+ 934              	.LVL91:
+ 935              		.loc 2 126 83 view .LVU246
+ 936              	.LBE173:
+ 937              	.LBE175:
+ 938              	.LBB176:
+  94:source/HvControlBinop.c ****     HvMessage *n = HV_MESSAGE_ON_STACK(1);
+ 939              		.loc 1 94 5 is_stmt 1 view .LVU247
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 25
+
+
+ 940              	.LBB177:
+ 941              	.LBI177:
+ 125:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+ 942              		.loc 2 125 20 view .LVU248
+ 943              	.LBB178:
+ 944              		.loc 2 126 3 view .LVU249
+ 945              		.loc 2 126 3 is_stmt 0 view .LVU250
+ 946              	.LBE178:
+ 947              	.LBE177:
+ 948              	.LBE176:
+  91:source/HvMessage.h **** }
+ 949              		.loc 2 91 3 is_stmt 1 view .LVU251
+ 950              	.LBB201:
+ 951              	.LBB186:
+ 952              	.LBB183:
+ 953              		.loc 2 126 83 is_stmt 0 view .LVU252
+ 954 0018 012B     		cmp	r3, #1
+ 955 001a 12D1     		bne	.L106
+ 956              	.L98:
+ 957              	.LVL92:
+ 958              		.loc 2 126 83 view .LVU253
+ 959              	.LBE183:
+ 960              	.LBE186:
+  95:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
+ 961              		.loc 1 95 5 is_stmt 1 view .LVU254
+  95:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
+ 962              		.loc 1 95 5 is_stmt 0 view .LVU255
+ 963              	.LBE201:
+  58:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+ 964              		.loc 2 58 3 is_stmt 1 view .LVU256
+  59:source/HvMessage.h **** }
+ 965              		.loc 2 59 3 view .LVU257
+ 966              	.LBB202:
+  95:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
+ 967              		.loc 1 95 20 is_stmt 0 view .LVU258
+ 968 001c 84B0     		sub	sp, sp, #16
+ 969 001e 6E46     		mov	r6, sp
+ 970              	.LVL93:
+  96:source/HvControlBinop.c ****     msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 971              		.loc 1 96 5 is_stmt 1 view .LVU259
+ 972              	.LBB187:
+ 973              	.LBI187:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 974              		.loc 2 120 21 view .LVU260
+ 975              	.LBB188:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 976              		.loc 2 121 3 view .LVU261
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 977              		.loc 2 121 3 is_stmt 0 view .LVU262
+ 978              	.LBE188:
+ 979              	.LBE187:
+ 980              	.LBE202:
+  91:source/HvMessage.h **** }
+ 981              		.loc 2 91 3 is_stmt 1 view .LVU263
+ 982              	.L99:
+ 983              	.LBB203:
+ 984              	.LBB191:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 26
+
+
+ 985              	.LBB189:
+ 122:source/HvMessage.h **** }
+ 986              		.loc 2 122 3 view .LVU264
+ 122:source/HvMessage.h **** }
+ 987              		.loc 2 122 3 is_stmt 0 view .LVU265
+ 988              	.LBE189:
+ 989              	.LBE191:
+  96:source/HvControlBinop.c ****     msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 990              		.loc 1 96 9 view .LVU266
+ 991 0020 F0EE400A 		vmov.f32	s1, s0
+ 992 0024 95ED030A 		vldr.32	s0, [r5, #12]
+ 993              	.LVL94:
+  96:source/HvControlBinop.c ****     msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 994              		.loc 1 96 9 view .LVU267
+ 995 0028 FFF7FEFF 		bl	cBinop_perform_op
+ 996              	.LVL95:
+  97:source/HvControlBinop.c ****     sendMessage(_c, 0, n);
+ 997              		.loc 1 97 5 is_stmt 1 view .LVU268
+ 998              	.LBB192:
+ 999              	.LBI192:
+  82:source/HvMessage.h ****   return m->timestamp;
+ 1000              		.loc 2 82 27 view .LVU269
+ 1001              	.LBB193:
+  83:source/HvMessage.h **** }
+ 1002              		.loc 2 83 3 view .LVU270
+  83:source/HvMessage.h **** }
+ 1003              		.loc 2 83 3 is_stmt 0 view .LVU271
+ 1004              	.LBE193:
+ 1005              	.LBE192:
+  97:source/HvControlBinop.c ****     sendMessage(_c, 0, n);
+ 1006              		.loc 1 97 5 view .LVU272
+ 1007 002c 2968     		ldr	r1, [r5]
+ 1008 002e 3046     		mov	r0, r6
+ 1009 0030 FFF7FEFF 		bl	msg_initWithFloat
+ 1010              	.LVL96:
+  98:source/HvControlBinop.c ****   }
+ 1011              		.loc 1 98 5 is_stmt 1 view .LVU273
+ 1012 0034 3246     		mov	r2, r6
+ 1013 0036 0021     		movs	r1, #0
+ 1014 0038 2046     		mov	r0, r4
+ 1015 003a FB69     		ldr	r3, [r7, #28]
+ 1016 003c 9847     		blx	r3
+ 1017              	.LVL97:
+ 1018              	.LBE203:
+ 1019              		.loc 1 100 1 is_stmt 0 view .LVU274
+ 1020 003e BD46     		mov	sp, r7
+ 1021              		.cfi_remember_state
+ 1022              		.cfi_def_cfa_register 13
+ 1023              		@ sp needed
+ 1024 0040 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1025              	.LVL98:
+ 1026              	.L106:
+ 1027              		.cfi_restore_state
+ 1028              	.LBB204:
+ 1029              	.LBB194:
+ 1030              	.LBB184:
+ 1031              	.LBB179:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 27
+
+
+ 1032              	.LBI179:
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 1033              		.loc 2 99 27 is_stmt 1 view .LVU275
+ 1034              	.LBB180:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 1035              		.loc 2 100 3 view .LVU276
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 1036              		.loc 2 100 3 is_stmt 0 view .LVU277
+ 1037              	.LBE180:
+ 1038              	.LBE179:
+ 1039              	.LBE184:
+ 1040              	.LBE194:
+ 1041              	.LBE204:
+  91:source/HvMessage.h **** }
+ 1042              		.loc 2 91 3 is_stmt 1 view .LVU278
+ 1043              	.LBB205:
+ 1044              	.LBB195:
+ 1045              	.LBB185:
+ 1046              	.LBB182:
+ 1047              	.LBB181:
+ 101:source/HvMessage.h **** }
+ 1048              		.loc 2 101 3 view .LVU279
+ 101:source/HvMessage.h **** }
+ 1049              		.loc 2 101 3 is_stmt 0 view .LVU280
+ 1050              	.LBE181:
+ 1051              	.LBE182:
+ 1052              		.loc 2 126 83 view .LVU281
+ 1053 0042 2B7C     		ldrb	r3, [r5, #16]	@ zero_extendqisi2
+ 1054 0044 012B     		cmp	r3, #1
+ 1055 0046 E9D1     		bne	.L98
+ 1056              	.LVL99:
+ 1057              		.loc 2 126 83 view .LVU282
+ 1058              	.LBE185:
+ 1059              	.LBE195:
+ 1060              	.LBB196:
+ 1061              	.LBB197:
+ 122:source/HvMessage.h **** }
+ 1062              		.loc 2 122 3 is_stmt 1 view .LVU283
+ 1063              	.LBE197:
+ 1064              	.LBE196:
+  95:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
+ 1065              		.loc 1 95 20 is_stmt 0 view .LVU284
+ 1066 0048 84B0     		sub	sp, sp, #16
+ 1067              	.LBB199:
+ 1068              	.LBB198:
+ 122:source/HvMessage.h **** }
+ 1069              		.loc 2 122 34 view .LVU285
+ 1070 004a 95ED050A 		vldr.32	s0, [r5, #20]
+ 1071              	.LVL100:
+ 122:source/HvMessage.h **** }
+ 1072              		.loc 2 122 34 view .LVU286
+ 1073              	.LBE198:
+ 1074              	.LBE199:
+  95:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
+ 1075              		.loc 1 95 5 is_stmt 1 view .LVU287
+  95:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
+ 1076              		.loc 1 95 5 is_stmt 0 view .LVU288
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 28
+
+
+ 1077              	.LBE205:
+  58:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+ 1078              		.loc 2 58 3 is_stmt 1 view .LVU289
+  59:source/HvMessage.h **** }
+ 1079              		.loc 2 59 3 view .LVU290
+ 1080              	.LBB206:
+  95:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
+ 1081              		.loc 1 95 20 is_stmt 0 view .LVU291
+ 1082 004e 6E46     		mov	r6, sp
+ 1083              	.LVL101:
+  96:source/HvControlBinop.c ****     msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 1084              		.loc 1 96 5 is_stmt 1 view .LVU292
+ 1085              	.LBB200:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 1086              		.loc 2 120 21 view .LVU293
+ 1087              	.LBB190:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 1088              		.loc 2 121 3 view .LVU294
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 1089              		.loc 2 121 3 is_stmt 0 view .LVU295
+ 1090              	.LBE190:
+ 1091              	.LBE200:
+ 1092              	.LBE206:
+  91:source/HvMessage.h **** }
+ 1093              		.loc 2 91 3 is_stmt 1 view .LVU296
+  91:source/HvMessage.h **** }
+ 1094              		.loc 2 91 3 is_stmt 0 view .LVU297
+ 1095 0050 E6E7     		b	.L99
+ 1096              		.cfi_endproc
+ 1097              	.LFE402:
+ 1099 0052 00BF     		.section	.rodata.__func__.0,"a"
+ 1100              		.align	2
+ 1101              		.set	.LANCHOR0,. + 0
+ 1104              	__func__.0:
+ 1105 0000 6D73675F 		.ascii	"msg_getFloat\000"
+ 1105      67657446 
+ 1105      6C6F6174 
+ 1105      00
+ 1106              		.text
+ 1107              	.Letext0:
+ 1108              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 1109              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 1110              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1111              		.file 6 "source/HvHeavy.h"
+ 1112              		.file 7 "source/HvControlBinop.h"
+ 1113              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 1114              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/assert.h"
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s 			page 29
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 HvControlBinop.c
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:19     .text.cBinop_perform_op:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:25     .text.cBinop_perform_op:0000000000000000 cBinop_perform_op
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:42     .text.cBinop_perform_op:000000000000000c $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:66     .text.cBinop_perform_op:000000000000003c $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:425    .text.cBinop_perform_op:0000000000000264 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:430    .rodata.msg_getFloat.part.0.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:437    .text.msg_getFloat.part.0:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:443    .text.msg_getFloat.part.0:0000000000000000 msg_getFloat.part.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:467    .text.msg_getFloat.part.0:0000000000000010 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:474    .text.cBinop_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:481    .text.cBinop_init:0000000000000000 cBinop_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:504    .text.cBinop_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:511    .text.cBinop_onMessage:0000000000000000 cBinop_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:842    .text.cBinop_k_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:849    .text.cBinop_k_onMessage:0000000000000000 cBinop_k_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:1100   .rodata.__func__.0:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc0Us21U.s:1104   .rodata.__func__.0:0000000000000000 __func__.0
+
+UNDEFINED SYMBOLS
+atan2f
+powf
+__assert_func
+msg_initWithFloat

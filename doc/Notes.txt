@@ -33,6 +33,8 @@ https://www.espressif.com/en/support/documents/technical-documents
 
 source ./pd_env/bin/activate
 python pd2dsy.py --board <BOARD> <FILE>.pd
+python pd2dsy.py --board seed /Volumes/Datos/Dv/Repo/Tsonami/src/examples/daisiSPI.pd
+python pd2dsy_gui.py
 
 ls /dev/cu.*
 /dev/cu.usbserial-0001
