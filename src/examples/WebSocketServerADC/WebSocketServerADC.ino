@@ -35,9 +35,6 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t* payload, size_t length)
 
         // send message to client
         webSocket.sendTXT(num, "Connected");
-        // Capturar el valor del micrófono
-        int valor = analogRead(pinMic);
-        webSocket.broadcastBIN(reinterpret_cast<uint8_t*>(&valor), sizeof(valor));
       }
       break;
     case WStype_TEXT:
@@ -55,12 +52,11 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t* payload, size_t length)
 
       // send message to client
       webSocket.sendBIN(num, payload, length);
-      break;
-    case WStype_ERROR:
-    case WStype_FRAGMENT_TEXT_START:
-    case WStype_FRAGMENT_BIN_START:
-    case WStype_FRAGMENT:
-    case WStype_FRAGMENT_FIN:
+
+      // Capturar el valor del micrófono
+      int valor = analogRead(pinMic);
+      webSocket.broadcastBIN(reinterpret_cast<uint8_t*>(&valor), sizeof(valor));
+
       break;
   }
 }
