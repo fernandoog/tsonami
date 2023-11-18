@@ -3,21 +3,23 @@
 #include <WiFiUdp.h>
 #include <OSCMessage.h>
 #include <OSCData.h>
-#include <SPI.h>
+#include <driver/ledc.h>
 
 // Define tus credenciales de red
 const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
+
+//GPIO
+const int canalPWM = 0;                       // Número de canal PWM
+const int gpioNum = 3;                       // Número GPIO válido para PWM en ESP32
+const int frecuenciaPWM = 1000;               // Frecuencia en Hz
+const int resolucionPWM = LEDC_TIMER_10_BIT;  // Resolución PWM (10 bits)
 
 // Define el puerto local para la comunicación UDP
 const int localUdpPort = 8000;
 
 // Crea el objeto para la comunicación UDP
 WiFiUDP Udp;
-
-//SPI
-const int csPin = 5;                                 // Pin de selección del esclavo (CS) en el ESP32
-SPISettings settings(1000000, MSBFIRST, SPI_MODE0);  // Configuración SPI
 
 void setup() {
   Serial.begin(115200);
@@ -29,9 +31,11 @@ void setup() {
   Udp.begin(localUdpPort);
   Serial.println("Servidor OSC iniciado");
 
-  //SPI
-  pinMode(csPin, OUTPUT);
-  SPI.begin();
+  // Configurar el canal PWM
+  ledcSetup(canalPWM, frecuenciaPWM, resolucionPWM);
+
+  // Asociar el canal PWM con el pin GPIO
+  ledcAttachPin(gpioNum, canalPWM);
 }
 
 void loop() {
@@ -67,18 +71,16 @@ void connectToWiFi() {
 
 void toSerial(OSCMessage &msg) {
 
-  // SPI
-  digitalWrite(csPin, LOW);  // Habilitar el esclavo
-
   // Imprime la dirección OSC
   Serial.print(msg.getAddress());
   Serial.print(" ");
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
       Serial.print(msg.getInt(i));
-      SPI.beginTransaction(settings);
-      SPI.transfer(msg.getInt(i));
-      SPI.endTransaction();
+      int valorRecibido = constrain(msg.getInt(i), 0, 255);
+      analogWrite(gpioNum, valorRecibido);
+      Serial.print(" ");
+      Serial.print(valorRecibido);
     } else if (msg.isFloat(i)) {
       Serial.print(msg.getFloat(i), 1);
     } else if (msg.isString(i)) {
@@ -87,7 +89,5 @@ void toSerial(OSCMessage &msg) {
       Serial.print(strBuffer);
     }
   }
-
-  digitalWrite(csPin, HIGH);  // Deshabilitar el esclavo
   Serial.println();
 }
