@@ -1,0 +1,3 @@
+/Users/fernando/Dv/Repo/Tsonami/lib/pd2dsy/libdaisy/CMakeFiles/daisy.dir
+/Users/fernando/Dv/Repo/Tsonami/lib/pd2dsy/libdaisy/CMakeFiles/edit_cache.dir
+/Users/fernando/Dv/Repo/Tsonami/lib/pd2dsy/libdaisy/CMakeFiles/rebuild_cache.dir
