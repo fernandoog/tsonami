@@ -1,16 +1,15 @@
+
 #include <WiFi.h>
 #include <WebSocketsServer.h>
 
 // Define tus credenciales de red
-const char* ssid = "HOUSE";
-const char* password = "wifiwifiwifi1992";
-
-int pinMic = 34;  // Cambia al pin que estás utilizando para el micrófono (ejemplo para ESP32)
+const char *ssid = "HOUSE";
+const char *password = "wifiwifiwifi1992";
 
 WebSocketsServer webSocket = WebSocketsServer(81);
 
-void hexdump(const void* mem, uint32_t len, uint8_t cols = 16) {
-  const uint8_t* src = (const uint8_t*)mem;
+void hexdump(const void *mem, uint32_t len, uint8_t cols = 16) {
+  const uint8_t *src = (const uint8_t *)mem;
   Serial.printf("\n[HEXDUMP] Address: 0x%08X len: 0x%X (%d)", (ptrdiff_t)src, len, len);
   for (uint32_t i = 0; i < len; i++) {
     if (i % cols == 0) {
@@ -22,7 +21,7 @@ void hexdump(const void* mem, uint32_t len, uint8_t cols = 16) {
   Serial.printf("\n");
 }
 
-void webSocketEvent(uint8_t num, WStype_t type, uint8_t* payload, size_t length) {
+void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t length) {
 
   switch (type) {
     case WStype_DISCONNECTED:
@@ -41,10 +40,10 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t* payload, size_t length)
       Serial.printf("[%u] get Text: %s\n", num, payload);
 
       // send message to client
-      // webSocket.sendTXT(num, "message here");
+      webSocket.sendTXT(num, "message here");
 
       // send data to all connected clients
-      //webSocket.broadcastTXT("message here");
+      webSocket.broadcastTXT("message here");
       break;
     case WStype_BIN:
       Serial.printf("[%u] get binary length: %u\n", num, length);
@@ -63,17 +62,27 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t* payload, size_t length)
 }
 
 void setup() {
+  // Serial.begin(921600);
   Serial.begin(115200);
+
+  //Serial.setDebugOutput(true);
+  Serial.setDebugOutput(true);
+
+  Serial.println();
+  Serial.println();
+  Serial.println();
+
+  for (uint8_t t = 4; t > 0; t--) {
+    Serial.printf("[SETUP] BOOT WAIT %d...\n", t);
+    Serial.flush();
+    delay(1000);
+  }
 
   // Inicializa la conexión WiFi
   connectToWiFi();
 
   webSocket.begin();
   webSocket.onEvent(webSocketEvent);
-
-  // Capturar el valor del micrófono
-  int valor = analogRead(pinMic);
-  webSocket.broadcastBIN(reinterpret_cast<uint8_t*>(&valor), sizeof(valor));
 }
 
 void loop() {

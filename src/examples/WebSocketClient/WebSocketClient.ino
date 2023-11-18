@@ -1,15 +1,10 @@
 #include <WiFi.h>
-#include <WiFiClientSecure.h>
 #include <WebSocketsClient.h>
+WebSocketsClient webSocket;
 
 // Define tus credenciales de red
 const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
-const char *host = "192.168.43.95";
-const int port = 81;
-const char *url = "/";
-
-WebSocketsClient webSocket;
 
 void hexdump(const void *mem, uint32_t len, uint8_t cols = 16) {
 	const uint8_t* src = (const uint8_t*) mem;
@@ -40,14 +35,14 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
 			Serial.printf("[WSc] get text: %s\n", payload);
 
 			// send message to server
-			// webSocket.sendTXT("message here");
+			webSocket.sendTXT("message here");
 			break;
 		case WStype_BIN:
 			Serial.printf("[WSc] get binary length: %u\n", length);
 			hexdump(payload, length);
 
 			// send data to server
-			// webSocket.sendBIN(payload, length);
+			webSocket.sendBIN(payload, length);
 			break;
 		case WStype_ERROR:			
 		case WStype_FRAGMENT_TEXT_START:
@@ -63,9 +58,6 @@ void setup() {
 	// Serial.begin(921600);
 	Serial.begin(115200);
 
-  // Inicializa la conexión WiFi
-  connectToWiFi();
-
 	//Serial.setDebugOutput(true);
 	Serial.setDebugOutput(true);
 
@@ -79,17 +71,14 @@ void setup() {
 		delay(1000);
 	}
 
+    // Inicializa la conexión WiFi
+  connectToWiFi();
+
 	// server address, port and URL
-	webSocket.begin(host, port, url);
+	webSocket.begin("192.168.43.95", 81, "/");
 
 	// event handler
 	webSocket.onEvent(webSocketEvent);
-
-	// use HTTP Basic Authorization this is optional remove if not needed
-	//webSocket.setAuthorization("user", "Password");
-
-	// try ever 5000 again if connection has failed
-	webSocket.setReconnectInterval(5000);
 
 }
 
