@@ -40,17 +40,17 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t length)
       Serial.printf("[%u] get Text: %s\n", num, payload);
 
       // send message to client
-      webSocket.sendTXT(num, "message here");
+      //webSocket.sendTXT(num, "message here");
 
       // send data to all connected clients
-      webSocket.broadcastTXT("message here");
+      //webSocket.broadcastTXT("message here");
       break;
     case WStype_BIN:
       Serial.printf("[%u] get binary length: %u\n", num, length);
       hexdump(payload, length);
 
       // send message to client
-      webSocket.sendBIN(num, payload, length);
+      //webSocket.sendBIN(num, payload, length);
       break;
     case WStype_ERROR:
     case WStype_FRAGMENT_TEXT_START:
@@ -62,25 +62,11 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t *payload, size_t length)
 }
 
 void setup() {
-  // Serial.begin(921600);
+
   Serial.begin(115200);
-
-  //Serial.setDebugOutput(true);
-  Serial.setDebugOutput(true);
-
-  Serial.println();
-  Serial.println();
-  Serial.println();
-
-  for (uint8_t t = 4; t > 0; t--) {
-    Serial.printf("[SETUP] BOOT WAIT %d...\n", t);
-    Serial.flush();
-    delay(1000);
-  }
 
   // Inicializa la conexión WiFi
   connectToWiFi();
-
   webSocket.begin();
   webSocket.onEvent(webSocketEvent);
 }

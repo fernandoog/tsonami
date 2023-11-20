@@ -1,5 +1,6 @@
 #include <WiFi.h>
 #include <WebSocketsClient.h>
+
 WebSocketsClient webSocket;
 
 // Define tus credenciales de red
@@ -35,14 +36,14 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
 			Serial.printf("[WSc] get text: %s\n", payload);
 
 			// send message to server
-			webSocket.sendTXT("message here");
+			//webSocket.sendTXT("message here");
 			break;
 		case WStype_BIN:
 			Serial.printf("[WSc] get binary length: %u\n", length);
 			hexdump(payload, length);
 
 			// send data to server
-			webSocket.sendBIN(payload, length);
+			//webSocket.sendBIN(payload, length);
 			break;
 		case WStype_ERROR:			
 		case WStype_FRAGMENT_TEXT_START:
@@ -57,13 +58,6 @@ void webSocketEvent(WStype_t type, uint8_t * payload, size_t length) {
 void setup() {
 	// Serial.begin(921600);
 	Serial.begin(115200);
-
-	//Serial.setDebugOutput(true);
-	Serial.setDebugOutput(true);
-
-	Serial.println();
-	Serial.println();
-	Serial.println();
 
 	for(uint8_t t = 4; t > 0; t--) {
 		Serial.printf("[SETUP] BOOT WAIT %d...\n", t);
@@ -92,7 +86,6 @@ void connectToWiFi() {
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
-    Serial.println("Conectando...");
   }
 
   Serial.println("Conectado a la red WiFi");
