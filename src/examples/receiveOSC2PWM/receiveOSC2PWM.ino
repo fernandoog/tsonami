@@ -9,11 +9,14 @@
 const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
 
+//PWM
+const int canalPWM = 0;                       // Número de canal PWM
+const int gpioNum = 5;                        // Número GPIO válido para PWM en ESP32 //ESP8266-01 0 //ESP32C3
+const int frecuenciaPWM = 5000;               // Frecuencia en Hz
+const int resolucionPWM = LEDC_TIMER_12_BIT;  // Resolución PWM (10 bits)
+
 //GPIO
-const int canalPWM = 0;                       // Número de canal PWM 
-const int gpioNum = 0;                       // Número GPIO válido para PWM en ESP32 //ESP8266-01 0 //ESP32C3
-const int frecuenciaPWM = 1000;               // Frecuencia en Hz
-const int resolucionPWM = LEDC_TIMER_10_BIT;  // Resolución PWM (10 bits)
+const int analogInPin = 34;
 
 // Define el puerto local para la comunicación UDP
 const int localUdpPort = 8000;
@@ -33,8 +36,7 @@ void setup() {
 
   // Configurar el canal PWM
   ledcSetup(canalPWM, frecuenciaPWM, resolucionPWM);
-
-  // Asociar el canal PWM con el pin GPIO
+  pinMode(gpioNum, OUTPUT);
   ledcAttachPin(gpioNum, canalPWM);
 }
 
@@ -45,7 +47,6 @@ void loop() {
     // Lee el paquete en un buffer de tipo uint8_t*
     uint8_t buffer[packetSize];
     Udp.read(buffer, packetSize);
-
     // Crea un objeto OSCMessage y llena con el buffer
     OSCMessage msg;
     msg.fill(buffer, packetSize);
@@ -76,11 +77,11 @@ void toSerial(OSCMessage &msg) {
   Serial.print(" ");
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
-      Serial.print(msg.getInt(i));
       int valorRecibido = constrain(msg.getInt(i), 0, 255);
-      analogWrite(gpioNum, valorRecibido);
-      Serial.print(" ");
-      Serial.print(valorRecibido);
+      ledcWrite(canalPWM, valorRecibido);
+      int pwmValue = ledcRead(canalPWM);
+      int analogValue = analogRead(analogInPin);
+      Serial.println(String(msg.getInt(i)) + " VAL " + String(valorRecibido) + " PWM " + String(pwmValue) + " ANALOG_IN " + String(analogValue));
     } else if (msg.isFloat(i)) {
       Serial.print(msg.getFloat(i), 1);
     } else if (msg.isString(i)) {
