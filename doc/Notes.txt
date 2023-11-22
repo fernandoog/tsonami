@@ -4,6 +4,8 @@ https://docs.m5stack.com/en/core/stamp_c3u
 https://www.electro-smith.com/daisy/daisy
 https://github.com/lathoub/Arduino-AppleMIDI-Library/tree/master/examples
 https://es.aliexpress.com/item/1005006000268135.html?spm=a2g0o.order_list.order_list_main.77.3d9b194dbT8mPy&gatewayAdapt=glo2esp
+https://github.com/etherkit/Si5351Arduino
+https://learn.adafruit.com/adafruit-si5351-clock-generator-breakout
 
 
 DAC  |	ESP32
@@ -59,4 +61,7 @@ types: Especifica el tipo de cada argumento. Los tipos pueden incluir:
         pd_error(x, "oscparse: not an OSC message (no leading slash)");
         return;
     }
+
+cmake .
+make
 
