@@ -57,7 +57,7 @@ void generateTone(uint32_t frequency, uint32_t duration) {
 
     // Configurar la frecuencia de salida del SI5351
 
-      si5351.set_freq_manual(fmFrequency, 70000000000ULL, SI5351_CLK1);
+      si5351.set_freq_manual(fmFrequency, fmFrequency, SI5351_CLK1);
 
   }
 }
