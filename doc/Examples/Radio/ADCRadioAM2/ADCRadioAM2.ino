@@ -45,10 +45,6 @@ void loop() {
   // Transmitir la señal modulada
   si5351.set_freq_manual(frecuenciaPortadora * 1000 + modulacion, frecuenciaPortadora * 1000 + modulacion, SI5351_CLK0);
 
-  Serial.println(String(frecuenciaPortadora * 1000 + modulacion));
-
-  dacWrite(outputPin, entradaAudio);
-
   // Agregar un pequeño retardo para controlar la frecuencia de muestreo
   delayMicroseconds(1000);
 }
