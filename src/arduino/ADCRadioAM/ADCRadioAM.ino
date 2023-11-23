@@ -5,14 +5,12 @@ Si5351 si5351;
 // 22 SCL
 // 23 SDA
 
-const float frecuenciaPortadora = 100000;  // Frecuencia de la portadora en Hz
-const int muestrasPorCiclo = 4096;         // muestreo
-const int outputPin = 25;                  // Pin de salida del DAC
-const int bits = 12;                       //set the resolution to 12 bits (0-4096)
-const int analogIn = 34;
-const int frecuencia = 1000;  // Hz
-const int periodo = 1000000 / frecuencia;
-unsigned long tiempoInicio = micros();
+const float frecuenciaPortadora = 2415117;  // Frecuencia de la portadora en Hz + un 0
+const int muestrasPorCiclo = 4096;          // muestreo
+const int outputPin = 25;                   // Pin de salida del DAC
+const int bits = 12;                        // Resolucion DAC 12 bits (0-4096)
+const int analogIn = 34;                    // DAC entrada de sonido.
+const int muticlicador = 1000;              // para adpatar los valores a la portadora
 
 void setup() {
 
@@ -29,8 +27,6 @@ void setup() {
     Serial.println("Device not found on I2C bus!");
   }
 
-  si5351.set_freq_manual(frecuenciaPortadora, frecuenciaPortadora, SI5351_CLK0);
-
   delay(500);
 }
 
@@ -40,15 +36,13 @@ void loop() {
   // Obtener la entrada de audio desde el micrófono
   float entradaAudio = analogRead(analogIn);
 
-  // Calcular la amplitud normalizada en el rango de 0 a 255
-  int amplitud = map(sin(2 * PI * (micros() - tiempoInicio) / periodo), -1, 1, 0, 255);
-
   // Salida Radio
-  float frecuenciaTono = (entradaAudio * amplitud) + frecuenciaPortadora;
+  float frecuenciaTono = (entradaAudio * muticlicador) + frecuenciaPortadora;
   si5351.set_freq_manual(frecuenciaTono, frecuenciaTono, SI5351_CLK0);
 
   // Salida al DAC
-  dacWrite(outputPin, amplitud);
+  dacWrite(outputPin, entradaAudio);
 
-  Serial.println(String(frecuenciaTono) + " " + amplitud);
+  Serial.println(String(frecuenciaTono) + " " + entradaAudio);
+  
 }
