@@ -1,5 +1,6 @@
 #include <Wire.h>
 #include <si5351.h>
+#include "heltec.h"
 
 Si5351 si5351;
 
@@ -13,9 +14,13 @@ unsigned long long freq = 1000000ULL;
 
 
 void setup() {
+  Heltec.begin(true /*DisplayEnable Enable*/, false /*LoRa Disable*/, true /*Serial Enable*/);
+  Heltec.display->flipScreenVertically();
+  Heltec.display->setFont(ArialMT_Plain_10);
 
   // Start serial and initialize the Si5351
   Serial.begin(115200);
+
 
   //set the resolution to 12 bits (0-4096)
   analogReadResolution(12);
@@ -45,6 +50,7 @@ void loop() {
   // Modificar la frecuencia de la portadora
   si5351.set_freq_manual(frequency, pll_freq, SI5351_CLK0);
 
-  // Agregar un pequeño retardo (ajustar según sea necesario)
-  delay(10);
+  // Display
+  Heltec.display->drawLine(analogValue, analogValue * -1, analogValue * -1, analogValue);
+  Heltec.display->display();
 }

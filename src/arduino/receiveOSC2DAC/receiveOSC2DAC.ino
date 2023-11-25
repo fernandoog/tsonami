@@ -10,9 +10,9 @@ const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
 
 //GPIO
-const int analogInPin = 34;
-const int dacPin = 25;  // Pin DAC en el ESP32
-const int outputPin = 13;
+const int analogInPin = 3;
+const int dacPin = 4;  // Pin DAC en el ESP32
+const int outputPin = 5;
 
 // Define el puerto local para la comunicación UDP
 const int localUdpPort = 8000;
@@ -73,7 +73,7 @@ void toSerial(OSCMessage &msg) {
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
       int valorRecibido = constrain(msg.getInt(i), 0, 255);
-      dacWrite(dacPin, valorRecibido);
+      analogWrite(dacPin, valorRecibido);
       int analogValue = analogRead(analogInPin);
       Serial.print(String(msg.getInt(i)) + " DAC " + String(valorRecibido) + " ANALOG_IN " + String(analogValue) + " ");
     } else if (msg.isFloat(i)) {
