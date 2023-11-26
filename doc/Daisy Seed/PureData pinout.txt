@@ -1,0 +1,190 @@
+Interacting with the Daisy I/O
+
+Each board has a selection of physical I/O that can interact with your PD patch. Most components have an alias, which allows you to refer to the same input/output by different names if you have a preference. All names and aliases are case insensitive, so you can style them however you like (e.g. GateIn).
+
+Components that act as an input (like a Switch, for example) are accessible with Pd's receive object, and require the @hv_param attribute in order to be recognized as an external input. If your Switch is named sw, then the Pd object would look like r sw @hv_param. Outputs, like an LED, use the send object (i.e. s led @hv_param). The examples make this usage pretty clear.
+
+Some components have variants, which allow you to interact with them in multiple ways. For example, you can receive a bang from a Gate In instead of a float if you add _trig to the end of the gate's name (or any of its aliases). So, if a Gate In's name is gatein1, you would use gatein1_trig.
+
+Here's what each component expects for its default behavior and variants:
+
+Type 					_variant 	Behavior
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Inputs 					--- 	---
+Voltage Input 			--- 	Returns a floating point representation of the voltage at its input. The typical range is 0-5 V, which is represented as 0-1.
+Bipolar Voltage Input 	--- 	Similar to a regular voltage input, but can represent negative voltages.
+Switch 					--- 	Returns a bang on the signal's rising edge (i.e. when the switch is actuated).
+Switch 					_press 	Returns a float representing the current state (1 = pressed, 0 = not pressed)
+Switch 					_fall 	Returns a bang on the signal's falling edge (i.e. when the switch is released).
+Switch 					_seconds 	Returns a float representing the number of seconds the switch has been held down.
+SPDT Switch 			--- 	Returns a float representing the current state, either 0 or 1.
+Encoder 				--- 	Returns a 1 if turned one direction, -1 if turned in the other, and 0 otherwise.
+Encoder 				_rise 	Returns a bang when the encoder is pressed. The special alias EncSwitch is always bound to this.
+Encoder 				_press 	Same as switch _press.
+Encoder 				_fall 	Same as switch _fall.
+Encoder 				_seconds 	Same as switch _seconds.
+Gate In 				--- 	Returns a float representing the current gate voltage, where a high voltage is 1 and a low voltage is 0.
+Gate In 				_trig 	Returns a bang on the rising edge of the gate signal.
+Outputs 				--- 	---
+CV Out 					--- 	Expects a floating point value from 0-1, usually converted to 0-5V.
+Gate Out 				--- 	Expects a floating point value from 0-1. 0 sets the output low, and 1 sets it high.
+LED 					--- 	Expects a floating point value from 0-1. The brightness is PWM modulated to match the input.
+RGB LED 				--- 	Expects a floating point value from 0-1. The default behavior sets all three colors to the same brightness.
+RGB LED 				_white 	Same as default.
+RGB LED 				_red 	Expects a floating point value from 0-1. Sets the brightness of the red LED only.
+RGB LED 				_green 	Expects a floating point value from 0-1. Sets the brightness of the green LED only.
+RGB LED 				_blue 	Expects a floating point value from 0-1. Sets the brightness of the blue LED only.
+
+Here's how the newly added sensors are addressed:
+
+Type 					_variant 											Behavior
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Inputs 					--- 												---
+BME280 					--- 												Returns the temperature in degrees C.
+BME280 					_temp 												Behaves the same as the default option.
+BME280 					_hum 												Returns the humidity in relative percentage.
+BME280 					_press 												Returns the pressure in pascals (1 atm ~= 100 kPa)
+BME280 					_alt 												Returns the estimated altitude in meters
+BMP390 					--- 												Returns the temperature in degrees C.
+BMP390 					_temp 												Behaves the same as the default option.
+BMP390 					_press 												Returns the pressure in pascals (1 atm ~= 100 kPa)
+BMP390 					_alt 												Returns the estimated altitude in meters
+Hall Sensor 			--- 												Returns the current state of the sensor (0 if no field present, otherwise 1).
+Hall Sensor 			_count 												Returns the number of times the hall sensor has been activated.
+TLV93D 					--- 												Returns the magnitude of the field's force vector in uT (i.e. the amount of field).
+TLV93D 					_x, _y, _z 											Returns the field's strength in the given axis in uT.
+TLV93D 					_amount 											Behaves the same as the default option.
+TLV93D 					_azimuth 											Returns the field's azimuth for spherical coordinates.
+TLV93D 					_polar 												Returns the field's 3D inclination for spherical coordinates.
+MPR121 					--- 												Returns whether channel 0 is touched according to the threshold.
+MPR121 					_ch0 ... _ch11 										Returns a 1 if the given channel is touched according to the threshold, otherwise 0.
+MPR121 					_ch0_raw ... _ch11_raw 								Returns the raw sensor data for the given channel as a 10-bit unsigned integer.
+APDS9960 				--- 												Returns the current read gesture (1-4) if detected, otherwise 0.
+APDS9960 				_gest 												Behaves the same as the default option.
+APDS9960 				_prox 												Returns the detected proximity in undefined units (meant for relative distance detection).
+APDS9960 				_red, _green, _blue, _clear 						Returns the detected brightness of the given color as a 16-bit unsigned integer.
+VL53L1X 				--- 												Returns the distance measurement in mm.
+Neo Trellis 			--- 												Sends a bang when the first button (index 0) is pressed.
+Neo Trellis 			_0 ... _15 											Sends a bang when the given button is pressed.
+Neo Trellis 			_0_falling ... _15_falling 							Sends a bang when the given button is released.
+Neo Trellis 			_0_state ... _15_state 								Returns the current state of the given button (1 = pressed, 0 = released).
+BNO055 					--- 												Returns the X component of the accelerometer in m/s^2.
+BNO055 					_accel_x, _accel_y, _accel_z 						Returns the given axis from the accelerometer in m/s^2.
+BNO055 					_magnet_x, _magnet_y, _magnet_z 					Returns the given axis from the magnetometer in uT.
+BNO055 					_gyro_x, _gyro_y, _gyro_z 							Returns the given axis from the gyroscope in dps (degrees per second).
+BNO055 					_euler_x, _euler_y, _euler_z 						Returns the rotation along the given axis in degrees.
+BNO055 					_linear_accel_x, _linear_accel_y, _linear_accel_z 	Returns the linear acceleration in the given axis in m/s^2.
+BNO055 					_grav_x, _grav_y, _grav_z 							Returns the acceleration due to gravity along the given axis in m/s^2.
+BNO055 					_quat_w, _quat_x, _quat_y, _quat_z 					Returns the orientation represented as a quaternion.
+Outputs 				--- 	
+Stepper Motor 			--- 												Expects a floating point value of any arbitrary size, representing the number of steps to rotate. The sign of the number determines direction.
+Stepper Motor 			_release 											Triggers the stepper motor to relax its fields when a positive value is received, allowing the motor to spin freely.
+DC Motor 				--- 												Expects a floating point value from -1 to 1. The magnitude controls the speed, the sign controls direction, and a value of zero stops the motor.
+Neo Trellis LEDs 		_0 ... _15 											Expects an integer from 0-255 to control the led brightness of the corresponding pad.
+
+Daisy Board I/O
+
+patch
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Name 							Pin 		Aliases 							Type 						Variants
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+knob1 							15			knob, ctrl, ctrl1 					Voltage Input 				---
+knob2 							16			ctrl2 								Voltage Input 				---
+knob3 							21			ctrl3 								Voltage Input 				---
+knob4 							18			ctrl4 								Voltage Input 				---
+encoder 						12,11,0		--- 								Encoder 					encoder_press, encoder_rise, encoder_fall, encoder_seconds
+gateout 						17			--- 								Gate Out 					---
+cvout1 							CVOuts		cvout 								CV Out 						---
+cvout2 							CVOuts		--- 								CV Out 						---
+gatein1 						20			gate, gate1 						Gate In 					gatein1_trig
+gatein2 						19			gate2 								Gate In 					gatein2_trig
+									
+patch_init
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+Name 							Pin			Aliases 							Type 						Variants
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+cv_1 							C5			knob, knob1, ctrl, ctrl1			Voltage Input 				---
+cv_2 							C4			knob2, ctrl2 						Voltage Input 				---
+cv_3 							C3			knob3, ctrl3 						Voltage Input 				---
+cv_4 							C2			knob4, ctrl4 						Voltage Input 				---
+cv_5 							C6			knob5, ctrl5 						Voltage Input 				---
+cv_6 							C7			knob6, ctrl6 						Voltage Input 				---
+cv_7 							C8			knob7, ctrl7 						Voltage Input 				---
+cv_8 							C9			knob8, ctrl8 						Voltage Input 				---
+adc_9 							A2			--- 								Voltage Input 				---
+adc_10 							A3			--- 								Voltage Input 				---
+adc_11 							D9			--- 								Voltage Input 				---
+adc_12 							D8			--- 								Voltage Input 				---
+gate_out_1 						B5			gateout, gateout1 					Gate Out 					---
+gate_out_2 						B6			gateout2 							Gate Out 					---
+cvout1 							CVOuts		cvout, cv_out_1 					CV Out 						---
+cvout2 							CVOuts		cv_out_2 							CV Out 						---
+gate_in_1 						B10			gate, gate1 						Gate In 					gate_in_1_trig
+gate_in_2 						B9			gate2 								Gate In 					gate_in_2_trig
+sw1 							B7			switch, switch1, button 			Switch 						sw1_press, sw1_fall, sw1_seconds
+sw2 							B8			switch2, toggle 					Switch 						sw2_press, sw2_fall, sw2_seconds
+							
+petal		
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+Name 							Pin			Aliases 							Type 						Variants
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sw1 							8			switch, switch1 					Switch 						sw1_press, sw1_fall, sw1_seconds
+sw2 							9			switch2 							Switch 						sw2_press, sw2_fall, sw2_seconds
+sw3 							10			switch3 							Switch 						sw3_press, sw3_fall, sw3_seconds
+sw4 							13			switch4 							Switch 						sw4_press, sw4_fall, sw4_seconds
+sw5 							25			switch5 							Switch 						sw5_press, sw5_fall, sw5_seconds
+sw6 							26			switch6 							Switch 						sw6_press, sw6_fall, sw6_seconds
+sw7 							7			switch7 							Switch 						sw7_press, sw7_fall, sw7_seconds
+encoder 						28,27,14	--- 								Encoder 					encoder_press, encoder_rise, encoder_fall, encoder_seconds
+knob1 							16			knob, ctrl, ctrl1 					Voltage Input 				---
+knob2 							19			ctrl2 								Voltage Input 				---
+knob3 							17			ctrl3 								Voltage Input 				---
+knob4 							20			ctrl4 								Voltage Input 				---
+knob5 							18			ctrl5 								Voltage Input 				---
+knob6 							21			ctrl6 								Voltage Input 				---
+expression 						15			--- 								Voltage Input 				---
+led_ring_1 ... led_ring_8 		PCA9685		--- 								RGB LED 					led_ring_1_red, led_ring_1_green, led_ring_1_blue, led_ring_1_white
+led_fs_1 						PCA9685		--- 								LED 						---
+led_fs_2 						PCA9685		--- 								LED 						---
+led_fs_3 						PCA9685		--- 								LED 						---
+led_fs_4						PCA9685		--- 								LED 						---
+i2c	scl							11			---									I2C							---
+i2c	sda							12 			---									I2C							---
+		
+pod
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+Name 							Pin			Aliases 							Type 						Variants
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sw1 							27			switch, button, switch1, button1 	Switch 	sw1_press, 			sw1_fall, sw1_seconds
+sw2 							28			switch2, button2 					Switch 	sw2_press, 			sw2_fall, sw2_seconds
+knob1 							21			knob, ctrl, ctrl1 					Voltage Input 				---
+knob2 							15			ctrl2 								Voltage Input 				---
+encoder 						26,25,13	--- 								Encoder 					encoder_press, encoder_rise, encoder_fall, encoder_seconds
+led1 							20,19,18	led 								RGB LED 					led1_red, led1_green, led1_blue, led1_white
+led2 							17,24,23	--- 								RGB LED 					led2_red, led2_green, led2_blue, led2_white
+gatein 							---			gate, gate1 						Gate In 					gatein_trig
+			
+field
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+Name 							Pin			Aliases 							Type 						Variants
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sw1 							30			switch, button, switch1, button1 	Switch 						sw1_press, sw1_fall, sw1_seconds
+sw2 							29			switch2, button2 					Switch 						sw2_press, sw2_fall, sw2_seconds
+cv1 							17			--- 								Bipolar Voltage Input 		---
+cv2 							18			--- 								Bipolar Voltage Input 		---
+cv3 							25			--- 								Bipolar Voltage Input 		---
+cv4 							24			--- 								Bipolar Voltage Input 		---
+knob1 							CD4051		knob, ctrl, ctrl1 					Voltage Input 				---
+knob2 							CD4051		ctrl2 								Voltage Input 				---
+knob3 ... knob8 				CD4051		--- 								Voltage Input 				---
+cvout1 							CVOuts		cvout 								CV Out 						---
+cvout2 							CVOuts		--- 								CV Out 						---
+gatein 							0			--- 								Gate In 					gatein_trig
+gateout 						15			--- 								Gate Out					 ---
+pada1 ... pada8 				CD4021		--- 								Switch 						pada1_press, pada1_fall
+padb1 ... padb8 				CD4021		--- 								Switch 						padb1_press, padb1_fall
+led_key_a1 ... led_key_a8 		0-7			--- 								LED 						---
+led_key_b1 ... led_key_b8 		15-8		--- 								LED 						---
+led_knob_1 ... led_knob_8 		16-23		--- 								LED 						---
+i2c	scl							11			---									I2C							---
+i2c	sda							12 			---									I2C							---
