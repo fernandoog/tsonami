@@ -36,8 +36,11 @@ https://www.espressif.com/en/support/documents/technical-documents
 
 source ./pd_env/bin/activate
 python pd2dsy.py --board <BOARD> <FILE>.pd
-python pd2dsy.py --board seed /Volumes/Datos/Dv/Repo/Tsonami/src/examples/daisiSPI.pd
+python pd2dsy.py --board pod /Volumes/Datos/Dv/Repo/Tsonami/src/daisy_test.pd
+python pd2dsy.py --board pod /Volumes/Datos/Dv/Repo/Tsonami/lib/pd2dsy/examples/PdFiles/pod_test.pd
 python pd2dsy_gui.py
+
+python pd2dsy.py --board pod -c /Volumes/Datos/Dv/Repo/Tsonami/src/puredata/customseed.json /Volumes/Datos/Dv/Repo/Tsonami/src/puredata/daisy_control.pd
 
 ls /dev/cu.*
 /dev/cu.usbserial-0001
