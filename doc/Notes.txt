@@ -40,6 +40,7 @@ python pd2dsy.py --board pod /Volumes/Datos/Dv/Repo/Tsonami/src/daisy_test.pd
 python pd2dsy.py --board pod /Volumes/Datos/Dv/Repo/Tsonami/lib/pd2dsy/examples/PdFiles/pod_test.pd
 python pd2dsy_gui.py
 
+python pd2dsy.py --board pod /Volumes/Datos/Dv/Repo/Tsonami/src/puredata/daisy_control.pd
 python pd2dsy.py --board pod -c /Volumes/Datos/Dv/Repo/Tsonami/src/puredata/customseed.json /Volumes/Datos/Dv/Repo/Tsonami/src/puredata/daisy_control.pd
 
 ls /dev/cu.*
@@ -73,3 +74,4 @@ make
 
  /Users/fernando/.bashrc
 
+src/json2daisy/resources
