@@ -10,8 +10,9 @@ const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
 
 //GPIO
-const int dacPin = 1;  // Pin DAC en el ESP32 0-4096
-const int outputPin = 2;
+const int outputPin = 1;
+const int dacPin = 2;  // Pin DAC en el ESP32 0-4096
+
 
 // Define el puerto local para la comunicación UDP
 const int localUdpPort = 8000;
