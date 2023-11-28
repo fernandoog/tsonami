@@ -63,10 +63,10 @@ extern "C" {
 
 Heavy_daisy_control::Heavy_daisy_control(double sampleRate, int poolKb, int inQueueKb, int outQueueKb)
     : HeavyContext(sampleRate, poolKb, inQueueKb, outQueueKb) {
-  numBytes += sPhasor_init(&sPhasor_eoAeyyf3, sampleRate);
-  numBytes += sLine_init(&sLine_mvcCQA4g);
-  numBytes += cVar_init_f(&cVar_PypWCFXg, 0.0f);
-  numBytes += sVarf_init(&sVarf_6CcfPXrR, 0.0f, 0.0f, false);
+  numBytes += sPhasor_init(&sPhasor_WIqHwY1c, sampleRate);
+  numBytes += sLine_init(&sLine_vmZdgXXU);
+  numBytes += cVar_init_f(&cVar_AW77KVCO, 0.0f);
+  numBytes += sVarf_init(&sVarf_axfsxrnT, 0.0f, 0.0f, false);
   
 }
 
@@ -80,20 +80,16 @@ HvTable *Heavy_daisy_control::getTableForHash(hv_uint32_t tableHash) {
 
 void Heavy_daisy_control::scheduleMessageForReceiver(hv_uint32_t receiverHash, HvMessage *m) {
   switch (receiverHash) {
-    case 0xB4D78F23: { // Button1
-      mq_addMessageByTimestamp(&mq, m, 0, &cReceive_TOCyRsRx_sendMessage);
-      break;
-    }
-    case 0x62DD3F82: { // Knob1
-      mq_addMessageByTimestamp(&mq, m, 0, &cReceive_3wEbEbsM_sendMessage);
+    case 0xFB2DC5B6: { // button1
+      mq_addMessageByTimestamp(&mq, m, 0, &cReceive_axElndMB_sendMessage);
       break;
     }
     case 0xDF1CF8D9: { // button1_press
-      mq_addMessageByTimestamp(&mq, m, 0, &cReceive_cdHTSuNK_sendMessage);
+      mq_addMessageByTimestamp(&mq, m, 0, &cReceive_Qe1xe8gU_sendMessage);
       break;
     }
-    case 0x1AE0B6E: { // button2_press
-      mq_addMessageByTimestamp(&mq, m, 0, &cReceive_y48z473J_sendMessage);
+    case 0x44BF7D9D: { // ctrl
+      mq_addMessageByTimestamp(&mq, m, 0, &cReceive_gJQ9EXSU_sendMessage);
       break;
     }
     default: return;
@@ -104,8 +100,8 @@ int Heavy_daisy_control::getParameterInfo(int index, HvParameterInfo *info) {
   if (info != nullptr) {
     switch (index) {
       case 0: {
-        info->name = "Button1";
-        info->hash = 0xB4D78F23;
+        info->name = "button1";
+        info->hash = 0xFB2DC5B6;
         info->type = HvParameterType::HV_PARAM_TYPE_PARAMETER_IN;
         info->minVal = 0.0f;
         info->maxVal = 1.0f;
@@ -113,15 +109,6 @@ int Heavy_daisy_control::getParameterInfo(int index, HvParameterInfo *info) {
         break;
       }
       case 1: {
-        info->name = "Knob1";
-        info->hash = 0x62DD3F82;
-        info->type = HvParameterType::HV_PARAM_TYPE_PARAMETER_IN;
-        info->minVal = 0.0f;
-        info->maxVal = 1.0f;
-        info->defaultVal = 0.5f;
-        break;
-      }
-      case 2: {
         info->name = "button1_press";
         info->hash = 0xDF1CF8D9;
         info->type = HvParameterType::HV_PARAM_TYPE_PARAMETER_IN;
@@ -130,9 +117,9 @@ int Heavy_daisy_control::getParameterInfo(int index, HvParameterInfo *info) {
         info->defaultVal = 0.5f;
         break;
       }
-      case 3: {
-        info->name = "button2_press";
-        info->hash = 0x1AE0B6E;
+      case 2: {
+        info->name = "ctrl";
+        info->hash = 0x44BF7D9D;
         info->type = HvParameterType::HV_PARAM_TYPE_PARAMETER_IN;
         info->minVal = 0.0f;
         info->maxVal = 1.0f;
@@ -150,7 +137,7 @@ int Heavy_daisy_control::getParameterInfo(int index, HvParameterInfo *info) {
       }
     }
   }
-  return 4;
+  return 3;
 }
 
 
@@ -160,69 +147,60 @@ int Heavy_daisy_control::getParameterInfo(int index, HvParameterInfo *info) {
  */
 
 
-void Heavy_daisy_control::cVar_PypWCFXg_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  cBinop_k_onMessage(_c, NULL, HV_BINOP_MULTIPLY, 2000.0f, 0, m, &cBinop_bhG1c4O6_sendMessage);
+void Heavy_daisy_control::cVar_AW77KVCO_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
+  cBinop_k_onMessage(_c, NULL, HV_BINOP_MULTIPLY, 2000.0f, 0, m, &cBinop_4tVV6Rnh_sendMessage);
 }
 
-void Heavy_daisy_control::cCast_6vcmpxRQ_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  cCast_onMessage(_c, HV_CAST_BANG, 0, m, &cCast_4V31hQPu_sendMessage);
-  cCast_onMessage(_c, HV_CAST_BANG, 0, m, &cCast_hpN6cyzV_sendMessage);
+void Heavy_daisy_control::cCast_8ZVuQ8Zq_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
+  cCast_onMessage(_c, HV_CAST_BANG, 0, m, &cCast_jy66met6_sendMessage);
+  cCast_onMessage(_c, HV_CAST_BANG, 0, m, &cCast_Nt5hgoBa_sendMessage);
 }
 
-void Heavy_daisy_control::cCast_hpN6cyzV_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  cMsg_KJa8MeLo_sendMessage(_c, 0, m);
+void Heavy_daisy_control::cCast_Nt5hgoBa_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
+  cMsg_n6Kq10ds_sendMessage(_c, 0, m);
 }
 
-void Heavy_daisy_control::cCast_4V31hQPu_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  cMsg_iqvU9eIX_sendMessage(_c, 0, m);
+void Heavy_daisy_control::cCast_jy66met6_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
+  cMsg_VLKH4ctf_sendMessage(_c, 0, m);
 }
 
-void Heavy_daisy_control::cMsg_iqvU9eIX_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *const n) {
+void Heavy_daisy_control::cMsg_VLKH4ctf_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *const n) {
   HvMessage *m = nullptr;
   m = HV_MESSAGE_ON_STACK(1);
   msg_init(m, 1, msg_getTimestamp(n));
   msg_setFloat(m, 0, 1.0f);
-  sLine_onMessage(_c, &Context(_c)->sLine_mvcCQA4g, 0, m, NULL);
+  sLine_onMessage(_c, &Context(_c)->sLine_vmZdgXXU, 0, m, NULL);
 }
 
-void Heavy_daisy_control::cMsg_KJa8MeLo_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *const n) {
+void Heavy_daisy_control::cMsg_n6Kq10ds_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *const n) {
   HvMessage *m = nullptr;
   m = HV_MESSAGE_ON_STACK(2);
   msg_init(m, 2, msg_getTimestamp(n));
   msg_setFloat(m, 0, 0.0f);
   msg_setFloat(m, 1, 500.0f);
-  sLine_onMessage(_c, &Context(_c)->sLine_mvcCQA4g, 0, m, NULL);
+  sLine_onMessage(_c, &Context(_c)->sLine_vmZdgXXU, 0, m, NULL);
 }
 
-void Heavy_daisy_control::cBinop_bhG1c4O6_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  sVarf_onMessage(_c, &Context(_c)->sVarf_6CcfPXrR, m);
+void Heavy_daisy_control::cBinop_4tVV6Rnh_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
+  sVarf_onMessage(_c, &Context(_c)->sVarf_axfsxrnT, m);
 }
 
-void Heavy_daisy_control::cSend_ekzGeICa_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
+void Heavy_daisy_control::cSend_bF0tWjeW_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
   if (_c->getSendHook() != nullptr) _c->getSendHook()(_c, "led1", 0xE817C68D, m);
 }
 
-void Heavy_daisy_control::cSend_mIsAMHA3_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  if (_c->getSendHook() != nullptr) _c->getSendHook()(_c, "led2", 0xBB2E5490, m);
-}
-
-void Heavy_daisy_control::cReceive_TOCyRsRx_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  cCast_onMessage(_c, HV_CAST_BANG, 0, m, &cCast_4V31hQPu_sendMessage);
-  cCast_onMessage(_c, HV_CAST_BANG, 0, m, &cCast_hpN6cyzV_sendMessage);
-}
-
-void Heavy_daisy_control::cReceive_3wEbEbsM_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  cBinop_k_onMessage(_c, NULL, HV_BINOP_MULTIPLY, 2000.0f, 0, m, &cBinop_bhG1c4O6_sendMessage);
+void Heavy_daisy_control::cReceive_Qe1xe8gU_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
+  cSend_bF0tWjeW_sendMessage(_c, 0, m);
   cPrint_onMessage(_c, m, "print");
 }
 
-void Heavy_daisy_control::cReceive_cdHTSuNK_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  cSend_ekzGeICa_sendMessage(_c, 0, m);
-  cPrint_onMessage(_c, m, "print");
+void Heavy_daisy_control::cReceive_axElndMB_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
+  cCast_onMessage(_c, HV_CAST_BANG, 0, m, &cCast_jy66met6_sendMessage);
+  cCast_onMessage(_c, HV_CAST_BANG, 0, m, &cCast_Nt5hgoBa_sendMessage);
 }
 
-void Heavy_daisy_control::cReceive_y48z473J_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
-  cSend_mIsAMHA3_sendMessage(_c, 0, m);
+void Heavy_daisy_control::cReceive_gJQ9EXSU_sendMessage(HeavyContextInterface *_c, int letIn, const HvMessage *m) {
+  cBinop_k_onMessage(_c, NULL, HV_BINOP_MULTIPLY, 2000.0f, 0, m, &cBinop_4tVV6Rnh_sendMessage);
   cPrint_onMessage(_c, m, "print");
 }
 
@@ -270,8 +248,8 @@ int Heavy_daisy_control::process(float **inputBuffers, float **outputBuffers, in
     __hv_zero_f(VOf(O1));
 
     // process all signal functions
-    __hv_varread_f(&sVarf_6CcfPXrR, VOf(Bf0));
-    __hv_phasor_f(&sPhasor_eoAeyyf3, VIf(Bf0), VOf(Bf0));
+    __hv_varread_f(&sVarf_axfsxrnT, VOf(Bf0));
+    __hv_phasor_f(&sPhasor_WIqHwY1c, VIf(Bf0), VOf(Bf0));
     __hv_var_k_f(VOf(Bf1), 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f);
     __hv_sub_f(VIf(Bf0), VIf(Bf1), VOf(Bf1));
     __hv_abs_f(VIf(Bf1), VOf(Bf1));
@@ -286,7 +264,7 @@ int Heavy_daisy_control::process(float **inputBuffers, float **outputBuffers, in
     __hv_var_k_f(VOf(Bf4), -0.166666666666667f, -0.166666666666667f, -0.166666666666667f, -0.166666666666667f, -0.166666666666667f, -0.166666666666667f, -0.166666666666667f, -0.166666666666667f);
     __hv_fma_f(VIf(Bf2), VIf(Bf4), VIf(Bf1), VOf(Bf1));
     __hv_fma_f(VIf(Bf0), VIf(Bf3), VIf(Bf1), VOf(Bf1));
-    __hv_line_f(&sLine_mvcCQA4g, VOf(Bf3));
+    __hv_line_f(&sLine_vmZdgXXU, VOf(Bf3));
     __hv_mul_f(VIf(Bf1), VIf(Bf3), VOf(Bf3));
     __hv_add_f(VIf(Bf3), VIf(O0), VOf(O0));
 

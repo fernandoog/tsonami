@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf1ZiVs.s 			page 1
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccuxLoMP.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf1ZiVs.s 			page 1
   35              		.loc 1 19 88 is_stmt 0 view .LVU2
   36 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
   37              		.cfi_def_cfa_offset 24
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf1ZiVs.s 			page 2
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccuxLoMP.s 			page 2
 
 
   38              		.cfi_offset 4, -24
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf1ZiVs.s 			page 1
   86              	.LVL6:
   87              	.LBB3:
   23:source/HvControlPrint.c ****     hv_free(s);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf1ZiVs.s 			page 3
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccuxLoMP.s 			page 3
 
 
   88              		.loc 1 23 5 view .LVU12
@@ -141,13 +141,13 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf1ZiVs.s 			page 1
  105              		.file 4 "source/HvHeavy.h"
  106              		.file 5 "source/HvMessage.h"
  107              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf1ZiVs.s 			page 4
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccuxLoMP.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HvControlPrint.c
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf1ZiVs.s:19     .text.cPrint_onMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf1ZiVs.s:26     .text.cPrint_onMessage:0000000000000000 cPrint_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccuxLoMP.s:19     .text.cPrint_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccuxLoMP.s:26     .text.cPrint_onMessage:0000000000000000 cPrint_onMessage
 
 UNDEFINED SYMBOLS
 hv_getPrintHook

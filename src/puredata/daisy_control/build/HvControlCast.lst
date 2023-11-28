@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
    4:source/HvControlCast.c ****  * Permission to use, copy, modify, and/or distribute this software for any
    5:source/HvControlCast.c ****  * purpose with or without fee is hereby granted, provided that the above
    6:source/HvControlCast.c ****  * copyright notice and this permission notice appear in all copies.
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 2
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 2
 
 
    7:source/HvControlCast.c ****  *
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
   31:source/HvControlCast.c ****         msg_initWithFloat(n, msg_getTimestamp(m), msg_getFloat(m, 0));
   32:source/HvControlCast.c ****         sendMessage(_c, 0, n);
   33:source/HvControlCast.c ****       }
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 3
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 3
 
 
   34:source/HvControlCast.c ****       break;
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
   12:source/HvMessage.h ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
   13:source/HvMessage.h ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
   14:source/HvMessage.h ****  * PERFORMANCE OF THIS SOFTWARE.
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 4
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 4
 
 
   15:source/HvMessage.h ****  */
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
   69:source/HvMessage.h **** /** Frees a message on the heap. Does nothing if argument is NULL. */
   70:source/HvMessage.h **** void msg_free(HvMessage *m);
   71:source/HvMessage.h **** 
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 5
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 5
 
 
   72:source/HvMessage.h **** HvMessage *msg_init(HvMessage *m, hv_size_t numElements, hv_uint32_t timestamp);
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
   86              		.loc 2 125 20 view .LVU8
   87              	.LBB77:
  126:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 6
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 6
 
 
   88              		.loc 2 126 3 view .LVU9
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
  132              		.loc 1 30 9 is_stmt 1 view .LVU23
   30:source/HvControlCast.c ****         msg_initWithFloat(n, msg_getTimestamp(m), msg_getFloat(m, 0));
  133              		.loc 1 30 9 is_stmt 0 view .LVU24
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 7
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 7
 
 
  134              	.LBE86:
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
  172              	.LBE91:
  173              	.LBE92:
   31:source/HvControlCast.c ****         sendMessage(_c, 0, n);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 8
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 8
 
 
  174              		.loc 1 31 9 view .LVU41
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
  213              	.LVL13:
   24:source/HvControlCast.c ****       sendMessage(_c, 0, n);
  214              		.loc 1 24 7 view .LVU57
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 9
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 9
 
 
  215 0040 7A60     		str	r2, [r7, #4]
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
  100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
  259              		.loc 2 100 3 view .LVU69
  260 0058 2AB3     		cbz	r2, .L16
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 10
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 10
 
 
  101:source/HvMessage.h **** }
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
  300              	.LBE108:
   40:source/HvControlCast.c ****           sendMessage(_c, 0, n);
  301              		.loc 1 40 11 view .LVU85
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 11
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 11
 
 
  302 0070 3046     		mov	r0, r6
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
   46:source/HvControlCast.c ****           sendMessage(_c, 0, n);
  343              		.loc 1 46 11 view .LVU99
  344 008e 1968     		ldr	r1, [r3]
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 12
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 12
 
 
  345              	.LVL30:
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
  386 00a6 054B     		ldr	r3, .L17+8
  387              	.LVL36:
  100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 13
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 13
 
 
  388              		.loc 2 100 3 view .LVU113
@@ -762,17 +762,17 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 1
  425              		.file 6 "source/HvHeavy.h"
  426              		.file 7 "source/HvControlCast.h"
  427              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/assert.h"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s 			page 14
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HvControlCast.c
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s:19     .rodata.cCast_onMessage.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s:32     .text.cCast_onMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s:39     .text.cCast_onMessage:0000000000000000 cCast_onMessage
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s:401    .text.cCast_onMessage:00000000000000b4 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s:414    .rodata.__func__.1:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6tYqoQ.s:418    .rodata.__func__.1:0000000000000000 __func__.1
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s:19     .rodata.cCast_onMessage.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s:32     .text.cCast_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s:39     .text.cCast_onMessage:0000000000000000 cCast_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s:401    .text.cCast_onMessage:00000000000000b4 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s:414    .rodata.__func__.1:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccOBJ6bS.s:418    .rodata.__func__.1:0000000000000000 __func__.1
 
 UNDEFINED SYMBOLS
 msg_initWithFloat

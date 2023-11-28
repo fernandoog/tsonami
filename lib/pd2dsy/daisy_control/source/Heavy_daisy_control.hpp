@@ -35,14 +35,14 @@
 
 // object includes
 #include "HeavyContext.hpp"
+#include "HvSignalPhasor.h"
 #include "HvSignalLine.h"
+#include "HvControlBinop.h"
+#include "HvMath.h"
+#include "HvControlPrint.h"
 #include "HvControlCast.h"
 #include "HvSignalVar.h"
-#include "HvControlPrint.h"
 #include "HvControlVar.h"
-#include "HvControlBinop.h"
-#include "HvSignalPhasor.h"
-#include "HvMath.h"
 
 class Heavy_daisy_control : public HeavyContext {
 
@@ -62,10 +62,10 @@ class Heavy_daisy_control : public HeavyContext {
   struct Parameter {
     struct In {
       enum ParameterIn : hv_uint32_t {
-        BUTTON1 = 0xB4D78F23, // Button1
-        KNOB1 = 0x62DD3F82, // Knob1
         BUTTON1_PRESS = 0xDF1CF8D9, // button1_press
+        BUTTON2 = 0x1024490E, // button2
         BUTTON2_PRESS = 0x1AE0B6E, // button2_press
+        KNOB2 = 0x17356E1C, // knob2
       };
     };
     struct Out {
@@ -81,26 +81,26 @@ class Heavy_daisy_control : public HeavyContext {
   void scheduleMessageForReceiver(hv_uint32_t receiverHash, HvMessage *m) override;
 
   // static sendMessage functions
-  static void cVar_01SkLZkE_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cCast_WiKO74Jg_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cCast_c8lq7Ky2_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cCast_zSm6nEvJ_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cMsg_yfTLhcjP_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cMsg_6x2TOSkt_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cBinop_Wu8QBiY2_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cSend_2Vd4tvUd_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cSend_XcHMyRr1_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cReceive_iA7ORvse_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cReceive_EN6EuY43_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cReceive_7cX3RB3o_sendMessage(HeavyContextInterface *, int, const HvMessage *);
-  static void cReceive_W2wxHT52_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cVar_grWCaW4p_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cCast_6HZcNku4_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cCast_ZwMOhwtf_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cCast_2KN9EZg0_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cMsg_RODCYcPN_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cMsg_hLaZLRRk_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cBinop_YWAl0xbV_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cSend_Wk1oeKzk_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cSend_mqPUqI12_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cReceive_hHKhPdyW_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cReceive_4rnrgOtS_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cReceive_ZRbF8LzW_sendMessage(HeavyContextInterface *, int, const HvMessage *);
+  static void cReceive_HJqiPwC4_sendMessage(HeavyContextInterface *, int, const HvMessage *);
 
   // objects
-  SignalPhasor sPhasor_fLsuA3b4;
-  SignalLine sLine_zIEzR8fZ;
-  ControlVar cVar_01SkLZkE;
-  ControlBinop cBinop_Wu8QBiY2;
-  SignalVarf sVarf_zBnfRPYi;
+  SignalPhasor sPhasor_z5fj0JKi;
+  SignalLine sLine_VXL0ae3m;
+  ControlVar cVar_grWCaW4p;
+  ControlBinop cBinop_YWAl0xbV;
+  SignalVarf sVarf_FH8hpn3Y;
 };
 
 #endif // _HEAVY_CONTEXT_DAISY_CONTROL_HPP_

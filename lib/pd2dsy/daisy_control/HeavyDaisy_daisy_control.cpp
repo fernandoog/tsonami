@@ -38,7 +38,7 @@
 
 using namespace daisy;
 
-json2daisy::DaisyCustomseed hardware;
+json2daisy::DaisyPod hardware;
 
 Heavy_daisy_control hv(SAMPLE_RATE);
 
@@ -130,12 +130,12 @@ void LoopWriteIn(Heavy_daisy_control& hv)
  */
 void CallbackWriteIn(Heavy_daisy_control& hv)
 {
- 
-  if ((hardware.sw1.RisingEdge()?1.f:0.f))
-    hv.sendBangToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_BUTTON1); 
-  hv.sendFloatToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_KNOB1, (hardware.knob1.Value())); 
   hv.sendFloatToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_BUTTON1_PRESS, (hardware.sw1.Pressed()?1.f:0.f)); 
+ 
+  if ((hardware.sw2.RisingEdge()?1.f:0.f))
+    hv.sendBangToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_BUTTON2); 
   hv.sendFloatToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_BUTTON2_PRESS, (hardware.sw2.Pressed()?1.f:0.f)); 
+  hv.sendFloatToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_KNOB2, (hardware.knob2.Value())); 
 }
 
 /** Writes the values sent to PD's receive objects to the Daisy hardware during the main loop

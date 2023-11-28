@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33              		@ link register save eliminated.
   25:source/HvControlBinop.c ****   switch (op) {
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 2
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 2
 
 
   34              		.loc 1 25 3 view .LVU1
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
   45:source/HvControlBinop.c ****     case HV_BINOP_BIT_XOR: return (float) ((int) f ^ (int) k);
   46:source/HvControlBinop.c ****     case HV_BINOP_BIT_OR: return (float) ((int) f | (int) k);
   47:source/HvControlBinop.c ****     case HV_BINOP_EQ: return (f == k) ? 1.0f : 0.0f;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 3
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 3
 
 
   48:source/HvControlBinop.c ****     case HV_BINOP_NEQ: return (f != k) ? 1.0f : 0.0f;
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  101 006c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  102 0070 E9DD     		ble	.L50
   57:source/HvControlBinop.c ****     case HV_BINOP_ATAN2: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : hv_atan2_f(f, k);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 4
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 4
 
 
  103              		.loc 1 57 44 discriminator 1 view .LVU14
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  145              	.LVL13:
  146              	.L10:
   52:source/HvControlBinop.c ****     case HV_BINOP_GREATER_THAN: return (f > k) ? 1.0f : 0.0f;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 5
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 5
 
 
  147              		.loc 1 52 34 is_stmt 1 view .LVU27
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
   48:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_AND: return ((f == 0.0f) || (k == 0.0f)) ? 0.0f : 1.0f;
  191              		.loc 1 48 24 is_stmt 1 view .LVU38
   49:source/HvControlBinop.c ****     case HV_BINOP_LOGICAL_OR: return ((f == 0.0f) && (k == 0.0f)) ? 0.0f : 1.0f;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 6
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 6
 
 
  192              		.loc 1 49 75 is_stmt 0 view .LVU39
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  235              	.L17:
   45:source/HvControlBinop.c ****     case HV_BINOP_BIT_OR: return (float) ((int) f | (int) k);
  236              		.loc 1 45 28 is_stmt 1 view .LVU51
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 7
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 7
 
 
   45:source/HvControlBinop.c ****     case HV_BINOP_BIT_OR: return (float) ((int) f | (int) k);
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  278 0180 10EE103A 		vmov	r3, s0	@ int
  279 0184 10EE902A 		vmov	r2, s1	@ int
  280 0188 1341     		asrs	r3, r3, r2
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 8
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 8
 
 
  281 018a 00EE103A 		vmov	s0, r3	@ int
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  322              		.loc 1 40 7 is_stmt 1 discriminator 1 view .LVU77
   40:source/HvControlBinop.c ****     }
  323              		.loc 1 40 43 is_stmt 0 discriminator 1 view .LVU78
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 9
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 9
 
 
  324 01dc B5EEC00A 		vcmpe.f32	s0, #0
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  365 021a BDEEE07A 		vcvt.s32.f32	s14, s1
  366 021e 17EE103A 		vmov	r3, s14	@ int
  367              	.LVL48:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 10
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 10
 
 
   32:source/HvControlBinop.c ****     }
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
   27:source/HvControlBinop.c ****     case HV_BINOP_MULTIPLY: return f * k;
  408              		.loc 1 27 29 is_stmt 1 view .LVU106
   27:source/HvControlBinop.c ****     case HV_BINOP_MULTIPLY: return f * k;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 11
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 11
 
 
  409              		.loc 1 27 38 is_stmt 0 view .LVU107
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
    8:source/HvMessage.h ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
    9:source/HvMessage.h ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
   10:source/HvMessage.h ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 12
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 12
 
 
   11:source/HvMessage.h ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
   65:source/HvMessage.h **** void msg_copyToBuffer(const HvMessage *m, char *buffer, hv_size_t len);
   66:source/HvMessage.h **** 
   67:source/HvMessage.h **** void msg_setElementToFrom(HvMessage *n, int indexN, const HvMessage *const m, int indexM);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 13
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 13
 
 
   68:source/HvMessage.h **** 
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  447              		.cfi_startproc
  448              		@ Volatile: function does not return.
  449              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 14
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 14
 
 
  450              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  498              		.loc 1 22 1 is_stmt 0 view .LVU121
  499 0008 7047     		bx	lr
  500              		.cfi_endproc
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 15
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 15
 
 
  501              	.LFE399:
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  536              		.loc 1 80 7 is_stmt 1 view .LVU127
  537              	.LVL64:
  538              	.LBB81:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 16
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 16
 
 
  539              	.LBI81:
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  576              	.LBB93:
  577              	.LBI93:
   90:source/HvMessage.h ****   return (int) m->numElements;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 17
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 17
 
 
  578              		.loc 2 90 19 view .LVU140
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
   71:source/HvControlBinop.c ****         HvMessage *n = HV_MESSAGE_ON_STACK(1);
  623              		.loc 1 71 9 is_stmt 1 view .LVU154
  624              	.LBB102:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 18
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 18
 
 
  625              	.LBI102:
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  666              	.LBE112:
  667              	.LBE127:
   91:source/HvMessage.h **** }
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 19
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 19
 
 
  668              		.loc 2 91 3 is_stmt 1 view .LVU172
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  713              	.LBB89:
  714              	.LBB85:
  715              	.LBI85:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 20
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 20
 
 
   99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  761              	.LBB109:
  762              	.LBB104:
  763              	.LBI104:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 21
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 21
 
 
   99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  122:source/HvMessage.h **** }
  806              		.loc 2 122 34 is_stmt 0 view .LVU209
  807 0062 D4ED050A 		vldr.32	s1, [r4, #20]
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 22
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 22
 
 
  808              	.LVL81:
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  850              	.LVL84:
  851              	.LFB402:
   88:source/HvControlBinop.c **** 
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 23
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 23
 
 
   89:source/HvControlBinop.c **** void cBinop_k_onMessage(HeavyContextInterface *_c, void *o, BinopType op, float k,
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
   94:source/HvControlBinop.c ****     float f = (msg_isFloat(m, 1)) ? msg_getFloat(m, 1) : k;
   95:source/HvControlBinop.c ****     HvMessage *n = HV_MESSAGE_ON_STACK(1);
   96:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 24
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 24
 
 
   97:source/HvControlBinop.c ****     msg_initWithFloat(n, msg_getTimestamp(m), f);
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  938              	.LBB176:
   94:source/HvControlBinop.c ****     HvMessage *n = HV_MESSAGE_ON_STACK(1);
  939              		.loc 1 94 5 is_stmt 1 view .LVU247
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 25
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 25
 
 
  940              	.LBB177:
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  982              	.L99:
  983              	.LBB203:
  984              	.LBB191:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 26
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 26
 
 
  985              	.LBB189:
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  1029              	.LBB194:
  1030              	.LBB184:
  1031              	.LBB179:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 27
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 27
 
 
  1032              	.LBI179:
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  1075              		.loc 1 95 5 is_stmt 1 view .LVU287
   95:source/HvControlBinop.c ****     f = cBinop_perform_op(op, msg_getFloat(m, 0), f);
  1076              		.loc 1 95 5 is_stmt 0 view .LVU288
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 28
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 28
 
 
  1077              	.LBE205:
@@ -1668,28 +1668,28 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 1
  1112              		.file 7 "source/HvControlBinop.h"
  1113              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
  1114              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/assert.h"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s 			page 29
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s 			page 29
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HvControlBinop.c
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:19     .text.cBinop_perform_op:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:25     .text.cBinop_perform_op:0000000000000000 cBinop_perform_op
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:42     .text.cBinop_perform_op:000000000000000c $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:66     .text.cBinop_perform_op:000000000000003c $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:425    .text.cBinop_perform_op:0000000000000264 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:430    .rodata.msg_getFloat.part.0.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:437    .text.msg_getFloat.part.0:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:443    .text.msg_getFloat.part.0:0000000000000000 msg_getFloat.part.0
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:467    .text.msg_getFloat.part.0:0000000000000010 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:474    .text.cBinop_init:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:481    .text.cBinop_init:0000000000000000 cBinop_init
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:504    .text.cBinop_onMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:511    .text.cBinop_onMessage:0000000000000000 cBinop_onMessage
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:842    .text.cBinop_k_onMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:849    .text.cBinop_k_onMessage:0000000000000000 cBinop_k_onMessage
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:1100   .rodata.__func__.0:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccQBPzP9.s:1104   .rodata.__func__.0:0000000000000000 __func__.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:19     .text.cBinop_perform_op:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:25     .text.cBinop_perform_op:0000000000000000 cBinop_perform_op
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:42     .text.cBinop_perform_op:000000000000000c $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:66     .text.cBinop_perform_op:000000000000003c $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:425    .text.cBinop_perform_op:0000000000000264 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:430    .rodata.msg_getFloat.part.0.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:437    .text.msg_getFloat.part.0:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:443    .text.msg_getFloat.part.0:0000000000000000 msg_getFloat.part.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:467    .text.msg_getFloat.part.0:0000000000000010 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:474    .text.cBinop_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:481    .text.cBinop_init:0000000000000000 cBinop_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:504    .text.cBinop_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:511    .text.cBinop_onMessage:0000000000000000 cBinop_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:842    .text.cBinop_k_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:849    .text.cBinop_k_onMessage:0000000000000000 cBinop_k_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:1100   .rodata.__func__.0:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cc6ckNTP.s:1104   .rodata.__func__.0:0000000000000000 __func__.0
 
 UNDEFINED SYMBOLS
 atan2f

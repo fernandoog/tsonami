@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
   12:source/HvLightPipe.c ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
   13:source/HvLightPipe.c ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
   14:source/HvLightPipe.c ****  * PERFORMANCE OF THIS SOFTWARE.
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 2
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 2
 
 
   15:source/HvLightPipe.c ****  */
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
   55              	.LVL1:
   47:source/HvLightPipe.c ****   if (numBytes > 0) {
   56              		.loc 1 47 6 view .LVU6
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 3
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 3
 
 
   57 0008 31B9     		cbnz	r1, .L7
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
   57:source/HvLightPipe.c ****   return numBytes;
   91              		.loc 1 57 21 view .LVU25
   92 002a C5E90344 		strd	r4, r4, [r5, #12]
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 4
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 4
 
 
   58:source/HvLightPipe.c **** }
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  145              		.thumb_func
  147              	hLp_hasData:
  148              	.LVL9:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 5
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 5
 
 
  149              	.LFB330:
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  194              	.LFB331:
   73:source/HvLightPipe.c **** 
   74:source/HvLightPipe.c **** char *hLp_getWriteBuffer(HvLightPipe *q, hv_uint32_t bytesToWrite) {
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 6
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 6
 
 
  195              		.loc 1 74 68 is_stmt 1 view -0
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  233 001a 1AD8     		bhi	.L19
  234              	.L21:
   86:source/HvLightPipe.c ****     else return (oldWriteHead + sizeof(hv_uint32_t));
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 7
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 7
 
 
  235              		.loc 1 86 10 is_stmt 1 view .LVU59
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
   90:source/HvLightPipe.c ****         return NULL; // overwrite condition
  267              		.loc 1 90 43 discriminator 1 view .LVU68
  268 0032 0668     		ldr	r6, [r0]
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 8
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 8
 
 
   90:source/HvLightPipe.c ****         return NULL; // overwrite condition
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  309              	.LVL25:
  310              		.loc 1 104 1 view .LVU84
  311 0050 7047     		bx	lr
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 9
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 9
 
 
  312              	.LVL26:
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  105:source/HvLightPipe.c **** 
  106:source/HvLightPipe.c **** void hLp_produce(HvLightPipe *q, hv_uint32_t numBytes) {
  360              		.loc 1 106 56 is_stmt 1 view -0
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 10
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 10
 
 
  361              		.cfi_startproc
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  401              		.syntax unified
  402 0028 1160     		str	r1, [r2]
  118:source/HvLightPipe.c **** }
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 11
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 11
 
 
  403              		.loc 1 118 1 is_stmt 0 view .LVU106
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  452 0006 0B60     		str	r3, [r1]
  122:source/HvLightPipe.c ****   char *const readBuffer = q->readHead + sizeof(hv_uint32_t);
  453              		.loc 1 122 3 is_stmt 1 view .LVU116
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 12
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 12
 
 
  454              	.LVL40:
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  498              	.L36:
  127:source/HvLightPipe.c ****   q->readHead += sizeof(hv_uint32_t) + HLP_GET_UINT32_AT_BUFFER(q->readHead);
  499              		.loc 1 127 3 discriminator 1 view .LVU127
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 13
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 13
 
 
  500 0010 024B     		ldr	r3, .L37
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  545              		.loc 1 134 3 is_stmt 1 view .LVU136
  134:source/HvLightPipe.c ****   memset(q->buffer, 0, q->len);
  546              		.loc 1 134 21 is_stmt 0 view .LVU137
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 14
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 14
 
 
  547 000c 1A61     		str	r2, [r3, #16]
@@ -817,39 +817,39 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 1
  581              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/assert.h"
  582              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
  583              		.file 7 "<built-in>"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s 			page 15
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HvLightPipe.c
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:19     .rodata.hLp_init.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:26     .text.hLp_init:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:33     .text.hLp_init:0000000000000000 hLp_init
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:108    .text.hLp_init:000000000000003c $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:115    .text.hLp_free:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:122    .text.hLp_free:0000000000000000 hLp_free
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:140    .text.hLp_hasData:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:147    .text.hLp_hasData:0000000000000000 hLp_hasData
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:185    .text.hLp_getWriteBuffer:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:192    .text.hLp_getWriteBuffer:0000000000000000 hLp_getWriteBuffer
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:345    .rodata.hLp_produce.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:350    .text.hLp_produce:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:357    .text.hLp_produce:0000000000000000 hLp_produce
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:423    .text.hLp_produce:0000000000000038 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:430    .text.hLp_getReadBuffer:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:437    .text.hLp_getReadBuffer:0000000000000000 hLp_getReadBuffer
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:462    .rodata.hLp_consume.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:466    .text.hLp_consume:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:473    .text.hLp_consume:0000000000000000 hLp_consume
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:511    .text.hLp_consume:000000000000001c $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:518    .text.hLp_reset:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:525    .text.hLp_reset:0000000000000000 hLp_reset
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:556    .rodata.__func__.0:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:560    .rodata.__func__.0:0000000000000000 __func__.0
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:563    .rodata.__func__.1:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:567    .rodata.__func__.1:0000000000000000 __func__.1
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:570    .rodata.__func__.2:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccJIIwO5.s:574    .rodata.__func__.2:0000000000000000 __func__.2
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:19     .rodata.hLp_init.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:26     .text.hLp_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:33     .text.hLp_init:0000000000000000 hLp_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:108    .text.hLp_init:000000000000003c $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:115    .text.hLp_free:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:122    .text.hLp_free:0000000000000000 hLp_free
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:140    .text.hLp_hasData:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:147    .text.hLp_hasData:0000000000000000 hLp_hasData
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:185    .text.hLp_getWriteBuffer:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:192    .text.hLp_getWriteBuffer:0000000000000000 hLp_getWriteBuffer
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:345    .rodata.hLp_produce.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:350    .text.hLp_produce:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:357    .text.hLp_produce:0000000000000000 hLp_produce
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:423    .text.hLp_produce:0000000000000038 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:430    .text.hLp_getReadBuffer:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:437    .text.hLp_getReadBuffer:0000000000000000 hLp_getReadBuffer
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:462    .rodata.hLp_consume.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:466    .text.hLp_consume:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:473    .text.hLp_consume:0000000000000000 hLp_consume
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:511    .text.hLp_consume:000000000000001c $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:518    .text.hLp_reset:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:525    .text.hLp_reset:0000000000000000 hLp_reset
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:556    .rodata.__func__.0:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:560    .rodata.__func__.0:0000000000000000 __func__.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:563    .rodata.__func__.1:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:567    .rodata.__func__.1:0000000000000000 __func__.1
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:570    .rodata.__func__.2:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSB8xHp.s:574    .rodata.__func__.2:0000000000000000 __func__.2
 
 UNDEFINED SYMBOLS
 malloc

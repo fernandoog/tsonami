@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   27:source/HeavyContext.hpp **** class HeavyContext : public HeavyContextInterface {
   28:source/HeavyContext.hpp **** 
   29:source/HeavyContext.hpp ****  public:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 2
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 2
 
 
   30:source/HeavyContext.hpp ****   HeavyContext(double sampleRate, int poolKb=10, int inQueueKb=2, int outQueueKb=0);
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   80              		@ args = 0, pretend = 0, frame = 0
   81              		@ frame_needed = 0, uses_anonymous_args = 0
   82              		@ link register save eliminated.
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 3
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 3
 
 
   83              		.loc 1 37 45 view .LVU8
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  140              	.LFB970:
   39:source/HeavyContext.hpp ****   hv_uint32_t millisecondsToSamples(float ms) override { return (hv_uint32_t) (hv_max_f(0.0f,ms)*sa
   40:source/HeavyContext.hpp **** 
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 4
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 4
 
 
   41:source/HeavyContext.hpp ****   void setUserData(void *x) override { userData = x; }
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  194              		@ link register save eliminated.
  195              		.loc 1 45 48 view .LVU27
  196              		.loc 1 45 57 is_stmt 0 view .LVU28
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 5
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 5
 
 
  197 0000 0165     		str	r1, [r0, #80]
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  253              		.align	1
  254              		.p2align 2,,3
  255              		.weak	_ZN12HeavyContext12getPrintHookEv
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 6
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 6
 
 
  256              		.syntax unified
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   24:source/HeavyContext.cpp ****   ReceiverMessagePair *p = reinterpret_cast<ReceiverMessagePair *>(hLp_getWriteBuffer(&thisContext-
   25:source/HeavyContext.cpp ****   if (p != nullptr) {
   26:source/HeavyContext.cpp ****     p->receiverHash = sendHash;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 7
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 7
 
 
   27:source/HeavyContext.cpp ****     msg_copyToBuffer(msg, (char *) &p->msg, msg_getSize(msg));
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   81:source/HeavyContext.cpp **** 
   82:source/HeavyContext.cpp **** bool HeavyContext::sendSymbolToReceiver(hv_uint32_t receiverHash, const char *s) {
   83:source/HeavyContext.cpp ****   hv_assert(s != nullptr);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 8
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 8
 
 
   84:source/HeavyContext.cpp ****   HvMessage *m = HV_MESSAGE_ON_STACK(1);
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  138:source/HeavyContext.cpp **** 
  139:source/HeavyContext.cpp **** bool HeavyContext::cancelMessage(HvMessage *m, void (*sendMessage)(HeavyContextInterface *, int, co
  140:source/HeavyContext.cpp ****   return mq_removeMessage(&mq, m, sendMessage);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 9
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 9
 
 
  141:source/HeavyContext.cpp **** }
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   18:source/HvTable.h **** #define _HEAVY_TABLE_H_
   19:source/HvTable.h **** 
   20:source/HvTable.h **** #include "HvHeavy.h"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 10
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 10
 
 
   21:source/HvTable.h **** #include "HvUtils.h"
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  327              		.section	.text._ZN12HeavyContext17getLengthForTableEm,"ax",%progbits
  328              		.align	1
  329              		.p2align 2,,3
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 11
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 11
 
 
  330              		.global	_ZN12HeavyContext17getLengthForTableEm
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  372              		.cfi_endproc
  373              	.LFE998:
  375              		.section	.text._ZN12HeavyContext11lockReleaseEv,"ax",%progbits
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 12
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 12
 
 
  376              		.align	1
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   18:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h **** // 3.1, as published by the Free Software Foundation.
   19:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h **** 
   20:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h **** // You should have received a copy of the GNU General Public License and
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 13
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 13
 
 
   21:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h **** // a copy of the GCC Runtime Library Exception along with this program;
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   75:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     {
   76:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****       memory_order_relaxed,
   77:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****       memory_order_consume,
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 14
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 14
 
 
   78:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****       memory_order_acquire,
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  132:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     {
  133:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****       _Tp __ret(__y);
  134:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****       return __ret;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 15
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 15
 
 
  135:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     }
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  189:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     ~atomic_flag() noexcept = default;
  190:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     atomic_flag(const atomic_flag&) = delete;
  191:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     atomic_flag& operator=(const atomic_flag&) = delete;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 16
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 16
 
 
  192:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     atomic_flag& operator=(const atomic_flag&) volatile = delete;
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  415              		.loc 2 182 1 view .LVU78
  416 000a 7047     		bx	lr
  417              		.cfi_endproc
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 17
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 17
 
 
  418              	.LFE1002:
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   36:source/HvMessage.h ****     float f; // float
   37:source/HvMessage.h ****     const char *s; // symbol
   38:source/HvMessage.h ****     hv_uint32_t h; // hash
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 18
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 18
 
 
   39:source/HvMessage.h ****   } data;
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   70:source/HeavyContext.cpp ****   bool success = sendMessageToReceiver(receiverHash, 0.0, m);
  464              		.loc 2 70 19 view .LVU89
  465 0012 7A60     		str	r2, [r7, #4]
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 19
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 19
 
 
  466 0014 FFF7FEFF 		bl	msg_initWithBang
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   76:source/HeavyContext.cpp ****   msg_initWithFloat(m, 0, f);
  514              		.loc 2 76 3 view .LVU98
   58:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 20
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 20
 
 
  515              		.loc 5 58 3 view .LVU99
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   80:source/HeavyContext.cpp **** 
  558              		.loc 2 80 1 is_stmt 0 view .LVU112
  559 0028 0837     		adds	r7, r7, #8
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 21
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 21
 
 
  560              		.cfi_def_cfa_offset 16
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   82:source/HeavyContext.cpp ****   hv_assert(s != nullptr);
  599              		.loc 2 82 82 is_stmt 1 view -0
  600              		.cfi_startproc
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 22
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 22
 
 
  601              		@ args = 0, pretend = 0, frame = 0
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  641              		.loc 2 86 39 view .LVU130
  642 0018 3246     		mov	r2, r6
  643 001a 2946     		mov	r1, r5
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 23
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 23
 
 
  644 001c DB6C     		ldr	r3, [r3, #76]
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  172:source/HeavyContext.cpp ****   HV_SPINLOCK_ACQUIRE(inQueueLock);
  694              		.loc 2 172 34 is_stmt 1 view -0
  695              		.cfi_startproc
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 24
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 24
 
 
  696              		@ args = 0, pretend = 0, frame = 0
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  741              		.thumb
  742              		.thumb_func
  744              	_ZN12HeavyContext7lockTryEv:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 25
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 25
 
 
  745              	.LVL57:
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  792              		.cfi_startproc
  793              		@ args = 0, pretend = 0, frame = 0
  794              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 26
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 26
 
 
  795              		@ link register save eliminated.
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  167:source/HeavyContext.cpp ****     return true;
  839              		.loc 2 167 5 view .LVU169
  167:source/HeavyContext.cpp ****     return true;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 27
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 27
 
 
  840              		.loc 2 167 18 is_stmt 0 view .LVU170
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   39:source/HeavyContext.hpp **** 
  884              		.loc 1 39 108 view .LVU183
  885 0018 80EE067B 		vdiv.f64	d7, d0, d6
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 28
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 28
 
 
   39:source/HeavyContext.hpp **** 
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  915              		.p2align 2,,3
  916              		.global	_Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage
  917              		.syntax unified
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 29
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 29
 
 
  918              		.thumb
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   92:source/HvMessage.h **** }
   93:source/HvMessage.h **** 
   94:source/HvMessage.h **** /** Returns the total number of bytes this message consumes in memory. */
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 30
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 30
 
 
   95:source/HvMessage.h **** static inline hv_uint32_t msg_getSize(const HvMessage *m) {
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  977              		.loc 2 27 21 view .LVU204
  978 001a E288     		ldrh	r2, [r4, #6]
  979 001c 2046     		mov	r0, r4
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 31
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 31
 
 
  980              	.LVL75:
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1024 0038 0348     		ldr	r0, .L56+8
  1025              	.LVL80:
   30:source/HeavyContext.cpp ****         "::defaultSendHook - The out message queue is full and cannot accept more messages until th
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 32
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 32
 
 
  1026              		.loc 2 30 5 is_stmt 0 view .LVU217
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1070 0002 0C1E     		subs	r4, r1, #0
  184:source/HeavyContext.cpp ****   hv_assert(inQueueKb > 0);
  1071              		.loc 2 184 60 view .LVU222
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 33
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 33
 
 
  1072 0004 82B0     		sub	sp, sp, #8
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1118              	.L63:
  1119 002a 00BF     		.align	2
  1120              	.L62:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 34
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 34
 
 
  1121 002c 00000000 		.word	.LC5
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1164 0006 0ADD     		ble	.L67
  192:source/HeavyContext.cpp ****   hLp_free(&outQueue);
  1165              		.loc 2 192 3 is_stmt 1 view .LVU241
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 35
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 35
 
 
  1166              		.loc 2 192 11 is_stmt 0 view .LVU242
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1213              	.LBE129:
  1214              	.LBE128:
  1215              		.cfi_endproc
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 36
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 36
 
 
  1216              	.LFE1004:
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1235      6F662852 
  1236              		.align	2
  1237              	.LC13:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 37
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 37
 
 
  1238 0164 286E756D 		.ascii	"(numBytes <= msgLengthBytes) && \"::getNextSentMess"
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1274              		.loc 2 199 3 view .LVU257
  1275 000c 294B     		ldr	r3, .L87
  1276              	.LVL100:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 38
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 38
 
 
  197:source/HeavyContext.cpp ****   ReceiverMessagePair *p = nullptr;
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  202:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     }
  1319              		.loc 4 202 36 view .LVU270
  1320 0030 BFF35B8F 		dmb	ish
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 39
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 39
 
 
  1321              	.LBE145:
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1364              	.LBE148:
  1365 005e 0124     		movs	r4, #1
  1366              	.LBB149:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 40
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 40
 
 
  212:source/HeavyContext.cpp ****       hv_memcpy(outMsg, &p->msg, numBytes);
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1408              		.loc 4 219 22 view .LVU303
  1409 0074 BFF35B8F 		dmb	ish
  1410 0078 85F88530 		strb	r3, [r5, #133]
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 41
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 41
 
 
  1411              	.LVL112:
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  209:source/HeavyContext.cpp ****           "::getNextSentMessage - the sent message is bigger than the message "
  1459              		.loc 2 209 7 view .LVU312
  1460 00a2 FFF7FEFF 		bl	__assert_func
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 42
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 42
 
 
  1461              	.LVL119:
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1506              	_Z13_hv_table_getP21HeavyContextInterfacem.part.0:
  1507              	.LFB1036:
  220:source/HeavyContext.cpp **** 
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 43
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 43
 
 
  221:source/HeavyContext.cpp **** hv_uint32_t HeavyContext::getHashForString(const char *str) {
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  228:source/HeavyContext.cpp **** }
  229:source/HeavyContext.cpp **** 
  230:source/HeavyContext.cpp **** void _hv_scheduleMessageForReceiver(HeavyContextInterface *c, hv_uint32_t receiverHash, HvMessage *
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 44
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 44
 
 
  1549              		.loc 2 230 6 is_stmt 1 view -0
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  233:source/HeavyContext.cpp **** }
  234:source/HeavyContext.cpp **** 
  235:source/HeavyContext.cpp **** HvMessage *_hv_scheduleMessageForObject(HeavyContextInterface *c, const HvMessage *m,
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 45
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 45
 
 
  1591              		.loc 2 235 12 is_stmt 1 view -0
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1629 006d 000000   		.align	2
  1630              	.LC21:
  1631 0070 66616C73 		.ascii	"false && \"::sendMessageToReceiver - The input mess"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 46
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 46
 
 
  1631      65202626 
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1667              		.cfi_offset 80, -48
  1668              		.cfi_offset 81, -44
  115:source/HeavyContext.cpp ****   hv_assert(m != nullptr);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 47
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 47
 
 
  1669              		.loc 2 115 3 view .LVU328
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  202:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     }
  1711              		.loc 4 202 37 view .LVU341
  1712 0038 05F18403 		add	r3, r5, #132
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 48
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 48
 
 
  1713              	.LBE177:
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1754              	.LBI180:
   95:source/HvMessage.h ****   return m->numBytes;
  1755              		.loc 5 95 27 view .LVU355
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 49
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 49
 
 
  1756              	.LBB181:
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  128:source/HeavyContext.cpp ****     hLp_produce(&inQueue, numBytes);
  1798              		.loc 2 128 5 is_stmt 1 view .LVU372
  1799              	.LBB184:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 50
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 50
 
 
  1800              	.LBI184:
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1839              		.loc 2 137 1 is_stmt 0 view .LVU390
  1840 00a4 0120     		movs	r0, #1
  1841 00a6 BDEC028B 		vldm	sp!, {d8}
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 51
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 51
 
 
  1842              		.cfi_remember_state
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1886 00ce 084A     		ldr	r2, .L116+24
  1887              	.LVL153:
  115:source/HeavyContext.cpp ****   hv_assert(m != nullptr);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 52
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 52
 
 
  1888              		.loc 2 115 3 discriminator 1 view .LVU401
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1924      73675F67 
  1924      6574436F 
  1924      72655369 
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 53
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 53
 
 
  1925 009b 00       		.align	2
@@ -3178,7 +3178,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  1954              	_ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:
  1955              	.LVL156:
  1956              	.LFB993:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 54
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 54
 
 
   90:source/HeavyContext.cpp ****   hv_assert(delayMs >= 0.0);
@@ -3238,7 +3238,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   94:source/HeavyContext.cpp ****   va_start(ap, format);
  2000              		.loc 2 94 3 view .LVU415
   95:source/HeavyContext.cpp ****   const int numElem = (int) hv_strlen(format);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 55
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 55
 
 
  2001              		.loc 2 95 3 view .LVU416
@@ -3298,7 +3298,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   97:source/HeavyContext.cpp ****   msg_init(m, numElem, blockStartTimestamp + (hv_uint32_t) (hv_max_d(0.0, delayMs)*getSampleRate()/
  2041              		.loc 2 97 18 view .LVU431
  2042 0058 E846     		mov	r8, sp
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 56
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 56
 
 
  2043              	.LVL160:
@@ -3358,7 +3358,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2084              		.loc 2 99 21 view .LVU444
  2085              	.L135:
  100:source/HeavyContext.cpp ****       case 'b': msg_setBang(m, i); break;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 57
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 57
 
 
  2086              		.loc 2 100 5 view .LVU445
@@ -3418,7 +3418,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2126              		.loc 5 91 19 is_stmt 0 view .LVU452
  2127 00aa B8F80430 		ldrh	r3, [r8, #4]
  2128              	.LBE224:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 58
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 58
 
 
  2129              	.LBE223:
@@ -3478,7 +3478,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2172 00d4 BD46     		mov	sp, r7
  2173              		.cfi_def_cfa_register 13
  2174              		@ sp needed
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 59
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 59
 
 
  2175 00d6 BDEC048B 		vldm	sp!, {d8-d9}
@@ -3538,7 +3538,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  123:source/HvMessage.h **** }
  124:source/HvMessage.h **** 
  125:source/HvMessage.h **** static inline bool msg_isFloat(const HvMessage *const m, int index) {
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 60
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 60
 
 
  126:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
@@ -3598,7 +3598,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2233              		.loc 5 150 28 is_stmt 0 view .LVU484
  2234 00f2 0223     		movs	r3, #2
  151:source/HvMessage.h ****   (&(m->elem)+index)->data.s = s;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 61
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 61
 
 
  2235              		.loc 5 151 30 view .LVU485
@@ -3658,7 +3658,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2277 0114 FB68     		ldr	r3, [r7, #12]
  2278              	.LBB242:
  2279              	.LBB243:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 62
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 62
 
 
  2280              	.LBB244:
@@ -3718,7 +3718,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2321              	.LVL175:
  2322              	.LBB255:
  2323              	.LBB250:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 63
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 63
 
 
  131:source/HvMessage.h ****   (&(m->elem)+index)->data.h = h;
@@ -3778,7 +3778,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  115:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_FLOAT;
  2365              		.loc 5 115 3 view .LVU527
  2366 013c A242     		cmp	r2, r4
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 64
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 64
 
 
  2367              	.LBE263:
@@ -3838,7 +3838,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2407              		.loc 5 116 28 view .LVU541
  2408 0154 0123     		movs	r3, #1
  117:source/HvMessage.h **** }
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 65
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 65
 
 
  2409              		.loc 5 117 30 view .LVU542
@@ -3898,7 +3898,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2453              	.LVL184:
  2454              	.L141:
  148:source/HvMessage.h ****   hv_assert(s != NULL);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 66
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 66
 
 
  2455              		.loc 5 148 3 view .LVU553
@@ -3958,7 +3958,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2501              	.LBB278:
  2502              	.LBB237:
  149:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_SYMBOL;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 67
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 67
 
 
  2503              		.loc 5 149 3 view .LVU562
@@ -4018,7 +4018,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2548              	.LVL196:
  2549              	.L138:
   91:source/HeavyContext.cpp ****   hv_assert(format != nullptr);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 68
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 68
 
 
  2550              		.loc 2 91 3 discriminator 1 view .LVU572
@@ -4078,7 +4078,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2594 0046 0000     		.align	2
  2595              	.LC35:
  2596 0048 706F6F6C 		.ascii	"poolKb > 0\000"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 69
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 69
 
 
  2596      4B62203E 
@@ -4138,7 +4138,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
   28:source/HeavyContextInterface.hpp **** typedef enum {
   29:source/HeavyContextInterface.hpp ****   HV_PARAM_TYPE_PARAMETER_IN,
   30:source/HeavyContextInterface.hpp ****   HV_PARAM_TYPE_PARAMETER_OUT,
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 70
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 70
 
 
   31:source/HeavyContextInterface.hpp ****   HV_PARAM_TYPE_EVENT_IN,
@@ -4198,7 +4198,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2643 000e 80ED020B 		vstr.64	d0, [r0, #8]
   39:source/HeavyContext.cpp ****   hv_assert(poolKb > 0);
  2644              		.loc 2 39 3 is_stmt 1 view .LVU585
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 71
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 71
 
 
   37:source/HeavyContext.cpp **** 
@@ -4258,7 +4258,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  212:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****     {
  2683              		.loc 4 212 5 view .LVU602
  2684              	.LBB286:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 72
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 72
 
 
  214:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/atomic_base.h ****       __glibcxx_assert(__b != memory_order_consume);
@@ -4318,7 +4318,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2724 0056 6369     		ldr	r3, [r4, #20]
   58:source/HeavyContext.cpp ****   numBytes += hLp_init(&outQueue, outQueueKb * 1024); // outQueueKb value of 0 sets everything to N
  2725              		.loc 2 58 23 view .LVU624
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 73
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 73
 
 
  2726 0058 B102     		lsls	r1, r6, #10
@@ -4378,7 +4378,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2764 0082 70BD     		pop	{r4, r5, r6, pc}
  2765              	.LVL210:
  2766              	.L157:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 74
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 74
 
 
  2767              	.LBB292:
@@ -4438,7 +4438,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2809              	.L158:
   40:source/HeavyContext.cpp ****   hv_assert(inQueueKb > 0);
  2810              		.loc 2 40 3 discriminator 1 view .LVU653
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 75
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 75
 
 
  2811 00a8 094B     		ldr	r3, .L161+28
@@ -4498,7 +4498,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2860              		.loc 2 62 1 view .LVU660
  2861 0002 10B5     		push	{r4, lr}
  2862              		.cfi_def_cfa_offset 8
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 76
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 76
 
 
  2863              		.cfi_offset 4, -8
@@ -4558,7 +4558,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2907              		.p2align 2,,3
  2908              		.global	_ZN12HeavyContextD0Ev
  2909              		.syntax unified
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 77
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 77
 
 
  2910              		.thumb
@@ -4618,7 +4618,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  2953 001a FFF7FEFF 		bl	hLp_free
  2954              	.LVL238:
  2955              	.LBB304:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 78
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 78
 
 
  2956              	.LBI304:
@@ -4678,7 +4678,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  3004 0006 6346     		mov	r3, ip
  3005              	.LVL244:
  146:source/HeavyContext.cpp ****   return n;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 79
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 79
 
 
  3006              		.loc 2 146 42 view .LVU695
@@ -4738,7 +4738,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  3055              		.loc 2 227 72 is_stmt 0 view .LVU704
  3056 0002 0368     		ldr	r3, [r0]
  227:source/HeavyContext.cpp **** }
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 80
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 80
 
 
  3057              		.loc 2 227 62 view .LVU705
@@ -4798,7 +4798,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  230:source/HeavyContext.cpp ****   hv_assert(c != nullptr);
  3105              		.loc 2 230 103 discriminator 1 view .LVU714
  3106              		.cfi_endproc
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 81
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 81
 
 
  3107              	.LFE1008:
@@ -4858,7 +4858,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  3153              		.cfi_offset 4, -8
  3154              		.cfi_offset 14, -4
  3155 0010 FFF7FEFF 		bl	_Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 82
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 82
 
 
  3156              	.LVL260:
@@ -4918,7 +4918,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  3194              		.loc 2 248 72 view .LVU735
  3195 000a 10B5     		push	{r4, lr}
  3196              		.cfi_def_cfa_offset 8
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 83
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 83
 
 
  3197              		.cfi_offset 4, -8
@@ -4978,7 +4978,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  252:source/HeavyContext.cpp ****   _hv_scheduleMessageForReceiver(c, receiverHash, m);
  3242              		.loc 2 252 102 view .LVU745
  3243 000a 10B5     		push	{r4, lr}
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 84
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 84
 
 
  3244              		.cfi_def_cfa_offset 8
@@ -5038,7 +5038,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  3287              		.loc 2 146 42 is_stmt 0 view .LVU754
  3288 0004 1830     		adds	r0, r0, #24
  3289              	.LVL269:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 85
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 85
 
 
  146:source/HeavyContext.cpp ****   return n;
@@ -5098,7 +5098,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  3341 0038 00000000 		.word	_ZN12HeavyContext11setSendHookEPFvP21HeavyContextInterfacePKcmPK9HvMessageE
  3342 003c 00000000 		.word	_ZN12HeavyContext11getSendHookEv
  3343 0040 00000000 		.word	_ZN12HeavyContext12setPrintHookEPFvP21HeavyContextInterfacePKcS3_PK9HvMessageE
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 86
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 86
 
 
  3344 0044 00000000 		.word	_ZN12HeavyContext12getPrintHookEv
@@ -5145,133 +5145,133 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 1
  3385              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/assert.h"
  3386              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
  3387              		.file 26 "<built-in>"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 87
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 87
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HeavyContext.cpp
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:19     .text._ZN12HeavyContext7getSizeEv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:26     .text._ZN12HeavyContext7getSizeEv:0000000000000000 _ZN12HeavyContext7getSizeEv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:45     .text._ZN12HeavyContext13getSampleRateEv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:52     .text._ZN12HeavyContext13getSampleRateEv:0000000000000000 _ZN12HeavyContext13getSampleRateEv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:68     .text._ZN12HeavyContext16getCurrentSampleEv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:75     .text._ZN12HeavyContext16getCurrentSampleEv:0000000000000000 _ZN12HeavyContext16getCurrentSampleEv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:93     .text._ZN12HeavyContext21samplesToMillisecondsEm:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:100    .text._ZN12HeavyContext21samplesToMillisecondsEm:0000000000000000 _ZN12HeavyContext21samplesToMillisecondsEm
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:125    .text._ZN12HeavyContext21samplesToMillisecondsEm:0000000000000020 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:131    .text._ZN12HeavyContext11setUserDataEPv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:138    .text._ZN12HeavyContext11setUserDataEPv:0000000000000000 _ZN12HeavyContext11setUserDataEPv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:155    .text._ZN12HeavyContext11getUserDataEv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:162    .text._ZN12HeavyContext11getUserDataEv:0000000000000000 _ZN12HeavyContext11getUserDataEv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:180    .text._ZN12HeavyContext11setSendHookEPFvP21HeavyContextInterfacePKcmPK9HvMessageE:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:187    .text._ZN12HeavyContext11setSendHookEPFvP21HeavyContextInterfacePKcmPK9HvMessageE:0000000000000000 _ZN12HeavyContext11setSendHookEPFvP21HeavyContextInterfacePKcmPK9HvMessageE
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:204    .text._ZN12HeavyContext11getSendHookEv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:211    .text._ZN12HeavyContext11getSendHookEv:0000000000000000 _ZN12HeavyContext11getSendHookEv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:229    .text._ZN12HeavyContext12setPrintHookEPFvP21HeavyContextInterfacePKcS3_PK9HvMessageE:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:236    .text._ZN12HeavyContext12setPrintHookEPFvP21HeavyContextInterfacePKcS3_PK9HvMessageE:0000000000000000 _ZN12HeavyContext12setPrintHookEPFvP21HeavyContextInterfacePKcS3_PK9HvMessageE
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:253    .text._ZN12HeavyContext12getPrintHookEv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:260    .text._ZN12HeavyContext12getPrintHookEv:0000000000000000 _ZN12HeavyContext12getPrintHookEv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:278    .text._ZN12HeavyContext17getBufferForTableEm:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:285    .text._ZN12HeavyContext17getBufferForTableEm:0000000000000000 _ZN12HeavyContext17getBufferForTableEm
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:328    .text._ZN12HeavyContext17getLengthForTableEm:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:335    .text._ZN12HeavyContext17getLengthForTableEm:0000000000000000 _ZN12HeavyContext17getLengthForTableEm
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:376    .text._ZN12HeavyContext11lockReleaseEv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:383    .text._ZN12HeavyContext11lockReleaseEv:0000000000000000 _ZN12HeavyContext11lockReleaseEv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:421    .text._ZN12HeavyContext18sendBangToReceiverEm:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:428    .text._ZN12HeavyContext18sendBangToReceiverEm:0000000000000000 _ZN12HeavyContext18sendBangToReceiverEm
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:494    .text._ZN12HeavyContext18sendBangToReceiverEm:0000000000000030 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:500    .text._ZN12HeavyContext19sendFloatToReceiverEmf:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:507    .text._ZN12HeavyContext19sendFloatToReceiverEmf:0000000000000000 _ZN12HeavyContext19sendFloatToReceiverEmf
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:572    .text._ZN12HeavyContext19sendFloatToReceiverEmf:0000000000000030 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:578    .rodata._ZN12HeavyContext20sendSymbolToReceiverEmPKc.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:589    .text._ZN12HeavyContext20sendSymbolToReceiverEmPKc:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:596    .text._ZN12HeavyContext20sendSymbolToReceiverEmPKc:0000000000000000 _ZN12HeavyContext20sendSymbolToReceiverEmPKc
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:675    .text._ZN12HeavyContext20sendSymbolToReceiverEmPKc:0000000000000038 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:684    .text._ZN12HeavyContext11lockAcquireEv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:691    .text._ZN12HeavyContext11lockAcquireEv:0000000000000000 _ZN12HeavyContext11lockAcquireEv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:737    .text._ZN12HeavyContext7lockTryEv:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:744    .text._ZN12HeavyContext7lockTryEv:0000000000000000 _ZN12HeavyContext7lockTryEv
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:781    .text._ZN12HeavyContext13cancelMessageEP9HvMessagePFvP21HeavyContextInterfaceiPKS0_E:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:788    .text._ZN12HeavyContext13cancelMessageEP9HvMessagePFvP21HeavyContextInterfaceiPKS0_E:0000000000000000 _ZN12HeavyContext13cancelMessageEP9HvMessagePFvP21HeavyContextInterfaceiPKS0_E
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:808    .text._ZN12HeavyContext17setLengthForTableEmm:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:815    .text._ZN12HeavyContext17setLengthForTableEmm:0000000000000000 _ZN12HeavyContext17setLengthForTableEmm
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:855    .text._ZN12HeavyContext21millisecondsToSamplesEf:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:862    .text._ZN12HeavyContext21millisecondsToSamplesEf:0000000000000000 _ZN12HeavyContext21millisecondsToSamplesEf
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:895    .text._ZN12HeavyContext21millisecondsToSamplesEf:0000000000000028 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:902    .rodata._Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:914    .text._Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:921    .text._Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage:0000000000000000 _Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1032   .text._Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage:0000000000000040 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1041   .rodata._ZN12HeavyContext24setInputMessageQueueSizeEi.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1049   .text._ZN12HeavyContext24setInputMessageQueueSizeEi:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1056   .text._ZN12HeavyContext24setInputMessageQueueSizeEi:0000000000000000 _ZN12HeavyContext24setInputMessageQueueSizeEi
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 88
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:19     .text._ZN12HeavyContext7getSizeEv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:26     .text._ZN12HeavyContext7getSizeEv:0000000000000000 _ZN12HeavyContext7getSizeEv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:45     .text._ZN12HeavyContext13getSampleRateEv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:52     .text._ZN12HeavyContext13getSampleRateEv:0000000000000000 _ZN12HeavyContext13getSampleRateEv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:68     .text._ZN12HeavyContext16getCurrentSampleEv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:75     .text._ZN12HeavyContext16getCurrentSampleEv:0000000000000000 _ZN12HeavyContext16getCurrentSampleEv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:93     .text._ZN12HeavyContext21samplesToMillisecondsEm:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:100    .text._ZN12HeavyContext21samplesToMillisecondsEm:0000000000000000 _ZN12HeavyContext21samplesToMillisecondsEm
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:125    .text._ZN12HeavyContext21samplesToMillisecondsEm:0000000000000020 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:131    .text._ZN12HeavyContext11setUserDataEPv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:138    .text._ZN12HeavyContext11setUserDataEPv:0000000000000000 _ZN12HeavyContext11setUserDataEPv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:155    .text._ZN12HeavyContext11getUserDataEv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:162    .text._ZN12HeavyContext11getUserDataEv:0000000000000000 _ZN12HeavyContext11getUserDataEv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:180    .text._ZN12HeavyContext11setSendHookEPFvP21HeavyContextInterfacePKcmPK9HvMessageE:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:187    .text._ZN12HeavyContext11setSendHookEPFvP21HeavyContextInterfacePKcmPK9HvMessageE:0000000000000000 _ZN12HeavyContext11setSendHookEPFvP21HeavyContextInterfacePKcmPK9HvMessageE
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:204    .text._ZN12HeavyContext11getSendHookEv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:211    .text._ZN12HeavyContext11getSendHookEv:0000000000000000 _ZN12HeavyContext11getSendHookEv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:229    .text._ZN12HeavyContext12setPrintHookEPFvP21HeavyContextInterfacePKcS3_PK9HvMessageE:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:236    .text._ZN12HeavyContext12setPrintHookEPFvP21HeavyContextInterfacePKcS3_PK9HvMessageE:0000000000000000 _ZN12HeavyContext12setPrintHookEPFvP21HeavyContextInterfacePKcS3_PK9HvMessageE
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:253    .text._ZN12HeavyContext12getPrintHookEv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:260    .text._ZN12HeavyContext12getPrintHookEv:0000000000000000 _ZN12HeavyContext12getPrintHookEv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:278    .text._ZN12HeavyContext17getBufferForTableEm:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:285    .text._ZN12HeavyContext17getBufferForTableEm:0000000000000000 _ZN12HeavyContext17getBufferForTableEm
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:328    .text._ZN12HeavyContext17getLengthForTableEm:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:335    .text._ZN12HeavyContext17getLengthForTableEm:0000000000000000 _ZN12HeavyContext17getLengthForTableEm
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:376    .text._ZN12HeavyContext11lockReleaseEv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:383    .text._ZN12HeavyContext11lockReleaseEv:0000000000000000 _ZN12HeavyContext11lockReleaseEv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:421    .text._ZN12HeavyContext18sendBangToReceiverEm:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:428    .text._ZN12HeavyContext18sendBangToReceiverEm:0000000000000000 _ZN12HeavyContext18sendBangToReceiverEm
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:494    .text._ZN12HeavyContext18sendBangToReceiverEm:0000000000000030 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:500    .text._ZN12HeavyContext19sendFloatToReceiverEmf:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:507    .text._ZN12HeavyContext19sendFloatToReceiverEmf:0000000000000000 _ZN12HeavyContext19sendFloatToReceiverEmf
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:572    .text._ZN12HeavyContext19sendFloatToReceiverEmf:0000000000000030 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:578    .rodata._ZN12HeavyContext20sendSymbolToReceiverEmPKc.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:589    .text._ZN12HeavyContext20sendSymbolToReceiverEmPKc:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:596    .text._ZN12HeavyContext20sendSymbolToReceiverEmPKc:0000000000000000 _ZN12HeavyContext20sendSymbolToReceiverEmPKc
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:675    .text._ZN12HeavyContext20sendSymbolToReceiverEmPKc:0000000000000038 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:684    .text._ZN12HeavyContext11lockAcquireEv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:691    .text._ZN12HeavyContext11lockAcquireEv:0000000000000000 _ZN12HeavyContext11lockAcquireEv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:737    .text._ZN12HeavyContext7lockTryEv:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:744    .text._ZN12HeavyContext7lockTryEv:0000000000000000 _ZN12HeavyContext7lockTryEv
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:781    .text._ZN12HeavyContext13cancelMessageEP9HvMessagePFvP21HeavyContextInterfaceiPKS0_E:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:788    .text._ZN12HeavyContext13cancelMessageEP9HvMessagePFvP21HeavyContextInterfaceiPKS0_E:0000000000000000 _ZN12HeavyContext13cancelMessageEP9HvMessagePFvP21HeavyContextInterfaceiPKS0_E
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:808    .text._ZN12HeavyContext17setLengthForTableEmm:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:815    .text._ZN12HeavyContext17setLengthForTableEmm:0000000000000000 _ZN12HeavyContext17setLengthForTableEmm
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:855    .text._ZN12HeavyContext21millisecondsToSamplesEf:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:862    .text._ZN12HeavyContext21millisecondsToSamplesEf:0000000000000000 _ZN12HeavyContext21millisecondsToSamplesEf
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:895    .text._ZN12HeavyContext21millisecondsToSamplesEf:0000000000000028 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:902    .rodata._Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:914    .text._Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:921    .text._Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage:0000000000000000 _Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1032   .text._Z15defaultSendHookP21HeavyContextInterfacePKcmPK9HvMessage:0000000000000040 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1041   .rodata._ZN12HeavyContext24setInputMessageQueueSizeEi.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1049   .text._ZN12HeavyContext24setInputMessageQueueSizeEi:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1056   .text._ZN12HeavyContext24setInputMessageQueueSizeEi:0000000000000000 _ZN12HeavyContext24setInputMessageQueueSizeEi
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 88
 
 
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1121   .text._ZN12HeavyContext24setInputMessageQueueSizeEi:000000000000002c $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1130   .rodata._ZN12HeavyContext25setOutputMessageQueueSizeEi.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1138   .text._ZN12HeavyContext25setOutputMessageQueueSizeEi:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1145   .text._ZN12HeavyContext25setOutputMessageQueueSizeEi:0000000000000000 _ZN12HeavyContext25setOutputMessageQueueSizeEi
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1210   .text._ZN12HeavyContext25setOutputMessageQueueSizeEi:000000000000002c $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1219   .rodata._ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1242   .text._ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1249   .text._ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej:0000000000000000 _ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1481   .text._ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej:00000000000000b4 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1492   .rodata._Z13_hv_table_getP21HeavyContextInterfacem.part.0.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1500   .text._Z13_hv_table_getP21HeavyContextInterfacem.part.0:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1506   .text._Z13_hv_table_getP21HeavyContextInterfacem.part.0:0000000000000000 _Z13_hv_table_getP21HeavyContextInterfacem.part.0
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1529   .text._Z13_hv_table_getP21HeavyContextInterfacem.part.0:0000000000000010 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1536   .rodata._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1541   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1547   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0:0000000000000000 _Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1570   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0:0000000000000010 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1577   .rodata._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1583   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1589   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0:0000000000000000 _Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1612   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0:0000000000000010 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1619   .rodata._ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1637   .text._ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1644   .text._ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage:0000000000000000 _ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1898   .text._ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage:00000000000000d8 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1912   .rodata._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1947   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:1954   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:0000000000000000 _ZN12HeavyContext22sendMessageToReceiverVEmdPKcz
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2093   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:0000000000000098 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2111   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:00000000000000aa $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2566   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:00000000000001d0 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2588   .rodata._ZN12HeavyContextC2Ediii.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2601   .text._ZN12HeavyContextC2Ediii:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2608   .text._ZN12HeavyContextC2Ediii:0000000000000000 _ZN12HeavyContextC2Ediii
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2827   .text._ZN12HeavyContextC2Ediii:00000000000000b4 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2608   .text._ZN12HeavyContextC2Ediii:0000000000000000 _ZN12HeavyContextC1Ediii
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2842   .text._ZN12HeavyContextD2Ev:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2849   .text._ZN12HeavyContextD2Ev:0000000000000000 _ZN12HeavyContextD2Ev
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2899   .text._ZN12HeavyContextD2Ev:0000000000000024 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2849   .text._ZN12HeavyContextD2Ev:0000000000000000 _ZN12HeavyContextD1Ev
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2906   .text._ZN12HeavyContextD0Ev:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2913   .text._ZN12HeavyContextD0Ev:0000000000000000 _ZN12HeavyContextD0Ev
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2974   .text._ZN12HeavyContextD0Ev:000000000000002c $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2979   .text._ZN12HeavyContext24scheduleMessageForObjectEPK9HvMessagePFvP21HeavyContextInterfaceiS2_Ei:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:2986   .text._ZN12HeavyContext24scheduleMessageForObjectEPK9HvMessagePFvP21HeavyContextInterfaceiS2_Ei:0000000000000000 _ZN12HeavyContext24scheduleMessageForObjectEPK9HvMessagePFvP21HeavyContextInterfaceiS2_Ei
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3014   .text._ZN12HeavyContext16getHashForStringEPKc:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3021   .text._ZN12HeavyContext16getHashForStringEPKc:0000000000000000 _ZN12HeavyContext16getHashForStringEPKc
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3038   .text._Z13_hv_table_getP21HeavyContextInterfacem:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3045   .text._Z13_hv_table_getP21HeavyContextInterfacem:0000000000000000 _Z13_hv_table_getP21HeavyContextInterfacem
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3074   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3081   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage:0000000000000000 _Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3110   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3117   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei:0000000000000000 _Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3162   .text.hv_table_get:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3169   .text.hv_table_get:0000000000000000 hv_table_get
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3210   .text.hv_scheduleMessageForReceiver:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3217   .text.hv_scheduleMessageForReceiver:0000000000000000 hv_scheduleMessageForReceiver
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s 			page 89
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1121   .text._ZN12HeavyContext24setInputMessageQueueSizeEi:000000000000002c $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1130   .rodata._ZN12HeavyContext25setOutputMessageQueueSizeEi.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1138   .text._ZN12HeavyContext25setOutputMessageQueueSizeEi:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1145   .text._ZN12HeavyContext25setOutputMessageQueueSizeEi:0000000000000000 _ZN12HeavyContext25setOutputMessageQueueSizeEi
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1210   .text._ZN12HeavyContext25setOutputMessageQueueSizeEi:000000000000002c $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1219   .rodata._ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1242   .text._ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1249   .text._ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej:0000000000000000 _ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1481   .text._ZN12HeavyContext18getNextSentMessageEPmP9HvMessagej:00000000000000b4 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1492   .rodata._Z13_hv_table_getP21HeavyContextInterfacem.part.0.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1500   .text._Z13_hv_table_getP21HeavyContextInterfacem.part.0:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1506   .text._Z13_hv_table_getP21HeavyContextInterfacem.part.0:0000000000000000 _Z13_hv_table_getP21HeavyContextInterfacem.part.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1529   .text._Z13_hv_table_getP21HeavyContextInterfacem.part.0:0000000000000010 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1536   .rodata._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1541   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1547   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0:0000000000000000 _Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1570   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage.part.0:0000000000000010 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1577   .rodata._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1583   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1589   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0:0000000000000000 _Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1612   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei.part.0:0000000000000010 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1619   .rodata._ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1637   .text._ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1644   .text._ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage:0000000000000000 _ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1898   .text._ZN12HeavyContext21sendMessageToReceiverEmdP9HvMessage:00000000000000d8 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1912   .rodata._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1947   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:1954   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:0000000000000000 _ZN12HeavyContext22sendMessageToReceiverVEmdPKcz
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2093   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:0000000000000098 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2111   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:00000000000000aa $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2566   .text._ZN12HeavyContext22sendMessageToReceiverVEmdPKcz:00000000000001d0 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2588   .rodata._ZN12HeavyContextC2Ediii.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2601   .text._ZN12HeavyContextC2Ediii:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2608   .text._ZN12HeavyContextC2Ediii:0000000000000000 _ZN12HeavyContextC2Ediii
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2827   .text._ZN12HeavyContextC2Ediii:00000000000000b4 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2608   .text._ZN12HeavyContextC2Ediii:0000000000000000 _ZN12HeavyContextC1Ediii
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2842   .text._ZN12HeavyContextD2Ev:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2849   .text._ZN12HeavyContextD2Ev:0000000000000000 _ZN12HeavyContextD2Ev
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2899   .text._ZN12HeavyContextD2Ev:0000000000000024 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2849   .text._ZN12HeavyContextD2Ev:0000000000000000 _ZN12HeavyContextD1Ev
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2906   .text._ZN12HeavyContextD0Ev:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2913   .text._ZN12HeavyContextD0Ev:0000000000000000 _ZN12HeavyContextD0Ev
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2974   .text._ZN12HeavyContextD0Ev:000000000000002c $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2979   .text._ZN12HeavyContext24scheduleMessageForObjectEPK9HvMessagePFvP21HeavyContextInterfaceiS2_Ei:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:2986   .text._ZN12HeavyContext24scheduleMessageForObjectEPK9HvMessagePFvP21HeavyContextInterfaceiS2_Ei:0000000000000000 _ZN12HeavyContext24scheduleMessageForObjectEPK9HvMessagePFvP21HeavyContextInterfaceiS2_Ei
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3014   .text._ZN12HeavyContext16getHashForStringEPKc:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3021   .text._ZN12HeavyContext16getHashForStringEPKc:0000000000000000 _ZN12HeavyContext16getHashForStringEPKc
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3038   .text._Z13_hv_table_getP21HeavyContextInterfacem:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3045   .text._Z13_hv_table_getP21HeavyContextInterfacem:0000000000000000 _Z13_hv_table_getP21HeavyContextInterfacem
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3074   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3081   .text._Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage:0000000000000000 _Z30_hv_scheduleMessageForReceiverP21HeavyContextInterfacemP9HvMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3110   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3117   .text._Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei:0000000000000000 _Z28_hv_scheduleMessageForObjectP21HeavyContextInterfacePK9HvMessagePFvS0_iS3_Ei
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3162   .text.hv_table_get:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3169   .text.hv_table_get:0000000000000000 hv_table_get
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3210   .text.hv_scheduleMessageForReceiver:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3217   .text.hv_scheduleMessageForReceiver:0000000000000000 hv_scheduleMessageForReceiver
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s 			page 89
 
 
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3258   .text.hv_scheduleMessageForObject:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3265   .text.hv_scheduleMessageForObject:0000000000000000 hv_scheduleMessageForObject
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3326   .rodata._ZTV12HeavyContext:0000000000000000 _ZTV12HeavyContext
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccrWkJDp.s:3322   .rodata._ZTV12HeavyContext:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3258   .text.hv_scheduleMessageForObject:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3265   .text.hv_scheduleMessageForObject:0000000000000000 hv_scheduleMessageForObject
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3326   .rodata._ZTV12HeavyContext:0000000000000000 _ZTV12HeavyContext
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccf6wNtV.s:3322   .rodata._ZTV12HeavyContext:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 msg_initWithBang

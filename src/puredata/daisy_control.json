@@ -1,0 +1,38 @@
+{
+  "name": "pod",
+  "som": "seed",
+  "defines": {
+    "OOPSY_TARGET_HAS_MIDI_INPUT": 1
+  },
+  "display": {},
+  "audio": {
+    "channels": 2
+  },
+  "components": {
+    "sw1": {
+      "component": "Switch",
+      "pin": 27
+    },
+    "knob1": {
+      "component": "AnalogControl",
+      "pin": 21
+    },
+    "led1": {
+      "component": "RgbLed",
+      "pin": {
+        "r": 20,
+        "g": 19,
+        "b": 18
+      }
+    }
+  },
+  "aliases": {
+    "switch": "sw1",
+    "button": "sw1",
+    "switch1": "sw1",
+    "button1": "sw1",
+    "knob": "knob1",
+    "ctrl": "knob1",
+    "led": "led1"
+  }
+}

@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
   12:source/HvTable.c ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
   13:source/HvTable.c ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
   14:source/HvTable.c ****  * PERFORMANCE OF THIS SOFTWARE.
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 2
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 2
 
 
   15:source/HvTable.c ****  */
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
   25:source/HvTable.c ****   o->head = 0;
   68              		.loc 1 25 3 is_stmt 1 view .LVU12
   26:source/HvTable.c ****   hv_size_t numBytes = o->allocated * sizeof(float);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 3
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 3
 
 
   69              		.loc 1 26 3 view .LVU13
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  117              		@ args = 0, pretend = 0, frame = 0
  118              		@ frame_needed = 0, uses_anonymous_args = 0
   35:source/HvTable.c ****   o->length = length;
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 4
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 4
 
 
  119              		.loc 1 35 3 view .LVU23
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  156 001a FFF7FEFF 		bl	calloc
  157              	.LVL12:
  158              		.loc 1 40 13 view .LVU40
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 5
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 5
 
 
  159 001e 2860     		str	r0, [r5]
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  206              		.loc 1 48 3 view .LVU48
   47:source/HvTable.c ****   o->length = length;
  207              		.loc 1 47 73 is_stmt 0 view .LVU49
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 6
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 6
 
 
  208 0000 10B4     		push	{r4}
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  249              	.LFB354:
   55:source/HvTable.c **** 
   56:source/HvTable.c **** void hTable_free(HvTable *o) {
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 7
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 7
 
 
  250              		.loc 1 56 30 is_stmt 1 view -0
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  293              		.cfi_offset 14, -4
  294              		.loc 1 64 19 view .LVU70
  295 0004 8568     		ldr	r5, [r0, #8]
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 8
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 8
 
 
  296              		.loc 1 64 6 view .LVU71
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
   78:source/HvTable.c ****     // if not, we have to re-malloc ourselves
   79:source/HvTable.c ****     char *c = (char *) hv_malloc(newAllocatedBytes);
   80:source/HvTable.c ****     hv_assert(c != NULL); // error while allocating new buffer!
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 9
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 9
 
 
   81:source/HvTable.c ****     if (newAllocatedBytes > oldSizeBytes) {
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  366              	.LVL32:
  367              	.L23:
   70:source/HvTable.c ****   // ensure that hv_realloc has given us a correctly aligned buffer
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 10
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 10
 
 
  368              		.loc 1 70 3 discriminator 1 view .LVU100
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  416              		.cfi_offset 14, -4
  417 0002 83B0     		sub	sp, sp, #12
  418              		.cfi_def_cfa_offset 32
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 11
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 11
 
 
  419 0004 0D46     		mov	r5, r1
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
   26:source/HvMessage.h **** typedef enum ElementType {
   27:source/HvMessage.h ****   HV_MSG_BANG = 0,
   28:source/HvMessage.h ****   HV_MSG_FLOAT = 1,
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 12
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 12
 
 
   29:source/HvMessage.h ****   HV_MSG_SYMBOL = 2,
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
   83:source/HvMessage.h ****   return m->timestamp;
   84:source/HvMessage.h **** }
   85:source/HvMessage.h **** 
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 13
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 13
 
 
   86:source/HvMessage.h **** static inline void msg_setTimestamp(HvMessage *m, hv_uint32_t timestamp) {
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  455              	.LBE52:
  456              		.loc 2 126 83 view .LVU118
  457 0018 A388     		ldrh	r3, [r4, #4]
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 14
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 14
 
 
  458 001a 012B     		cmp	r3, #1
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
  498              		.loc 2 100 3 is_stmt 0 view .LVU127
  499              	.LBE55:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 15
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 15
 
 
  500              	.LBE54:
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
   99:source/HvTable.c **** 
  542              		.loc 1 99 28 is_stmt 0 view .LVU142
  543 004e FAFE677A 		vrintp.f32	s15, s15
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 16
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 16
 
 
   99:source/HvTable.c **** 
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
   12:source/HvTable.h ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
   13:source/HvTable.h ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
   14:source/HvTable.h ****  * PERFORMANCE OF THIS SOFTWARE.
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 17
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 17
 
 
   15:source/HvTable.h ****  */
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  576              	.LBB68:
   68:source/HvTable.h ****   return o->size;
  577              		.loc 3 68 3 view .LVU156
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 18
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 18
 
 
  578              		.loc 3 68 3 is_stmt 0 view .LVU157
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  628      61746100 
  629              		.section	.rodata.__func__.5,"a"
  630              		.align	2
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 19
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 19
 
 
  631              		.set	.LANCHOR0,. + 0
@@ -1095,36 +1095,36 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 1
  642              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
  643              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/assert.h"
  644              		.file 10 "<built-in>"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s 			page 20
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s 			page 20
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HvTable.c
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:19     .rodata.hTable_init.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:26     .text.hTable_init:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:33     .text.hTable_init:0000000000000000 hTable_init
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:98     .text.hTable_init:0000000000000030 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:105    .text.hTable_initWithData:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:112    .text.hTable_initWithData:0000000000000000 hTable_initWithData
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:184    .text.hTable_initWithData:000000000000003c $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:191    .text.hTable_initWithFinalData:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:198    .text.hTable_initWithFinalData:0000000000000000 hTable_initWithFinalData
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:240    .text.hTable_free:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:247    .text.hTable_free:0000000000000000 hTable_free
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:265    .rodata.hTable_resize.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:269    .text.hTable_resize:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:276    .text.hTable_resize:0000000000000000 hTable_resize
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:380    .text.hTable_resize:0000000000000060 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:387    .rodata.hTable_onMessage.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:394    .text.hTable_onMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:401    .text.hTable_onMessage:0000000000000000 hTable_onMessage
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:610    .text.hTable_onMessage:0000000000000088 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:616    .rodata.__func__.3:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:620    .rodata.__func__.3:0000000000000000 __func__.3
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:623    .rodata.__func__.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:627    .rodata.__func__.4:0000000000000000 __func__.4
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:630    .rodata.__func__.5:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccFsSQr1.s:634    .rodata.__func__.5:0000000000000000 __func__.5
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:19     .rodata.hTable_init.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:26     .text.hTable_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:33     .text.hTable_init:0000000000000000 hTable_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:98     .text.hTable_init:0000000000000030 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:105    .text.hTable_initWithData:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:112    .text.hTable_initWithData:0000000000000000 hTable_initWithData
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:184    .text.hTable_initWithData:000000000000003c $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:191    .text.hTable_initWithFinalData:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:198    .text.hTable_initWithFinalData:0000000000000000 hTable_initWithFinalData
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:240    .text.hTable_free:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:247    .text.hTable_free:0000000000000000 hTable_free
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:265    .rodata.hTable_resize.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:269    .text.hTable_resize:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:276    .text.hTable_resize:0000000000000000 hTable_resize
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:380    .text.hTable_resize:0000000000000060 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:387    .rodata.hTable_onMessage.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:394    .text.hTable_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:401    .text.hTable_onMessage:0000000000000000 hTable_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:610    .text.hTable_onMessage:0000000000000088 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:616    .rodata.__func__.3:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:620    .rodata.__func__.3:0000000000000000 __func__.3
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:623    .rodata.__func__.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:627    .rodata.__func__.4:0000000000000000 __func__.4
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:630    .rodata.__func__.5:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccjVxHRL.s:634    .rodata.__func__.5:0000000000000000 __func__.5
 
 UNDEFINED SYMBOLS
 calloc

@@ -69,6 +69,9 @@ void toSerial(OSCMessage &msg) {
   // Imprime la dirección OSC
   Serial.print(msg.getAddress());
   Serial.print(" ");
+
+  char strBuffer[100];
+
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
       int valorRecibido = constrain(msg.getInt(i), 0, 4096);
@@ -77,18 +80,17 @@ void toSerial(OSCMessage &msg) {
     } else if (msg.isFloat(i)) {
       Serial.print(msg.getFloat(i), 1);
     } else if (msg.isString(i)) {
-      char strBuffer[100];
       msg.getString(i, strBuffer);
-      Serial.print(strBuffer);
-      if (strBuffer == "ON") {
-        Serial.print(strBuffer);
-        digitalWrite(outputPin, HIGH);
-      }
-      if (strBuffer == "OFF") {
-        Serial.print(strBuffer);
-        digitalWrite(outputPin, LOW);
-      }
     }
+  }
+  
+  if (strcmp(strBuffer, "ON") == 0) {
+    Serial.print(strBuffer);
+    digitalWrite(outputPin, HIGH);
+  }
+  if (strcmp(strBuffer, "OFF") == 0) {
+    Serial.print(strBuffer);
+    digitalWrite(outputPin, LOW);
   }
   Serial.println();
 }

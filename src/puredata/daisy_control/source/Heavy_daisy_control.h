@@ -44,15 +44,13 @@ extern "C" {
 #endif
 
 typedef enum {
-  HV_DAISY_CONTROL_PARAM_IN_BUTTON1 = 0xB4D78F23, // Button1
-  HV_DAISY_CONTROL_PARAM_IN_KNOB1 = 0x62DD3F82, // Knob1
+  HV_DAISY_CONTROL_PARAM_IN_BUTTON1 = 0xFB2DC5B6, // button1
   HV_DAISY_CONTROL_PARAM_IN_BUTTON1_PRESS = 0xDF1CF8D9, // button1_press
-  HV_DAISY_CONTROL_PARAM_IN_BUTTON2_PRESS = 0x1AE0B6E, // button2_press
+  HV_DAISY_CONTROL_PARAM_IN_CTRL = 0x44BF7D9D, // ctrl
 } Hv_daisy_control_ParameterIn;
 
 typedef enum {
   HV_DAISY_CONTROL_PARAM_OUT_LED1 = 0xE817C68D, // led1
-  HV_DAISY_CONTROL_PARAM_OUT_LED2 = 0xBB2E5490, // led2
 } Hv_daisy_control_ParameterOut;
 
 

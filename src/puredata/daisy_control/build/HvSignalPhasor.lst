@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
   14:source/HvMessage.h ****  * PERFORMANCE OF THIS SOFTWARE.
   15:source/HvMessage.h ****  */
   16:source/HvMessage.h **** 
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 2
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 2
 
 
   17:source/HvMessage.h **** #ifndef _HEAVY_MESSAGE_H_
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
   71:source/HvMessage.h **** 
   72:source/HvMessage.h **** HvMessage *msg_init(HvMessage *m, hv_size_t numElements, hv_uint32_t timestamp);
   73:source/HvMessage.h **** 
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 3
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 3
 
 
   74:source/HvMessage.h **** HvMessage *msg_initWithFloat(HvMessage *m, hv_uint32_t timestamp, float f);
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
   42 0000 08B5     		push	{r3, lr}
   43              		.cfi_def_cfa_offset 8
   44              		.cfi_offset 3, -8
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 4
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 4
 
 
   45              		.cfi_offset 14, -4
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
   27:source/HvSignalPhasor.c **** #elif HV_SIMD_NEON
   28:source/HvSignalPhasor.c ****   static void sPhasor_updatePhase(SignalPhasor *o, hv_uint32_t p) {
   29:source/HvSignalPhasor.c ****     o->phase =  vdupq_n_u32(p);
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 5
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 5
 
 
   30:source/HvSignalPhasor.c **** #else // HV_SIMD_NONE
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
   76              		@ args = 0, pretend = 0, frame = 0
   77              		@ frame_needed = 0, uses_anonymous_args = 0
   78              		@ link register save eliminated.
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 6
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 6
 
 
   82:source/HvSignalPhasor.c **** #if HV_SIMD_AVX
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  109              		.align	1
  110              		.p2align 2,,3
  111              		.global	sPhasor_onMessage
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 7
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 7
 
 
  112              		.syntax unified
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  144              		.loc 1 91 3 view .LVU23
   91:source/HvMessage.h **** }
  145              		.loc 1 91 3 is_stmt 0 view .LVU24
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 8
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 8
 
 
  146              	.LBE56:
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  190              	.LBE65:
  191              	.LBE64:
  192              	.LBE63:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 9
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 9
 
 
   91:source/HvMessage.h **** }
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  233 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  234 004c F8DC     		bgt	.L15
  235              	.L13:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 10
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 10
 
 
  111:source/HvSignalPhasor.c **** #endif
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  118:source/HvSignalPhasor.c ****   __hv_zero_i((hv_bOuti_t) &o->phase);
  283              		.loc 2 118 3 view .LVU62
  284              	.LBB71:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 11
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 11
 
 
  285              	.LBB72:
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
   37:source/HvMath.h **** 
   38:source/HvMath.h **** static inline void __hv_zero_i(hv_bOuti_t bOut) {
   39:source/HvMath.h **** #if HV_SIMD_AVX
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 12
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 12
 
 
   40:source/HvMath.h ****   *bOut = _mm256_setzero_si256();
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  336 0014 27EE007B 		vmul.f64	d7, d7, d0
   75:source/HvSignalPhasor.c ****   o->inc = o->step.s;
  337              		.loc 2 75 15 view .LVU79
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 13
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 13
 
 
  338 0018 FDEEC77B 		vcvt.s32.f64	s15, d7
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  384              	.LBE107:
  385              	.LBE106:
  386              	.LBE105:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 14
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 14
 
 
  387              	.LBE104:
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  422 0010 10BD     		pop	{r4, pc}
  423              	.LVL25:
  424              	.L46:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 15
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 15
 
 
  425              		.cfi_restore_state
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  468              	.LBE122:
  469              	.LBE121:
  470              	.LBE120:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 16
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 16
 
 
   91:source/HvMessage.h **** }
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  511 0054 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  512 0058 F8DC     		bgt	.L37
  513              	.L35:
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 17
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 17
 
 
  134:source/HvSignalPhasor.c **** #endif
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  556              	.LBE130:
  557              	.LBE129:
   91:source/HvMessage.h **** }
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 18
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 18
 
 
  558              		.loc 1 91 3 is_stmt 1 view .LVU139
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  600              	.LBE136:
  601              		.loc 2 141 1 view .LVU153
  602 009c 10BD     		pop	{r4, pc}
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 19
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 19
 
 
  603              	.LVL38:
@@ -1106,29 +1106,29 @@ ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 1
  625              		.file 7 "source/HvHeavy.h"
  626              		.file 8 "source/HvSignalPhasor.h"
  627              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/assert.h"
-ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s 			page 20
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s 			page 20
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HvSignalPhasor.c
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:19     .rodata.msg_getFloat.part.0.str1.4:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:26     .text.msg_getFloat.part.0:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:32     .text.msg_getFloat.part.0:0000000000000000 msg_getFloat.part.0
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:56     .text.msg_getFloat.part.0:0000000000000010 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:63     .text.sPhasor_init:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:70     .text.sPhasor_init:0000000000000000 sPhasor_init
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:103    .text.sPhasor_init:0000000000000020 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:109    .text.sPhasor_onMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:116    .text.sPhasor_onMessage:0000000000000000 sPhasor_onMessage
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:262    .text.sPhasor_onMessage:0000000000000068 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:268    .text.sPhasor_k_init:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:275    .text.sPhasor_k_init:0000000000000000 sPhasor_k_init
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:352    .text.sPhasor_k_init:0000000000000028 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:358    .text.sPhasor_k_onMessage:0000000000000000 $t
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:365    .text.sPhasor_k_onMessage:0000000000000000 sPhasor_k_onMessage
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:608    .text.sPhasor_k_onMessage:00000000000000a0 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:614    .rodata.__func__.0:0000000000000000 $d
-/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccN2MCIZ.s:618    .rodata.__func__.0:0000000000000000 __func__.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:19     .rodata.msg_getFloat.part.0.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:26     .text.msg_getFloat.part.0:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:32     .text.msg_getFloat.part.0:0000000000000000 msg_getFloat.part.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:56     .text.msg_getFloat.part.0:0000000000000010 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:63     .text.sPhasor_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:70     .text.sPhasor_init:0000000000000000 sPhasor_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:103    .text.sPhasor_init:0000000000000020 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:109    .text.sPhasor_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:116    .text.sPhasor_onMessage:0000000000000000 sPhasor_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:262    .text.sPhasor_onMessage:0000000000000068 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:268    .text.sPhasor_k_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:275    .text.sPhasor_k_init:0000000000000000 sPhasor_k_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:352    .text.sPhasor_k_init:0000000000000028 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:358    .text.sPhasor_k_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:365    .text.sPhasor_k_onMessage:0000000000000000 sPhasor_k_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:608    .text.sPhasor_k_onMessage:00000000000000a0 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:614    .rodata.__func__.0:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccSFOAV6.s:618    .rodata.__func__.0:0000000000000000 __func__.0
 
 UNDEFINED SYMBOLS
 __assert_func

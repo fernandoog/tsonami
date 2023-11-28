@@ -23,20 +23,20 @@
  * 
  */
 
-#ifndef __JSON2DAISY_CUSTOMSEED_H__
-#define __JSON2DAISY_CUSTOMSEED_H__
+#ifndef __JSON2DAISY_POD_H__
+#define __JSON2DAISY_POD_H__
 
 #include "daisy_seed.h"
 #include "dev/codec_ak4556.h"
+#include "dev/oled_ssd130x.h"
 
-
-#define ANALOG_COUNT 4
+#define ANALOG_COUNT 1
 
 namespace json2daisy {
 
 
 
-struct DaisyCustomseed {
+struct DaisyPod {
 
   /** Initializes the board according to the JSON board description
    *  \param boost boosts the clock speed from 400 to 480 MHz
@@ -48,33 +48,30 @@ struct DaisyCustomseed {
  
 
     // Switches
-    sw1.Init(som.GetPin(27), som.AudioCallbackRate(), daisy::Switch::TYPE_MOMENTARY, daisy::Switch::POLARITY_INVERTED, daisy::Switch::PULL_UP);
-    sw2.Init(som.GetPin(28), som.AudioCallbackRate(), daisy::Switch::TYPE_MOMENTARY, daisy::Switch::POLARITY_INVERTED, daisy::Switch::PULL_UP); 
- 
-
-    // Rotary encoders
-    encoder.Init(som.GetPin(26), som.GetPin(25), som.GetPin(13), som.AudioCallbackRate()); 
+    sw1.Init(som.GetPin(27), som.AudioCallbackRate(), daisy::Switch::TYPE_MOMENTARY, daisy::Switch::POLARITY_INVERTED, daisy::Switch::PULL_UP); 
  
 
     // Single channel ADC initialization
-    cfg[0].InitSingle(som.GetPin(15));
-    cfg[1].InitSingle(som.GetPin(16));
-    cfg[2].InitSingle(som.GetPin(21));
-    cfg[3].InitSingle(som.GetPin(24)); 
+    cfg[0].InitSingle(som.GetPin(21)); 
     som.adc.Init(cfg, ANALOG_COUNT);
  
 
     // AnalogControl objects
-    knob2.Init(som.adc.GetPtr(0), som.AudioCallbackRate(), false, false);
-    flex.Init(som.adc.GetPtr(1), som.AudioCallbackRate(), false, false);
-    knob1.Init(som.adc.GetPtr(2), som.AudioCallbackRate(), false, false);
-    sonar.Init(som.adc.GetPtr(3), som.AudioCallbackRate(), false, false); 
+    knob1.Init(som.adc.GetPtr(0), som.AudioCallbackRate(), false, false); 
 
     // RBG LEDs 
     led1.Init(som.GetPin(20), som.GetPin(19), som.GetPin(18), true);
-    led1.Set(0.0f, 0.0f, 0.0f);
-    led2.Init(som.GetPin(17), som.GetPin(24), som.GetPin(23), true);
-    led2.Set(0.0f, 0.0f, 0.0f); 
+    led1.Set(0.0f, 0.0f, 0.0f); 
+
+    // Display
+    
+    daisy::OledDisplay<daisy::SSD130x4WireSpi128x64Driver>::Config display_config;
+    display_config.driver_config.transport_config.Defaults();
+    
+    display.Init(display_config);
+      display.Fill(0);
+      display.Update();
+     
 
     som.adc.Start();
   }
@@ -85,13 +82,8 @@ struct DaisyCustomseed {
   void ProcessAllControls() 
   {
  
-    knob2.Process();
-    flex.Process();
     knob1.Process();
-    sonar.Process();
-    encoder.Debounce();
-    sw1.Debounce();
-    sw2.Debounce(); 
+    sw1.Debounce(); 
   }
 
   /** Handles all the maintenance processing. This should be run last within the audio callback.
@@ -100,7 +92,6 @@ struct DaisyCustomseed {
   void PostProcess()
   {
     led1.Update();
-    led2.Update();
   }
 
   /** Handles processing that shouldn't occur in the audio block, such as blocking transfers
@@ -128,13 +119,8 @@ struct DaisyCustomseed {
     else
       enum_rate = daisy::SaiHandle::Config::SampleRate::SAI_8KHZ;
     som.SetAudioSampleRate(enum_rate);
-    knob2.SetSampleRate(som.AudioCallbackRate());
-    flex.SetSampleRate(som.AudioCallbackRate());
     knob1.SetSampleRate(som.AudioCallbackRate());
-    sonar.SetSampleRate(som.AudioCallbackRate());
-    encoder.SetUpdateRate(som.AudioCallbackRate());
     sw1.SetUpdateRate(som.AudioCallbackRate());
-    sw2.SetUpdateRate(som.AudioCallbackRate());
   }
 
   /** Sets the audio block size
@@ -158,19 +144,13 @@ struct DaisyCustomseed {
   daisy::AdcChannelConfig cfg[ANALOG_COUNT];
 
   // I/O Components
-  daisy::AnalogControl knob2;
-  daisy::AnalogControl flex;
   daisy::AnalogControl knob1;
-  daisy::AnalogControl sonar;
-  daisy::Encoder encoder;
   daisy::RgbLed led1;
-  daisy::RgbLed led2;
   daisy::Switch sw1;
-  daisy::Switch sw2;
-  
+  daisy::OledDisplay<daisy::SSD130x4WireSpi128x64Driver> display;
 
 };
 
 } // namspace json2daisy
 
-#endif // __JSON2DAISY_CUSTOMSEED_H__
+#endif // __JSON2DAISY_POD_H__

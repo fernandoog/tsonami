@@ -38,7 +38,7 @@
 
 using namespace daisy;
 
-json2daisy::DaisyCustomseed hardware;
+json2daisy::DaisyPod hardware;
 
 Heavy_daisy_control hv(SAMPLE_RATE);
 
@@ -51,7 +51,7 @@ void LoopWriteOut();
 void PostProcess();
 void Display();
 
-constexpr int DaisyNumOutputParameters = 2;
+constexpr int DaisyNumOutputParameters = 1;
 /** This array holds the output values received from PD hooks. These values are
  *  then written at the appropriate time in the following callback or loop.
  */
@@ -74,7 +74,6 @@ struct DaisyHvParamOut
 
 DaisyHvParamOut DaisyOutputParameters[DaisyNumOutputParameters] = {
 		{ (uint32_t) HV_DAISY_CONTROL_PARAM_OUT_LED1, 0, nullptr }, // led1
-		{ (uint32_t) HV_DAISY_CONTROL_PARAM_OUT_LED2, 1, nullptr }, // led2
 };
 
 int main(void)
@@ -133,9 +132,8 @@ void CallbackWriteIn(Heavy_daisy_control& hv)
  
   if ((hardware.sw1.RisingEdge()?1.f:0.f))
     hv.sendBangToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_BUTTON1); 
-  hv.sendFloatToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_KNOB1, (hardware.knob1.Value())); 
   hv.sendFloatToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_BUTTON1_PRESS, (hardware.sw1.Pressed()?1.f:0.f)); 
-  hv.sendFloatToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_BUTTON2_PRESS, (hardware.sw2.Pressed()?1.f:0.f)); 
+  hv.sendFloatToReceiver((uint32_t) HV_DAISY_CONTROL_PARAM_IN_CTRL, (hardware.knob1.Value())); 
 }
 
 /** Writes the values sent to PD's receive objects to the Daisy hardware during the main loop
@@ -149,7 +147,6 @@ void LoopWriteOut() {
  */
 void CallbackWriteOut() {
   hardware.led1.Set(output_data[0],output_data[0],output_data[0]);
-  hardware.led2.Set(output_data[1],output_data[1],output_data[1]);
 }
 
 /** Handles the display code if the hardware defines a display
