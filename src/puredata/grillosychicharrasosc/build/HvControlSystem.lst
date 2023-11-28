@@ -1,0 +1,750 @@
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"HvControlSystem.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata.cSystem_onMessage.str1.4,"aMS",%progbits,1
+  19              		.align	2
+  20              	.LC0:
+  21 0000 73616D70 		.ascii	"samplerate\000"
+  21      6C657261 
+  21      746500
+  22 000b 00       		.align	2
+  23              	.LC1:
+  24 000c 6E756D49 		.ascii	"numInputChannels\000"
+  24      6E707574 
+  24      4368616E 
+  24      6E656C73 
+  24      00
+  25 001d 000000   		.align	2
+  26              	.LC2:
+  27 0020 6E756D4F 		.ascii	"numOutputChannels\000"
+  27      75747075 
+  27      74436861 
+  27      6E6E656C 
+  27      7300
+  28 0032 0000     		.align	2
+  29              	.LC3:
+  30 0034 63757272 		.ascii	"currentTime\000"
+  30      656E7454 
+  30      696D6500 
+  31              		.align	2
+  32              	.LC4:
+  33 0040 7461626C 		.ascii	"table\000"
+  33      6500
+  34 0046 0000     		.align	2
+  35              	.LC5:
+  36 0048 6C656E67 		.ascii	"length\000"
+  36      746800
+  37 004f 00       		.align	2
+  38              	.LC6:
+  39 0050 73697A65 		.ascii	"size\000"
+  39      00
+  40 0055 000000   		.align	2
+  41              	.LC7:
+  42 0058 68656164 		.ascii	"head\000"
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 2
+
+
+  42      00
+  43              		.section	.text.cSystem_onMessage,"ax",%progbits
+  44              		.align	1
+  45              		.p2align 2,,3
+  46              		.global	cSystem_onMessage
+  47              		.syntax unified
+  48              		.thumb
+  49              		.thumb_func
+  51              	cSystem_onMessage:
+  52              	.LVL0:
+  53              	.LFB399:
+  54              		.file 1 "source/HvControlSystem.c"
+   1:source/HvControlSystem.c **** /**
+   2:source/HvControlSystem.c ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvControlSystem.c ****  *
+   4:source/HvControlSystem.c ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvControlSystem.c ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvControlSystem.c ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvControlSystem.c ****  *
+   8:source/HvControlSystem.c ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvControlSystem.c ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvControlSystem.c ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvControlSystem.c ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvControlSystem.c ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvControlSystem.c ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvControlSystem.c ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvControlSystem.c ****  */
+  16:source/HvControlSystem.c **** 
+  17:source/HvControlSystem.c **** #include "HvControlSystem.h"
+  18:source/HvControlSystem.c **** 
+  19:source/HvControlSystem.c **** void cSystem_onMessage(HeavyContextInterface *_c, void *o, int letIn, const HvMessage *m,
+  20:source/HvControlSystem.c ****     void (*sendMessage)(HeavyContextInterface *, int, const HvMessage *)) {
+  55              		.loc 1 20 75 view -0
+  56              		.cfi_startproc
+  57              		@ args = 4, pretend = 0, frame = 8
+  58              		@ frame_needed = 1, uses_anonymous_args = 0
+  59              		.loc 1 20 75 is_stmt 0 view .LVU1
+  60 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  61              		.cfi_def_cfa_offset 24
+  62              		.cfi_offset 4, -24
+  63              		.cfi_offset 5, -20
+  64              		.cfi_offset 6, -16
+  65              		.cfi_offset 7, -12
+  66              		.cfi_offset 8, -8
+  67              		.cfi_offset 14, -4
+  68 0004 82B0     		sub	sp, sp, #8
+  69              		.cfi_def_cfa_offset 32
+  70 0006 0546     		mov	r5, r0
+  21:source/HvControlSystem.c **** 
+  22:source/HvControlSystem.c ****   HvMessage *n = HV_MESSAGE_ON_STACK(1);
+  71              		.loc 1 22 3 is_stmt 1 view .LVU2
+  72              	.LVL1:
+  73              		.file 2 "source/HvMessage.h"
+   1:source/HvMessage.h **** /**
+   2:source/HvMessage.h ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvMessage.h ****  *
+   4:source/HvMessage.h ****  * Permission to use, copy, modify, and/or distribute this software for any
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 3
+
+
+   5:source/HvMessage.h ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvMessage.h ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvMessage.h ****  *
+   8:source/HvMessage.h ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvMessage.h ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvMessage.h ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvMessage.h ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvMessage.h ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvMessage.h ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvMessage.h ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvMessage.h ****  */
+  16:source/HvMessage.h **** 
+  17:source/HvMessage.h **** #ifndef _HEAVY_MESSAGE_H_
+  18:source/HvMessage.h **** #define _HEAVY_MESSAGE_H_
+  19:source/HvMessage.h **** 
+  20:source/HvMessage.h **** #include "HvUtils.h"
+  21:source/HvMessage.h **** 
+  22:source/HvMessage.h **** #ifdef __cplusplus
+  23:source/HvMessage.h **** extern "C" {
+  24:source/HvMessage.h **** #endif
+  25:source/HvMessage.h **** 
+  26:source/HvMessage.h **** typedef enum ElementType {
+  27:source/HvMessage.h ****   HV_MSG_BANG = 0,
+  28:source/HvMessage.h ****   HV_MSG_FLOAT = 1,
+  29:source/HvMessage.h ****   HV_MSG_SYMBOL = 2,
+  30:source/HvMessage.h ****   HV_MSG_HASH = 3
+  31:source/HvMessage.h **** } ElementType;
+  32:source/HvMessage.h **** 
+  33:source/HvMessage.h **** typedef struct Element {
+  34:source/HvMessage.h ****   ElementType type;
+  35:source/HvMessage.h ****   union {
+  36:source/HvMessage.h ****     float f; // float
+  37:source/HvMessage.h ****     const char *s; // symbol
+  38:source/HvMessage.h ****     hv_uint32_t h; // hash
+  39:source/HvMessage.h ****   } data;
+  40:source/HvMessage.h **** } Element;
+  41:source/HvMessage.h **** 
+  42:source/HvMessage.h **** typedef struct HvMessage {
+  43:source/HvMessage.h ****   hv_uint32_t timestamp; // the sample at which this message should be processed
+  44:source/HvMessage.h ****   hv_uint16_t numElements;
+  45:source/HvMessage.h ****   hv_uint16_t numBytes; // the total number of bytes that this message occupies in memory, includin
+  46:source/HvMessage.h ****   Element elem;
+  47:source/HvMessage.h **** } HvMessage;
+  48:source/HvMessage.h **** 
+  49:source/HvMessage.h **** typedef struct ReceiverMessagePair {
+  50:source/HvMessage.h ****   hv_uint32_t receiverHash;
+  51:source/HvMessage.h ****   HvMessage msg;
+  52:source/HvMessage.h **** } ReceiverMessagePair;
+  53:source/HvMessage.h **** 
+  54:source/HvMessage.h **** #define HV_MESSAGE_ON_STACK(_x) (HvMessage *) hv_alloca(msg_getCoreSize(_x))
+  55:source/HvMessage.h **** 
+  56:source/HvMessage.h **** /** Returns the number of bytes that this message consumes in memory, not including strings. */
+  57:source/HvMessage.h **** static inline hv_size_t msg_getCoreSize(hv_size_t numElements) {
+  58:source/HvMessage.h ****   hv_assert(numElements > 0);
+  74              		.loc 2 58 3 view .LVU3
+  59:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+  75              		.loc 2 59 3 view .LVU4
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 4
+
+
+  23:source/HvControlSystem.c ****   if (msg_compareSymbol(m, 0, "samplerate")) {
+  76              		.loc 1 23 7 is_stmt 0 view .LVU5
+  77 0008 464A     		ldr	r2, .L22
+  78              	.LVL2:
+  79              		.loc 1 23 7 view .LVU6
+  80 000a 0021     		movs	r1, #0
+  81              	.LVL3:
+  20:source/HvControlSystem.c **** 
+  82              		.loc 1 20 75 view .LVU7
+  83 000c 00AF     		add	r7, sp, #0
+  84              		.cfi_def_cfa_register 7
+  22:source/HvControlSystem.c ****   if (msg_compareSymbol(m, 0, "samplerate")) {
+  85              		.loc 1 22 18 view .LVU8
+  86 000e 84B0     		sub	sp, sp, #16
+  87              		.loc 1 23 7 view .LVU9
+  88 0010 1846     		mov	r0, r3
+  89              	.LVL4:
+  20:source/HvControlSystem.c **** 
+  90              		.loc 1 20 75 view .LVU10
+  91 0012 1C46     		mov	r4, r3
+  22:source/HvControlSystem.c ****   if (msg_compareSymbol(m, 0, "samplerate")) {
+  92              		.loc 1 22 18 view .LVU11
+  93 0014 6E46     		mov	r6, sp
+  94              	.LVL5:
+  95              		.loc 1 23 3 is_stmt 1 view .LVU12
+  96              		.loc 1 23 7 is_stmt 0 view .LVU13
+  97 0016 FFF7FEFF 		bl	msg_compareSymbol
+  98              	.LVL6:
+  99              		.loc 1 23 6 view .LVU14
+ 100 001a 98B1     		cbz	r0, .L2
+  24:source/HvControlSystem.c **** 
+  25:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) hv_getSampleRate(_c));
+ 101              		.loc 1 25 5 is_stmt 1 view .LVU15
+ 102              	.LVL7:
+ 103              	.LBB27:
+ 104              	.LBI27:
+  60:source/HvMessage.h **** }
+  61:source/HvMessage.h **** 
+  62:source/HvMessage.h **** HvMessage *msg_copy(const HvMessage *m);
+  63:source/HvMessage.h **** 
+  64:source/HvMessage.h **** /** Copies the message into the given buffer. The buffer must be at least as large as msg_getNumHea
+  65:source/HvMessage.h **** void msg_copyToBuffer(const HvMessage *m, char *buffer, hv_size_t len);
+  66:source/HvMessage.h **** 
+  67:source/HvMessage.h **** void msg_setElementToFrom(HvMessage *n, int indexN, const HvMessage *const m, int indexM);
+  68:source/HvMessage.h **** 
+  69:source/HvMessage.h **** /** Frees a message on the heap. Does nothing if argument is NULL. */
+  70:source/HvMessage.h **** void msg_free(HvMessage *m);
+  71:source/HvMessage.h **** 
+  72:source/HvMessage.h **** HvMessage *msg_init(HvMessage *m, hv_size_t numElements, hv_uint32_t timestamp);
+  73:source/HvMessage.h **** 
+  74:source/HvMessage.h **** HvMessage *msg_initWithFloat(HvMessage *m, hv_uint32_t timestamp, float f);
+  75:source/HvMessage.h **** 
+  76:source/HvMessage.h **** HvMessage *msg_initWithBang(HvMessage *m, hv_uint32_t timestamp);
+  77:source/HvMessage.h **** 
+  78:source/HvMessage.h **** HvMessage *msg_initWithSymbol(HvMessage *m, hv_uint32_t timestamp, const char *s);
+  79:source/HvMessage.h **** 
+  80:source/HvMessage.h **** HvMessage *msg_initWithHash(HvMessage *m, hv_uint32_t timestamp, hv_uint32_t h);
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 5
+
+
+  81:source/HvMessage.h **** 
+  82:source/HvMessage.h **** static inline hv_uint32_t msg_getTimestamp(const HvMessage *m) {
+ 105              		.loc 2 82 27 view .LVU16
+ 106              	.LBB28:
+  83:source/HvMessage.h ****   return m->timestamp;
+ 107              		.loc 2 83 3 view .LVU17
+ 108              		.loc 2 83 11 is_stmt 0 view .LVU18
+ 109 001c 2168     		ldr	r1, [r4]
+ 110              	.LBE28:
+ 111              	.LBE27:
+ 112              		.loc 1 25 55 view .LVU19
+ 113 001e 2846     		mov	r0, r5
+ 114              	.LBB30:
+ 115              	.LBB29:
+ 116              		.loc 2 83 11 view .LVU20
+ 117 0020 7960     		str	r1, [r7, #4]
+ 118              	.LVL8:
+ 119              		.loc 2 83 11 view .LVU21
+ 120              	.LBE29:
+ 121              	.LBE30:
+ 122              		.loc 1 25 55 view .LVU22
+ 123 0022 FFF7FEFF 		bl	hv_getSampleRate
+ 124              	.LVL9:
+ 125              		.loc 1 25 5 view .LVU23
+ 126 0026 7968     		ldr	r1, [r7, #4]
+ 127 0028 B7EEC00B 		vcvt.f32.f64	s0, d0
+ 128 002c 3046     		mov	r0, r6
+ 129 002e FFF7FEFF 		bl	msg_initWithFloat
+ 130              	.LVL10:
+ 131              	.L3:
+  26:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "numInputChannels")) {
+  27:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) hv_getNumInputChannels(_c));
+  28:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "numOutputChannels")) {
+  29:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) hv_getNumOutputChannels(_c));
+  30:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "currentTime")) {
+  31:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) msg_getTimestamp(m));
+  32:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "table")) {
+  33:source/HvControlSystem.c ****     // NOTE(mhroth): no need to check message format for symbols as table lookup will fail otherwis
+  34:source/HvControlSystem.c ****     HvTable *table = hv_table_get(_c, msg_getHash(m,1));
+  35:source/HvControlSystem.c ****     if (table != NULL) {
+  36:source/HvControlSystem.c ****       if (msg_compareSymbol(m, 2, "length")) {
+  37:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getLength(table));
+  38:source/HvControlSystem.c ****       } else if (msg_compareSymbol(m, 2, "size")) {
+  39:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getSize(table));
+  40:source/HvControlSystem.c ****       } else if (msg_compareSymbol(m, 2, "head")) {
+  41:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getHead(table));
+  42:source/HvControlSystem.c ****       } else return;
+  43:source/HvControlSystem.c ****     } else return;
+  44:source/HvControlSystem.c ****   } else return;
+  45:source/HvControlSystem.c ****   sendMessage(_c, 0, n);
+ 132              		.loc 1 45 3 is_stmt 1 view .LVU24
+ 133 0032 3246     		mov	r2, r6
+ 134 0034 0021     		movs	r1, #0
+ 135 0036 2846     		mov	r0, r5
+ 136 0038 3B6A     		ldr	r3, [r7, #32]
+ 137 003a 9847     		blx	r3
+ 138              	.LVL11:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 6
+
+
+ 139              	.L1:
+  46:source/HvControlSystem.c **** }
+ 140              		.loc 1 46 1 is_stmt 0 view .LVU25
+ 141 003c 0837     		adds	r7, r7, #8
+ 142              		.cfi_remember_state
+ 143              		.cfi_def_cfa_offset 24
+ 144              	.LVL12:
+ 145              		.loc 1 46 1 view .LVU26
+ 146 003e BD46     		mov	sp, r7
+ 147              		.cfi_def_cfa_register 13
+ 148              		@ sp needed
+ 149 0040 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 150              	.LVL13:
+ 151              	.L2:
+ 152              		.cfi_restore_state
+  26:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "numInputChannels")) {
+ 153              		.loc 1 26 10 is_stmt 1 view .LVU27
+  26:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "numInputChannels")) {
+ 154              		.loc 1 26 14 is_stmt 0 view .LVU28
+ 155 0044 0146     		mov	r1, r0
+ 156 0046 384A     		ldr	r2, .L22+4
+ 157 0048 2046     		mov	r0, r4
+ 158 004a FFF7FEFF 		bl	msg_compareSymbol
+ 159              	.LVL14:
+  26:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "numInputChannels")) {
+ 160              		.loc 1 26 13 view .LVU29
+ 161 004e 68B1     		cbz	r0, .L4
+  27:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "numOutputChannels")) {
+ 162              		.loc 1 27 5 is_stmt 1 view .LVU30
+ 163              	.LVL15:
+ 164              	.LBB31:
+ 165              	.LBI31:
+  82:source/HvMessage.h ****   return m->timestamp;
+ 166              		.loc 2 82 27 view .LVU31
+ 167              	.LBB32:
+ 168              		.loc 2 83 3 view .LVU32
+ 169              		.loc 2 83 11 is_stmt 0 view .LVU33
+ 170 0050 2168     		ldr	r1, [r4]
+ 171              	.LBE32:
+ 172              	.LBE31:
+  27:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "numOutputChannels")) {
+ 173              		.loc 1 27 55 view .LVU34
+ 174 0052 2846     		mov	r0, r5
+ 175              	.LBB34:
+ 176              	.LBB33:
+ 177              		.loc 2 83 11 view .LVU35
+ 178 0054 7960     		str	r1, [r7, #4]
+ 179              	.LVL16:
+ 180              		.loc 2 83 11 view .LVU36
+ 181              	.LBE33:
+ 182              	.LBE34:
+  27:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "numOutputChannels")) {
+ 183              		.loc 1 27 55 view .LVU37
+ 184 0056 FFF7FEFF 		bl	hv_getNumInputChannels
+ 185              	.LVL17:
+ 186              	.L19:
+  29:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "currentTime")) {
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 7
+
+
+ 187              		.loc 1 29 55 view .LVU38
+ 188 005a 00EE100A 		vmov	s0, r0	@ int
+  29:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "currentTime")) {
+ 189              		.loc 1 29 5 view .LVU39
+ 190 005e 7968     		ldr	r1, [r7, #4]
+ 191 0060 3046     		mov	r0, r6
+ 192 0062 B8EEC00A 		vcvt.f32.s32	s0, s0
+ 193 0066 FFF7FEFF 		bl	msg_initWithFloat
+ 194              	.LVL18:
+ 195 006a E2E7     		b	.L3
+ 196              	.L4:
+  28:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) hv_getNumOutputChannels(_c));
+ 197              		.loc 1 28 10 is_stmt 1 view .LVU40
+  28:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) hv_getNumOutputChannels(_c));
+ 198              		.loc 1 28 14 is_stmt 0 view .LVU41
+ 199 006c 0146     		mov	r1, r0
+ 200 006e 2F4A     		ldr	r2, .L22+8
+ 201 0070 2046     		mov	r0, r4
+ 202 0072 FFF7FEFF 		bl	msg_compareSymbol
+ 203              	.LVL19:
+  28:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) hv_getNumOutputChannels(_c));
+ 204              		.loc 1 28 13 view .LVU42
+ 205 0076 70B9     		cbnz	r0, .L21
+  30:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) msg_getTimestamp(m));
+ 206              		.loc 1 30 10 is_stmt 1 view .LVU43
+  30:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) msg_getTimestamp(m));
+ 207              		.loc 1 30 14 is_stmt 0 view .LVU44
+ 208 0078 0146     		mov	r1, r0
+ 209 007a 2D4A     		ldr	r2, .L22+12
+ 210 007c 2046     		mov	r0, r4
+ 211 007e FFF7FEFF 		bl	msg_compareSymbol
+ 212              	.LVL20:
+  30:source/HvControlSystem.c ****     msg_initWithFloat(n, msg_getTimestamp(m), (float) msg_getTimestamp(m));
+ 213              		.loc 1 30 13 view .LVU45
+ 214 0082 70B1     		cbz	r0, .L6
+  31:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "table")) {
+ 215              		.loc 1 31 5 is_stmt 1 view .LVU46
+ 216              	.LVL21:
+ 217              	.LBB35:
+ 218              	.LBI35:
+  82:source/HvMessage.h ****   return m->timestamp;
+ 219              		.loc 2 82 27 view .LVU47
+ 220              	.LBB36:
+ 221              		.loc 2 83 3 view .LVU48
+ 222              		.loc 2 83 11 is_stmt 0 view .LVU49
+ 223 0084 2168     		ldr	r1, [r4]
+ 224              	.LVL22:
+ 225              		.loc 2 83 11 view .LVU50
+ 226              	.LBE36:
+ 227              	.LBE35:
+ 228              		.loc 2 83 3 is_stmt 1 view .LVU51
+  31:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "table")) {
+ 229              		.loc 1 31 5 is_stmt 0 view .LVU52
+ 230 0086 3046     		mov	r0, r6
+ 231 0088 07EE901A 		vmov	s15, r1	@ int
+ 232 008c B8EE670A 		vcvt.f32.u32	s0, s15
+ 233 0090 FFF7FEFF 		bl	msg_initWithFloat
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 8
+
+
+ 234              	.LVL23:
+ 235 0094 CDE7     		b	.L3
+ 236              	.L21:
+  29:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "currentTime")) {
+ 237              		.loc 1 29 5 is_stmt 1 view .LVU53
+ 238              	.LVL24:
+ 239              	.LBB37:
+ 240              	.LBI37:
+  82:source/HvMessage.h ****   return m->timestamp;
+ 241              		.loc 2 82 27 view .LVU54
+ 242              	.LBB38:
+ 243              		.loc 2 83 3 view .LVU55
+ 244              		.loc 2 83 11 is_stmt 0 view .LVU56
+ 245 0096 2168     		ldr	r1, [r4]
+ 246              	.LBE38:
+ 247              	.LBE37:
+  29:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "currentTime")) {
+ 248              		.loc 1 29 55 view .LVU57
+ 249 0098 2846     		mov	r0, r5
+ 250              	.LBB40:
+ 251              	.LBB39:
+ 252              		.loc 2 83 11 view .LVU58
+ 253 009a 7960     		str	r1, [r7, #4]
+ 254              	.LVL25:
+ 255              		.loc 2 83 11 view .LVU59
+ 256              	.LBE39:
+ 257              	.LBE40:
+  29:source/HvControlSystem.c ****   } else if (msg_compareSymbol(m, 0, "currentTime")) {
+ 258              		.loc 1 29 55 view .LVU60
+ 259 009c FFF7FEFF 		bl	hv_getNumOutputChannels
+ 260              	.LVL26:
+ 261 00a0 DBE7     		b	.L19
+ 262              	.L6:
+  32:source/HvControlSystem.c ****     // NOTE(mhroth): no need to check message format for symbols as table lookup will fail otherwis
+ 263              		.loc 1 32 10 is_stmt 1 view .LVU61
+  32:source/HvControlSystem.c ****     // NOTE(mhroth): no need to check message format for symbols as table lookup will fail otherwis
+ 264              		.loc 1 32 14 is_stmt 0 view .LVU62
+ 265 00a2 0146     		mov	r1, r0
+ 266 00a4 234A     		ldr	r2, .L22+16
+ 267 00a6 2046     		mov	r0, r4
+ 268 00a8 FFF7FEFF 		bl	msg_compareSymbol
+ 269              	.LVL27:
+  32:source/HvControlSystem.c ****     // NOTE(mhroth): no need to check message format for symbols as table lookup will fail otherwis
+ 270              		.loc 1 32 13 view .LVU63
+ 271 00ac 0028     		cmp	r0, #0
+ 272 00ae C5D0     		beq	.L1
+ 273              	.LBB41:
+  34:source/HvControlSystem.c ****     if (table != NULL) {
+ 274              		.loc 1 34 5 is_stmt 1 view .LVU64
+  34:source/HvControlSystem.c ****     if (table != NULL) {
+ 275              		.loc 1 34 22 is_stmt 0 view .LVU65
+ 276 00b0 0121     		movs	r1, #1
+ 277 00b2 2046     		mov	r0, r4
+ 278 00b4 FFF7FEFF 		bl	msg_getHash
+ 279              	.LVL28:
+ 280 00b8 0146     		mov	r1, r0
+ 281 00ba 2846     		mov	r0, r5
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 9
+
+
+ 282 00bc FFF7FEFF 		bl	hv_table_get
+ 283              	.LVL29:
+  35:source/HvControlSystem.c ****       if (msg_compareSymbol(m, 2, "length")) {
+ 284              		.loc 1 35 5 is_stmt 1 view .LVU66
+  35:source/HvControlSystem.c ****       if (msg_compareSymbol(m, 2, "length")) {
+ 285              		.loc 1 35 8 is_stmt 0 view .LVU67
+ 286 00c0 8046     		mov	r8, r0
+ 287 00c2 0028     		cmp	r0, #0
+ 288 00c4 BAD0     		beq	.L1
+  36:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getLength(table));
+ 289              		.loc 1 36 7 is_stmt 1 view .LVU68
+  36:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getLength(table));
+ 290              		.loc 1 36 11 is_stmt 0 view .LVU69
+ 291 00c6 1C4A     		ldr	r2, .L22+20
+ 292 00c8 0221     		movs	r1, #2
+ 293 00ca 2046     		mov	r0, r4
+ 294              	.LVL30:
+  36:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getLength(table));
+ 295              		.loc 1 36 11 view .LVU70
+ 296 00cc FFF7FEFF 		bl	msg_compareSymbol
+ 297              	.LVL31:
+  36:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getLength(table));
+ 298              		.loc 1 36 10 view .LVU71
+ 299 00d0 40B1     		cbz	r0, .L10
+  37:source/HvControlSystem.c ****       } else if (msg_compareSymbol(m, 2, "size")) {
+ 300              		.loc 1 37 9 is_stmt 1 view .LVU72
+ 301              	.LVL32:
+ 302              	.LBB42:
+ 303              	.LBI42:
+  82:source/HvMessage.h ****   return m->timestamp;
+ 304              		.loc 2 82 27 view .LVU73
+ 305              	.LBB43:
+ 306              		.loc 2 83 3 view .LVU74
+ 307              		.loc 2 83 3 is_stmt 0 view .LVU75
+ 308              	.LBE43:
+ 309              	.LBE42:
+ 310              	.LBB44:
+ 311              	.LBI44:
+ 312              		.file 3 "source/HvTable.h"
+   1:source/HvTable.h **** /**
+   2:source/HvTable.h ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvTable.h ****  *
+   4:source/HvTable.h ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvTable.h ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvTable.h ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvTable.h ****  *
+   8:source/HvTable.h ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvTable.h ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvTable.h ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvTable.h ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvTable.h ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvTable.h ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvTable.h ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvTable.h ****  */
+  16:source/HvTable.h **** 
+  17:source/HvTable.h **** #ifndef _HEAVY_TABLE_H_
+  18:source/HvTable.h **** #define _HEAVY_TABLE_H_
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 10
+
+
+  19:source/HvTable.h **** 
+  20:source/HvTable.h **** #include "HvHeavy.h"
+  21:source/HvTable.h **** #include "HvUtils.h"
+  22:source/HvTable.h **** 
+  23:source/HvTable.h **** #ifdef __cplusplus
+  24:source/HvTable.h **** extern "C" {
+  25:source/HvTable.h **** #endif
+  26:source/HvTable.h **** 
+  27:source/HvTable.h **** typedef struct HvTable {
+  28:source/HvTable.h ****   float *buffer;
+  29:source/HvTable.h ****   // the number of values that the table is requested to have
+  30:source/HvTable.h ****   hv_uint32_t length;
+  31:source/HvTable.h **** 
+  32:source/HvTable.h ****   // the number of usable values that the table actually has
+  33:source/HvTable.h ****   // this is always an even multiple of HV_N_SIMD
+  34:source/HvTable.h ****   hv_uint32_t size;
+  35:source/HvTable.h **** 
+  36:source/HvTable.h ****   // Note that the true size of the table is (size + HV_N_SIMD),
+  37:source/HvTable.h ****   // with the trailing values used by the system, e.g. to create a circular
+  38:source/HvTable.h ****   // buffer
+  39:source/HvTable.h ****   hv_uint32_t allocated;
+  40:source/HvTable.h **** 
+  41:source/HvTable.h ****   hv_uint32_t head; // the most recently written point
+  42:source/HvTable.h **** } HvTable;
+  43:source/HvTable.h **** 
+  44:source/HvTable.h **** hv_size_t hTable_init(HvTable *o, int length);
+  45:source/HvTable.h **** 
+  46:source/HvTable.h **** hv_size_t hTable_initWithData(HvTable *o, int length, const float *data);
+  47:source/HvTable.h **** 
+  48:source/HvTable.h **** hv_size_t hTable_initWithFinalData(HvTable *o, int length, float *data);
+  49:source/HvTable.h **** 
+  50:source/HvTable.h **** void hTable_free(HvTable *o);
+  51:source/HvTable.h **** 
+  52:source/HvTable.h **** int hTable_resize(HvTable *o, hv_uint32_t newLength);
+  53:source/HvTable.h **** 
+  54:source/HvTable.h **** void hTable_onMessage(HeavyContextInterface *_c, HvTable *o, int letIn, const HvMessage *m,
+  55:source/HvTable.h ****     void (*sendMessage)(HeavyContextInterface *, int, const HvMessage *));
+  56:source/HvTable.h **** 
+  57:source/HvTable.h **** static inline float *hTable_getBuffer(HvTable *o) {
+  58:source/HvTable.h ****   return o->buffer;
+  59:source/HvTable.h **** }
+  60:source/HvTable.h **** 
+  61:source/HvTable.h **** // the user-requested length of the table (number of floats)
+  62:source/HvTable.h **** static inline hv_uint32_t hTable_getLength(HvTable *o) {
+ 313              		.loc 3 62 27 is_stmt 1 view .LVU76
+ 314              	.LBB45:
+  63:source/HvTable.h ****   return o->length;
+ 315              		.loc 3 63 3 view .LVU77
+ 316              		.loc 3 63 3 is_stmt 0 view .LVU78
+ 317              	.LBE45:
+ 318              	.LBE44:
+  37:source/HvControlSystem.c ****       } else if (msg_compareSymbol(m, 2, "size")) {
+ 319              		.loc 1 37 9 view .LVU79
+ 320 00d2 98ED010A 		vldr.32	s0, [r8, #4]	@ int
+ 321 00d6 3046     		mov	r0, r6
+ 322 00d8 2168     		ldr	r1, [r4]
+ 323 00da B8EE400A 		vcvt.f32.u32	s0, s0
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 11
+
+
+ 324 00de FFF7FEFF 		bl	msg_initWithFloat
+ 325              	.LVL33:
+ 326 00e2 A6E7     		b	.L3
+ 327              	.L10:
+  38:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getSize(table));
+ 328              		.loc 1 38 14 is_stmt 1 view .LVU80
+  38:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getSize(table));
+ 329              		.loc 1 38 18 is_stmt 0 view .LVU81
+ 330 00e4 154A     		ldr	r2, .L22+24
+ 331 00e6 0221     		movs	r1, #2
+ 332 00e8 2046     		mov	r0, r4
+ 333 00ea FFF7FEFF 		bl	msg_compareSymbol
+ 334              	.LVL34:
+  38:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getSize(table));
+ 335              		.loc 1 38 17 view .LVU82
+ 336 00ee 40B1     		cbz	r0, .L11
+  39:source/HvControlSystem.c ****       } else if (msg_compareSymbol(m, 2, "head")) {
+ 337              		.loc 1 39 9 is_stmt 1 view .LVU83
+ 338              	.LVL35:
+ 339              	.LBB46:
+ 340              	.LBI46:
+  82:source/HvMessage.h ****   return m->timestamp;
+ 341              		.loc 2 82 27 view .LVU84
+ 342              	.LBB47:
+ 343              		.loc 2 83 3 view .LVU85
+ 344              		.loc 2 83 3 is_stmt 0 view .LVU86
+ 345              	.LBE47:
+ 346              	.LBE46:
+ 347              	.LBB48:
+ 348              	.LBI48:
+  64:source/HvTable.h **** }
+  65:source/HvTable.h **** 
+  66:source/HvTable.h **** // the usable length of the table (an even multiple of HV_N_SIMD)
+  67:source/HvTable.h **** static inline hv_uint32_t hTable_getSize(HvTable *o) {
+ 349              		.loc 3 67 27 is_stmt 1 view .LVU87
+ 350              	.LBB49:
+  68:source/HvTable.h ****   return o->size;
+ 351              		.loc 3 68 3 view .LVU88
+ 352              		.loc 3 68 3 is_stmt 0 view .LVU89
+ 353              	.LBE49:
+ 354              	.LBE48:
+  39:source/HvControlSystem.c ****       } else if (msg_compareSymbol(m, 2, "head")) {
+ 355              		.loc 1 39 9 view .LVU90
+ 356 00f0 98ED020A 		vldr.32	s0, [r8, #8]	@ int
+ 357 00f4 3046     		mov	r0, r6
+ 358 00f6 2168     		ldr	r1, [r4]
+ 359 00f8 B8EE400A 		vcvt.f32.u32	s0, s0
+ 360 00fc FFF7FEFF 		bl	msg_initWithFloat
+ 361              	.LVL36:
+ 362 0100 97E7     		b	.L3
+ 363              	.L11:
+  40:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getHead(table));
+ 364              		.loc 1 40 14 is_stmt 1 view .LVU91
+  40:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getHead(table));
+ 365              		.loc 1 40 18 is_stmt 0 view .LVU92
+ 366 0102 0F4A     		ldr	r2, .L22+28
+ 367 0104 0221     		movs	r1, #2
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 12
+
+
+ 368 0106 2046     		mov	r0, r4
+ 369 0108 FFF7FEFF 		bl	msg_compareSymbol
+ 370              	.LVL37:
+  40:source/HvControlSystem.c ****         msg_initWithFloat(n, msg_getTimestamp(m), (float) hTable_getHead(table));
+ 371              		.loc 1 40 17 view .LVU93
+ 372 010c 0028     		cmp	r0, #0
+ 373 010e 95D0     		beq	.L1
+  41:source/HvControlSystem.c ****       } else return;
+ 374              		.loc 1 41 9 is_stmt 1 view .LVU94
+ 375              	.LVL38:
+ 376              	.LBB50:
+ 377              	.LBI50:
+  82:source/HvMessage.h ****   return m->timestamp;
+ 378              		.loc 2 82 27 view .LVU95
+ 379              	.LBB51:
+ 380              		.loc 2 83 3 view .LVU96
+ 381              		.loc 2 83 3 is_stmt 0 view .LVU97
+ 382              	.LBE51:
+ 383              	.LBE50:
+ 384              	.LBB52:
+ 385              	.LBI52:
+  69:source/HvTable.h **** }
+  70:source/HvTable.h **** 
+  71:source/HvTable.h **** // the number of floats allocated to this table (usually size + HV_N_SIMD)
+  72:source/HvTable.h **** static inline hv_uint32_t hTable_getAllocated(HvTable *o) {
+  73:source/HvTable.h ****   return o->allocated;
+  74:source/HvTable.h **** }
+  75:source/HvTable.h **** 
+  76:source/HvTable.h **** static inline hv_uint32_t hTable_getHead(HvTable *o) {
+ 386              		.loc 3 76 27 is_stmt 1 view .LVU98
+ 387              	.LBB53:
+  77:source/HvTable.h ****   return o->head;
+ 388              		.loc 3 77 3 view .LVU99
+ 389              		.loc 3 77 3 is_stmt 0 view .LVU100
+ 390              	.LBE53:
+ 391              	.LBE52:
+  41:source/HvControlSystem.c ****       } else return;
+ 392              		.loc 1 41 9 view .LVU101
+ 393 0110 98ED040A 		vldr.32	s0, [r8, #16]	@ int
+ 394 0114 3046     		mov	r0, r6
+ 395 0116 2168     		ldr	r1, [r4]
+ 396 0118 B8EE400A 		vcvt.f32.u32	s0, s0
+ 397 011c FFF7FEFF 		bl	msg_initWithFloat
+ 398              	.LVL39:
+ 399 0120 87E7     		b	.L3
+ 400              	.L23:
+ 401 0122 00BF     		.align	2
+ 402              	.L22:
+ 403 0124 00000000 		.word	.LC0
+ 404 0128 0C000000 		.word	.LC1
+ 405 012c 20000000 		.word	.LC2
+ 406 0130 34000000 		.word	.LC3
+ 407 0134 40000000 		.word	.LC4
+ 408 0138 48000000 		.word	.LC5
+ 409 013c 50000000 		.word	.LC6
+ 410 0140 58000000 		.word	.LC7
+ 411              	.LBE41:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 13
+
+
+ 412              		.cfi_endproc
+ 413              	.LFE399:
+ 415              		.text
+ 416              	.Letext0:
+ 417              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 418              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 419              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 420              		.file 7 "source/HvHeavy.h"
+ 421              		.file 8 "source/HvHeavyInternal.h"
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 HvControlSystem.c
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s:19     .rodata.cSystem_onMessage.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s:44     .text.cSystem_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s:51     .text.cSystem_onMessage:0000000000000000 cSystem_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccumfRbI.s:403    .text.cSystem_onMessage:0000000000000124 $d
+
+UNDEFINED SYMBOLS
+msg_compareSymbol
+hv_getSampleRate
+msg_initWithFloat
+hv_getNumInputChannels
+hv_getNumOutputChannels
+msg_getHash
+hv_table_get

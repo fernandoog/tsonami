@@ -1,0 +1,521 @@
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"HvControlRandom.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.cRandom_init,"ax",%progbits
+  19              		.align	1
+  20              		.p2align 2,,3
+  21              		.global	cRandom_init
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	cRandom_init:
+  27              	.LVL0:
+  28              	.LFB399:
+  29              		.file 1 "source/HvControlRandom.c"
+   1:source/HvControlRandom.c **** /**
+   2:source/HvControlRandom.c ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvControlRandom.c ****  *
+   4:source/HvControlRandom.c ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvControlRandom.c ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvControlRandom.c ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvControlRandom.c ****  *
+   8:source/HvControlRandom.c ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvControlRandom.c ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvControlRandom.c ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvControlRandom.c ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvControlRandom.c ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvControlRandom.c ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvControlRandom.c ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvControlRandom.c ****  */
+  16:source/HvControlRandom.c **** 
+  17:source/HvControlRandom.c **** #include "HvControlRandom.h"
+  18:source/HvControlRandom.c **** 
+  19:source/HvControlRandom.c **** // http://www.firstpr.com.au/dsp/rand31
+  20:source/HvControlRandom.c **** // http://en.wikipedia.org/wiki/Lehmer_random_number_generator
+  21:source/HvControlRandom.c **** 
+  22:source/HvControlRandom.c **** hv_size_t cRandom_init(ControlRandom *o, int seed) {
+  30              		.loc 1 22 52 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  23:source/HvControlRandom.c ****   o->state = (seed != 0) ? seed : 1;
+  35              		.loc 1 23 3 view .LVU1
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 2
+
+
+  36              		.loc 1 23 33 is_stmt 0 view .LVU2
+  37 0000 0029     		cmp	r1, #0
+  22:source/HvControlRandom.c ****   o->state = (seed != 0) ? seed : 1;
+  38              		.loc 1 22 52 view .LVU3
+  39 0002 0346     		mov	r3, r0
+  24:source/HvControlRandom.c ****   return 0;
+  25:source/HvControlRandom.c **** }
+  40              		.loc 1 25 1 view .LVU4
+  41 0004 4FF00000 		mov	r0, #0
+  42              	.LVL1:
+  23:source/HvControlRandom.c ****   return 0;
+  43              		.loc 1 23 33 view .LVU5
+  44 0008 08BF     		it	eq
+  45 000a 0121     		moveq	r1, #1
+  46              	.LVL2:
+  23:source/HvControlRandom.c ****   return 0;
+  47              		.loc 1 23 12 view .LVU6
+  48 000c 1960     		str	r1, [r3]
+  24:source/HvControlRandom.c ****   return 0;
+  49              		.loc 1 24 3 is_stmt 1 view .LVU7
+  50              		.loc 1 25 1 is_stmt 0 view .LVU8
+  51 000e 7047     		bx	lr
+  52              		.cfi_endproc
+  53              	.LFE399:
+  55              		.global	__aeabi_uldivmod
+  56              		.global	__aeabi_ldivmod
+  57              		.section	.text.cRandom_onMessage,"ax",%progbits
+  58              		.align	1
+  59              		.p2align 2,,3
+  60              		.global	cRandom_onMessage
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  65              	cRandom_onMessage:
+  66              	.LVL3:
+  67              	.LFB400:
+  26:source/HvControlRandom.c **** 
+  27:source/HvControlRandom.c **** void cRandom_onMessage(HeavyContextInterface *_c, ControlRandom *o, int inletIndex, const HvMessage
+  28:source/HvControlRandom.c ****     void (*sendMessage)(HeavyContextInterface *, int, const HvMessage *)) {
+  68              		.loc 1 28 75 is_stmt 1 view -0
+  69              		.cfi_startproc
+  70              		@ args = 4, pretend = 0, frame = 0
+  71              		@ frame_needed = 1, uses_anonymous_args = 0
+  29:source/HvControlRandom.c ****   switch (inletIndex) {
+  72              		.loc 1 29 3 view .LVU10
+  28:source/HvControlRandom.c ****   switch (inletIndex) {
+  73              		.loc 1 28 75 is_stmt 0 view .LVU11
+  74 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+  75              		.cfi_def_cfa_offset 32
+  76              		.cfi_offset 3, -32
+  77              		.cfi_offset 4, -28
+  78              		.cfi_offset 5, -24
+  79              		.cfi_offset 6, -20
+  80              		.cfi_offset 7, -16
+  81              		.cfi_offset 8, -12
+  82              		.cfi_offset 9, -8
+  83              		.cfi_offset 14, -4
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 3
+
+
+  84 0004 0E46     		mov	r6, r1
+  85 0006 00AF     		add	r7, sp, #0
+  86              		.cfi_def_cfa_register 7
+  28:source/HvControlRandom.c ****   switch (inletIndex) {
+  87              		.loc 1 28 75 view .LVU12
+  88 0008 9946     		mov	r9, r3
+  89              		.loc 1 29 3 view .LVU13
+  90 000a 1446     		mov	r4, r2
+  91 000c 32B1     		cbz	r2, .L5
+  92 000e 012A     		cmp	r2, #1
+  93 0010 01D1     		bne	.L4
+  30:source/HvControlRandom.c ****     case 0: {
+  31:source/HvControlRandom.c ****       HvMessage *n = HV_MESSAGE_ON_STACK(1);
+  32:source/HvControlRandom.c ****       o->state = (hv_uint32_t) ((((unsigned long long) o->state) * 279470273UL) % 4294967291UL);
+  33:source/HvControlRandom.c ****       float f = ((float) (o->state >> 9)) * 0.00000011920929f;
+  34:source/HvControlRandom.c ****       msg_initWithFloat(n, msg_getTimestamp(m), f);
+  35:source/HvControlRandom.c ****       sendMessage(_c, 0, n);
+  36:source/HvControlRandom.c ****       break;
+  37:source/HvControlRandom.c ****     }
+  38:source/HvControlRandom.c ****     case 1: {
+  39:source/HvControlRandom.c ****       if (msg_isFloat(m,0)) {
+  94              		.loc 1 39 7 is_stmt 1 view .LVU14
+  95              	.LVL4:
+  96              	.LBB34:
+  97              	.LBI34:
+  98              		.file 2 "source/HvMessage.h"
+   1:source/HvMessage.h **** /**
+   2:source/HvMessage.h ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvMessage.h ****  *
+   4:source/HvMessage.h ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvMessage.h ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvMessage.h ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvMessage.h ****  *
+   8:source/HvMessage.h ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvMessage.h ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvMessage.h ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvMessage.h ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvMessage.h ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvMessage.h ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvMessage.h ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvMessage.h ****  */
+  16:source/HvMessage.h **** 
+  17:source/HvMessage.h **** #ifndef _HEAVY_MESSAGE_H_
+  18:source/HvMessage.h **** #define _HEAVY_MESSAGE_H_
+  19:source/HvMessage.h **** 
+  20:source/HvMessage.h **** #include "HvUtils.h"
+  21:source/HvMessage.h **** 
+  22:source/HvMessage.h **** #ifdef __cplusplus
+  23:source/HvMessage.h **** extern "C" {
+  24:source/HvMessage.h **** #endif
+  25:source/HvMessage.h **** 
+  26:source/HvMessage.h **** typedef enum ElementType {
+  27:source/HvMessage.h ****   HV_MSG_BANG = 0,
+  28:source/HvMessage.h ****   HV_MSG_FLOAT = 1,
+  29:source/HvMessage.h ****   HV_MSG_SYMBOL = 2,
+  30:source/HvMessage.h ****   HV_MSG_HASH = 3
+  31:source/HvMessage.h **** } ElementType;
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 4
+
+
+  32:source/HvMessage.h **** 
+  33:source/HvMessage.h **** typedef struct Element {
+  34:source/HvMessage.h ****   ElementType type;
+  35:source/HvMessage.h ****   union {
+  36:source/HvMessage.h ****     float f; // float
+  37:source/HvMessage.h ****     const char *s; // symbol
+  38:source/HvMessage.h ****     hv_uint32_t h; // hash
+  39:source/HvMessage.h ****   } data;
+  40:source/HvMessage.h **** } Element;
+  41:source/HvMessage.h **** 
+  42:source/HvMessage.h **** typedef struct HvMessage {
+  43:source/HvMessage.h ****   hv_uint32_t timestamp; // the sample at which this message should be processed
+  44:source/HvMessage.h ****   hv_uint16_t numElements;
+  45:source/HvMessage.h ****   hv_uint16_t numBytes; // the total number of bytes that this message occupies in memory, includin
+  46:source/HvMessage.h ****   Element elem;
+  47:source/HvMessage.h **** } HvMessage;
+  48:source/HvMessage.h **** 
+  49:source/HvMessage.h **** typedef struct ReceiverMessagePair {
+  50:source/HvMessage.h ****   hv_uint32_t receiverHash;
+  51:source/HvMessage.h ****   HvMessage msg;
+  52:source/HvMessage.h **** } ReceiverMessagePair;
+  53:source/HvMessage.h **** 
+  54:source/HvMessage.h **** #define HV_MESSAGE_ON_STACK(_x) (HvMessage *) hv_alloca(msg_getCoreSize(_x))
+  55:source/HvMessage.h **** 
+  56:source/HvMessage.h **** /** Returns the number of bytes that this message consumes in memory, not including strings. */
+  57:source/HvMessage.h **** static inline hv_size_t msg_getCoreSize(hv_size_t numElements) {
+  58:source/HvMessage.h ****   hv_assert(numElements > 0);
+  59:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+  60:source/HvMessage.h **** }
+  61:source/HvMessage.h **** 
+  62:source/HvMessage.h **** HvMessage *msg_copy(const HvMessage *m);
+  63:source/HvMessage.h **** 
+  64:source/HvMessage.h **** /** Copies the message into the given buffer. The buffer must be at least as large as msg_getNumHea
+  65:source/HvMessage.h **** void msg_copyToBuffer(const HvMessage *m, char *buffer, hv_size_t len);
+  66:source/HvMessage.h **** 
+  67:source/HvMessage.h **** void msg_setElementToFrom(HvMessage *n, int indexN, const HvMessage *const m, int indexM);
+  68:source/HvMessage.h **** 
+  69:source/HvMessage.h **** /** Frees a message on the heap. Does nothing if argument is NULL. */
+  70:source/HvMessage.h **** void msg_free(HvMessage *m);
+  71:source/HvMessage.h **** 
+  72:source/HvMessage.h **** HvMessage *msg_init(HvMessage *m, hv_size_t numElements, hv_uint32_t timestamp);
+  73:source/HvMessage.h **** 
+  74:source/HvMessage.h **** HvMessage *msg_initWithFloat(HvMessage *m, hv_uint32_t timestamp, float f);
+  75:source/HvMessage.h **** 
+  76:source/HvMessage.h **** HvMessage *msg_initWithBang(HvMessage *m, hv_uint32_t timestamp);
+  77:source/HvMessage.h **** 
+  78:source/HvMessage.h **** HvMessage *msg_initWithSymbol(HvMessage *m, hv_uint32_t timestamp, const char *s);
+  79:source/HvMessage.h **** 
+  80:source/HvMessage.h **** HvMessage *msg_initWithHash(HvMessage *m, hv_uint32_t timestamp, hv_uint32_t h);
+  81:source/HvMessage.h **** 
+  82:source/HvMessage.h **** static inline hv_uint32_t msg_getTimestamp(const HvMessage *m) {
+  83:source/HvMessage.h ****   return m->timestamp;
+  84:source/HvMessage.h **** }
+  85:source/HvMessage.h **** 
+  86:source/HvMessage.h **** static inline void msg_setTimestamp(HvMessage *m, hv_uint32_t timestamp) {
+  87:source/HvMessage.h ****   m->timestamp = timestamp;
+  88:source/HvMessage.h **** }
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 5
+
+
+  89:source/HvMessage.h **** 
+  90:source/HvMessage.h **** static inline int msg_getNumElements(const HvMessage *m) {
+  91:source/HvMessage.h ****   return (int) m->numElements;
+  92:source/HvMessage.h **** }
+  93:source/HvMessage.h **** 
+  94:source/HvMessage.h **** /** Returns the total number of bytes this message consumes in memory. */
+  95:source/HvMessage.h **** static inline hv_uint32_t msg_getSize(const HvMessage *m) {
+  96:source/HvMessage.h ****   return m->numBytes;
+  97:source/HvMessage.h **** }
+  98:source/HvMessage.h **** 
+  99:source/HvMessage.h **** static inline ElementType msg_getType(const HvMessage *m, int index) {
+ 100:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 101:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 102:source/HvMessage.h **** }
+ 103:source/HvMessage.h **** 
+ 104:source/HvMessage.h **** static inline void msg_setBang(HvMessage *m, int index) {
+ 105:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 106:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_BANG;
+ 107:source/HvMessage.h ****   (&(m->elem)+index)->data.s = NULL;
+ 108:source/HvMessage.h **** }
+ 109:source/HvMessage.h **** 
+ 110:source/HvMessage.h **** static inline bool msg_isBang(const HvMessage *m, int index) {
+ 111:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_BANG) : false;
+ 112:source/HvMessage.h **** }
+ 113:source/HvMessage.h **** 
+ 114:source/HvMessage.h **** static inline void msg_setFloat(HvMessage *m, int index, float f) {
+ 115:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 116:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_FLOAT;
+ 117:source/HvMessage.h ****   (&(m->elem)+index)->data.f = f;
+ 118:source/HvMessage.h **** }
+ 119:source/HvMessage.h **** 
+ 120:source/HvMessage.h **** static inline float msg_getFloat(const HvMessage *const m, int index) {
+ 121:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 122:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 123:source/HvMessage.h **** }
+ 124:source/HvMessage.h **** 
+ 125:source/HvMessage.h **** static inline bool msg_isFloat(const HvMessage *const m, int index) {
+  99              		.loc 2 125 20 view .LVU15
+ 100              	.LBB35:
+ 126:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+ 101              		.loc 2 126 3 view .LVU16
+ 102              	.LBB36:
+ 103              	.LBI36:
+  90:source/HvMessage.h ****   return (int) m->numElements;
+ 104              		.loc 2 90 19 view .LVU17
+ 105              	.LBB37:
+  91:source/HvMessage.h **** }
+ 106              		.loc 2 91 3 view .LVU18
+  91:source/HvMessage.h **** }
+ 107              		.loc 2 91 3 is_stmt 0 view .LVU19
+ 108              	.LBE37:
+ 109              	.LBE36:
+ 110              		.loc 2 126 83 view .LVU20
+ 111 0012 9B88     		ldrh	r3, [r3, #4]
+ 112              	.LVL5:
+ 113              		.loc 2 126 83 view .LVU21
+ 114 0014 0BBB     		cbnz	r3, .L13
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 6
+
+
+ 115              	.LVL6:
+ 116              	.L4:
+ 117              		.loc 2 126 83 view .LVU22
+ 118              	.LBE35:
+ 119              	.LBE34:
+  40:source/HvControlRandom.c ****         o->state = (hv_uint32_t) msg_getFloat(m,0);
+  41:source/HvControlRandom.c ****       }
+  42:source/HvControlRandom.c ****       break;
+  43:source/HvControlRandom.c ****     }
+  44:source/HvControlRandom.c ****     default: break;
+  45:source/HvControlRandom.c ****   }
+  46:source/HvControlRandom.c **** }
+ 120              		.loc 1 46 1 view .LVU23
+ 121 0016 BD46     		mov	sp, r7
+ 122              		.cfi_remember_state
+ 123              		.cfi_def_cfa_register 13
+ 124              		@ sp needed
+ 125 0018 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 126              	.LVL7:
+ 127              	.L5:
+ 128              		.cfi_restore_state
+ 129              	.LBB44:
+  31:source/HvControlRandom.c ****       o->state = (hv_uint32_t) ((((unsigned long long) o->state) * 279470273UL) % 4294967291UL);
+ 130              		.loc 1 31 7 is_stmt 1 view .LVU24
+  31:source/HvControlRandom.c ****       o->state = (hv_uint32_t) ((((unsigned long long) o->state) * 279470273UL) % 4294967291UL);
+ 131              		.loc 1 31 7 is_stmt 0 view .LVU25
+ 132              	.LBE44:
+  58:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+ 133              		.loc 2 58 3 is_stmt 1 view .LVU26
+  59:source/HvMessage.h **** }
+ 134              		.loc 2 59 3 view .LVU27
+  59:source/HvMessage.h **** }
+ 135              		.loc 2 59 3 is_stmt 0 view .LVU28
+ 136 001c 0546     		mov	r5, r0
+ 137              	.LBB47:
+  32:source/HvControlRandom.c ****       float f = ((float) (o->state >> 9)) * 0.00000011920929f;
+ 138              		.loc 1 32 66 view .LVU29
+ 139 001e 0968     		ldr	r1, [r1]
+ 140              	.LVL8:
+  32:source/HvControlRandom.c ****       float f = ((float) (o->state >> 9)) * 0.00000011920929f;
+ 141              		.loc 1 32 66 view .LVU30
+ 142 0020 1448     		ldr	r0, .L14
+ 143              	.LVL9:
+  31:source/HvControlRandom.c ****       o->state = (hv_uint32_t) ((((unsigned long long) o->state) * 279470273UL) % 4294967291UL);
+ 144              		.loc 1 31 22 view .LVU31
+ 145 0022 84B0     		sub	sp, sp, #16
+  32:source/HvControlRandom.c ****       float f = ((float) (o->state >> 9)) * 0.00000011920929f;
+ 146              		.loc 1 32 81 view .LVU32
+ 147 0024 6FF00402 		mvn	r2, #4
+ 148              	.LVL10:
+  32:source/HvControlRandom.c ****       float f = ((float) (o->state >> 9)) * 0.00000011920929f;
+ 149              		.loc 1 32 81 view .LVU33
+ 150 0028 0023     		movs	r3, #0
+ 151              	.LVL11:
+  32:source/HvControlRandom.c ****       float f = ((float) (o->state >> 9)) * 0.00000011920929f;
+ 152              		.loc 1 32 81 view .LVU34
+ 153 002a A1FB0001 		umull	r0, r1, r1, r0
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 7
+
+
+  31:source/HvControlRandom.c ****       o->state = (hv_uint32_t) ((((unsigned long long) o->state) * 279470273UL) % 4294967291UL);
+ 154              		.loc 1 31 22 view .LVU35
+ 155 002e E846     		mov	r8, sp
+ 156              	.LVL12:
+  32:source/HvControlRandom.c ****       float f = ((float) (o->state >> 9)) * 0.00000011920929f;
+ 157              		.loc 1 32 7 is_stmt 1 view .LVU36
+  32:source/HvControlRandom.c ****       float f = ((float) (o->state >> 9)) * 0.00000011920929f;
+ 158              		.loc 1 32 81 is_stmt 0 view .LVU37
+ 159 0030 FFF7FEFF 		bl	__aeabi_uldivmod
+ 160              	.LVL13:
+  34:source/HvControlRandom.c ****       sendMessage(_c, 0, n);
+ 161              		.loc 1 34 7 view .LVU38
+ 162 0034 D9F80010 		ldr	r1, [r9]
+  33:source/HvControlRandom.c ****       msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 163              		.loc 1 33 36 view .LVU39
+ 164 0038 530A     		lsrs	r3, r2, #9
+  32:source/HvControlRandom.c ****       float f = ((float) (o->state >> 9)) * 0.00000011920929f;
+ 165              		.loc 1 32 16 view .LVU40
+ 166 003a 3260     		str	r2, [r6]
+  33:source/HvControlRandom.c ****       msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 167              		.loc 1 33 7 is_stmt 1 view .LVU41
+ 168              	.LVL14:
+  34:source/HvControlRandom.c ****       sendMessage(_c, 0, n);
+ 169              		.loc 1 34 7 view .LVU42
+ 170              	.LBB45:
+ 171              	.LBI45:
+  82:source/HvMessage.h ****   return m->timestamp;
+ 172              		.loc 2 82 27 view .LVU43
+ 173              	.LBB46:
+  83:source/HvMessage.h **** }
+ 174              		.loc 2 83 3 view .LVU44
+  83:source/HvMessage.h **** }
+ 175              		.loc 2 83 3 is_stmt 0 view .LVU45
+ 176              	.LBE46:
+ 177              	.LBE45:
+  34:source/HvControlRandom.c ****       sendMessage(_c, 0, n);
+ 178              		.loc 1 34 7 view .LVU46
+ 179 003c 4046     		mov	r0, r8
+  33:source/HvControlRandom.c ****       msg_initWithFloat(n, msg_getTimestamp(m), f);
+ 180              		.loc 1 33 36 view .LVU47
+ 181 003e 00EE103A 		vmov	s0, r3	@ int
+  34:source/HvControlRandom.c ****       sendMessage(_c, 0, n);
+ 182              		.loc 1 34 7 view .LVU48
+ 183 0042 BAEEE40A 		vcvt.f32.s32	s0, s0, #23
+ 184              	.LVL15:
+  34:source/HvControlRandom.c ****       sendMessage(_c, 0, n);
+ 185              		.loc 1 34 7 view .LVU49
+ 186 0046 FFF7FEFF 		bl	msg_initWithFloat
+ 187              	.LVL16:
+  35:source/HvControlRandom.c ****       break;
+ 188              		.loc 1 35 7 is_stmt 1 view .LVU50
+ 189 004a 4246     		mov	r2, r8
+ 190 004c 2146     		mov	r1, r4
+ 191 004e 2846     		mov	r0, r5
+ 192 0050 3B6A     		ldr	r3, [r7, #32]
+ 193 0052 9847     		blx	r3
+ 194              	.LVL17:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 8
+
+
+  36:source/HvControlRandom.c ****     }
+ 195              		.loc 1 36 7 view .LVU51
+ 196              	.LBE47:
+ 197              		.loc 1 46 1 is_stmt 0 view .LVU52
+ 198 0054 BD46     		mov	sp, r7
+ 199              		.cfi_remember_state
+ 200              		.cfi_def_cfa_register 13
+ 201              		@ sp needed
+ 202 0056 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 203              	.LVL18:
+ 204              	.L13:
+ 205              		.cfi_restore_state
+ 206              	.LBB48:
+ 207              	.LBB42:
+ 208              	.LBB38:
+ 209              	.LBI38:
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 210              		.loc 2 99 27 is_stmt 1 view .LVU53
+ 211              	.LBB39:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 212              		.loc 2 100 3 view .LVU54
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 213              		.loc 2 100 3 is_stmt 0 view .LVU55
+ 214              	.LBE39:
+ 215              	.LBE38:
+ 216              	.LBE42:
+ 217              	.LBE48:
+  91:source/HvMessage.h **** }
+ 218              		.loc 2 91 3 is_stmt 1 view .LVU56
+ 219              	.LBB49:
+ 220              	.LBB43:
+ 221              	.LBB41:
+ 222              	.LBB40:
+ 101:source/HvMessage.h **** }
+ 223              		.loc 2 101 3 view .LVU57
+ 101:source/HvMessage.h **** }
+ 224              		.loc 2 101 3 is_stmt 0 view .LVU58
+ 225              	.LBE40:
+ 226              	.LBE41:
+ 227              		.loc 2 126 83 view .LVU59
+ 228 005a 99F80830 		ldrb	r3, [r9, #8]	@ zero_extendqisi2
+ 229 005e 012B     		cmp	r3, #1
+ 230 0060 D9D1     		bne	.L4
+ 231              	.LVL19:
+ 232              		.loc 2 126 83 view .LVU60
+ 233              	.LBE43:
+ 234              	.LBE49:
+ 235              	.LBB50:
+ 236              	.LBB51:
+ 122:source/HvMessage.h **** }
+ 237              		.loc 2 122 3 is_stmt 1 view .LVU61
+ 122:source/HvMessage.h **** }
+ 238              		.loc 2 122 3 is_stmt 0 view .LVU62
+ 239              	.LBE51:
+ 240              	.LBE50:
+  40:source/HvControlRandom.c ****       }
+ 241              		.loc 1 40 20 view .LVU63
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 9
+
+
+ 242 0062 D9ED037A 		vldr.32	s15, [r9, #12]
+ 243 0066 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 244 006a C1ED007A 		vstr.32	s15, [r1]	@ int
+ 245              		.loc 1 46 1 view .LVU64
+ 246 006e BD46     		mov	sp, r7
+ 247              		.cfi_def_cfa_register 13
+ 248              		@ sp needed
+ 249 0070 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 250              	.LVL20:
+ 251              	.L15:
+ 252              		.loc 1 46 1 view .LVU65
+ 253              		.align	2
+ 254              	.L14:
+ 255 0074 C160A810 		.word	279470273
+ 256              		.cfi_endproc
+ 257              	.LFE400:
+ 259              		.text
+ 260              	.Letext0:
+ 261              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 262              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 263              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 264              		.file 6 "source/HvHeavy.h"
+ 265              		.file 7 "source/HvControlRandom.h"
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 HvControlRandom.c
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s:19     .text.cRandom_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s:26     .text.cRandom_init:0000000000000000 cRandom_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s:58     .text.cRandom_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s:65     .text.cRandom_onMessage:0000000000000000 cRandom_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccwNP7Bq.s:255    .text.cRandom_onMessage:0000000000000074 $d
+
+UNDEFINED SYMBOLS
+__aeabi_uldivmod
+__aeabi_ldivmod
+msg_initWithFloat

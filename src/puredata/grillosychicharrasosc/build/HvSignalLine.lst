@@ -1,0 +1,896 @@
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"HvSignalLine.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata.msg_getFloat.part.0.str1.4,"aMS",%progbits,1
+  19              		.align	2
+  20              	.LC0:
+  21 0000 696E6465 		.ascii	"index < msg_getNumElements(m)\000"
+  21      78203C20 
+  21      6D73675F 
+  21      6765744E 
+  21      756D456C 
+  22 001e 0000     		.align	2
+  23              	.LC1:
+  24 0020 736F7572 		.ascii	"source/HvMessage.h\000"
+  24      63652F48 
+  24      764D6573 
+  24      73616765 
+  24      2E6800
+  25              		.section	.text.msg_getFloat.part.0,"ax",%progbits
+  26              		.align	1
+  27              		.p2align 2,,3
+  28              		.syntax unified
+  29              		.thumb
+  30              		.thumb_func
+  32              	msg_getFloat.part.0:
+  33              	.LFB402:
+  34              		.file 1 "source/HvMessage.h"
+   1:source/HvMessage.h **** /**
+   2:source/HvMessage.h ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvMessage.h ****  *
+   4:source/HvMessage.h ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvMessage.h ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvMessage.h ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvMessage.h ****  *
+   8:source/HvMessage.h ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvMessage.h ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvMessage.h ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvMessage.h ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvMessage.h ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvMessage.h ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvMessage.h ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvMessage.h ****  */
+  16:source/HvMessage.h **** 
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 2
+
+
+  17:source/HvMessage.h **** #ifndef _HEAVY_MESSAGE_H_
+  18:source/HvMessage.h **** #define _HEAVY_MESSAGE_H_
+  19:source/HvMessage.h **** 
+  20:source/HvMessage.h **** #include "HvUtils.h"
+  21:source/HvMessage.h **** 
+  22:source/HvMessage.h **** #ifdef __cplusplus
+  23:source/HvMessage.h **** extern "C" {
+  24:source/HvMessage.h **** #endif
+  25:source/HvMessage.h **** 
+  26:source/HvMessage.h **** typedef enum ElementType {
+  27:source/HvMessage.h ****   HV_MSG_BANG = 0,
+  28:source/HvMessage.h ****   HV_MSG_FLOAT = 1,
+  29:source/HvMessage.h ****   HV_MSG_SYMBOL = 2,
+  30:source/HvMessage.h ****   HV_MSG_HASH = 3
+  31:source/HvMessage.h **** } ElementType;
+  32:source/HvMessage.h **** 
+  33:source/HvMessage.h **** typedef struct Element {
+  34:source/HvMessage.h ****   ElementType type;
+  35:source/HvMessage.h ****   union {
+  36:source/HvMessage.h ****     float f; // float
+  37:source/HvMessage.h ****     const char *s; // symbol
+  38:source/HvMessage.h ****     hv_uint32_t h; // hash
+  39:source/HvMessage.h ****   } data;
+  40:source/HvMessage.h **** } Element;
+  41:source/HvMessage.h **** 
+  42:source/HvMessage.h **** typedef struct HvMessage {
+  43:source/HvMessage.h ****   hv_uint32_t timestamp; // the sample at which this message should be processed
+  44:source/HvMessage.h ****   hv_uint16_t numElements;
+  45:source/HvMessage.h ****   hv_uint16_t numBytes; // the total number of bytes that this message occupies in memory, includin
+  46:source/HvMessage.h ****   Element elem;
+  47:source/HvMessage.h **** } HvMessage;
+  48:source/HvMessage.h **** 
+  49:source/HvMessage.h **** typedef struct ReceiverMessagePair {
+  50:source/HvMessage.h ****   hv_uint32_t receiverHash;
+  51:source/HvMessage.h ****   HvMessage msg;
+  52:source/HvMessage.h **** } ReceiverMessagePair;
+  53:source/HvMessage.h **** 
+  54:source/HvMessage.h **** #define HV_MESSAGE_ON_STACK(_x) (HvMessage *) hv_alloca(msg_getCoreSize(_x))
+  55:source/HvMessage.h **** 
+  56:source/HvMessage.h **** /** Returns the number of bytes that this message consumes in memory, not including strings. */
+  57:source/HvMessage.h **** static inline hv_size_t msg_getCoreSize(hv_size_t numElements) {
+  58:source/HvMessage.h ****   hv_assert(numElements > 0);
+  59:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+  60:source/HvMessage.h **** }
+  61:source/HvMessage.h **** 
+  62:source/HvMessage.h **** HvMessage *msg_copy(const HvMessage *m);
+  63:source/HvMessage.h **** 
+  64:source/HvMessage.h **** /** Copies the message into the given buffer. The buffer must be at least as large as msg_getNumHea
+  65:source/HvMessage.h **** void msg_copyToBuffer(const HvMessage *m, char *buffer, hv_size_t len);
+  66:source/HvMessage.h **** 
+  67:source/HvMessage.h **** void msg_setElementToFrom(HvMessage *n, int indexN, const HvMessage *const m, int indexM);
+  68:source/HvMessage.h **** 
+  69:source/HvMessage.h **** /** Frees a message on the heap. Does nothing if argument is NULL. */
+  70:source/HvMessage.h **** void msg_free(HvMessage *m);
+  71:source/HvMessage.h **** 
+  72:source/HvMessage.h **** HvMessage *msg_init(HvMessage *m, hv_size_t numElements, hv_uint32_t timestamp);
+  73:source/HvMessage.h **** 
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 3
+
+
+  74:source/HvMessage.h **** HvMessage *msg_initWithFloat(HvMessage *m, hv_uint32_t timestamp, float f);
+  75:source/HvMessage.h **** 
+  76:source/HvMessage.h **** HvMessage *msg_initWithBang(HvMessage *m, hv_uint32_t timestamp);
+  77:source/HvMessage.h **** 
+  78:source/HvMessage.h **** HvMessage *msg_initWithSymbol(HvMessage *m, hv_uint32_t timestamp, const char *s);
+  79:source/HvMessage.h **** 
+  80:source/HvMessage.h **** HvMessage *msg_initWithHash(HvMessage *m, hv_uint32_t timestamp, hv_uint32_t h);
+  81:source/HvMessage.h **** 
+  82:source/HvMessage.h **** static inline hv_uint32_t msg_getTimestamp(const HvMessage *m) {
+  83:source/HvMessage.h ****   return m->timestamp;
+  84:source/HvMessage.h **** }
+  85:source/HvMessage.h **** 
+  86:source/HvMessage.h **** static inline void msg_setTimestamp(HvMessage *m, hv_uint32_t timestamp) {
+  87:source/HvMessage.h ****   m->timestamp = timestamp;
+  88:source/HvMessage.h **** }
+  89:source/HvMessage.h **** 
+  90:source/HvMessage.h **** static inline int msg_getNumElements(const HvMessage *m) {
+  91:source/HvMessage.h ****   return (int) m->numElements;
+  92:source/HvMessage.h **** }
+  93:source/HvMessage.h **** 
+  94:source/HvMessage.h **** /** Returns the total number of bytes this message consumes in memory. */
+  95:source/HvMessage.h **** static inline hv_uint32_t msg_getSize(const HvMessage *m) {
+  96:source/HvMessage.h ****   return m->numBytes;
+  97:source/HvMessage.h **** }
+  98:source/HvMessage.h **** 
+  99:source/HvMessage.h **** static inline ElementType msg_getType(const HvMessage *m, int index) {
+ 100:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 101:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 102:source/HvMessage.h **** }
+ 103:source/HvMessage.h **** 
+ 104:source/HvMessage.h **** static inline void msg_setBang(HvMessage *m, int index) {
+ 105:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 106:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_BANG;
+ 107:source/HvMessage.h ****   (&(m->elem)+index)->data.s = NULL;
+ 108:source/HvMessage.h **** }
+ 109:source/HvMessage.h **** 
+ 110:source/HvMessage.h **** static inline bool msg_isBang(const HvMessage *m, int index) {
+ 111:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_BANG) : false;
+ 112:source/HvMessage.h **** }
+ 113:source/HvMessage.h **** 
+ 114:source/HvMessage.h **** static inline void msg_setFloat(HvMessage *m, int index, float f) {
+ 115:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 116:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_FLOAT;
+ 117:source/HvMessage.h ****   (&(m->elem)+index)->data.f = f;
+ 118:source/HvMessage.h **** }
+ 119:source/HvMessage.h **** 
+ 120:source/HvMessage.h **** static inline float msg_getFloat(const HvMessage *const m, int index) {
+  35              		.loc 1 120 21 view -0
+  36              		.cfi_startproc
+  37              		@ Volatile: function does not return.
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+  40              	.LVL0:
+  41              		.loc 1 120 21 is_stmt 0 view .LVU1
+  42 0000 08B5     		push	{r3, lr}
+  43              		.cfi_def_cfa_offset 8
+  44              		.cfi_offset 3, -8
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 4
+
+
+  45              		.cfi_offset 14, -4
+ 121:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+  46              		.loc 1 121 3 view .LVU2
+  47 0002 034A     		ldr	r2, .L4
+  48 0004 7921     		movs	r1, #121
+  49 0006 034B     		ldr	r3, .L4+4
+  50 0008 0348     		ldr	r0, .L4+8
+  51 000a FFF7FEFF 		bl	__assert_func
+  52              	.LVL1:
+  53              	.L5:
+  54 000e 00BF     		.align	2
+  55              	.L4:
+  56 0010 00000000 		.word	.LANCHOR0
+  57 0014 00000000 		.word	.LC0
+  58 0018 20000000 		.word	.LC1
+  59              		.cfi_endproc
+  60              	.LFE402:
+  62              		.section	.text.sLine_init,"ax",%progbits
+  63              		.align	1
+  64              		.p2align 2,,3
+  65              		.global	sLine_init
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  70              	sLine_init:
+  71              	.LVL2:
+  72              	.LFB400:
+  73              		.file 2 "source/HvSignalLine.c"
+   1:source/HvSignalLine.c **** /**
+   2:source/HvSignalLine.c ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvSignalLine.c ****  *
+   4:source/HvSignalLine.c ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvSignalLine.c ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvSignalLine.c ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvSignalLine.c ****  *
+   8:source/HvSignalLine.c ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvSignalLine.c ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvSignalLine.c ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvSignalLine.c ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvSignalLine.c ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvSignalLine.c ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvSignalLine.c ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvSignalLine.c ****  */
+  16:source/HvSignalLine.c **** 
+  17:source/HvSignalLine.c **** #include "HvSignalLine.h"
+  18:source/HvSignalLine.c **** 
+  19:source/HvSignalLine.c **** hv_size_t sLine_init(SignalLine *o) {
+  74              		.loc 2 19 37 is_stmt 1 view -0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  20:source/HvSignalLine.c **** #if HV_SIMD_AVX
+  21:source/HvSignalLine.c ****   o->n = _mm_setzero_si128();
+  22:source/HvSignalLine.c ****   o->x = _mm256_setzero_ps();
+  23:source/HvSignalLine.c ****   o->m = _mm256_setzero_ps();
+  24:source/HvSignalLine.c ****   o->t = _mm256_setzero_ps();
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 5
+
+
+  25:source/HvSignalLine.c **** #elif HV_SIMD_SSE
+  26:source/HvSignalLine.c ****   o->n = _mm_setzero_si128();
+  27:source/HvSignalLine.c ****   o->x = _mm_setzero_ps();
+  28:source/HvSignalLine.c ****   o->m = _mm_setzero_ps();
+  29:source/HvSignalLine.c ****   o->t = _mm_setzero_ps();
+  30:source/HvSignalLine.c **** #elif HV_SIMD_NEON
+  31:source/HvSignalLine.c ****   o->n = vdupq_n_s32(0);
+  32:source/HvSignalLine.c ****   o->x = vdupq_n_f32(0.0f);
+  33:source/HvSignalLine.c ****   o->m = vdupq_n_f32(0.0f);
+  34:source/HvSignalLine.c ****   o->t = vdupq_n_f32(0.0f);
+  35:source/HvSignalLine.c **** #else // HV_SIMD_NONE
+  36:source/HvSignalLine.c ****   o->n = 0;
+  79              		.loc 2 36 3 view .LVU4
+  19:source/HvSignalLine.c **** #if HV_SIMD_AVX
+  80              		.loc 2 19 37 is_stmt 0 view .LVU5
+  81 0000 0346     		mov	r3, r0
+  37:source/HvSignalLine.c ****   o->x = 0.0f;
+  82              		.loc 2 37 8 view .LVU6
+  83 0002 0022     		movs	r2, #0
+  36:source/HvSignalLine.c ****   o->x = 0.0f;
+  84              		.loc 2 36 8 view .LVU7
+  85 0004 0021     		movs	r1, #0
+  86              		.loc 2 37 8 view .LVU8
+  87 0006 5A60     		str	r2, [r3, #4]	@ float
+  38:source/HvSignalLine.c ****   o->m = 0.0f;
+  39:source/HvSignalLine.c ****   o->t = 0.0f;
+  40:source/HvSignalLine.c **** #endif
+  41:source/HvSignalLine.c ****   return 0;
+  42:source/HvSignalLine.c **** }
+  88              		.loc 2 42 1 view .LVU9
+  89 0008 0846     		mov	r0, r1
+  90              	.LVL3:
+  36:source/HvSignalLine.c ****   o->x = 0.0f;
+  91              		.loc 2 36 8 view .LVU10
+  92 000a 1960     		str	r1, [r3]
+  37:source/HvSignalLine.c ****   o->m = 0.0f;
+  93              		.loc 2 37 3 is_stmt 1 view .LVU11
+  38:source/HvSignalLine.c ****   o->m = 0.0f;
+  94              		.loc 2 38 3 view .LVU12
+  38:source/HvSignalLine.c ****   o->m = 0.0f;
+  95              		.loc 2 38 8 is_stmt 0 view .LVU13
+  96 000c 9A60     		str	r2, [r3, #8]	@ float
+  39:source/HvSignalLine.c **** #endif
+  97              		.loc 2 39 3 is_stmt 1 view .LVU14
+  39:source/HvSignalLine.c **** #endif
+  98              		.loc 2 39 8 is_stmt 0 view .LVU15
+  99 000e DA60     		str	r2, [r3, #12]	@ float
+  41:source/HvSignalLine.c **** }
+ 100              		.loc 2 41 3 is_stmt 1 view .LVU16
+ 101              		.loc 2 42 1 is_stmt 0 view .LVU17
+ 102 0010 7047     		bx	lr
+ 103              		.cfi_endproc
+ 104              	.LFE400:
+ 106 0012 00BF     		.section	.rodata.sLine_onMessage.str1.4,"aMS",%progbits,1
+ 107              		.align	2
+ 108              	.LC2:
+ 109 0000 73746F70 		.ascii	"stop\000"
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 6
+
+
+ 109      00
+ 110              		.section	.text.sLine_onMessage,"ax",%progbits
+ 111              		.align	1
+ 112              		.p2align 2,,3
+ 113              		.global	sLine_onMessage
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 118              	sLine_onMessage:
+ 119              	.LVL4:
+ 120              	.LFB401:
+  43:source/HvSignalLine.c **** 
+  44:source/HvSignalLine.c **** void sLine_onMessage(HeavyContextInterface *_c, SignalLine *o, int letIn,
+  45:source/HvSignalLine.c ****   const HvMessage *m, void *sendMessage) {
+ 121              		.loc 2 45 42 is_stmt 1 view -0
+ 122              		.cfi_startproc
+ 123              		@ args = 4, pretend = 0, frame = 0
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125              		.loc 2 45 42 is_stmt 0 view .LVU19
+ 126 0000 38B5     		push	{r3, r4, r5, lr}
+ 127              		.cfi_def_cfa_offset 16
+ 128              		.cfi_offset 3, -16
+ 129              		.cfi_offset 4, -12
+ 130              		.cfi_offset 5, -8
+ 131              		.cfi_offset 14, -4
+ 132              		.loc 2 45 42 view .LVU20
+ 133 0002 1D46     		mov	r5, r3
+ 134              	.LBB60:
+ 135              	.LBB61:
+ 136              	.LBB62:
+ 137              	.LBB63:
+  91:source/HvMessage.h **** }
+ 138              		.loc 1 91 17 view .LVU21
+ 139 0004 9B88     		ldrh	r3, [r3, #4]
+ 140              	.LVL5:
+  91:source/HvMessage.h **** }
+ 141              		.loc 1 91 17 view .LVU22
+ 142              	.LBE63:
+ 143              	.LBE62:
+ 144              	.LBE61:
+ 145              	.LBE60:
+ 146              		.loc 2 45 42 view .LVU23
+ 147 0006 0C46     		mov	r4, r1
+  46:source/HvSignalLine.c ****   if (msg_isFloat(m,0)) {
+ 148              		.loc 2 46 3 is_stmt 1 view .LVU24
+ 149              	.LVL6:
+ 150              	.LBB73:
+ 151              	.LBI60:
+ 122:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 123:source/HvMessage.h **** }
+ 124:source/HvMessage.h **** 
+ 125:source/HvMessage.h **** static inline bool msg_isFloat(const HvMessage *const m, int index) {
+ 152              		.loc 1 125 20 view .LVU25
+ 153              	.LBB70:
+ 126:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+ 154              		.loc 1 126 3 view .LVU26
+ 155              	.LBB65:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 7
+
+
+ 156              	.LBI62:
+  90:source/HvMessage.h ****   return (int) m->numElements;
+ 157              		.loc 1 90 19 view .LVU27
+ 158              	.LBB64:
+  91:source/HvMessage.h **** }
+ 159              		.loc 1 91 3 view .LVU28
+  91:source/HvMessage.h **** }
+ 160              		.loc 1 91 3 is_stmt 0 view .LVU29
+ 161              	.LBE64:
+ 162              	.LBE65:
+ 163              		.loc 1 126 83 view .LVU30
+ 164 0008 A3B9     		cbnz	r3, .L24
+ 165              	.LVL7:
+ 166              	.L8:
+ 167              		.loc 1 126 83 view .LVU31
+ 168              	.LBE70:
+ 169              	.LBE73:
+  47:source/HvSignalLine.c ****     if (msg_isFloat(m,1)) {
+  48:source/HvSignalLine.c ****       // new ramp
+  49:source/HvSignalLine.c ****       int n = (int) hv_millisecondsToSamples(_c, msg_getFloat(m,1));
+  50:source/HvSignalLine.c **** #if HV_SIMD_AVX
+  51:source/HvSignalLine.c ****       float x = (o->n[1] > 0) ? (o->x[7] + (o->m[7]/8.0f)) : o->t[7]; // current output value
+  52:source/HvSignalLine.c ****       float s = (msg_getFloat(m,0) - x) / ((float) n); // slope per sample
+  53:source/HvSignalLine.c ****       o->n = _mm_set_epi32(n-3, n-2, n-1, n);
+  54:source/HvSignalLine.c ****       o->x = _mm256_set_ps(x+7.0f*s, x+6.0f*s, x+5.0f*s, x+4.0f*s, x+3.0f*s, x+2.0f*s, x+s, x);
+  55:source/HvSignalLine.c ****       o->m = _mm256_set1_ps(8.0f*s);
+  56:source/HvSignalLine.c ****       o->t = _mm256_set1_ps(msg_getFloat(m,0));
+  57:source/HvSignalLine.c **** #elif HV_SIMD_SSE
+  58:source/HvSignalLine.c ****       const hv_int32_t *const on = (hv_int32_t *) &o->n;
+  59:source/HvSignalLine.c ****       const float *const ox = (float *) &o->x;
+  60:source/HvSignalLine.c ****       const float *const om = (float *) &o->m;
+  61:source/HvSignalLine.c ****       const float *const ot = (float *) &o->t;
+  62:source/HvSignalLine.c **** 
+  63:source/HvSignalLine.c ****       float x = (on[3] > 0) ? (ox[3] + (om[3]/4.0f)) : ot[3];
+  64:source/HvSignalLine.c ****       float s = (msg_getFloat(m,0) - x) / ((float) n); // slope per sample
+  65:source/HvSignalLine.c ****       o->n = _mm_set_epi32(n-3, n-2, n-1, n);
+  66:source/HvSignalLine.c ****       o->x = _mm_set_ps(x+3.0f*s, x+2.0f*s, x+s, x);
+  67:source/HvSignalLine.c ****       o->m = _mm_set1_ps(4.0f*s);
+  68:source/HvSignalLine.c ****       o->t = _mm_set1_ps(msg_getFloat(m,0));
+  69:source/HvSignalLine.c **** #elif HV_SIMD_NEON
+  70:source/HvSignalLine.c ****       float x = (o->n[3] > 0) ? (o->x[3] + (o->m[3]/4.0f)) : o->t[3];
+  71:source/HvSignalLine.c ****       float s = (msg_getFloat(m,0) - x) / ((float) n);
+  72:source/HvSignalLine.c ****       o->n = (int32x4_t) {n, n-1, n-2, n-3};
+  73:source/HvSignalLine.c ****       o->x = (float32x4_t) {x, x+s, x+2.0f*s, x+3.0f*s};
+  74:source/HvSignalLine.c ****       o->m = vdupq_n_f32(4.0f*s);
+  75:source/HvSignalLine.c ****       o->t = vdupq_n_f32(msg_getFloat(m,0));
+  76:source/HvSignalLine.c **** #else // HV_SIMD_NONE
+  77:source/HvSignalLine.c ****       o->x = (o->n > 0) ? (o->x + o->m) : o->t; // new current value
+  78:source/HvSignalLine.c ****       o->n = n; // new distance to target
+  79:source/HvSignalLine.c ****       o->m = (msg_getFloat(m,0) - o->x) / ((float) n); // slope per sample
+  80:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+  81:source/HvSignalLine.c **** #endif
+  82:source/HvSignalLine.c ****     } else {
+  83:source/HvSignalLine.c ****       // Jump to value
+  84:source/HvSignalLine.c **** #if HV_SIMD_AVX
+  85:source/HvSignalLine.c ****       o->n = _mm_setzero_si128();
+  86:source/HvSignalLine.c ****       o->x = _mm256_set1_ps(msg_getFloat(m,0));
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 8
+
+
+  87:source/HvSignalLine.c ****       o->m = _mm256_setzero_ps();
+  88:source/HvSignalLine.c ****       o->t = _mm256_set1_ps(msg_getFloat(m,0));
+  89:source/HvSignalLine.c **** #elif HV_SIMD_SSE
+  90:source/HvSignalLine.c ****       o->n = _mm_setzero_si128();
+  91:source/HvSignalLine.c ****       o->x = _mm_set1_ps(msg_getFloat(m,0));
+  92:source/HvSignalLine.c ****       o->m = _mm_setzero_ps();
+  93:source/HvSignalLine.c ****       o->t = _mm_set1_ps(msg_getFloat(m,0));
+  94:source/HvSignalLine.c **** #elif HV_SIMD_NEON
+  95:source/HvSignalLine.c ****       o->n = vdupq_n_s32(0);
+  96:source/HvSignalLine.c ****       o->x = vdupq_n_f32(msg_getFloat(m,0));
+  97:source/HvSignalLine.c ****       o->m = vdupq_n_f32(0.0f);
+  98:source/HvSignalLine.c ****       o->t = vdupq_n_f32(msg_getFloat(m,0));
+  99:source/HvSignalLine.c **** #else // HV_SIMD_NONE
+ 100:source/HvSignalLine.c ****       o->n = 0;
+ 101:source/HvSignalLine.c ****       o->x = msg_getFloat(m,0);
+ 102:source/HvSignalLine.c ****       o->m = 0.0f;
+ 103:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 104:source/HvSignalLine.c **** #endif
+ 105:source/HvSignalLine.c ****     }
+ 106:source/HvSignalLine.c ****   } else if (msg_compareSymbol(m,0,"stop")) {
+ 170              		.loc 2 106 10 is_stmt 1 view .LVU32
+ 171              		.loc 2 106 14 is_stmt 0 view .LVU33
+ 172 000a 254A     		ldr	r2, .L28
+ 173 000c 0021     		movs	r1, #0
+ 174              	.LVL8:
+ 175              		.loc 2 106 14 view .LVU34
+ 176 000e 2846     		mov	r0, r5
+ 177              	.LVL9:
+ 178              		.loc 2 106 14 view .LVU35
+ 179 0010 FFF7FEFF 		bl	msg_compareSymbol
+ 180              	.LVL10:
+ 181              		.loc 2 106 13 view .LVU36
+ 182 0014 68B1     		cbz	r0, .L7
+ 107:source/HvSignalLine.c ****     // Stop line at current position
+ 108:source/HvSignalLine.c **** #if HV_SIMD_AVX
+ 109:source/HvSignalLine.c ****     // note o->n[1] is a 64-bit integer; two packed 32-bit ints. We only want to know if the high i
+ 110:source/HvSignalLine.c ****     // which can be done simply by testing the long int for positiveness.
+ 111:source/HvSignalLine.c ****     float x = (o->n[1] > 0) ? (o->x[7] + (o->m[7]/8.0f)) : o->t[7];
+ 112:source/HvSignalLine.c ****     o->n = _mm_setzero_si128();
+ 113:source/HvSignalLine.c ****     o->x = _mm256_set1_ps(x);
+ 114:source/HvSignalLine.c ****     o->m = _mm256_setzero_ps();
+ 115:source/HvSignalLine.c ****     o->t = _mm256_set1_ps(x);
+ 116:source/HvSignalLine.c **** #elif HV_SIMD_SSE
+ 117:source/HvSignalLine.c ****     const hv_int32_t *const on = (hv_int32_t *) &o->n;
+ 118:source/HvSignalLine.c ****     const float *const ox = (float *) &o->x;
+ 119:source/HvSignalLine.c ****     const float *const om = (float *) &o->m;
+ 120:source/HvSignalLine.c ****     const float *const ot = (float *) &o->t;
+ 121:source/HvSignalLine.c ****     float x = (on[3] > 0) ? (ox[3] + (om[3]/4.0f)) : ot[3];
+ 122:source/HvSignalLine.c ****     o->n = _mm_setzero_si128();
+ 123:source/HvSignalLine.c ****     o->x = _mm_set1_ps(x);
+ 124:source/HvSignalLine.c ****     o->m = _mm_setzero_ps();
+ 125:source/HvSignalLine.c ****     o->t = _mm_set1_ps(x);
+ 126:source/HvSignalLine.c **** #elif HV_SIMD_NEON
+ 127:source/HvSignalLine.c ****     float x = (o->n[3] > 0) ? (o->x[3] + (o->m[3]/4.0f)) : o->t[3];
+ 128:source/HvSignalLine.c ****     o->n = vdupq_n_s32(0);
+ 129:source/HvSignalLine.c ****     o->x = vdupq_n_f32(x);
+ 130:source/HvSignalLine.c ****     o->m = vdupq_n_f32(0.0f);
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 9
+
+
+ 131:source/HvSignalLine.c ****     o->t = vdupq_n_f32(x);
+ 132:source/HvSignalLine.c **** #else // HV_SIMD_NONE
+ 133:source/HvSignalLine.c ****     o->n = 0;
+ 183              		.loc 2 133 5 is_stmt 1 view .LVU37
+ 134:source/HvSignalLine.c ****     o->x += o->m;
+ 184              		.loc 2 134 10 is_stmt 0 view .LVU38
+ 185 0016 D4ED017A 		vldr.32	s15, [r4, #4]
+ 133:source/HvSignalLine.c ****     o->x += o->m;
+ 186              		.loc 2 133 10 view .LVU39
+ 187 001a 0022     		movs	r2, #0
+ 188              		.loc 2 134 10 view .LVU40
+ 189 001c 94ED027A 		vldr.32	s14, [r4, #8]
+ 135:source/HvSignalLine.c ****     o->m = 0.0f;
+ 190              		.loc 2 135 10 view .LVU41
+ 191 0020 0023     		movs	r3, #0
+ 133:source/HvSignalLine.c ****     o->x += o->m;
+ 192              		.loc 2 133 10 view .LVU42
+ 193 0022 2260     		str	r2, [r4]
+ 134:source/HvSignalLine.c ****     o->x += o->m;
+ 194              		.loc 2 134 5 is_stmt 1 view .LVU43
+ 134:source/HvSignalLine.c ****     o->x += o->m;
+ 195              		.loc 2 134 10 is_stmt 0 view .LVU44
+ 196 0024 77EE877A 		vadd.f32	s15, s15, s14
+ 197              		.loc 2 135 10 view .LVU45
+ 198 0028 A360     		str	r3, [r4, #8]	@ float
+ 134:source/HvSignalLine.c ****     o->x += o->m;
+ 199              		.loc 2 134 10 view .LVU46
+ 200 002a C4ED017A 		vstr.32	s15, [r4, #4]
+ 201              		.loc 2 135 5 is_stmt 1 view .LVU47
+ 136:source/HvSignalLine.c ****     o->t = o->x;
+ 202              		.loc 2 136 5 view .LVU48
+ 203              		.loc 2 136 10 is_stmt 0 view .LVU49
+ 204 002e C4ED037A 		vstr.32	s15, [r4, #12]
+ 205              	.L7:
+ 137:source/HvSignalLine.c **** #endif
+ 138:source/HvSignalLine.c ****   }
+ 139:source/HvSignalLine.c **** }
+ 206              		.loc 2 139 1 view .LVU50
+ 207 0032 38BD     		pop	{r3, r4, r5, pc}
+ 208              	.LVL11:
+ 209              	.L24:
+ 210              	.LBB74:
+ 211              	.LBB71:
+ 212              	.LBB66:
+ 213              	.LBI66:
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 214              		.loc 1 99 27 is_stmt 1 view .LVU51
+ 215              	.LBB67:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 216              		.loc 1 100 3 view .LVU52
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 217              		.loc 1 100 3 is_stmt 0 view .LVU53
+ 218              	.LBE67:
+ 219              	.LBE66:
+ 220              	.LBE71:
+ 221              	.LBE74:
+  91:source/HvMessage.h **** }
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 10
+
+
+ 222              		.loc 1 91 3 is_stmt 1 view .LVU54
+ 223              	.LBB75:
+ 224              	.LBB72:
+ 225              	.LBB69:
+ 226              	.LBB68:
+ 101:source/HvMessage.h **** }
+ 227              		.loc 1 101 3 view .LVU55
+ 101:source/HvMessage.h **** }
+ 228              		.loc 1 101 3 is_stmt 0 view .LVU56
+ 229              	.LBE68:
+ 230              	.LBE69:
+ 231              		.loc 1 126 83 view .LVU57
+ 232 0034 2A7A     		ldrb	r2, [r5, #8]	@ zero_extendqisi2
+ 233              	.LVL12:
+ 234              		.loc 1 126 83 view .LVU58
+ 235 0036 012A     		cmp	r2, #1
+ 236 0038 E7D1     		bne	.L8
+ 237              	.LVL13:
+ 238              		.loc 1 126 83 view .LVU59
+ 239              	.LBE72:
+ 240              	.LBE75:
+  47:source/HvSignalLine.c ****       // new ramp
+ 241              		.loc 2 47 5 is_stmt 1 view .LVU60
+ 242              	.LBB76:
+ 243              	.LBI76:
+ 125:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+ 244              		.loc 1 125 20 view .LVU61
+ 245              	.LBB77:
+ 246              		.loc 1 126 3 view .LVU62
+ 247              		.loc 1 126 3 is_stmt 0 view .LVU63
+ 248              	.LBE77:
+ 249              	.LBE76:
+  91:source/HvMessage.h **** }
+ 250              		.loc 1 91 3 is_stmt 1 view .LVU64
+ 251              	.LBB85:
+ 252              	.LBB82:
+ 253              		.loc 1 126 83 is_stmt 0 view .LVU65
+ 254 003a 012B     		cmp	r3, #1
+ 255 003c 07D1     		bne	.L25
+ 256              	.L11:
+ 257              	.LVL14:
+ 258              		.loc 1 126 83 view .LVU66
+ 259              	.LBE82:
+ 260              	.LBE85:
+ 100:source/HvSignalLine.c ****       o->x = msg_getFloat(m,0);
+ 261              		.loc 2 100 7 is_stmt 1 view .LVU67
+ 262              	.LBB86:
+ 263              	.LBB87:
+ 122:source/HvMessage.h **** }
+ 264              		.loc 1 122 34 is_stmt 0 view .LVU68
+ 265 003e EB68     		ldr	r3, [r5, #12]	@ float
+ 266              	.LBE87:
+ 267              	.LBE86:
+ 100:source/HvSignalLine.c ****       o->x = msg_getFloat(m,0);
+ 268              		.loc 2 100 12 view .LVU69
+ 269 0040 0021     		movs	r1, #0
+ 270              	.LVL15:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 11
+
+
+ 102:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 271              		.loc 2 102 12 view .LVU70
+ 272 0042 0022     		movs	r2, #0
+ 100:source/HvSignalLine.c ****       o->x = msg_getFloat(m,0);
+ 273              		.loc 2 100 12 view .LVU71
+ 274 0044 2160     		str	r1, [r4]
+ 101:source/HvSignalLine.c ****       o->m = 0.0f;
+ 275              		.loc 2 101 7 is_stmt 1 view .LVU72
+ 276              	.LVL16:
+ 277              	.LBB90:
+ 278              	.LBI86:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 279              		.loc 1 120 21 view .LVU73
+ 280              	.LBB88:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 281              		.loc 1 121 3 view .LVU74
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 282              		.loc 1 121 3 is_stmt 0 view .LVU75
+ 283              	.LBE88:
+ 284              	.LBE90:
+  91:source/HvMessage.h **** }
+ 285              		.loc 1 91 3 is_stmt 1 view .LVU76
+ 286              	.LBB91:
+ 287              	.LBB89:
+ 122:source/HvMessage.h **** }
+ 288              		.loc 1 122 3 view .LVU77
+ 122:source/HvMessage.h **** }
+ 289              		.loc 1 122 3 is_stmt 0 view .LVU78
+ 290              	.LBE89:
+ 291              	.LBE91:
+ 101:source/HvSignalLine.c ****       o->m = 0.0f;
+ 292              		.loc 2 101 12 view .LVU79
+ 293 0046 6360     		str	r3, [r4, #4]	@ float
+ 102:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 294              		.loc 2 102 7 is_stmt 1 view .LVU80
+ 102:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 295              		.loc 2 102 12 is_stmt 0 view .LVU81
+ 296 0048 A260     		str	r2, [r4, #8]	@ float
+ 103:source/HvSignalLine.c **** #endif
+ 297              		.loc 2 103 7 is_stmt 1 view .LVU82
+ 298              	.LVL17:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 299              		.loc 1 121 3 view .LVU83
+  91:source/HvMessage.h **** }
+ 300              		.loc 1 91 3 view .LVU84
+ 122:source/HvMessage.h **** }
+ 301              		.loc 1 122 3 view .LVU85
+ 103:source/HvSignalLine.c **** #endif
+ 302              		.loc 2 103 12 is_stmt 0 view .LVU86
+ 303 004a E360     		str	r3, [r4, #12]	@ float
+ 304              		.loc 2 139 1 view .LVU87
+ 305 004c 38BD     		pop	{r3, r4, r5, pc}
+ 306              	.LVL18:
+ 307              	.L25:
+ 308              	.LBB92:
+ 309              	.LBB83:
+ 310              	.LBB78:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 12
+
+
+ 311              	.LBI78:
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 312              		.loc 1 99 27 is_stmt 1 view .LVU88
+ 313              	.LBB79:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 314              		.loc 1 100 3 view .LVU89
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 315              		.loc 1 100 3 is_stmt 0 view .LVU90
+ 316              	.LBE79:
+ 317              	.LBE78:
+ 318              	.LBE83:
+ 319              	.LBE92:
+  91:source/HvMessage.h **** }
+ 320              		.loc 1 91 3 is_stmt 1 view .LVU91
+ 321              	.LBB93:
+ 322              	.LBB84:
+ 323              	.LBB81:
+ 324              	.LBB80:
+ 101:source/HvMessage.h **** }
+ 325              		.loc 1 101 3 view .LVU92
+ 101:source/HvMessage.h **** }
+ 326              		.loc 1 101 3 is_stmt 0 view .LVU93
+ 327              	.LBE80:
+ 328              	.LBE81:
+ 329              		.loc 1 126 83 view .LVU94
+ 330 004e 2B7C     		ldrb	r3, [r5, #16]	@ zero_extendqisi2
+ 331 0050 012B     		cmp	r3, #1
+ 332 0052 F4D1     		bne	.L11
+ 333              	.LVL19:
+ 334              		.loc 1 126 83 view .LVU95
+ 335              	.LBE84:
+ 336              	.LBE93:
+ 337              	.LBB94:
+  49:source/HvSignalLine.c **** #if HV_SIMD_AVX
+ 338              		.loc 2 49 7 is_stmt 1 view .LVU96
+ 339              	.LBB95:
+ 340              	.LBI95:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 341              		.loc 1 120 21 view .LVU97
+ 342              	.LBB96:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 343              		.loc 1 121 3 view .LVU98
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 344              		.loc 1 121 3 is_stmt 0 view .LVU99
+ 345              	.LBE96:
+ 346              	.LBE95:
+ 347              	.LBE94:
+  91:source/HvMessage.h **** }
+ 348              		.loc 1 91 3 is_stmt 1 view .LVU100
+ 349              	.LBB107:
+ 350              	.LBB98:
+ 351              	.LBB97:
+ 122:source/HvMessage.h **** }
+ 352              		.loc 1 122 3 view .LVU101
+ 122:source/HvMessage.h **** }
+ 353              		.loc 1 122 3 is_stmt 0 view .LVU102
+ 354              	.LBE97:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 13
+
+
+ 355              	.LBE98:
+  49:source/HvSignalLine.c **** #if HV_SIMD_AVX
+ 356              		.loc 2 49 21 view .LVU103
+ 357 0054 95ED050A 		vldr.32	s0, [r5, #20]
+ 358 0058 FFF7FEFF 		bl	hv_millisecondsToSamples
+ 359              	.LVL20:
+  77:source/HvSignalLine.c ****       o->n = n; // new distance to target
+ 360              		.loc 2 77 41 view .LVU104
+ 361 005c 2368     		ldr	r3, [r4]
+ 362              	.LVL21:
+  77:source/HvSignalLine.c ****       o->n = n; // new distance to target
+ 363              		.loc 2 77 7 is_stmt 1 view .LVU105
+  77:source/HvSignalLine.c ****       o->n = n; // new distance to target
+ 364              		.loc 2 77 41 is_stmt 0 view .LVU106
+ 365 005e 002B     		cmp	r3, #0
+ 366 0060 19DD     		ble	.L26
+  77:source/HvSignalLine.c ****       o->n = n; // new distance to target
+ 367              		.loc 2 77 41 discriminator 1 view .LVU107
+ 368 0062 94ED017A 		vldr.32	s14, [r4, #4]
+ 369 0066 D4ED027A 		vldr.32	s15, [r4, #8]
+ 370 006a 37EE277A 		vadd.f32	s14, s14, s15
+ 371              	.L12:
+ 372              	.LBB99:
+ 373              	.LBB100:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 374              		.loc 1 121 3 discriminator 4 view .LVU108
+ 375 006e AB88     		ldrh	r3, [r5, #4]
+ 376              	.LBE100:
+ 377              	.LBE99:
+  77:source/HvSignalLine.c ****       o->n = n; // new distance to target
+ 378              		.loc 2 77 12 discriminator 4 view .LVU109
+ 379 0070 84ED017A 		vstr.32	s14, [r4, #4]
+  78:source/HvSignalLine.c ****       o->m = (msg_getFloat(m,0) - o->x) / ((float) n); // slope per sample
+ 380              		.loc 2 78 7 is_stmt 1 discriminator 4 view .LVU110
+  78:source/HvSignalLine.c ****       o->m = (msg_getFloat(m,0) - o->x) / ((float) n); // slope per sample
+ 381              		.loc 2 78 12 is_stmt 0 discriminator 4 view .LVU111
+ 382 0074 2060     		str	r0, [r4]
+  79:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 383              		.loc 2 79 7 is_stmt 1 discriminator 4 view .LVU112
+ 384              	.LVL22:
+ 385              	.LBB105:
+ 386              	.LBI99:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 387              		.loc 1 120 21 discriminator 4 view .LVU113
+ 388              	.LBB103:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 389              		.loc 1 121 3 discriminator 4 view .LVU114
+ 390              	.LBB101:
+ 391              	.LBI101:
+  90:source/HvMessage.h ****   return (int) m->numElements;
+ 392              		.loc 1 90 19 discriminator 4 view .LVU115
+ 393              	.LBB102:
+  91:source/HvMessage.h **** }
+ 394              		.loc 1 91 3 discriminator 4 view .LVU116
+  91:source/HvMessage.h **** }
+ 395              		.loc 1 91 3 is_stmt 0 discriminator 4 view .LVU117
+ 396              	.LBE102:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 14
+
+
+ 397              	.LBE101:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 398              		.loc 1 121 3 discriminator 4 view .LVU118
+ 399 0076 8BB1     		cbz	r3, .L27
+ 122:source/HvMessage.h **** }
+ 400              		.loc 1 122 3 is_stmt 1 view .LVU119
+ 122:source/HvMessage.h **** }
+ 401              		.loc 1 122 34 is_stmt 0 view .LVU120
+ 402 0078 D5ED036A 		vldr.32	s13, [r5, #12]
+ 403              	.LVL23:
+ 122:source/HvMessage.h **** }
+ 404              		.loc 1 122 34 view .LVU121
+ 405              	.LBE103:
+ 406              	.LBE105:
+  79:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 407              		.loc 2 79 44 view .LVU122
+ 408 007c 07EE900A 		vmov	s15, r0	@ int
+  79:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 409              		.loc 2 79 33 view .LVU123
+ 410 0080 36EEC77A 		vsub.f32	s14, s13, s14
+  80:source/HvSignalLine.c **** #endif
+ 411              		.loc 2 80 12 view .LVU124
+ 412 0084 C4ED036A 		vstr.32	s13, [r4, #12]
+  79:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 413              		.loc 2 79 44 view .LVU125
+ 414 0088 F8EEE77A 		vcvt.f32.s32	s15, s15
+  79:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 415              		.loc 2 79 41 view .LVU126
+ 416 008c C7EE276A 		vdiv.f32	s13, s14, s15
+  79:source/HvSignalLine.c ****       o->t = msg_getFloat(m,0);
+ 417              		.loc 2 79 12 view .LVU127
+ 418 0090 C4ED026A 		vstr.32	s13, [r4, #8]
+  80:source/HvSignalLine.c **** #endif
+ 419              		.loc 2 80 7 is_stmt 1 view .LVU128
+ 420              	.LVL24:
+  80:source/HvSignalLine.c **** #endif
+ 421              		.loc 2 80 7 is_stmt 0 view .LVU129
+ 422              	.LBE107:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 423              		.loc 1 121 3 is_stmt 1 view .LVU130
+  91:source/HvMessage.h **** }
+ 424              		.loc 1 91 3 view .LVU131
+ 122:source/HvMessage.h **** }
+ 425              		.loc 1 122 3 view .LVU132
+ 426              		.loc 2 139 1 is_stmt 0 view .LVU133
+ 427 0094 38BD     		pop	{r3, r4, r5, pc}
+ 428              	.LVL25:
+ 429              	.L26:
+ 430              	.LBB108:
+  77:source/HvSignalLine.c ****       o->n = n; // new distance to target
+ 431              		.loc 2 77 41 discriminator 2 view .LVU134
+ 432 0096 94ED037A 		vldr.32	s14, [r4, #12]
+ 433 009a E8E7     		b	.L12
+ 434              	.LVL26:
+ 435              	.L27:
+ 436              	.LBB106:
+ 437              	.LBB104:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 15
+
+
+  77:source/HvSignalLine.c ****       o->n = n; // new distance to target
+ 438              		.loc 2 77 41 discriminator 2 view .LVU135
+ 439 009c FFF7FEFF 		bl	msg_getFloat.part.0
+ 440              	.LVL27:
+ 441              	.L29:
+  77:source/HvSignalLine.c ****       o->n = n; // new distance to target
+ 442              		.loc 2 77 41 discriminator 2 view .LVU136
+ 443              		.align	2
+ 444              	.L28:
+ 445 00a0 00000000 		.word	.LC2
+ 446              	.LBE104:
+ 447              	.LBE106:
+ 448              	.LBE108:
+ 449              		.cfi_endproc
+ 450              	.LFE401:
+ 452              		.section	.rodata.__func__.0,"a"
+ 453              		.align	2
+ 454              		.set	.LANCHOR0,. + 0
+ 457              	__func__.0:
+ 458 0000 6D73675F 		.ascii	"msg_getFloat\000"
+ 458      67657446 
+ 458      6C6F6174 
+ 458      00
+ 459              		.text
+ 460              	.Letext0:
+ 461              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 462              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 463              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 464              		.file 6 "source/HvHeavy.h"
+ 465              		.file 7 "source/HvSignalLine.h"
+ 466              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/assert.h"
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 HvSignalLine.c
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:19     .rodata.msg_getFloat.part.0.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:26     .text.msg_getFloat.part.0:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:32     .text.msg_getFloat.part.0:0000000000000000 msg_getFloat.part.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:56     .text.msg_getFloat.part.0:0000000000000010 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:63     .text.sLine_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:70     .text.sLine_init:0000000000000000 sLine_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:107    .rodata.sLine_onMessage.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:111    .text.sLine_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:118    .text.sLine_onMessage:0000000000000000 sLine_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:445    .text.sLine_onMessage:00000000000000a0 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:453    .rodata.__func__.0:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccZhdE5n.s:457    .rodata.__func__.0:0000000000000000 __func__.0
+
+UNDEFINED SYMBOLS
+__assert_func
+msg_compareSymbol
+hv_millisecondsToSamples

@@ -1,0 +1,413 @@
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"HvControlIf.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.cIf_init,"ax",%progbits
+  19              		.align	1
+  20              		.p2align 2,,3
+  21              		.global	cIf_init
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	cIf_init:
+  27              	.LVL0:
+  28              	.LFB399:
+  29              		.file 1 "source/HvControlIf.c"
+   1:source/HvControlIf.c **** /**
+   2:source/HvControlIf.c ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvControlIf.c ****  *
+   4:source/HvControlIf.c ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvControlIf.c ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvControlIf.c ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvControlIf.c ****  *
+   8:source/HvControlIf.c ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvControlIf.c ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvControlIf.c ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvControlIf.c ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvControlIf.c ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvControlIf.c ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvControlIf.c ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvControlIf.c ****  */
+  16:source/HvControlIf.c **** 
+  17:source/HvControlIf.c **** #include "HvControlIf.h"
+  18:source/HvControlIf.c **** 
+  19:source/HvControlIf.c **** hv_size_t cIf_init(ControlIf *o, bool k) {
+  30              		.loc 1 19 42 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+  20:source/HvControlIf.c ****   o->k = k;
+  35              		.loc 1 20 3 view .LVU1
+  19:source/HvControlIf.c ****   o->k = k;
+  36              		.loc 1 19 42 is_stmt 0 view .LVU2
+  37 0000 0346     		mov	r3, r0
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s 			page 2
+
+
+  21:source/HvControlIf.c ****   return 0;
+  22:source/HvControlIf.c **** }
+  38              		.loc 1 22 1 view .LVU3
+  39 0002 0020     		movs	r0, #0
+  40              	.LVL1:
+  20:source/HvControlIf.c ****   return 0;
+  41              		.loc 1 20 8 view .LVU4
+  42 0004 1970     		strb	r1, [r3]
+  21:source/HvControlIf.c ****   return 0;
+  43              		.loc 1 21 3 is_stmt 1 view .LVU5
+  44              		.loc 1 22 1 is_stmt 0 view .LVU6
+  45 0006 7047     		bx	lr
+  46              		.cfi_endproc
+  47              	.LFE399:
+  49              		.section	.text.cIf_onMessage,"ax",%progbits
+  50              		.align	1
+  51              		.p2align 2,,3
+  52              		.global	cIf_onMessage
+  53              		.syntax unified
+  54              		.thumb
+  55              		.thumb_func
+  57              	cIf_onMessage:
+  58              	.LVL2:
+  59              	.LFB400:
+  23:source/HvControlIf.c **** 
+  24:source/HvControlIf.c **** void cIf_onMessage(HeavyContextInterface *_c, ControlIf *o, int letIn, const HvMessage *m,
+  25:source/HvControlIf.c ****     void (*sendMessage)(HeavyContextInterface *, int, const HvMessage *)) {
+  60              		.loc 1 25 75 is_stmt 1 view -0
+  61              		.cfi_startproc
+  62              		@ args = 4, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  26:source/HvControlIf.c ****   switch (letIn) {
+  65              		.loc 1 26 3 view .LVU8
+  25:source/HvControlIf.c ****   switch (letIn) {
+  66              		.loc 1 25 75 is_stmt 0 view .LVU9
+  67 0000 10B4     		push	{r4}
+  68              		.cfi_def_cfa_offset 4
+  69              		.cfi_offset 4, -4
+  25:source/HvControlIf.c ****   switch (letIn) {
+  70              		.loc 1 25 75 view .LVU10
+  71 0002 019C     		ldr	r4, [sp, #4]
+  72              		.loc 1 26 3 view .LVU11
+  73 0004 32B1     		cbz	r2, .L4
+  74 0006 012A     		cmp	r2, #1
+  75 0008 01D1     		bne	.L3
+  27:source/HvControlIf.c ****     case 0: {
+  28:source/HvControlIf.c ****       // a "true" if will send the message from the right outlet
+  29:source/HvControlIf.c ****       // a "false" if gets sent out of the left outlet
+  30:source/HvControlIf.c ****       sendMessage(_c, o->k ? 1 : 0, m);
+  31:source/HvControlIf.c ****       break;
+  32:source/HvControlIf.c ****     }
+  33:source/HvControlIf.c ****     case 1: {
+  34:source/HvControlIf.c ****       if (msg_isFloat(m, 0)) {
+  76              		.loc 1 34 7 is_stmt 1 view .LVU12
+  77              	.LVL3:
+  78              	.LBB26:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s 			page 3
+
+
+  79              	.LBI26:
+  80              		.file 2 "source/HvMessage.h"
+   1:source/HvMessage.h **** /**
+   2:source/HvMessage.h ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvMessage.h ****  *
+   4:source/HvMessage.h ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvMessage.h ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvMessage.h ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvMessage.h ****  *
+   8:source/HvMessage.h ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvMessage.h ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvMessage.h ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvMessage.h ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvMessage.h ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvMessage.h ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvMessage.h ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvMessage.h ****  */
+  16:source/HvMessage.h **** 
+  17:source/HvMessage.h **** #ifndef _HEAVY_MESSAGE_H_
+  18:source/HvMessage.h **** #define _HEAVY_MESSAGE_H_
+  19:source/HvMessage.h **** 
+  20:source/HvMessage.h **** #include "HvUtils.h"
+  21:source/HvMessage.h **** 
+  22:source/HvMessage.h **** #ifdef __cplusplus
+  23:source/HvMessage.h **** extern "C" {
+  24:source/HvMessage.h **** #endif
+  25:source/HvMessage.h **** 
+  26:source/HvMessage.h **** typedef enum ElementType {
+  27:source/HvMessage.h ****   HV_MSG_BANG = 0,
+  28:source/HvMessage.h ****   HV_MSG_FLOAT = 1,
+  29:source/HvMessage.h ****   HV_MSG_SYMBOL = 2,
+  30:source/HvMessage.h ****   HV_MSG_HASH = 3
+  31:source/HvMessage.h **** } ElementType;
+  32:source/HvMessage.h **** 
+  33:source/HvMessage.h **** typedef struct Element {
+  34:source/HvMessage.h ****   ElementType type;
+  35:source/HvMessage.h ****   union {
+  36:source/HvMessage.h ****     float f; // float
+  37:source/HvMessage.h ****     const char *s; // symbol
+  38:source/HvMessage.h ****     hv_uint32_t h; // hash
+  39:source/HvMessage.h ****   } data;
+  40:source/HvMessage.h **** } Element;
+  41:source/HvMessage.h **** 
+  42:source/HvMessage.h **** typedef struct HvMessage {
+  43:source/HvMessage.h ****   hv_uint32_t timestamp; // the sample at which this message should be processed
+  44:source/HvMessage.h ****   hv_uint16_t numElements;
+  45:source/HvMessage.h ****   hv_uint16_t numBytes; // the total number of bytes that this message occupies in memory, includin
+  46:source/HvMessage.h ****   Element elem;
+  47:source/HvMessage.h **** } HvMessage;
+  48:source/HvMessage.h **** 
+  49:source/HvMessage.h **** typedef struct ReceiverMessagePair {
+  50:source/HvMessage.h ****   hv_uint32_t receiverHash;
+  51:source/HvMessage.h ****   HvMessage msg;
+  52:source/HvMessage.h **** } ReceiverMessagePair;
+  53:source/HvMessage.h **** 
+  54:source/HvMessage.h **** #define HV_MESSAGE_ON_STACK(_x) (HvMessage *) hv_alloca(msg_getCoreSize(_x))
+  55:source/HvMessage.h **** 
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s 			page 4
+
+
+  56:source/HvMessage.h **** /** Returns the number of bytes that this message consumes in memory, not including strings. */
+  57:source/HvMessage.h **** static inline hv_size_t msg_getCoreSize(hv_size_t numElements) {
+  58:source/HvMessage.h ****   hv_assert(numElements > 0);
+  59:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+  60:source/HvMessage.h **** }
+  61:source/HvMessage.h **** 
+  62:source/HvMessage.h **** HvMessage *msg_copy(const HvMessage *m);
+  63:source/HvMessage.h **** 
+  64:source/HvMessage.h **** /** Copies the message into the given buffer. The buffer must be at least as large as msg_getNumHea
+  65:source/HvMessage.h **** void msg_copyToBuffer(const HvMessage *m, char *buffer, hv_size_t len);
+  66:source/HvMessage.h **** 
+  67:source/HvMessage.h **** void msg_setElementToFrom(HvMessage *n, int indexN, const HvMessage *const m, int indexM);
+  68:source/HvMessage.h **** 
+  69:source/HvMessage.h **** /** Frees a message on the heap. Does nothing if argument is NULL. */
+  70:source/HvMessage.h **** void msg_free(HvMessage *m);
+  71:source/HvMessage.h **** 
+  72:source/HvMessage.h **** HvMessage *msg_init(HvMessage *m, hv_size_t numElements, hv_uint32_t timestamp);
+  73:source/HvMessage.h **** 
+  74:source/HvMessage.h **** HvMessage *msg_initWithFloat(HvMessage *m, hv_uint32_t timestamp, float f);
+  75:source/HvMessage.h **** 
+  76:source/HvMessage.h **** HvMessage *msg_initWithBang(HvMessage *m, hv_uint32_t timestamp);
+  77:source/HvMessage.h **** 
+  78:source/HvMessage.h **** HvMessage *msg_initWithSymbol(HvMessage *m, hv_uint32_t timestamp, const char *s);
+  79:source/HvMessage.h **** 
+  80:source/HvMessage.h **** HvMessage *msg_initWithHash(HvMessage *m, hv_uint32_t timestamp, hv_uint32_t h);
+  81:source/HvMessage.h **** 
+  82:source/HvMessage.h **** static inline hv_uint32_t msg_getTimestamp(const HvMessage *m) {
+  83:source/HvMessage.h ****   return m->timestamp;
+  84:source/HvMessage.h **** }
+  85:source/HvMessage.h **** 
+  86:source/HvMessage.h **** static inline void msg_setTimestamp(HvMessage *m, hv_uint32_t timestamp) {
+  87:source/HvMessage.h ****   m->timestamp = timestamp;
+  88:source/HvMessage.h **** }
+  89:source/HvMessage.h **** 
+  90:source/HvMessage.h **** static inline int msg_getNumElements(const HvMessage *m) {
+  91:source/HvMessage.h ****   return (int) m->numElements;
+  92:source/HvMessage.h **** }
+  93:source/HvMessage.h **** 
+  94:source/HvMessage.h **** /** Returns the total number of bytes this message consumes in memory. */
+  95:source/HvMessage.h **** static inline hv_uint32_t msg_getSize(const HvMessage *m) {
+  96:source/HvMessage.h ****   return m->numBytes;
+  97:source/HvMessage.h **** }
+  98:source/HvMessage.h **** 
+  99:source/HvMessage.h **** static inline ElementType msg_getType(const HvMessage *m, int index) {
+ 100:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 101:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 102:source/HvMessage.h **** }
+ 103:source/HvMessage.h **** 
+ 104:source/HvMessage.h **** static inline void msg_setBang(HvMessage *m, int index) {
+ 105:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 106:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_BANG;
+ 107:source/HvMessage.h ****   (&(m->elem)+index)->data.s = NULL;
+ 108:source/HvMessage.h **** }
+ 109:source/HvMessage.h **** 
+ 110:source/HvMessage.h **** static inline bool msg_isBang(const HvMessage *m, int index) {
+ 111:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_BANG) : false;
+ 112:source/HvMessage.h **** }
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s 			page 5
+
+
+ 113:source/HvMessage.h **** 
+ 114:source/HvMessage.h **** static inline void msg_setFloat(HvMessage *m, int index, float f) {
+ 115:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 116:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_FLOAT;
+ 117:source/HvMessage.h ****   (&(m->elem)+index)->data.f = f;
+ 118:source/HvMessage.h **** }
+ 119:source/HvMessage.h **** 
+ 120:source/HvMessage.h **** static inline float msg_getFloat(const HvMessage *const m, int index) {
+ 121:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 122:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 123:source/HvMessage.h **** }
+ 124:source/HvMessage.h **** 
+ 125:source/HvMessage.h **** static inline bool msg_isFloat(const HvMessage *const m, int index) {
+  81              		.loc 2 125 20 view .LVU13
+  82              	.LBB27:
+ 126:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+  83              		.loc 2 126 3 view .LVU14
+  84              	.LBB28:
+  85              	.LBI28:
+  90:source/HvMessage.h ****   return (int) m->numElements;
+  86              		.loc 2 90 19 view .LVU15
+  87              	.LBB29:
+  91:source/HvMessage.h **** }
+  88              		.loc 2 91 3 view .LVU16
+  91:source/HvMessage.h **** }
+  89              		.loc 2 91 3 is_stmt 0 view .LVU17
+  90              	.LBE29:
+  91              	.LBE28:
+  92              		.loc 2 126 83 view .LVU18
+  93 000a 9A88     		ldrh	r2, [r3, #4]
+  94              	.LVL4:
+  95              		.loc 2 126 83 view .LVU19
+  96 000c 42B9     		cbnz	r2, .L12
+  97              	.LVL5:
+  98              	.L3:
+  99              		.loc 2 126 83 view .LVU20
+ 100              	.LBE27:
+ 101              	.LBE26:
+  35:source/HvControlIf.c ****         o->k = (msg_getFloat(m, 0) != 0.0f);
+  36:source/HvControlIf.c ****       }
+  37:source/HvControlIf.c ****       break;
+  38:source/HvControlIf.c ****     }
+  39:source/HvControlIf.c ****     default: return;
+  40:source/HvControlIf.c ****   }
+  41:source/HvControlIf.c **** }
+ 102              		.loc 1 41 1 view .LVU21
+ 103 000e 5DF8044B 		ldr	r4, [sp], #4
+ 104              		.cfi_remember_state
+ 105              		.cfi_restore 4
+ 106              		.cfi_def_cfa_offset 0
+ 107              	.LVL6:
+ 108              		.loc 1 41 1 view .LVU22
+ 109 0012 7047     		bx	lr
+ 110              	.LVL7:
+ 111              	.L4:
+ 112              		.cfi_restore_state
+  30:source/HvControlIf.c ****       break;
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s 			page 6
+
+
+ 113              		.loc 1 30 7 is_stmt 1 view .LVU23
+ 114 0014 1A46     		mov	r2, r3
+ 115              	.LVL8:
+  30:source/HvControlIf.c ****       break;
+ 116              		.loc 1 30 7 is_stmt 0 view .LVU24
+ 117 0016 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 118              	.LVL9:
+  30:source/HvControlIf.c ****       break;
+ 119              		.loc 1 30 7 view .LVU25
+ 120 0018 2346     		mov	r3, r4
+ 121              	.LVL10:
+ 122              		.loc 1 41 1 view .LVU26
+ 123 001a 5DF8044B 		ldr	r4, [sp], #4
+ 124              		.cfi_remember_state
+ 125              		.cfi_restore 4
+ 126              		.cfi_def_cfa_offset 0
+ 127              	.LVL11:
+  30:source/HvControlIf.c ****       break;
+ 128              		.loc 1 30 7 view .LVU27
+ 129 001e 1847     		bx	r3	@ indirect register sibling call
+ 130              	.LVL12:
+ 131              	.L12:
+ 132              		.cfi_restore_state
+ 133              	.LBB36:
+ 134              	.LBB34:
+ 135              	.LBB30:
+ 136              	.LBI30:
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 137              		.loc 2 99 27 is_stmt 1 view .LVU28
+ 138              	.LBB31:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 139              		.loc 2 100 3 view .LVU29
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 140              		.loc 2 100 3 is_stmt 0 view .LVU30
+ 141              	.LBE31:
+ 142              	.LBE30:
+ 143              	.LBE34:
+ 144              	.LBE36:
+  91:source/HvMessage.h **** }
+ 145              		.loc 2 91 3 is_stmt 1 view .LVU31
+ 146              	.LBB37:
+ 147              	.LBB35:
+ 148              	.LBB33:
+ 149              	.LBB32:
+ 101:source/HvMessage.h **** }
+ 150              		.loc 2 101 3 view .LVU32
+ 101:source/HvMessage.h **** }
+ 151              		.loc 2 101 3 is_stmt 0 view .LVU33
+ 152              	.LBE32:
+ 153              	.LBE33:
+ 154              		.loc 2 126 83 view .LVU34
+ 155 0020 1A7A     		ldrb	r2, [r3, #8]	@ zero_extendqisi2
+ 156 0022 012A     		cmp	r2, #1
+ 157 0024 F3D1     		bne	.L3
+ 158              	.LVL13:
+ 159              		.loc 2 126 83 view .LVU35
+ 160              	.LBE35:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s 			page 7
+
+
+ 161              	.LBE37:
+ 162              	.LBB38:
+ 163              	.LBB39:
+ 122:source/HvMessage.h **** }
+ 164              		.loc 2 122 3 is_stmt 1 view .LVU36
+ 122:source/HvMessage.h **** }
+ 165              		.loc 2 122 3 is_stmt 0 view .LVU37
+ 166              	.LBE39:
+ 167              	.LBE38:
+  35:source/HvControlIf.c ****       }
+ 168              		.loc 1 35 36 view .LVU38
+ 169 0026 D3ED037A 		vldr.32	s15, [r3, #12]
+ 170              		.loc 1 41 1 view .LVU39
+ 171 002a 5DF8044B 		ldr	r4, [sp], #4
+ 172              		.cfi_restore 4
+ 173              		.cfi_def_cfa_offset 0
+ 174              	.LVL14:
+  35:source/HvControlIf.c ****       }
+ 175              		.loc 1 35 36 view .LVU40
+ 176 002e F5EE407A 		vcmp.f32	s15, #0
+ 177 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 178 0036 14BF     		ite	ne
+ 179 0038 0123     		movne	r3, #1
+ 180              	.LVL15:
+  35:source/HvControlIf.c ****       }
+ 181              		.loc 1 35 36 view .LVU41
+ 182 003a 0023     		moveq	r3, #0
+ 183 003c 0B70     		strb	r3, [r1]
+ 184              		.loc 1 41 1 view .LVU42
+ 185 003e 7047     		bx	lr
+ 186              		.cfi_endproc
+ 187              	.LFE400:
+ 189              		.text
+ 190              	.Letext0:
+ 191              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 192              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 193              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 194              		.file 6 "source/HvHeavy.h"
+ 195              		.file 7 "source/HvControlIf.h"
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 HvControlIf.c
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s:19     .text.cIf_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s:26     .text.cIf_init:0000000000000000 cIf_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s:50     .text.cIf_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//cclvNuKi.s:57     .text.cIf_onMessage:0000000000000000 cIf_onMessage
+
+NO UNDEFINED SYMBOLS
