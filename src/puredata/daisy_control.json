@@ -1,5 +1,5 @@
 {
-  "name": "pod",
+  "name": "phonopteros",
   "som": "seed",
   "defines": {
     "OOPSY_TARGET_HAS_MIDI_INPUT": 1
@@ -9,17 +9,17 @@
     "channels": 2
   },
   "components": {
-    "sw1": {
-      "component": "Switch",
+    "knob1": {
+      "component": "AnalogControl",
       "pin": 15
     },
-    "knob1": {
+    "knob2": {
       "component": "AnalogControl",
       "pin": 16
     }
   },
   "aliases": {
-    "button": "sw1",
-    "ctrl": "knob1"
+    "ctrl1": "knob1",
+    "ctrl2": "knob2"
   }
 }
