@@ -1,0 +1,983 @@
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"HvSignalBiquad.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata.msg_getFloat.part.0.str1.4,"aMS",%progbits,1
+  19              		.align	2
+  20              	.LC0:
+  21 0000 696E6465 		.ascii	"index < msg_getNumElements(m)\000"
+  21      78203C20 
+  21      6D73675F 
+  21      6765744E 
+  21      756D456C 
+  22 001e 0000     		.align	2
+  23              	.LC1:
+  24 0020 736F7572 		.ascii	"source/HvMessage.h\000"
+  24      63652F48 
+  24      764D6573 
+  24      73616765 
+  24      2E6800
+  25              		.section	.text.msg_getFloat.part.0,"ax",%progbits
+  26              		.align	1
+  27              		.p2align 2,,3
+  28              		.syntax unified
+  29              		.thumb
+  30              		.thumb_func
+  32              	msg_getFloat.part.0:
+  33              	.LFB405:
+  34              		.file 1 "source/HvMessage.h"
+   1:source/HvMessage.h **** /**
+   2:source/HvMessage.h ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvMessage.h ****  *
+   4:source/HvMessage.h ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvMessage.h ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvMessage.h ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvMessage.h ****  *
+   8:source/HvMessage.h ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvMessage.h ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvMessage.h ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvMessage.h ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvMessage.h ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvMessage.h ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvMessage.h ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvMessage.h ****  */
+  16:source/HvMessage.h **** 
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 2
+
+
+  17:source/HvMessage.h **** #ifndef _HEAVY_MESSAGE_H_
+  18:source/HvMessage.h **** #define _HEAVY_MESSAGE_H_
+  19:source/HvMessage.h **** 
+  20:source/HvMessage.h **** #include "HvUtils.h"
+  21:source/HvMessage.h **** 
+  22:source/HvMessage.h **** #ifdef __cplusplus
+  23:source/HvMessage.h **** extern "C" {
+  24:source/HvMessage.h **** #endif
+  25:source/HvMessage.h **** 
+  26:source/HvMessage.h **** typedef enum ElementType {
+  27:source/HvMessage.h ****   HV_MSG_BANG = 0,
+  28:source/HvMessage.h ****   HV_MSG_FLOAT = 1,
+  29:source/HvMessage.h ****   HV_MSG_SYMBOL = 2,
+  30:source/HvMessage.h ****   HV_MSG_HASH = 3
+  31:source/HvMessage.h **** } ElementType;
+  32:source/HvMessage.h **** 
+  33:source/HvMessage.h **** typedef struct Element {
+  34:source/HvMessage.h ****   ElementType type;
+  35:source/HvMessage.h ****   union {
+  36:source/HvMessage.h ****     float f; // float
+  37:source/HvMessage.h ****     const char *s; // symbol
+  38:source/HvMessage.h ****     hv_uint32_t h; // hash
+  39:source/HvMessage.h ****   } data;
+  40:source/HvMessage.h **** } Element;
+  41:source/HvMessage.h **** 
+  42:source/HvMessage.h **** typedef struct HvMessage {
+  43:source/HvMessage.h ****   hv_uint32_t timestamp; // the sample at which this message should be processed
+  44:source/HvMessage.h ****   hv_uint16_t numElements;
+  45:source/HvMessage.h ****   hv_uint16_t numBytes; // the total number of bytes that this message occupies in memory, includin
+  46:source/HvMessage.h ****   Element elem;
+  47:source/HvMessage.h **** } HvMessage;
+  48:source/HvMessage.h **** 
+  49:source/HvMessage.h **** typedef struct ReceiverMessagePair {
+  50:source/HvMessage.h ****   hv_uint32_t receiverHash;
+  51:source/HvMessage.h ****   HvMessage msg;
+  52:source/HvMessage.h **** } ReceiverMessagePair;
+  53:source/HvMessage.h **** 
+  54:source/HvMessage.h **** #define HV_MESSAGE_ON_STACK(_x) (HvMessage *) hv_alloca(msg_getCoreSize(_x))
+  55:source/HvMessage.h **** 
+  56:source/HvMessage.h **** /** Returns the number of bytes that this message consumes in memory, not including strings. */
+  57:source/HvMessage.h **** static inline hv_size_t msg_getCoreSize(hv_size_t numElements) {
+  58:source/HvMessage.h ****   hv_assert(numElements > 0);
+  59:source/HvMessage.h ****   return sizeof(HvMessage) + ((numElements-1) * sizeof(Element));
+  60:source/HvMessage.h **** }
+  61:source/HvMessage.h **** 
+  62:source/HvMessage.h **** HvMessage *msg_copy(const HvMessage *m);
+  63:source/HvMessage.h **** 
+  64:source/HvMessage.h **** /** Copies the message into the given buffer. The buffer must be at least as large as msg_getNumHea
+  65:source/HvMessage.h **** void msg_copyToBuffer(const HvMessage *m, char *buffer, hv_size_t len);
+  66:source/HvMessage.h **** 
+  67:source/HvMessage.h **** void msg_setElementToFrom(HvMessage *n, int indexN, const HvMessage *const m, int indexM);
+  68:source/HvMessage.h **** 
+  69:source/HvMessage.h **** /** Frees a message on the heap. Does nothing if argument is NULL. */
+  70:source/HvMessage.h **** void msg_free(HvMessage *m);
+  71:source/HvMessage.h **** 
+  72:source/HvMessage.h **** HvMessage *msg_init(HvMessage *m, hv_size_t numElements, hv_uint32_t timestamp);
+  73:source/HvMessage.h **** 
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 3
+
+
+  74:source/HvMessage.h **** HvMessage *msg_initWithFloat(HvMessage *m, hv_uint32_t timestamp, float f);
+  75:source/HvMessage.h **** 
+  76:source/HvMessage.h **** HvMessage *msg_initWithBang(HvMessage *m, hv_uint32_t timestamp);
+  77:source/HvMessage.h **** 
+  78:source/HvMessage.h **** HvMessage *msg_initWithSymbol(HvMessage *m, hv_uint32_t timestamp, const char *s);
+  79:source/HvMessage.h **** 
+  80:source/HvMessage.h **** HvMessage *msg_initWithHash(HvMessage *m, hv_uint32_t timestamp, hv_uint32_t h);
+  81:source/HvMessage.h **** 
+  82:source/HvMessage.h **** static inline hv_uint32_t msg_getTimestamp(const HvMessage *m) {
+  83:source/HvMessage.h ****   return m->timestamp;
+  84:source/HvMessage.h **** }
+  85:source/HvMessage.h **** 
+  86:source/HvMessage.h **** static inline void msg_setTimestamp(HvMessage *m, hv_uint32_t timestamp) {
+  87:source/HvMessage.h ****   m->timestamp = timestamp;
+  88:source/HvMessage.h **** }
+  89:source/HvMessage.h **** 
+  90:source/HvMessage.h **** static inline int msg_getNumElements(const HvMessage *m) {
+  91:source/HvMessage.h ****   return (int) m->numElements;
+  92:source/HvMessage.h **** }
+  93:source/HvMessage.h **** 
+  94:source/HvMessage.h **** /** Returns the total number of bytes this message consumes in memory. */
+  95:source/HvMessage.h **** static inline hv_uint32_t msg_getSize(const HvMessage *m) {
+  96:source/HvMessage.h ****   return m->numBytes;
+  97:source/HvMessage.h **** }
+  98:source/HvMessage.h **** 
+  99:source/HvMessage.h **** static inline ElementType msg_getType(const HvMessage *m, int index) {
+ 100:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 101:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 102:source/HvMessage.h **** }
+ 103:source/HvMessage.h **** 
+ 104:source/HvMessage.h **** static inline void msg_setBang(HvMessage *m, int index) {
+ 105:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 106:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_BANG;
+ 107:source/HvMessage.h ****   (&(m->elem)+index)->data.s = NULL;
+ 108:source/HvMessage.h **** }
+ 109:source/HvMessage.h **** 
+ 110:source/HvMessage.h **** static inline bool msg_isBang(const HvMessage *m, int index) {
+ 111:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_BANG) : false;
+ 112:source/HvMessage.h **** }
+ 113:source/HvMessage.h **** 
+ 114:source/HvMessage.h **** static inline void msg_setFloat(HvMessage *m, int index, float f) {
+ 115:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 116:source/HvMessage.h ****   (&(m->elem)+index)->type = HV_MSG_FLOAT;
+ 117:source/HvMessage.h ****   (&(m->elem)+index)->data.f = f;
+ 118:source/HvMessage.h **** }
+ 119:source/HvMessage.h **** 
+ 120:source/HvMessage.h **** static inline float msg_getFloat(const HvMessage *const m, int index) {
+  35              		.loc 1 120 21 view -0
+  36              		.cfi_startproc
+  37              		@ Volatile: function does not return.
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+  40              	.LVL0:
+  41              		.loc 1 120 21 is_stmt 0 view .LVU1
+  42 0000 08B5     		push	{r3, lr}
+  43              		.cfi_def_cfa_offset 8
+  44              		.cfi_offset 3, -8
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 4
+
+
+  45              		.cfi_offset 14, -4
+ 121:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+  46              		.loc 1 121 3 view .LVU2
+  47 0002 034A     		ldr	r2, .L4
+  48 0004 7921     		movs	r1, #121
+  49 0006 034B     		ldr	r3, .L4+4
+  50 0008 0348     		ldr	r0, .L4+8
+  51 000a FFF7FEFF 		bl	__assert_func
+  52              	.LVL1:
+  53              	.L5:
+  54 000e 00BF     		.align	2
+  55              	.L4:
+  56 0010 00000000 		.word	.LANCHOR0
+  57 0014 00000000 		.word	.LC0
+  58 0018 20000000 		.word	.LC1
+  59              		.cfi_endproc
+  60              	.LFE405:
+  62              		.section	.text.sBiquad_init,"ax",%progbits
+  63              		.align	1
+  64              		.p2align 2,,3
+  65              		.global	sBiquad_init
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  70              	sBiquad_init:
+  71              	.LVL2:
+  72              	.LFB400:
+  73              		.file 2 "source/HvSignalBiquad.c"
+   1:source/HvSignalBiquad.c **** /**
+   2:source/HvSignalBiquad.c ****  * Copyright (c) 2014-2018 Enzien Audio Ltd.
+   3:source/HvSignalBiquad.c ****  *
+   4:source/HvSignalBiquad.c ****  * Permission to use, copy, modify, and/or distribute this software for any
+   5:source/HvSignalBiquad.c ****  * purpose with or without fee is hereby granted, provided that the above
+   6:source/HvSignalBiquad.c ****  * copyright notice and this permission notice appear in all copies.
+   7:source/HvSignalBiquad.c ****  *
+   8:source/HvSignalBiquad.c ****  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+   9:source/HvSignalBiquad.c ****  * REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+  10:source/HvSignalBiquad.c ****  * AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+  11:source/HvSignalBiquad.c ****  * INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+  12:source/HvSignalBiquad.c ****  * LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+  13:source/HvSignalBiquad.c ****  * OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+  14:source/HvSignalBiquad.c ****  * PERFORMANCE OF THIS SOFTWARE.
+  15:source/HvSignalBiquad.c ****  */
+  16:source/HvSignalBiquad.c **** 
+  17:source/HvSignalBiquad.c **** #include "HvSignalBiquad.h"
+  18:source/HvSignalBiquad.c **** 
+  19:source/HvSignalBiquad.c **** // http://reanimator-web.appspot.com/articles/simdiir
+  20:source/HvSignalBiquad.c **** // http://musicdsp.org/files/Audio-EQ-Cookbook.txt
+  21:source/HvSignalBiquad.c **** 
+  22:source/HvSignalBiquad.c **** hv_size_t sBiquad_init(SignalBiquad *o) {
+  74              		.loc 2 22 41 is_stmt 1 view -0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  23:source/HvSignalBiquad.c **** #if HV_SIMD_AVX
+  24:source/HvSignalBiquad.c ****   o->x = _mm256_setzero_ps();
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 5
+
+
+  25:source/HvSignalBiquad.c **** #elif HV_SIMD_SSE
+  26:source/HvSignalBiquad.c ****   o->x = _mm_setzero_ps();
+  27:source/HvSignalBiquad.c **** #elif HV_SIMD_NEON
+  28:source/HvSignalBiquad.c ****   o->x = vdupq_n_f32(0.0f);
+  29:source/HvSignalBiquad.c **** #else // HV_SIMD_NONE
+  30:source/HvSignalBiquad.c ****   o->xm1 = 0.0f;
+  79              		.loc 2 30 3 view .LVU4
+  22:source/HvSignalBiquad.c **** #if HV_SIMD_AVX
+  80              		.loc 2 22 41 is_stmt 0 view .LVU5
+  81 0000 0346     		mov	r3, r0
+  82              		.loc 2 30 10 view .LVU6
+  83 0002 0022     		movs	r2, #0
+  31:source/HvSignalBiquad.c ****   o->xm2 = 0.0f;
+  32:source/HvSignalBiquad.c **** #endif
+  33:source/HvSignalBiquad.c ****   o->ym1 = 0.0f;
+  34:source/HvSignalBiquad.c ****   o->ym2 = 0.0f;
+  35:source/HvSignalBiquad.c ****   return 0;
+  36:source/HvSignalBiquad.c **** }
+  84              		.loc 2 36 1 view .LVU7
+  85 0004 0020     		movs	r0, #0
+  86              	.LVL3:
+  30:source/HvSignalBiquad.c ****   o->xm2 = 0.0f;
+  87              		.loc 2 30 10 view .LVU8
+  88 0006 1A60     		str	r2, [r3]	@ float
+  31:source/HvSignalBiquad.c ****   o->xm2 = 0.0f;
+  89              		.loc 2 31 3 is_stmt 1 view .LVU9
+  31:source/HvSignalBiquad.c ****   o->xm2 = 0.0f;
+  90              		.loc 2 31 10 is_stmt 0 view .LVU10
+  91 0008 5A60     		str	r2, [r3, #4]	@ float
+  33:source/HvSignalBiquad.c ****   o->ym2 = 0.0f;
+  92              		.loc 2 33 3 is_stmt 1 view .LVU11
+  33:source/HvSignalBiquad.c ****   o->ym2 = 0.0f;
+  93              		.loc 2 33 10 is_stmt 0 view .LVU12
+  94 000a 9A60     		str	r2, [r3, #8]	@ float
+  34:source/HvSignalBiquad.c ****   return 0;
+  95              		.loc 2 34 3 is_stmt 1 view .LVU13
+  34:source/HvSignalBiquad.c ****   return 0;
+  96              		.loc 2 34 10 is_stmt 0 view .LVU14
+  97 000c DA60     		str	r2, [r3, #12]	@ float
+  35:source/HvSignalBiquad.c **** }
+  98              		.loc 2 35 3 is_stmt 1 view .LVU15
+  99              		.loc 2 36 1 is_stmt 0 view .LVU16
+ 100 000e 7047     		bx	lr
+ 101              		.cfi_endproc
+ 102              	.LFE400:
+ 104              		.section	.text.__hv_biquad_f,"ax",%progbits
+ 105              		.align	1
+ 106              		.p2align 2,,3
+ 107              		.global	__hv_biquad_f
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 112              	__hv_biquad_f:
+ 113              	.LVL4:
+ 114              	.LFB401:
+  37:source/HvSignalBiquad.c **** 
+  38:source/HvSignalBiquad.c **** #if _WIN32 && !_WIN64
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 6
+
+
+  39:source/HvSignalBiquad.c **** void __hv_biquad_f_win32(SignalBiquad *o, hv_bInf_t *_bIn, hv_bInf_t *_bX0, hv_bInf_t *_bX1, hv_bIn
+  40:source/HvSignalBiquad.c ****   hv_bInf_t bIn = *_bIn;
+  41:source/HvSignalBiquad.c ****   hv_bInf_t bX0 = *_bX0;
+  42:source/HvSignalBiquad.c ****   hv_bInf_t bX1 = *_bX1;
+  43:source/HvSignalBiquad.c ****   hv_bInf_t bX2 = *_bX2;
+  44:source/HvSignalBiquad.c ****   hv_bInf_t bY1 = *_bY1;
+  45:source/HvSignalBiquad.c ****   hv_bInf_t bY2 = *_bY2;
+  46:source/HvSignalBiquad.c **** #else
+  47:source/HvSignalBiquad.c **** void __hv_biquad_f(SignalBiquad *o, hv_bInf_t bIn, hv_bInf_t bX0, hv_bInf_t bX1, hv_bInf_t bX2, hv_
+ 115              		.loc 2 47 144 is_stmt 1 view -0
+ 116              		.cfi_startproc
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              		@ link register save eliminated.
+  48:source/HvSignalBiquad.c **** #endif
+  49:source/HvSignalBiquad.c **** #if HV_SIMD_AVX
+  50:source/HvSignalBiquad.c ****   __m256 x = _mm256_permute_ps(bIn, _MM_SHUFFLE(2,1,0,3));  // [3 0 1 2 7 4 5 6]
+  51:source/HvSignalBiquad.c ****   __m256 y = _mm256_permute_ps(o->x, _MM_SHUFFLE(2,1,0,3)); // [d a b c h e f g]
+  52:source/HvSignalBiquad.c ****   __m256 n = _mm256_permute2f128_ps(y,x,0x21);              // [h e f g 3 0 1 2]
+  53:source/HvSignalBiquad.c ****   __m256 xm1 = _mm256_blend_ps(x, n, 0x11);                 // [h 0 1 2 3 4 5 6]
+  54:source/HvSignalBiquad.c **** 
+  55:source/HvSignalBiquad.c ****   x = _mm256_permute_ps(bIn, _MM_SHUFFLE(1,0,3,2));  // [2 3 0 1 6 7 4 5]
+  56:source/HvSignalBiquad.c ****   y = _mm256_permute_ps(o->x, _MM_SHUFFLE(1,0,3,2)); // [c d a b g h e f]
+  57:source/HvSignalBiquad.c ****   n = _mm256_permute2f128_ps(y,x,0x21);              // [g h e f 2 3 0 1]
+  58:source/HvSignalBiquad.c ****   __m256 xm2 = _mm256_blend_ps(x, n, 0x33);          // [g h 0 1 2 3 4 5]
+  59:source/HvSignalBiquad.c **** 
+  60:source/HvSignalBiquad.c ****   __m256 a = _mm256_mul_ps(bIn, bX0);
+  61:source/HvSignalBiquad.c ****   __m256 b = _mm256_mul_ps(xm1, bX1);
+  62:source/HvSignalBiquad.c ****   __m256 c = _mm256_mul_ps(xm2, bX2);
+  63:source/HvSignalBiquad.c ****   __m256 d = _mm256_add_ps(a, b);
+  64:source/HvSignalBiquad.c ****   __m256 e = _mm256_add_ps(c, d); // bIn*bX0 + o->x1*bX1 + o->x2*bX2
+  65:source/HvSignalBiquad.c **** 
+  66:source/HvSignalBiquad.c ****   float y0 = e[0] - o->ym1*bY1[0] - o->ym2*bY2[0];
+  67:source/HvSignalBiquad.c ****   float y1 = e[1] - y0*bY1[1] - o->ym1*bY2[1];
+  68:source/HvSignalBiquad.c ****   float y2 = e[2] - y1*bY1[2] - y0*bY2[2];
+  69:source/HvSignalBiquad.c ****   float y3 = e[3] - y2*bY1[3] - y1*bY2[3];
+  70:source/HvSignalBiquad.c ****   float y4 = e[4] - y3*bY1[4] - y2*bY2[4];
+  71:source/HvSignalBiquad.c ****   float y5 = e[5] - y4*bY1[5] - y3*bY2[5];
+  72:source/HvSignalBiquad.c ****   float y6 = e[6] - y5*bY1[6] - y4*bY2[6];
+  73:source/HvSignalBiquad.c ****   float y7 = e[7] - y6*bY1[7] - y5*bY2[7];
+  74:source/HvSignalBiquad.c **** 
+  75:source/HvSignalBiquad.c ****   o->x = bIn;
+  76:source/HvSignalBiquad.c ****   o->ym1 = y7;
+  77:source/HvSignalBiquad.c ****   o->ym2 = y6;
+  78:source/HvSignalBiquad.c **** 
+  79:source/HvSignalBiquad.c ****   *bOut = _mm256_set_ps(y7, y6, y5, y4, y3, y2, y1, y0);
+  80:source/HvSignalBiquad.c **** #elif HV_SIMD_SSE
+  81:source/HvSignalBiquad.c ****   __m128 n = _mm_blend_ps(o->x, bIn, 0x7); // [a b c d] [e f g h] = [e f g d]
+  82:source/HvSignalBiquad.c ****   __m128 xm1 = _mm_shuffle_ps(n, n, _MM_SHUFFLE(2,1,0,3)); // [d e f g]
+  83:source/HvSignalBiquad.c ****   __m128 xm2 = _mm_shuffle_ps(o->x, bIn, _MM_SHUFFLE(1,0,3,2)); // [c d e f]
+  84:source/HvSignalBiquad.c **** 
+  85:source/HvSignalBiquad.c ****   __m128 a = _mm_mul_ps(bIn, bX0);
+  86:source/HvSignalBiquad.c ****   __m128 b = _mm_mul_ps(xm1, bX1);
+  87:source/HvSignalBiquad.c ****   __m128 c = _mm_mul_ps(xm2, bX2);
+  88:source/HvSignalBiquad.c ****   __m128 d = _mm_add_ps(a, b);
+  89:source/HvSignalBiquad.c ****   __m128 e = _mm_add_ps(c, d);
+  90:source/HvSignalBiquad.c **** 
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 7
+
+
+  91:source/HvSignalBiquad.c ****   const float *const bbe = (float *) &e;
+  92:source/HvSignalBiquad.c ****   const float *const bbY1 = (float *) &bY1;
+  93:source/HvSignalBiquad.c ****   const float *const bbY2 = (float *) &bY2;
+  94:source/HvSignalBiquad.c **** 
+  95:source/HvSignalBiquad.c ****   float y0 = bbe[0] - o->ym1*bbY1[0] - o->ym2*bbY2[0];
+  96:source/HvSignalBiquad.c ****   float y1 = bbe[1] - y0*bbY1[1] - o->ym1*bbY2[1];
+  97:source/HvSignalBiquad.c ****   float y2 = bbe[2] - y1*bbY1[2] - y0*bbY2[2];
+  98:source/HvSignalBiquad.c ****   float y3 = bbe[3] - y2*bbY1[3] - y1*bbY2[3];
+  99:source/HvSignalBiquad.c **** 
+ 100:source/HvSignalBiquad.c ****   o->x = bIn;
+ 101:source/HvSignalBiquad.c ****   o->ym1 = y3;
+ 102:source/HvSignalBiquad.c ****   o->ym2 = y2;
+ 103:source/HvSignalBiquad.c **** 
+ 104:source/HvSignalBiquad.c ****   *bOut = _mm_set_ps(y3, y2, y1, y0);
+ 105:source/HvSignalBiquad.c **** #elif HV_SIMD_NEON
+ 106:source/HvSignalBiquad.c ****   float32x4_t xm1 = vextq_f32(o->x, bIn, 3);
+ 107:source/HvSignalBiquad.c ****   float32x4_t xm2 = vextq_f32(o->x, bIn, 2);
+ 108:source/HvSignalBiquad.c **** 
+ 109:source/HvSignalBiquad.c ****   float32x4_t a = vmulq_f32(bIn, bX0);
+ 110:source/HvSignalBiquad.c ****   float32x4_t b = vmulq_f32(xm1, bX1);
+ 111:source/HvSignalBiquad.c ****   float32x4_t c = vmulq_f32(xm2, bX2);
+ 112:source/HvSignalBiquad.c ****   float32x4_t d = vaddq_f32(a, b);
+ 113:source/HvSignalBiquad.c ****   float32x4_t e = vaddq_f32(c, d);
+ 114:source/HvSignalBiquad.c **** 
+ 115:source/HvSignalBiquad.c ****   float y0 = e[0] - o->ym1*bY1[0] - o->ym2*bY2[0];
+ 116:source/HvSignalBiquad.c ****   float y1 = e[1] - y0*bY1[1] - o->ym1*bY2[1];
+ 117:source/HvSignalBiquad.c ****   float y2 = e[2] - y1*bY1[2] - y0*bY2[2];
+ 118:source/HvSignalBiquad.c ****   float y3 = e[3] - y2*bY1[3] - y1*bY2[3];
+ 119:source/HvSignalBiquad.c **** 
+ 120:source/HvSignalBiquad.c ****   o->x = bIn;
+ 121:source/HvSignalBiquad.c ****   o->ym1 = y3;
+ 122:source/HvSignalBiquad.c ****   o->ym2 = y2;
+ 123:source/HvSignalBiquad.c **** 
+ 124:source/HvSignalBiquad.c ****   *bOut = (float32x4_t) {y0, y1, y2, y3};
+ 125:source/HvSignalBiquad.c **** #else
+ 126:source/HvSignalBiquad.c ****   const float y = bIn*bX0 + o->xm1*bX1 + o->xm2*bX2 - o->ym1*bY1 - o->ym2*bY2;
+ 120              		.loc 2 126 3 view .LVU18
+ 121              		.loc 2 126 30 is_stmt 0 view .LVU19
+ 122 0000 90ED007A 		vldr.32	s14, [r0]
+ 123              		.loc 2 126 40 view .LVU20
+ 124 0004 90ED016A 		vldr.32	s12, [r0, #4]
+ 125              		.loc 2 126 35 view .LVU21
+ 126 0008 27EE011A 		vmul.f32	s2, s14, s2
+ 127              	.LVL5:
+ 128              		.loc 2 126 56 view .LVU22
+ 129 000c D0ED027A 		vldr.32	s15, [r0, #8]
+ 130              		.loc 2 126 15 view .LVU23
+ 131 0010 D0ED036A 		vldr.32	s13, [r0, #12]
+ 127:source/HvSignalBiquad.c ****   o->xm2 = o->xm1; o->xm1 = bIn;
+ 132              		.loc 2 127 10 view .LVU24
+ 133 0014 80ED017A 		vstr.32	s14, [r0, #4]
+ 126:source/HvSignalBiquad.c ****   o->xm2 = o->xm1; o->xm1 = bIn;
+ 134              		.loc 2 126 27 view .LVU25
+ 135 0018 A0EE201A 		vfma.f32	s2, s0, s1
+ 136              		.loc 2 127 27 view .LVU26
+ 137 001c 80ED000A 		vstr.32	s0, [r0]
+ 128:source/HvSignalBiquad.c ****   o->ym2 = o->ym1; o->ym1 = y;
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 8
+
+
+ 138              		.loc 2 128 10 view .LVU27
+ 139 0020 C0ED037A 		vstr.32	s15, [r0, #12]
+ 126:source/HvSignalBiquad.c ****   o->xm2 = o->xm1; o->xm1 = bIn;
+ 140              		.loc 2 126 40 view .LVU28
+ 141 0024 A6EE211A 		vfma.f32	s2, s12, s3
+ 126:source/HvSignalBiquad.c ****   o->xm2 = o->xm1; o->xm1 = bIn;
+ 142              		.loc 2 126 53 view .LVU29
+ 143 0028 A7EEC21A 		vfms.f32	s2, s15, s4
+ 126:source/HvSignalBiquad.c ****   o->xm2 = o->xm1; o->xm1 = bIn;
+ 144              		.loc 2 126 15 view .LVU30
+ 145 002c A6EEE21A 		vfms.f32	s2, s13, s5
+ 146              	.LVL6:
+ 127:source/HvSignalBiquad.c ****   o->xm2 = o->xm1; o->xm1 = bIn;
+ 147              		.loc 2 127 3 is_stmt 1 view .LVU31
+ 127:source/HvSignalBiquad.c ****   o->xm2 = o->xm1; o->xm1 = bIn;
+ 148              		.loc 2 127 20 view .LVU32
+ 149              		.loc 2 128 3 view .LVU33
+ 150              		.loc 2 128 20 view .LVU34
+ 151              		.loc 2 128 27 is_stmt 0 view .LVU35
+ 152 0030 80ED021A 		vstr.32	s2, [r0, #8]
+ 129:source/HvSignalBiquad.c ****   *bOut = y;
+ 153              		.loc 2 129 3 is_stmt 1 view .LVU36
+ 154              		.loc 2 129 9 is_stmt 0 view .LVU37
+ 155 0034 81ED001A 		vstr.32	s2, [r1]
+ 130:source/HvSignalBiquad.c **** #endif
+ 131:source/HvSignalBiquad.c **** }
+ 156              		.loc 2 131 1 view .LVU38
+ 157 0038 7047     		bx	lr
+ 158              		.cfi_endproc
+ 159              	.LFE401:
+ 161 003a 00BF     		.section	.text.sBiquad_k_init,"ax",%progbits
+ 162              		.align	1
+ 163              		.p2align 2,,3
+ 164              		.global	sBiquad_k_init
+ 165              		.syntax unified
+ 166              		.thumb
+ 167              		.thumb_func
+ 169              	sBiquad_k_init:
+ 170              	.LVL7:
+ 171              	.LFB403:
+ 132:source/HvSignalBiquad.c **** 
+ 133:source/HvSignalBiquad.c **** static void sBiquad_k_updateCoefficients(SignalBiquad_k *const o) {
+ 134:source/HvSignalBiquad.c **** #if DEBUG
+ 135:source/HvSignalBiquad.c ****   // inspect the filter coefficients to ensure that the filter is stable
+ 136:source/HvSignalBiquad.c ****   // 1/((1-a*z^-1) * (1-b*z^-1))
+ 137:source/HvSignalBiquad.c ****   float k = (o->a1*o->a1) - (4.0f*o->a2);
+ 138:source/HvSignalBiquad.c ****   float l = hv_sqrt_f(hv_abs_f(k));
+ 139:source/HvSignalBiquad.c **** 
+ 140:source/HvSignalBiquad.c ****   float m_alpha = 0.0f;
+ 141:source/HvSignalBiquad.c ****   float m_beta = 0.0f;
+ 142:source/HvSignalBiquad.c ****   if (k < 0.0f) {
+ 143:source/HvSignalBiquad.c ****     // alpha is complex
+ 144:source/HvSignalBiquad.c ****     float r_alpha = o->a1 * 0.5f;
+ 145:source/HvSignalBiquad.c ****     float i_alpha = l * 0.5f;
+ 146:source/HvSignalBiquad.c ****     m_alpha = (r_alpha*r_alpha + i_alpha*i_alpha); // |alpha|^2
+ 147:source/HvSignalBiquad.c **** 
+ 148:source/HvSignalBiquad.c ****     float r_beta = (o->a2 * r_alpha) / m_alpha;
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 9
+
+
+ 149:source/HvSignalBiquad.c ****     float i_beta = (o->a2 * -i_alpha) / m_alpha;
+ 150:source/HvSignalBiquad.c ****     m_alpha = hv_sqrt_f(m_alpha);
+ 151:source/HvSignalBiquad.c ****     m_beta = hv_sqrt_f(r_beta*r_beta + i_beta*i_beta);
+ 152:source/HvSignalBiquad.c ****   } else {
+ 153:source/HvSignalBiquad.c ****     // alpha is real
+ 154:source/HvSignalBiquad.c ****     float alpha = (o->a1 + l) * 0.5f;
+ 155:source/HvSignalBiquad.c ****     float beta = o->a2 / alpha;
+ 156:source/HvSignalBiquad.c ****     m_alpha = hv_abs_f(alpha);
+ 157:source/HvSignalBiquad.c ****     m_beta = hv_abs_f(beta);
+ 158:source/HvSignalBiquad.c ****   }
+ 159:source/HvSignalBiquad.c **** 
+ 160:source/HvSignalBiquad.c ****   hv_assert(m_alpha < 1.0f);
+ 161:source/HvSignalBiquad.c ****   hv_assert(m_beta < 1.0f);
+ 162:source/HvSignalBiquad.c **** #endif
+ 163:source/HvSignalBiquad.c **** 
+ 164:source/HvSignalBiquad.c ****   // calculate all filter coefficients in the double domain
+ 165:source/HvSignalBiquad.c **** #if HV_SIMD_AVX || HV_SIMD_SSE || HV_SIMD_NEON
+ 166:source/HvSignalBiquad.c ****   double b0 = (double) o->b0;
+ 167:source/HvSignalBiquad.c ****   double b1 = (double) o->b1;
+ 168:source/HvSignalBiquad.c ****   double b2 = (double) o->b2;
+ 169:source/HvSignalBiquad.c ****   double a1 = (double) -o->a1;
+ 170:source/HvSignalBiquad.c ****   double a2 = (double) -o->a2;
+ 171:source/HvSignalBiquad.c **** 
+ 172:source/HvSignalBiquad.c ****   double coeffs[4][8] =
+ 173:source/HvSignalBiquad.c ****   {
+ 174:source/HvSignalBiquad.c ****     { 0,  0,  0,  b0, b1, b2, a1, a2 },
+ 175:source/HvSignalBiquad.c ****     { 0,  0,  b0, b1, b2, 0,  a2, 0  },
+ 176:source/HvSignalBiquad.c ****     { 0,  b0, b1, b2, 0,  0,  0,  0  },
+ 177:source/HvSignalBiquad.c ****     { b0, b1, b2, 0,  0,  0,  0,  0  },
+ 178:source/HvSignalBiquad.c ****   };
+ 179:source/HvSignalBiquad.c **** 
+ 180:source/HvSignalBiquad.c ****   for (int i = 0; i < 8; i++) {
+ 181:source/HvSignalBiquad.c ****     coeffs[1][i] += a1*coeffs[0][i];
+ 182:source/HvSignalBiquad.c ****     coeffs[2][i] += a1*coeffs[1][i] + a2*coeffs[0][i];
+ 183:source/HvSignalBiquad.c ****     coeffs[3][i] += a1*coeffs[2][i] + a2*coeffs[1][i];
+ 184:source/HvSignalBiquad.c ****   }
+ 185:source/HvSignalBiquad.c **** 
+ 186:source/HvSignalBiquad.c **** #if HV_SIMD_AVX || HV_SIMD_SSE
+ 187:source/HvSignalBiquad.c ****   o->coeff_xp3 = _mm_set_ps((float) coeffs[3][0], (float) coeffs[2][0], (float) coeffs[1][0], (floa
+ 188:source/HvSignalBiquad.c ****   o->coeff_xp2 = _mm_set_ps((float) coeffs[3][1], (float) coeffs[2][1], (float) coeffs[1][1], (floa
+ 189:source/HvSignalBiquad.c ****   o->coeff_xp1 = _mm_set_ps((float) coeffs[3][2], (float) coeffs[2][2], (float) coeffs[1][2], (floa
+ 190:source/HvSignalBiquad.c ****   o->coeff_x0 =  _mm_set_ps((float) coeffs[3][3], (float) coeffs[2][3], (float) coeffs[1][3], (floa
+ 191:source/HvSignalBiquad.c ****   o->coeff_xm1 = _mm_set_ps((float) coeffs[3][4], (float) coeffs[2][4], (float) coeffs[1][4], (floa
+ 192:source/HvSignalBiquad.c ****   o->coeff_xm2 = _mm_set_ps((float) coeffs[3][5], (float) coeffs[2][5], (float) coeffs[1][5], (floa
+ 193:source/HvSignalBiquad.c ****   o->coeff_ym1 = _mm_set_ps((float) coeffs[3][6], (float) coeffs[2][6], (float) coeffs[1][6], (floa
+ 194:source/HvSignalBiquad.c ****   o->coeff_ym2 = _mm_set_ps((float) coeffs[3][7], (float) coeffs[2][7], (float) coeffs[1][7], (floa
+ 195:source/HvSignalBiquad.c **** #else // HV_SIMD_NEON
+ 196:source/HvSignalBiquad.c ****   o->coeff_xp3 = (float32x4_t) {(float) coeffs[0][0], (float) coeffs[1][0], (float) coeffs[2][0], (
+ 197:source/HvSignalBiquad.c ****   o->coeff_xp2 = (float32x4_t) {(float) coeffs[0][1], (float) coeffs[1][1], (float) coeffs[2][1], (
+ 198:source/HvSignalBiquad.c ****   o->coeff_xp1 = (float32x4_t) {(float) coeffs[0][2], (float) coeffs[1][2], (float) coeffs[2][2], (
+ 199:source/HvSignalBiquad.c ****   o->coeff_x0 =  (float32x4_t) {(float) coeffs[0][3], (float) coeffs[1][3], (float) coeffs[2][3], (
+ 200:source/HvSignalBiquad.c ****   o->coeff_xm1 = (float32x4_t) {(float) coeffs[0][4], (float) coeffs[1][4], (float) coeffs[2][4], (
+ 201:source/HvSignalBiquad.c ****   o->coeff_xm2 = (float32x4_t) {(float) coeffs[0][5], (float) coeffs[1][5], (float) coeffs[2][5], (
+ 202:source/HvSignalBiquad.c ****   o->coeff_ym1 = (float32x4_t) {(float) coeffs[0][6], (float) coeffs[1][6], (float) coeffs[2][6], (
+ 203:source/HvSignalBiquad.c ****   o->coeff_ym2 = (float32x4_t) {(float) coeffs[0][7], (float) coeffs[1][7], (float) coeffs[2][7], (
+ 204:source/HvSignalBiquad.c **** #endif
+ 205:source/HvSignalBiquad.c **** #endif
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 10
+
+
+ 206:source/HvSignalBiquad.c ****   // NOTE(mhroth): not necessary to calculate any coefficients for HV_SIMD_NONE case
+ 207:source/HvSignalBiquad.c **** }
+ 208:source/HvSignalBiquad.c **** 
+ 209:source/HvSignalBiquad.c **** hv_size_t sBiquad_k_init(SignalBiquad_k *o, float b0, float b1, float b2, float a1, float a2) {
+ 172              		.loc 2 209 95 is_stmt 1 view -0
+ 173              		.cfi_startproc
+ 174              		@ args = 0, pretend = 0, frame = 0
+ 175              		@ frame_needed = 0, uses_anonymous_args = 0
+ 176              		@ link register save eliminated.
+ 210:source/HvSignalBiquad.c ****   // initialise filter coefficients
+ 211:source/HvSignalBiquad.c ****   o->b0 = b0;
+ 177              		.loc 2 211 3 view .LVU40
+ 212:source/HvSignalBiquad.c ****   o->b1 = b1;
+ 213:source/HvSignalBiquad.c ****   o->b2 = b2;
+ 214:source/HvSignalBiquad.c ****   o->a1 = a1;
+ 215:source/HvSignalBiquad.c ****   o->a2 = a2;
+ 216:source/HvSignalBiquad.c ****   sBiquad_k_updateCoefficients(o);
+ 217:source/HvSignalBiquad.c **** 
+ 218:source/HvSignalBiquad.c ****   // clear filter state
+ 219:source/HvSignalBiquad.c **** #if HV_SIMD_AVX || HV_SIMD_SSE
+ 220:source/HvSignalBiquad.c ****   o->xm1 = _mm_setzero_ps();
+ 221:source/HvSignalBiquad.c ****   o->xm2 = _mm_setzero_ps();
+ 222:source/HvSignalBiquad.c ****   o->ym1 = _mm_setzero_ps();
+ 223:source/HvSignalBiquad.c ****   o->ym2 = _mm_setzero_ps();
+ 224:source/HvSignalBiquad.c **** #elif HV_SIMD_NEON
+ 225:source/HvSignalBiquad.c ****   o->xm1 = vdupq_n_f32(0.0f);
+ 226:source/HvSignalBiquad.c ****   o->xm2 = vdupq_n_f32(0.0f);
+ 227:source/HvSignalBiquad.c ****   o->ym1 = vdupq_n_f32(0.0f);
+ 228:source/HvSignalBiquad.c ****   o->ym2 = vdupq_n_f32(0.0f);
+ 229:source/HvSignalBiquad.c **** #else // HV_SIMD_NONE
+ 230:source/HvSignalBiquad.c ****   o->xm1 = 0.0f;
+ 178              		.loc 2 230 10 is_stmt 0 view .LVU41
+ 179 0000 0022     		movs	r2, #0
+ 209:source/HvSignalBiquad.c ****   // initialise filter coefficients
+ 180              		.loc 2 209 95 view .LVU42
+ 181 0002 0346     		mov	r3, r0
+ 211:source/HvSignalBiquad.c ****   o->b1 = b1;
+ 182              		.loc 2 211 9 view .LVU43
+ 183 0004 80ED040A 		vstr.32	s0, [r0, #16]
+ 212:source/HvSignalBiquad.c ****   o->b1 = b1;
+ 184              		.loc 2 212 3 is_stmt 1 view .LVU44
+ 212:source/HvSignalBiquad.c ****   o->b1 = b1;
+ 185              		.loc 2 212 9 is_stmt 0 view .LVU45
+ 186 0008 C0ED050A 		vstr.32	s1, [r0, #20]
+ 213:source/HvSignalBiquad.c ****   o->a1 = a1;
+ 187              		.loc 2 213 3 is_stmt 1 view .LVU46
+ 213:source/HvSignalBiquad.c ****   o->a1 = a1;
+ 188              		.loc 2 213 9 is_stmt 0 view .LVU47
+ 189 000c 80ED061A 		vstr.32	s2, [r0, #24]
+ 214:source/HvSignalBiquad.c ****   o->a2 = a2;
+ 190              		.loc 2 214 3 is_stmt 1 view .LVU48
+ 191              		.loc 2 230 10 is_stmt 0 view .LVU49
+ 192 0010 0260     		str	r2, [r0]	@ float
+ 214:source/HvSignalBiquad.c ****   o->a2 = a2;
+ 193              		.loc 2 214 9 view .LVU50
+ 194 0012 C0ED071A 		vstr.32	s3, [r0, #28]
+ 215:source/HvSignalBiquad.c ****   sBiquad_k_updateCoefficients(o);
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 11
+
+
+ 195              		.loc 2 215 3 is_stmt 1 view .LVU51
+ 231:source/HvSignalBiquad.c ****   o->xm2 = 0.0f;
+ 196              		.loc 2 231 10 is_stmt 0 view .LVU52
+ 197 0016 4260     		str	r2, [r0, #4]	@ float
+ 232:source/HvSignalBiquad.c ****   o->ym1 = 0.0f;
+ 198              		.loc 2 232 10 view .LVU53
+ 199 0018 8260     		str	r2, [r0, #8]	@ float
+ 233:source/HvSignalBiquad.c ****   o->ym2 = 0.0f;
+ 200              		.loc 2 233 10 view .LVU54
+ 201 001a C260     		str	r2, [r0, #12]	@ float
+ 234:source/HvSignalBiquad.c **** #endif
+ 235:source/HvSignalBiquad.c ****   return 0;
+ 236:source/HvSignalBiquad.c **** }
+ 202              		.loc 2 236 1 view .LVU55
+ 203 001c 0020     		movs	r0, #0
+ 204              	.LVL8:
+ 215:source/HvSignalBiquad.c ****   sBiquad_k_updateCoefficients(o);
+ 205              		.loc 2 215 9 view .LVU56
+ 206 001e 83ED082A 		vstr.32	s4, [r3, #32]
+ 216:source/HvSignalBiquad.c **** 
+ 207              		.loc 2 216 3 is_stmt 1 view .LVU57
+ 208              	.LVL9:
+ 207:source/HvSignalBiquad.c **** 
+ 209              		.loc 2 207 1 view .LVU58
+ 230:source/HvSignalBiquad.c ****   o->xm2 = 0.0f;
+ 210              		.loc 2 230 3 view .LVU59
+ 231:source/HvSignalBiquad.c ****   o->ym1 = 0.0f;
+ 211              		.loc 2 231 3 view .LVU60
+ 232:source/HvSignalBiquad.c ****   o->ym2 = 0.0f;
+ 212              		.loc 2 232 3 view .LVU61
+ 233:source/HvSignalBiquad.c **** #endif
+ 213              		.loc 2 233 3 view .LVU62
+ 235:source/HvSignalBiquad.c **** }
+ 214              		.loc 2 235 3 view .LVU63
+ 215              		.loc 2 236 1 is_stmt 0 view .LVU64
+ 216 0022 7047     		bx	lr
+ 217              		.cfi_endproc
+ 218              	.LFE403:
+ 220              		.section	.text.sBiquad_k_onMessage,"ax",%progbits
+ 221              		.align	1
+ 222              		.p2align 2,,3
+ 223              		.global	sBiquad_k_onMessage
+ 224              		.syntax unified
+ 225              		.thumb
+ 226              		.thumb_func
+ 228              	sBiquad_k_onMessage:
+ 229              	.LVL10:
+ 230              	.LFB404:
+ 237:source/HvSignalBiquad.c **** 
+ 238:source/HvSignalBiquad.c **** void sBiquad_k_onMessage(SignalBiquad_k *o, int letIn, const HvMessage *m) {
+ 231              		.loc 2 238 76 is_stmt 1 view -0
+ 232              		.cfi_startproc
+ 233              		@ args = 0, pretend = 0, frame = 0
+ 234              		@ frame_needed = 0, uses_anonymous_args = 0
+ 235              		@ link register save eliminated.
+ 239:source/HvSignalBiquad.c ****   if (msg_isFloat(m,0)) {
+ 236              		.loc 2 239 3 view .LVU66
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 12
+
+
+ 237              	.LBB66:
+ 238              	.LBI66:
+ 122:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 123:source/HvMessage.h **** }
+ 124:source/HvMessage.h **** 
+ 125:source/HvMessage.h **** static inline bool msg_isFloat(const HvMessage *const m, int index) {
+ 239              		.loc 1 125 20 view .LVU67
+ 240              	.LBB67:
+ 126:source/HvMessage.h ****   return (index < msg_getNumElements(m)) ? (msg_getType(m,index) == HV_MSG_FLOAT) : false;
+ 241              		.loc 1 126 3 view .LVU68
+ 242              	.LBB68:
+ 243              	.LBI68:
+  90:source/HvMessage.h ****   return (int) m->numElements;
+ 244              		.loc 1 90 19 view .LVU69
+ 245              	.LBB69:
+  91:source/HvMessage.h **** }
+ 246              		.loc 1 91 3 view .LVU70
+  91:source/HvMessage.h **** }
+ 247              		.loc 1 91 3 is_stmt 0 view .LVU71
+ 248              	.LBE69:
+ 249              	.LBE68:
+ 250              		.loc 1 126 83 view .LVU72
+ 251 0000 9388     		ldrh	r3, [r2, #4]
+ 252 0002 03B9     		cbnz	r3, .L21
+ 253              	.LVL11:
+ 254              	.L9:
+ 255              		.loc 1 126 83 view .LVU73
+ 256              	.LBE67:
+ 257              	.LBE66:
+ 240:source/HvSignalBiquad.c ****     switch (letIn) {
+ 241:source/HvSignalBiquad.c ****       case 1: o->b0 = msg_getFloat(m,0); break;
+ 242:source/HvSignalBiquad.c ****       case 2: o->b1 = msg_getFloat(m,0); break;
+ 243:source/HvSignalBiquad.c ****       case 3: o->b2 = msg_getFloat(m,0); break;
+ 244:source/HvSignalBiquad.c ****       case 4: o->a1 = msg_getFloat(m,0); break;
+ 245:source/HvSignalBiquad.c ****       case 5: o->a2 = msg_getFloat(m,0); break;
+ 246:source/HvSignalBiquad.c ****       default: return;
+ 247:source/HvSignalBiquad.c ****     }
+ 248:source/HvSignalBiquad.c ****     sBiquad_k_updateCoefficients(o);
+ 249:source/HvSignalBiquad.c ****   }
+ 250:source/HvSignalBiquad.c **** }
+ 258              		.loc 2 250 1 view .LVU74
+ 259 0004 7047     		bx	lr
+ 260              	.LVL12:
+ 261              	.L21:
+ 262              	.LBB76:
+ 263              	.LBB74:
+ 264              	.LBB70:
+ 265              	.LBI70:
+  99:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 266              		.loc 1 99 27 is_stmt 1 view .LVU75
+ 267              	.LBB71:
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 268              		.loc 1 100 3 view .LVU76
+ 100:source/HvMessage.h ****   return (&(m->elem)+index)->type;
+ 269              		.loc 1 100 3 is_stmt 0 view .LVU77
+ 270              	.LBE71:
+ 271              	.LBE70:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 13
+
+
+ 272              	.LBE74:
+ 273              	.LBE76:
+  91:source/HvMessage.h **** }
+ 274              		.loc 1 91 3 is_stmt 1 view .LVU78
+ 275              	.LBB77:
+ 276              	.LBB75:
+ 277              	.LBB73:
+ 278              	.LBB72:
+ 101:source/HvMessage.h **** }
+ 279              		.loc 1 101 3 view .LVU79
+ 101:source/HvMessage.h **** }
+ 280              		.loc 1 101 3 is_stmt 0 view .LVU80
+ 281              	.LBE72:
+ 282              	.LBE73:
+ 283              		.loc 1 126 83 view .LVU81
+ 284 0006 137A     		ldrb	r3, [r2, #8]	@ zero_extendqisi2
+ 285 0008 012B     		cmp	r3, #1
+ 286 000a FBD1     		bne	.L9
+ 287              	.LVL13:
+ 288              		.loc 1 126 83 view .LVU82
+ 289              	.LBE75:
+ 290              	.LBE77:
+ 240:source/HvSignalBiquad.c ****       case 1: o->b0 = msg_getFloat(m,0); break;
+ 291              		.loc 2 240 5 is_stmt 1 view .LVU83
+ 292 000c 0139     		subs	r1, r1, #1
+ 293              	.LVL14:
+ 240:source/HvSignalBiquad.c ****       case 1: o->b0 = msg_getFloat(m,0); break;
+ 294              		.loc 2 240 5 is_stmt 0 view .LVU84
+ 295 000e 0429     		cmp	r1, #4
+ 296 0010 F8D8     		bhi	.L9
+ 297 0012 DFE801F0 		tbb	[pc, r1]
+ 298              	.L17:
+ 299 0016 0F       		.byte	(.L12-.L17)/2
+ 300 0017 0C       		.byte	(.L13-.L17)/2
+ 301 0018 09       		.byte	(.L14-.L17)/2
+ 302 0019 06       		.byte	(.L15-.L17)/2
+ 303 001a 03       		.byte	(.L16-.L17)/2
+ 304 001b 00       		.p2align 1
+ 305              	.L16:
+ 245:source/HvSignalBiquad.c ****       default: return;
+ 306              		.loc 2 245 15 is_stmt 1 view .LVU85
+ 307              	.LVL15:
+ 308              	.LBB78:
+ 309              	.LBI78:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 310              		.loc 1 120 21 view .LVU86
+ 311              	.LBB79:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 312              		.loc 1 121 3 view .LVU87
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 313              		.loc 1 121 3 is_stmt 0 view .LVU88
+ 314              	.LBE79:
+ 315              	.LBE78:
+  91:source/HvMessage.h **** }
+ 316              		.loc 1 91 3 is_stmt 1 view .LVU89
+ 317              	.LBB81:
+ 318              	.LBB80:
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 14
+
+
+ 122:source/HvMessage.h **** }
+ 319              		.loc 1 122 3 view .LVU90
+ 122:source/HvMessage.h **** }
+ 320              		.loc 1 122 3 is_stmt 0 view .LVU91
+ 321              	.LBE80:
+ 322              	.LBE81:
+ 245:source/HvSignalBiquad.c ****       default: return;
+ 323              		.loc 2 245 21 view .LVU92
+ 324 001c D368     		ldr	r3, [r2, #12]	@ float
+ 325 001e 0362     		str	r3, [r0, #32]	@ float
+ 245:source/HvSignalBiquad.c ****       default: return;
+ 326              		.loc 2 245 42 is_stmt 1 view .LVU93
+ 245:source/HvSignalBiquad.c ****       default: return;
+ 327              		.loc 2 245 7 is_stmt 0 view .LVU94
+ 328 0020 7047     		bx	lr
+ 329              	.L15:
+ 244:source/HvSignalBiquad.c ****       case 5: o->a2 = msg_getFloat(m,0); break;
+ 330              		.loc 2 244 15 is_stmt 1 view .LVU95
+ 331              	.LVL16:
+ 332              	.LBB82:
+ 333              	.LBI82:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 334              		.loc 1 120 21 view .LVU96
+ 335              	.LBB83:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 336              		.loc 1 121 3 view .LVU97
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 337              		.loc 1 121 3 is_stmt 0 view .LVU98
+ 338              	.LBE83:
+ 339              	.LBE82:
+  91:source/HvMessage.h **** }
+ 340              		.loc 1 91 3 is_stmt 1 view .LVU99
+ 341              	.LBB85:
+ 342              	.LBB84:
+ 122:source/HvMessage.h **** }
+ 343              		.loc 1 122 3 view .LVU100
+ 122:source/HvMessage.h **** }
+ 344              		.loc 1 122 3 is_stmt 0 view .LVU101
+ 345              	.LBE84:
+ 346              	.LBE85:
+ 244:source/HvSignalBiquad.c ****       case 5: o->a2 = msg_getFloat(m,0); break;
+ 347              		.loc 2 244 21 view .LVU102
+ 348 0022 D368     		ldr	r3, [r2, #12]	@ float
+ 349 0024 C361     		str	r3, [r0, #28]	@ float
+ 244:source/HvSignalBiquad.c ****       case 5: o->a2 = msg_getFloat(m,0); break;
+ 350              		.loc 2 244 42 is_stmt 1 view .LVU103
+ 244:source/HvSignalBiquad.c ****       case 5: o->a2 = msg_getFloat(m,0); break;
+ 351              		.loc 2 244 7 is_stmt 0 view .LVU104
+ 352 0026 7047     		bx	lr
+ 353              	.L14:
+ 243:source/HvSignalBiquad.c ****       case 4: o->a1 = msg_getFloat(m,0); break;
+ 354              		.loc 2 243 15 is_stmt 1 view .LVU105
+ 355              	.LVL17:
+ 356              	.LBB86:
+ 357              	.LBI86:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 358              		.loc 1 120 21 view .LVU106
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 15
+
+
+ 359              	.LBB87:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 360              		.loc 1 121 3 view .LVU107
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 361              		.loc 1 121 3 is_stmt 0 view .LVU108
+ 362              	.LBE87:
+ 363              	.LBE86:
+  91:source/HvMessage.h **** }
+ 364              		.loc 1 91 3 is_stmt 1 view .LVU109
+ 365              	.LBB89:
+ 366              	.LBB88:
+ 122:source/HvMessage.h **** }
+ 367              		.loc 1 122 3 view .LVU110
+ 122:source/HvMessage.h **** }
+ 368              		.loc 1 122 3 is_stmt 0 view .LVU111
+ 369              	.LBE88:
+ 370              	.LBE89:
+ 243:source/HvSignalBiquad.c ****       case 4: o->a1 = msg_getFloat(m,0); break;
+ 371              		.loc 2 243 21 view .LVU112
+ 372 0028 D368     		ldr	r3, [r2, #12]	@ float
+ 373 002a 8361     		str	r3, [r0, #24]	@ float
+ 243:source/HvSignalBiquad.c ****       case 4: o->a1 = msg_getFloat(m,0); break;
+ 374              		.loc 2 243 42 is_stmt 1 view .LVU113
+ 243:source/HvSignalBiquad.c ****       case 4: o->a1 = msg_getFloat(m,0); break;
+ 375              		.loc 2 243 7 is_stmt 0 view .LVU114
+ 376 002c 7047     		bx	lr
+ 377              	.L13:
+ 242:source/HvSignalBiquad.c ****       case 3: o->b2 = msg_getFloat(m,0); break;
+ 378              		.loc 2 242 15 is_stmt 1 view .LVU115
+ 379              	.LVL18:
+ 380              	.LBB90:
+ 381              	.LBI90:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 382              		.loc 1 120 21 view .LVU116
+ 383              	.LBB91:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 384              		.loc 1 121 3 view .LVU117
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 385              		.loc 1 121 3 is_stmt 0 view .LVU118
+ 386              	.LBE91:
+ 387              	.LBE90:
+  91:source/HvMessage.h **** }
+ 388              		.loc 1 91 3 is_stmt 1 view .LVU119
+ 389              	.LBB93:
+ 390              	.LBB92:
+ 122:source/HvMessage.h **** }
+ 391              		.loc 1 122 3 view .LVU120
+ 122:source/HvMessage.h **** }
+ 392              		.loc 1 122 3 is_stmt 0 view .LVU121
+ 393              	.LBE92:
+ 394              	.LBE93:
+ 242:source/HvSignalBiquad.c ****       case 3: o->b2 = msg_getFloat(m,0); break;
+ 395              		.loc 2 242 21 view .LVU122
+ 396 002e D368     		ldr	r3, [r2, #12]	@ float
+ 397 0030 4361     		str	r3, [r0, #20]	@ float
+ 242:source/HvSignalBiquad.c ****       case 3: o->b2 = msg_getFloat(m,0); break;
+ 398              		.loc 2 242 42 is_stmt 1 view .LVU123
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 16
+
+
+ 242:source/HvSignalBiquad.c ****       case 3: o->b2 = msg_getFloat(m,0); break;
+ 399              		.loc 2 242 7 is_stmt 0 view .LVU124
+ 400 0032 7047     		bx	lr
+ 401              	.L12:
+ 241:source/HvSignalBiquad.c ****       case 2: o->b1 = msg_getFloat(m,0); break;
+ 402              		.loc 2 241 15 is_stmt 1 view .LVU125
+ 403              	.LVL19:
+ 404              	.LBB94:
+ 405              	.LBI94:
+ 120:source/HvMessage.h ****   hv_assert(index < msg_getNumElements(m)); // invalid index
+ 406              		.loc 1 120 21 view .LVU126
+ 407              	.LBB95:
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 408              		.loc 1 121 3 view .LVU127
+ 121:source/HvMessage.h ****   return (&(m->elem)+index)->data.f;
+ 409              		.loc 1 121 3 is_stmt 0 view .LVU128
+ 410              	.LBE95:
+ 411              	.LBE94:
+  91:source/HvMessage.h **** }
+ 412              		.loc 1 91 3 is_stmt 1 view .LVU129
+ 413              	.LBB97:
+ 414              	.LBB96:
+ 122:source/HvMessage.h **** }
+ 415              		.loc 1 122 3 view .LVU130
+ 122:source/HvMessage.h **** }
+ 416              		.loc 1 122 3 is_stmt 0 view .LVU131
+ 417              	.LBE96:
+ 418              	.LBE97:
+ 241:source/HvSignalBiquad.c ****       case 2: o->b1 = msg_getFloat(m,0); break;
+ 419              		.loc 2 241 21 view .LVU132
+ 420 0034 D368     		ldr	r3, [r2, #12]	@ float
+ 421 0036 0361     		str	r3, [r0, #16]	@ float
+ 241:source/HvSignalBiquad.c ****       case 2: o->b1 = msg_getFloat(m,0); break;
+ 422              		.loc 2 241 42 is_stmt 1 view .LVU133
+ 241:source/HvSignalBiquad.c ****       case 2: o->b1 = msg_getFloat(m,0); break;
+ 423              		.loc 2 241 7 is_stmt 0 view .LVU134
+ 424 0038 7047     		bx	lr
+ 425              		.cfi_endproc
+ 426              	.LFE404:
+ 428 003a 00BF     		.section	.rodata.__func__.0,"a"
+ 429              		.align	2
+ 430              		.set	.LANCHOR0,. + 0
+ 433              	__func__.0:
+ 434 0000 6D73675F 		.ascii	"msg_getFloat\000"
+ 434      67657446 
+ 434      6C6F6174 
+ 434      00
+ 435              		.text
+ 436              	.Letext0:
+ 437              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 438              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 439              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 440              		.file 6 "source/HvHeavy.h"
+ 441              		.file 7 "source/HvSignalBiquad.h"
+ 442              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/assert.h"
+ARM GAS  /var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 HvSignalBiquad.c
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:19     .rodata.msg_getFloat.part.0.str1.4:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:26     .text.msg_getFloat.part.0:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:32     .text.msg_getFloat.part.0:0000000000000000 msg_getFloat.part.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:56     .text.msg_getFloat.part.0:0000000000000010 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:63     .text.sBiquad_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:70     .text.sBiquad_init:0000000000000000 sBiquad_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:105    .text.__hv_biquad_f:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:112    .text.__hv_biquad_f:0000000000000000 __hv_biquad_f
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:162    .text.sBiquad_k_init:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:169    .text.sBiquad_k_init:0000000000000000 sBiquad_k_init
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:221    .text.sBiquad_k_onMessage:0000000000000000 $t
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:228    .text.sBiquad_k_onMessage:0000000000000000 sBiquad_k_onMessage
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:299    .text.sBiquad_k_onMessage:0000000000000016 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:429    .rodata.__func__.0:0000000000000000 $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:433    .rodata.__func__.0:0000000000000000 __func__.0
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:304    .text.sBiquad_k_onMessage:000000000000001b $d
+/var/folders/fb/yfxt3z4538j6z0vjt03w70vc0000gn/T//ccMup3W7.s:304    .text.sBiquad_k_onMessage:000000000000001c $t
+
+UNDEFINED SYMBOLS
+__assert_func

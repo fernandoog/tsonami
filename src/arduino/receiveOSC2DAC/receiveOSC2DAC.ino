@@ -10,8 +10,10 @@ const char *ssid = "HOUSE";
 const char *password = "wifiwifiwifi1992";
 
 //GPIO
-const int outputPin = 1;
-const int dacPin = 2;  // Pin DAC en el ESP32 0-4096
+const int buzzerPin = 5;
+const int outputPin = 6;
+const int dacPin = 7;  // Pin DAC en el ESP32 0-4096
+
 
 
 // Define el puerto local para la comunicación UDP
@@ -33,6 +35,7 @@ void setup() {
   // Configurar el pin DAC
   pinMode(dacPin, OUTPUT);
   pinMode(outputPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
 }
 
 void loop() {
@@ -71,8 +74,6 @@ void toSerial(OSCMessage &msg) {
   Serial.print(msg.getAddress());
   Serial.print(" ");
 
-  char strBuffer[100];
-
   for (int i = 0; i < msg.size(); i++) {
     if (msg.isInt(i)) {
       int valorRecibido = constrain(msg.getInt(i), 0, 4096);
@@ -81,17 +82,38 @@ void toSerial(OSCMessage &msg) {
     } else if (msg.isFloat(i)) {
       Serial.print(msg.getFloat(i), 1);
     } else if (msg.isString(i)) {
+      char strBuffer[100];
       msg.getString(i, strBuffer);
+      if (strcmp(strBuffer, "ON") == 0) {
+        Serial.print(strBuffer);
+        digitalWrite(outputPin, HIGH);
+      }
+      if (strcmp(strBuffer, "OFF") == 0) {
+        Serial.print(strBuffer);
+        digitalWrite(outputPin, LOW);
+      }
+      if (strcmp(strBuffer, "S") == 0) {
+        sonido();
+      }
+      Serial.println();
     }
   }
-  
-  if (strcmp(strBuffer, "ON") == 0) {
-    Serial.print(strBuffer);
-    digitalWrite(outputPin, HIGH);
+}
+
+void sonido() {
+  // Alejarse (tono descendente)
+  for (int dutyCycle = 255; dutyCycle > 0; --dutyCycle) {
+    analogWrite(buzzerPin, dutyCycle);
+    delay(random(0, 50));  // Ajusta según la velocidad deseada
   }
-  if (strcmp(strBuffer, "OFF") == 0) {
-    Serial.print(strBuffer);
-    digitalWrite(outputPin, LOW);
+
+  delay(random(0, 50));  // Pausa entre cambios de tono
+
+  // Acercarse (tono ascendente)
+  for (int dutyCycle = 0; dutyCycle < 255; ++dutyCycle) {
+    analogWrite(buzzerPin, dutyCycle);
+    delay(random(0, 50));  // Ajusta según la velocidad deseada
   }
-  Serial.println();
+
+  delay(random(0, 50));  // Pausa entre cambios de tono
 }
