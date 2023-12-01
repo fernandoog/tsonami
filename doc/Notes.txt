@@ -75,3 +75,5 @@ make
  /Users/fernando/.bashrc
 
 src/json2daisy/resources
+
+Entering download mode: Press and hold the BOOT button of ESP32C3, then press the RESET button, release the RESET button, then release the BOOT button, at this time, ESP32C3 will enter download mode. (Every time you connect, you need to re-enter the download mode, sometimes press it once, the port is unstable and will disconnect, you can judge by the port recognition sound)
