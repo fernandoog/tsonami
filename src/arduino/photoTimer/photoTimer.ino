@@ -1,15 +1,43 @@
 #include "esp_camera.h"
 #include "FS.h"
 #include "SD_MMC.h"
-#include <TimeLib.h>
+#include <WiFi.h>
+#include <NTPClient.h>
+#include <WiFiUdp.h>
 
 #define FILE_PHOTO "/photo_"
 
 // Definir el tiempo entre capturas (en segundos)
 const int tiempoEntreCapturas = 60;
 
+const char* ssid = "HOUSE";
+const char* password = "wifiwifiwifi1992";
+
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "es.pool.ntp.org");
+
 void setup() {
   Serial.begin(115200);
+
+  // Conexión WiFi
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Conectando a WiFi...");
+  }
+  Serial.println("Conectado a WiFi");
+
+  // Configuración de la hora desde NTP
+  timeClient.begin();
+  timeClient.update();
+  Serial.println("Hora actual: " + timeClient.getFormattedTime());
+
+  // Apagar WiFi
+  WiFi.disconnect(true);
+  delay(100);
+  WiFi.mode(WIFI_OFF);
+  delay(100);
+  Serial.println("WiFi apagado");
 
   // Configuración de la cámara para el modelo AI-Thinker
   camera_config_t config;
@@ -59,9 +87,9 @@ void loop() {
 void capturePhoto() {
   Serial.println("Capturando foto...");
 
-  // Obtener la marca de tiempo actual
-  time_t t = now();
-  struct tm *timeInfo = localtime(&t);
+  // Obtener la hora actual y configurar el módulo DateTime
+  time_t rawTime = timeClient.getEpochTime();
+  struct tm *timeInfo = localtime(&rawTime);
 
   // Crear un nombre de archivo con la marca de tiempo
   char fileName[30];
